@@ -15,11 +15,11 @@ class CreateProspectsTable extends Migration
     {
         Schema::create('prospects', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->date('date');
             $table->string('company_name');
-            $table->string('phone_contact');            
-            $table->string('email_contact');            
-            $table->timestamps();
+            $table->string('phone_contact');
+            $table->string('email_contact');
         });
     }
 
