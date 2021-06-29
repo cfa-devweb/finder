@@ -25,3 +25,4 @@ DB_PASSWORD= **root**
 
 Run the migration with this command ***php artisan migrate:fresh***
 
+Note by CJ : "So we not gonna change the project name ?"
