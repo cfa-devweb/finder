@@ -19,7 +19,6 @@ class CreatePostsTable extends Migration
             $table->string('name');
             $table->date('date_create');
             $table->string('content', 500);
-            // TODO $table->string('like');
         });
     }
 
