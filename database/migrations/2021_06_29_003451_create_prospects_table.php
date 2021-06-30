@@ -20,6 +20,11 @@ class CreateProspectsTable extends Migration
             $table->string('company_name');
             $table->string('phone_contact');
             $table->string('email_contact');
+
+            $table->foreignId('student_id')
+                ->constrained('students')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

@@ -17,9 +17,11 @@ class CreateResumesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->boolean('driverlicense');
-            $table->enum('skills', ['aucune', '6mois','1an', '2ans', '3ans', '+3ans']);
             $table->boolean('vehicle');
+            $table->string('skills', 250);
+            $table->string('experiences');
 
+            
             $table->foreignId('student_id')
                 ->constrained('students')
                 ->onUpdate('cascade')

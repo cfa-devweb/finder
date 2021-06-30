@@ -20,6 +20,11 @@ class CreateFollowUpsTable extends Migration
             $table->string('comment');
             $table->string('mode_contact');
             $table->string('status');
+
+            $table->foreignId('prospect_id')
+                ->constrained('prospects')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

@@ -1,6 +1,6 @@
-@extend('layout.app')
+@extends('layouts.app')
 
-
+@include('partials.navbar')
 @section('content')
 
 
