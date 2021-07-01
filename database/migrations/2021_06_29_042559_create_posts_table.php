@@ -19,6 +19,9 @@ class CreatePostsTable extends Migration
             $table->string('name');
             $table->date('date_create');
             $table->string('content', 500);
+
+            $table->foreignId('adviser_id')
+                ->constrained('advisers');
         });
     }
 
