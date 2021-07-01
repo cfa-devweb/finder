@@ -20,8 +20,6 @@ DB_PASSWORD= **root**
 
 Run the migration with this command ***php artisan migrate:fresh***
 
-
 ## CSS/SCSS
 
 To compile scss to css, run this command ***npm run watch***
-

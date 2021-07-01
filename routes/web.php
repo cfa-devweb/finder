@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/test', function () {
     return view('test');
 });
+
+//Auth::routes();
+
+Route::get('/company', [CompanyController::class, 'displaycompany']);
+
+Route::post('/company', [CompanyController::class, 'addcompany']);
