@@ -2,9 +2,10 @@
 
 @section('content')
 
+// Form to insert a company in the database
 <h1 class="text-center">Ajouter une entreprise</h1>
 
-<form class="w-50 m-auto" action="/add-company" method="POST">
+<form class="w-50 m-auto" action="/company" method="POST">
     <div class="mb-3">
         <label for="company-name" class="form-label">Nom de l'entreprise</label>
         <input type="text" class="form-control" id="company-name">
@@ -24,7 +25,7 @@
     <button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
 
-
+// List of companies
 <table class="table">
 
     <thead>
