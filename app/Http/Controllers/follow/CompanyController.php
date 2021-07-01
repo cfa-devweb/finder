@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\follow;
 
-use App\Models\Company;
+use App\Http\Controllers\Controller;
+use App\Models\follow\Company;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
+    // Function to retrieve the entire "Company" table
 	public function displaycompany()
     {
         $companies = Company::all();
@@ -15,6 +17,7 @@ class CompanyController extends Controller
         ]);        
     }
 
+        // Function to insert a company in the database
 	public function addcompany(Request $request)
     {
         $addcompany = Company::create([

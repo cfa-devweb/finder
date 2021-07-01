@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\follow\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ Route::get('/', function () {
 
 //Auth::routes();
 
+// Route for the "displaycompany" function of the "CompanyController" controller 
 Route::get('/company', [CompanyController::class, 'displaycompany']);
 
+// Route for the "addcompany" function of the "CompanyController" controller 
 Route::post('/company', [CompanyController::class, 'addcompany']);
