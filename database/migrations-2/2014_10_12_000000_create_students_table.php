@@ -26,6 +26,11 @@ class CreateStudentsTable extends Migration
             $table->string('phone');
             $table->string('password');
             $table->rememberToken();
+
+            $table->foreignId('section_id')
+                ->constrained('sections')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
