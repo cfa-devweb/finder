@@ -28,7 +28,6 @@ class CreateLikesTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-
         });
     }
 

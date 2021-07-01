@@ -18,6 +18,9 @@ class CreateSectionsTable extends Migration
             $table->timestamps();
             $table->string('class_name');
             $table->string('description');
+
+            $table->foreignId('adviser_id')
+                ->constrained('advisers');
         });
     }
 
