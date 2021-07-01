@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSectionsTable extends Migration
+class CreatePostsHasJobsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateSectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sections', function (Blueprint $table) {
+        Schema::create('posts_has_jobs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('class_name');
-            $table->string('description');
 
-            $table->foreignId('adviser_id')
-                ->constrained('advisers');
+            $table->foreignId('post_id')
+                ->constrained('posts');
 
             $table->foreignId('job_id')
                 ->constrained('jobs');
@@ -34,6 +32,6 @@ class CreateSectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classrooms');
+        Schema::dropIfExists('posts_has_jobs');
     }
 }

@@ -15,12 +15,12 @@ class CreateAdvisersTable extends Migration
     {
         Schema::create('advisers', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
         });
     }
 
