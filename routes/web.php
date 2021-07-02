@@ -27,7 +27,7 @@ Route::get('/prospect', [ProspectController::class, 'displaycompany']);
 Route::post('/prospect', [ProspectController::class, 'addcompany']);
 
 
-// Route::get('send-mail', function () {
+Route::get('send-mail', function () {
    
 
     $details = [
@@ -38,5 +38,5 @@ Route::post('/prospect', [ProspectController::class, 'addcompany']);
     \Mail::to('francinekendrick@gmail.com')->send(new \App\Mail\MyTestMail($details));
 
 
-//     dd("Email is Sent.");
-// });
+    dd("Email is Sent.");
+});
