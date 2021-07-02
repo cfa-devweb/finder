@@ -27,12 +27,4 @@ class ProspectController extends Controller
 		]);
         return redirect('/prospect');
     }
-
-    public function displayFollowUp()
-    {
-        $companies = Prospect::all();
-        return view('follow.follow-up', [
-            'followUp' => $companies
-        ]);
-    }
 }
