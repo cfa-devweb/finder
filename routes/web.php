@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\follow\CompanyController;
+use App\Http\Controllers\follow\ProspectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,21 +14,22 @@ use App\Http\Controllers\follow\CompanyController;
 |
 */
 
-Route::get('/test', function () {
-    return view('test');
+Route::get('/', function () {
+    return view('index');
 });
 
 //Auth::routes();
 
 // Route for the "displaycompany" function of the "CompanyController" controller
-Route::get('/company', [CompanyController::class, 'displaycompany']);
+Route::get('/prospect', [ProspectController::class, 'displaycompany']);
 
 // Route for the "addcompany" function of the "CompanyController" controller
-Route::post('/company', [CompanyController::class, 'addcompany']);
+Route::post('/prospect', [ProspectController::class, 'addcompany']);
 
 
-Route::get('send-mail', function () {
+// Route::get('send-mail', function () {
    
+
     $details = [
         'title' => 'Take a look of your new profil on Kinder.nc',
         'body' => 'kndrx.github.io'
@@ -36,5 +37,6 @@ Route::get('send-mail', function () {
    
     \Mail::to('francinekendrick@gmail.com')->send(new \App\Mail\MyTestMail($details));
 
-    dd("Email is Sent.");
-});
+
+//     dd("Email is Sent.");
+// });
