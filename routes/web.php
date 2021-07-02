@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\student\ProspectController;
+use App\Http\Controllers\ProspectController;
+use App\Http\Controllers\Follow_upController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,9 @@ Route::get('/', function () {
 Route::get('/prospect', [ProspectController::class, 'displaycompany']);
 
 // Route for the "addcompany" function of the "CompanyController" controller
-//Route::post('/prospect', [ProspectController::class, 'addcompany']);
+Route::post('/prospect', [ProspectController::class, 'addcompany']);
 
-//Route::get('/prospect/follow-up', [ProspectController::class, 'displaycompany']);
+Route::get('/prospect/follow-up', [Follow_upController::class, 'displayfollowup']);
 
 Route::get('send-mail', function () {
 
