@@ -14,8 +14,8 @@ use App\Http\Controllers\follow\CompanyController;
 |
 */
 
-Route::get('/test', function () {
-    return view('test');
+Route::get('/', function () {
+    return view('index');
 });
 
 //Auth::routes();
