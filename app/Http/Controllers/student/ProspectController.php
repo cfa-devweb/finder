@@ -12,7 +12,7 @@ class ProspectController extends Controller
     public function displaycompany()
     {
         $companies = Prospect::all();
-        return view('follow.prospect', compact('companies'));
+        return view('student.prospect', compact('companies'));
     }
 
 
