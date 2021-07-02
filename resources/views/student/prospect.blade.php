@@ -2,7 +2,7 @@
 
 @section('content')
 
-// Form to insert a company in the database
+<!-- Form to insert a company in the database -->
 <h1 class="text-center">Ajouter une entreprise</h1>
 
 <form class="w-50 m-auto" action="/prospect" method="POST">
@@ -11,11 +11,7 @@
         <input type="text" class="form-control" id="company-name">
     </div>
     <div class="mb-3">
-        <label for="comapny-adress" class="form-label">Adresse de l'entreprise</label>
-        <input type="password" class="form-control" id="company-adress">
-    </div>
-    <div class="mb-3">
-        <label for="company-mail" class="form-label">Adresse e-mail de l'entreprise</label>
+        <label for="company-mail" class="form-label">E-mail de l'entreprise</label>
         <input type="email" class="form-control" id="company-mail">
     </div>
     <div class="mb-3">
@@ -25,23 +21,22 @@
     <button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
 
-// List of companies
+<!-- List of companies -->
 <table class="table">
 
     <thead>
         <tr>
             <th scope="col">Nom de l'entreprise</th>
-            <th scope="col">Adresse de l'entreprise</th>
             <th scope="col">E-mail de l'entreprise</th>
-            <th scope="col">Téléphone de lentreprise</th>
+            <th scope="col">Téléphone de l'entreprise</th>
         </tr>
     </thead>
     <tbody>
         @foreach($companies as $key)
         <tr>
-            <td>{{ $companies->company_name }}</td>
-            <td>{{ $companies->email_contact }}</td>
-            <td>{{ $companies->phone_contact }}</td>
+            <td>{{ $key->company_name }}</td>
+            <td>{{ $key->email_contact }}</td>
+            <td>{{ $key->phone_contact }}</td>
         </tr>
         @endforeach
     </tbody>
