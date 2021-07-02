@@ -7,6 +7,6 @@
     <h1>{{ $details['title'] }}</h1>
     <p>{{ $details['body'] }}</p>
    
-    <p>Thank you</p>
+    <p>Don't share your password!</p>
 </body>
 </html>

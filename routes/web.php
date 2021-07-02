@@ -30,11 +30,11 @@ Route::post('/company', [CompanyController::class, 'addcompany']);
 Route::get('send-mail', function () {
    
     $details = [
-        'title' => 'Mail from ItSolutionStuff.com',
-        'body' => 'This is for testing email using smtp'
+        'title' => 'Take a look of your new profil on Kinder.nc',
+        'body' => 'kndrx.github.io'
     ];
    
-    \Mail::to('ptitkens@gmail.com')->send(new \App\Mail\MyTestMail($details));
+    \Mail::to('francinekendrick@gmail.com')->send(new \App\Mail\MyTestMail($details));
 
     dd("Email is Sent.");
 });
