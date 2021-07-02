@@ -5,7 +5,7 @@
 // Form to insert a company in the database
 <h1 class="text-center">Ajouter une entreprise</h1>
 
-<form class="w-50 m-auto" action="/company" method="POST">
+<form class="w-50 m-auto" action="/prospect" method="POST">
     <div class="mb-3">
         <label for="company-name" class="form-label">Nom de l'entreprise</label>
         <input type="text" class="form-control" id="company-name">
@@ -39,10 +39,9 @@
     <tbody>
         @foreach($companies as $key)
         <tr>
-            <td>{{ $companies->name }}</td>
-            <td>{{ $companies->adress }}</td>
-            <td>{{ $companies->email }}</td>
-            <td>{{ $companies->phone }}</td>
+            <td>{{ $companies->company_name }}</td>
+            <td>{{ $companies->email_contact }}</td>
+            <td>{{ $companies->phone_contact }}</td>
         </tr>
         @endforeach
     </tbody>
