@@ -14,7 +14,7 @@ class ProspectController extends Controller
         $companies = Prospect::all();
         return view('follow.prospect', [
             'prospect' => $companies
-        ]);        
+        ]);
     }
 
         // Function to insert a company in the database
@@ -26,5 +26,13 @@ class ProspectController extends Controller
 			'email_contact' => $request->input('company-mail'),
 		]);
         return redirect('/prospect');
+    }
+
+    public function displayFollowUp()
+    {
+        $companies = Prospect::all();
+        return view('follow.follow-up', [
+            'followUp' => $companies
+        ]);
     }
 }

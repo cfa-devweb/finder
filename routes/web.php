@@ -24,17 +24,18 @@ Route::get('/', function () {
 Route::get('/prospect', [ProspectController::class, 'displaycompany']);
 
 // Route for the "addcompany" function of the "CompanyController" controller
-Route::post('/prospect', [ProspectController::class, 'addcompany']);
+//Route::post('/prospect', [ProspectController::class, 'addcompany']);
 
+Route::get('/prospect/follow-up', [ProspectController::class, 'displaycompany']);
 
 Route::get('send-mail', function () {
-   
+
 
     $details = [
         'title' => 'Take a look of your new profil on Kinder.nc',
         'body' => 'kndrx.github.io'
     ];
-   
+
     \Mail::to('francinekendrick@gmail.com')->send(new \App\Mail\MyTestMail($details));
 
 
