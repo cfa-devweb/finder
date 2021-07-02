@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\student;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\student\Prospect;
+use App\Models\Prospect;
 use Illuminate\Http\Request;
 
 class ProspectController extends Controller
@@ -14,11 +14,6 @@ class ProspectController extends Controller
         $companies = Prospect::all();
         return view('student.prospect', compact('companies'));
     }
-
-
-
-
-
 
 
     // Function to insert a company in the database
