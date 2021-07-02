@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\follow\ProspectController;
+use App\Http\Controllers\student\ProspectController;
 
 /*
 |--------------------------------------------------------------------------
