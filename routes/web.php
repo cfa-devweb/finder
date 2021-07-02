@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\follow\CompanyController;
+use App\Http\Controllers\follow\ProspectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,20 +21,20 @@ Route::get('/', function () {
 //Auth::routes();
 
 // Route for the "displaycompany" function of the "CompanyController" controller
-Route::get('/company', [CompanyController::class, 'displaycompany']);
+Route::get('/prospect', [ProspectController::class, 'displaycompany']);
 
 // Route for the "addcompany" function of the "CompanyController" controller
-Route::post('/company', [CompanyController::class, 'addcompany']);
+Route::post('/prospect', [ProspectController::class, 'addcompany']);
 
 
-Route::get('send-mail', function () {
+// Route::get('send-mail', function () {
    
-    $details = [
-        'title' => 'Mail from ItSolutionStuff.com',
-        'body' => 'This is for testing email using smtp'
-    ];
+//     $details = [
+//         'title' => 'Mail from ItSolutionStuff.com',
+//         'body' => 'This is for testing email using smtp'
+//     ];
    
-    \Mail::to('ptitkens@gmail.com')->send(new \App\Mail\MyTestMail($details));
+//     \Mail::to('ptitkens@gmail.com')->send(new \App\Mail\MyTestMail($details));
 
-    dd("Email is Sent.");
-});
+//     dd("Email is Sent.");
+// });

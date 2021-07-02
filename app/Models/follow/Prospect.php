@@ -4,9 +4,9 @@ namespace App\Models\follow;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class Prospect extends Model
 {
     protected $fillable = [
-        'name', 'adress', 'mail', 'phone',
+        'company_name', 'phone_contact', 'email_contact',
     ];
 }

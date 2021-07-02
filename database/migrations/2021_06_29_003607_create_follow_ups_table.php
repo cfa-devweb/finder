@@ -16,7 +16,7 @@ class CreateFollowUpsTable extends Migration
         Schema::create('follow_ups', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('date');            
+            $table->date('date');            
             $table->string('comment');
             $table->string('mode_contact');
             $table->string('status');
