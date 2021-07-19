@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\follow\ProspectController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-//Auth::routes();
+Auth::routes(['verify' => true]);
 
 // Route for the "displaycompany" function of the "CompanyController" controller
 Route::get('/prospect', [ProspectController::class, 'displaycompany']);
@@ -40,3 +41,7 @@ Route::get('send-mail', function () {
 
     dd("Email is Sent.");
 });
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(["verified"]);
