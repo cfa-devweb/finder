@@ -18,6 +18,7 @@
                 <thead class="bg-giep text-white w-100 ">
                     <tr class=" d-lg-table-row text-dark">
                         <th>#Index</th>
+
                         <th>Formation</th>
                         <th>Nombre d'apprenant</th>
                         <th>Nombre à avoir trouvé</th>
@@ -32,7 +33,11 @@
                         <td class="text-capitalize">{{$Section->class_name }} </td>
                         <td class="text-capitalize">{{$Section->students->count() }}</td>
                         <td>{{$Section->students->where('followUps->status','oui')->count() }}</td>
-                        <td><button type="button" class="btn btn-primary">Voir</button></td>
+                        <td>
+                            <a href="{{ route('dashboard-formation', $Section->id)}}">
+                                <button type="button" class="btn btn-primary">Voir</button>
+                            </a>
+                        </td>
                     </tr>
                     @endforeach
                     @else

@@ -22,4 +22,8 @@ class DashboardController extends Controller
         // dd($Students);
         return view('dashboard',compact('Sections','Students'));
     }
+    public function show()
+    {
+        return view('dashboard-formation');
+    }
 }

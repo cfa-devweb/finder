@@ -28,6 +28,7 @@ Auth::routes(['verify' => true]);
 // dashboard
 // Route for the "dashboard" function of the "DashboardController" controller
 Route::get('dashboard',[DashboardController::class,"index"])->name('dashboard-index');
+Route::get('/dashboard/{id}',[DashboardController::class,"show"])->name('dashboard-formation');
 //Auth::routes();
 
 // Route for the "displaycompany" function of the "CompanyController" controller
