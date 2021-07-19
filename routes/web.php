@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProspectController;
 use App\Http\Controllers\Follow_upController;
 
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,9 @@ Route::get('/', function () {
     return view('index');
 });
 
+// dashboard
+// Route for the "dashboard" function of the "DashboardController" controller
+Route::get('dashboard',[DashboardController::class,"index"])->name('dashboard-index');
 //Auth::routes();
 
 // Route for the "displaycompany" function of the "CompanyController" controller
@@ -28,6 +32,7 @@ Route::get('/prospect', [ProspectController::class, 'displaycompany']);
 Route::post('/prospect', [ProspectController::class, 'addcompany']);
 
 Route::get('/prospect/follow-up', [Follow_upController::class, 'displayfollowup']);
+
 
 Route::get('send-mail', function () {
 

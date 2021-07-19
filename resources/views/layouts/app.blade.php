@@ -12,10 +12,8 @@
 
     <main class="container">
     @yield('content')
-    </main>
-    
-    <footer>
-    
+    </main>    
+    <footer>   
 
     </footer>
     </body>
