@@ -21,12 +21,14 @@
     </thead>
     <tbody>
         @foreach ($students as $student)
+            
             <tr>
                 <td></td>
+                <td>{{ $student->section->class_name }}</td>
                 <td>{{ $student->last_name }}</td>
                 <td>{{ $student->first_name }}</td>
                 <td>{{ $student->email }}</td>
-                <td></td>
+                <td>{{ $student->prospects->count() }}</td>
                 <td></td>
             </tr>
         @endforeach
