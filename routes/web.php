@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\follow\ProspectController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProspectController;
+use App\Http\Controllers\Follow_upController;
 
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +21,14 @@ Route::get('/', function () {
     return view('index');
 });
 
+//login
+
 Auth::routes(['verify' => true]);
+
+// dashboard
+// Route for the "dashboard" function of the "DashboardController" controller
+Route::get('dashboard',[DashboardController::class,"index"])->name('dashboard-index');
+//Auth::routes();
 
 // Route for the "displaycompany" function of the "CompanyController" controller
 Route::get('/prospect', [ProspectController::class, 'displaycompany']);
@@ -27,15 +36,17 @@ Route::get('/prospect', [ProspectController::class, 'displaycompany']);
 // Route for the "addcompany" function of the "CompanyController" controller
 Route::post('/prospect', [ProspectController::class, 'addcompany']);
 
+Route::get('/prospect/follow-up', [Follow_upController::class, 'displayfollowup']);
+
 
 Route::get('send-mail', function () {
-   
+
 
     $details = [
         'title' => 'Take a look of your new profil on Kinder.nc',
         'body' => 'kndrx.github.io'
     ];
-   
+
     \Mail::to('francinekendrick@gmail.com')->send(new \App\Mail\MyTestMail($details));
 
 
