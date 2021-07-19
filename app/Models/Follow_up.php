@@ -8,5 +8,6 @@ class Follow_up extends Model
 {
     protected $fillable = [
         'date',
+        'status'
     ];
 }
