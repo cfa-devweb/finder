@@ -31,6 +31,8 @@ Route::get('/prospect', [ProspectController::class, 'displaycompany']);
 // Route for the "addcompany" function of the "CompanyController" controller
 Route::post('/prospect', [ProspectController::class, 'addcompany']);
 
+Route::post('/student/create-profil', [ProspectController::class,'CreateProfil']);
+
 Route::get('/prospect/follow-up', [Follow_upController::class, 'displayfollowup']);
 
 
