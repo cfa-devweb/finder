@@ -1,3 +1,4 @@
+@include('partials.navbar')
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -9,10 +10,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <main class="container">
-    @yield('content')
-    </main>    
-    <footer>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -25,6 +22,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    <main class="container">
+        @yield('auth')
+    </main>    
     <div id="app">
         <main class="py-4">
             @yield('content')
