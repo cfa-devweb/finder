@@ -11,4 +11,14 @@ class Prospect extends Model
         'phone_contact',
         'email_contact',
     ];
+    public function followUps()
+    {
+        # code...
+        return $this->hasMany(Follow_up::class);
+    }
+    public function students()
+    {
+        # code...
+        return $this->hasMany(students::class);
+    }
 }

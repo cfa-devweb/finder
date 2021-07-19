@@ -8,5 +8,11 @@ class Follow_up extends Model
 {
     protected $fillable = [
         'date',
+        'status'
     ];
+    public function prospects()
+    {
+        # code...
+        return $this->belongsTo(Prospect::class);
+    }
 }

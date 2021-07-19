@@ -15,4 +15,26 @@ class Section extends Model
         'adviser_id',
         'job_id'
     ];
+    public function adviser()
+    {
+        # code...
+        return $this->belongsTo(Adviser::class);
+    }
+    public function jobs()
+    {
+        # code...
+        return $this->belongsTo(Job::class);
+    }
+    public function students()
+    {
+        # code...
+        return $this->hasMany(Student::class);
+    }
+    public function followUps()
+    {
+        # code...
+        return $this->hasMany(Follow_up::class);
+    }
+    
+    
 }

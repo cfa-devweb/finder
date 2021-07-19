@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProspectController;
 use App\Http\Controllers\Follow_upController;
 
@@ -20,6 +21,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+//login
+
+Auth::routes(['verify' => true]);
+
 // dashboard
 // Route for the "dashboard" function of the "DashboardController" controller
 Route::get('dashboard',[DashboardController::class,"index"])->name('dashboard-index');
@@ -30,6 +35,8 @@ Route::get('/prospect', [ProspectController::class, 'displaycompany']);
 
 // Route for the "addcompany" function of the "CompanyController" controller
 Route::post('/prospect', [ProspectController::class, 'addcompany']);
+
+Route::post('/student/create-profil', [ProspectController::class,'CreateProfil']);
 
 Route::get('/prospect/follow-up', [Follow_upController::class, 'displayfollowup']);
 
@@ -47,3 +54,7 @@ Route::get('send-mail', function () {
 
     dd("Email is Sent.");
 });
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(["verified"]);

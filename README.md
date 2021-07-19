@@ -32,6 +32,6 @@ Run the database's seed with this command ***php artisan db:seed***
 
 To compile scss to css, run this command ***npm run watch***
 
-## To launch the application 
+## To launch the application
 
 Run the artisan command ***php artisan serve***
