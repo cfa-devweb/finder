@@ -20,21 +20,21 @@ class Section extends Model
         # code...
         return $this->belongsTo(Adviser::class);
     }
-    public function job()
+    public function jobs()
     {
         # code...
         return $this->belongsTo(Job::class);
     }
-    public function student()
+    public function students()
     {
         # code...
         return $this->hasMany(Student::class);
     }
-    public function followUp()
+    public function followUps()
     {
         # code...
-        
         return $this->hasMany(Follow_up::class);
     }
+    
     
 }

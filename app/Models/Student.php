@@ -54,4 +54,14 @@ class Student extends Authenticatable
         # code...
         return $this->belongsTo(Section::class);
     }
+    public function followUps()
+    {
+        # code...
+        return $this->hasMany(Follow_up::class);
+    }
+    public function prospects()
+    {
+        # code...
+        return $this->hasMany(Prospect::class);
+    }
 }
