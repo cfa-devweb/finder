@@ -2,8 +2,11 @@
 @section('content')
 @include('partials.navbar')
 <div class="container pt-1 pb-4">
-    <div class="col-12 text-center m-auto row align-items-center border " style="height: 50px;">
-    <button type="button" class="btn btn-primary m-auto">Crée un alternant</button>
+    <div class="col-12 text-center m-auto row align-items-center border d-flex " style="height: 50px;">
+    <div class="col-4"></div>
+    <div class="col-4">
+    <button type="button" class="btn btn-primary m-auto">Crée un alternant</button></div>
+    <div class="col-4"></div>
     </div>
 </div>
 <div class="container">
