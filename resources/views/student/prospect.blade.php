@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <!-- Form to insert a company in the database -->
 <h1 class="text-center">Ajouter une entreprise</h1>
 

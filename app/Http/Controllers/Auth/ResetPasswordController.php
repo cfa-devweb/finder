@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -20,6 +21,10 @@ class ResetPasswordController extends Controller
     */
 
     use ResetsPasswords;
+
+    protected function guard() {
+        return Auth::guard('web');
+    }
 
     /**
      * Where to redirect users after resetting their password.
