@@ -10,6 +10,8 @@ class Prospect extends Model
         'company_name',
         'phone_contact',
         'email_contact',
+        'date',
+        'student_id',
     ];
     public function followUps()
     {
