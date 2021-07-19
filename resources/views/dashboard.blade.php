@@ -1,7 +1,19 @@
 @extends('layouts.app')
 @section('content')
 @include('partials.navbar')
+<div class="container pt-1 pb-4">
+    <div class="col-12 text-center m-auto row align-items-center border " style="height: 50px;">
+    <button type="button" class="btn btn-primary m-auto">Crée un alternant</button>
+    </div>
+</div>
 <div class="container">
+    <div class="col-12">
+        <h4 class="text-uppercase text-center">recherche de toutes les formations</h4>
+    </div>
+    <div class="container d-flex">
+        <div class="col-2"></div>
+        <div class="col-8">
+                
         <table class="table table-bordered w-100 " >
                 <thead class="bg-giep text-white w-100 ">
                     <tr class=" d-lg-table-row text-dark">
@@ -30,5 +42,8 @@
                     @endif
                 </tbody>
             </table>
+        </div>
+        <div class="col-2"></div>
+    </div>
             </div>
 @endsection
