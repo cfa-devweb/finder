@@ -10,4 +10,9 @@ class Follow_up extends Model
         'date',
         'status'
     ];
+    public function prospects()
+    {
+        # code...
+        return $this->belongsTo(Prospect::class);
+    }
 }
