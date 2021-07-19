@@ -10,8 +10,16 @@ class DashboardController extends Controller
 {
     //
     public function index() {      
-        $Sections = Section::all();
-        // dd($Sections);
-        return view('dashboard',compact('Sections'));
+        $Sections = Section::where("adviser_id",'=',"1")->get();
+        // $Students = ::where("adviser_id",'=',"1")->get()->count();
+
+        $adviser_id = '1';
+        $Students = Student::whereHas('section', 
+                                function ($query) use ($adviser_id){
+                                    $query->where('adviser_id','=', $adviser_id);
+                                }
+                            )->get()->count(); 
+        // dd($Students);
+        return view('dashboard',compact('Sections','Students'));
     }
 }
