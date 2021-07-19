@@ -11,12 +11,13 @@
 </div>
 <div class="container">
     <div class="col-12 d-flex p-3">
-        <div class="col-8">            
+        <div class="col-1"></div>
+        <div class="col-7">            
             <h4 class="text-uppercase text-center">recherche de toutes les formations</h4>
         </div>
         <div class="col-4">
             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-    data-bs-whatever="@fat">Ajouter une formation</button>
+                data-bs-whatever="@fat">Ajouter une formation</button>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -33,12 +34,20 @@
                                 <input type="text" class="form-control" id="first_name" name="class_name" require>
                             </div>
                             <div class="mb-3">
-                                <label for="last_name" class="col-form-label">Nom du conseiller</label>
-                                <input type="text" class="form-control" id="last_name" name="adviser_id" require>
+                                <label for="last_name" class="col-form-label">Nom du conseiller</label>                            
+                                <select class="form-select" aria-label="Default select example">
+                                    @foreach($advisers as $adviser)                            
+                                        <option value="{{ $adviser->id }}">{{ $adviser->last_name }} {{ $adviser->first_name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="col-form-label">Nom du job:</label>
-                                <input type="email" class="form-control" id="email" name="job_id" require>
+                                <select class="form-select" aria-label="Default select example">
+                                @foreach($jobs as $job)                            
+                                    <option value="{{ $job->id }}">{{ $job->name }} </option>
+                                @endforeach
+                            </select>
                             </div>
                         </form>
                     </div>
