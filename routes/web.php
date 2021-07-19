@@ -38,8 +38,8 @@ Route::post('/prospect', [ProspectController::class, 'addcompany']);
 
 Route::post('/student/create-profil', [ProspectController::class,'CreateProfil']);
 
-Route::get('/prospect/follow-up', [Follow_upController::class, 'displayfollowup']);
-
+Route::get('/prospect/follow-up/{id}', [Follow_upController::class, 'displayfollowup']);
+//[Follow_upController::class, 'displayfollowup']
 
 Route::get('send-mail', function () {
 

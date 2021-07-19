@@ -39,7 +39,7 @@
             <td>{{ $key->company_name }}</td>
             <td>{{ $key->email_contact }}</td>
             <td>{{ $key->phone_contact }}</td>
-            <td><a href="/prospect/follow-up/{{$key->id}}">Lien</a></td>
+            <td><a class="btn btn-outline-primary" href="/prospect/follow-up/{{$key->id}}">Relancer</a></td>
         </tr>
         @endforeach
     </tbody>

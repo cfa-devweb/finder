@@ -7,10 +7,9 @@ use Illuminate\Http\Request;
 
 class Follow_upController extends Controller
 {
-    // Function to retrieve the entire "Company" table
-    public function displayfollowup()
+    public function displayfollowup($prospectId)
     {
-        $followUp = Follow_up::all();
+        $followUp = Follow_up::all()->where('prospect_id', $prospectId);
         return view('student.follow-up', compact('followUp'));
     }
 }
