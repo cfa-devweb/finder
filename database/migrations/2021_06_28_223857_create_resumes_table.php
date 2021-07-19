@@ -18,8 +18,12 @@ class CreateResumesTable extends Migration
             $table->timestamps();
             $table->boolean('driverlicense');
             $table->boolean('vehicle');
+            $table->string('study');
             $table->string('skills', 250);
             $table->string('experiences');
+            $table->string('Center_interest');
+            $table->string('about_me', 100);
+
 
             
             $table->foreignId('student_id')

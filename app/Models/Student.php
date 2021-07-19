@@ -49,4 +49,9 @@ class Student extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
+    public function section()
+    {
+        # code...
+        return $this->belongsTo(Section::class);
+    }
 }
