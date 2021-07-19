@@ -19,11 +19,14 @@ class ProspectController extends Controller
     // Function to insert a company in the database
     public function addcompany(Request $request)
     {
+        dd($request);
         $addcompany = Prospect::create([
             'company_name' => $request->input('company-name'),
             'phone_contact' => $request->input('company-phone'),
             'email_contact' => $request->input('company-mail'),
         ]);
         return back();
+        // return redirect('/prospect');
+
     }
 }
