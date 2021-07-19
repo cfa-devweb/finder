@@ -10,6 +10,11 @@ class Job extends Model
     use HasFactory;
     protected $fillable = [
         'id',
-        'name'
+        'created_at',
+        'updated_at',
+        'name',
+        'date_create',
+        'content',
+        'adviser_id',
     ];
 }
