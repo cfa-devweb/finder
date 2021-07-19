@@ -11,7 +11,6 @@ class DashboardController extends Controller
     //
     public function index() {      
         $Sections = Section::where("adviser_id",'=',"1")->get();
-        // $Students = ::where("adviser_id",'=',"1")->get()->count();
 
         $adviser_id = '1';
         $Students = Student::whereHas('section', 

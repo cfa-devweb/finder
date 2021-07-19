@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProspectController;
+use App\Http\Controllers\AddStudentController;
 use App\Http\Controllers\Follow_upController;
 use App\Http\Controllers\ListingJobController;
 use App\Http\Controllers\DashboardController;
@@ -41,6 +42,14 @@ Route::get('/prospect', [ProspectController::class, 'displaycompany']);
 Route::post('/prospect', [ProspectController::class, 'addcompany']);
 
 Route::post('/student/create-profil', [ProspectController::class,'CreateProfil']);
+
+// route for add student and redirect to addStudentModal
+Route::get('/addStudentModal', function () {
+    return view('/adviser/addStudentModal');
+});
+Route::post('create', [AddStudentController::class, 'insert']);
+
+Route::get('/prospect/follow-up', [Follow_upController::class, 'displayfollowup']);
 
 Route::get('/prospect/follow-up/{id}', [Follow_upController::class, 'displayfollowup']);
 //[Follow_upController::class, 'displayfollowup']
