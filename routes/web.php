@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProspectController;
 use App\Http\Controllers\Follow_upController;
 
@@ -19,6 +20,10 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', function () {
     return view('index');
 });
+
+//login
+
+Auth::routes(['verify' => true]);
 
 // dashboard
 // Route for the "dashboard" function of the "DashboardController" controller
@@ -47,3 +52,7 @@ Route::get('send-mail', function () {
 
     dd("Email is Sent.");
 });
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(["verified"]);
