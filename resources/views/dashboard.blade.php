@@ -5,7 +5,7 @@
     <div class="col-12 text-center m-auto row align-items-center border d-flex " style="height: 50px;">
     <div class="col-4"></div>
     <div class="col-4">
-    <button type="button" class="btn btn-primary m-auto">Crée un alternant</button></div>
+    <button type="button" class="btn btn-primary m-auto text-light">Crée un alternant</button></div>
     <div class="col-4"></div>
     </div>
 </div>
@@ -15,7 +15,40 @@
             <h4 class="text-uppercase text-center">recherche de toutes les formations</h4>
         </div>
         <div class="col-4">
-            <button type="button" class="btn btn-outline-primary">Ajouter une formation</button>
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    data-bs-whatever="@fat">Ajouter une formation</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-uppercase" id="exampleModalLabel">formulaire ajout d'une formation</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="create" method="post">
+                            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+
+                            <div class="mb-3">
+                                <label for="first_name" class="col-form-label">Nom de la Formation</label>
+                                <input type="text" class="form-control" id="first_name" name="class_name" require>
+                            </div>
+                            <div class="mb-3">
+                                <label for="last_name" class="col-form-label">Nom du conseiller</label>
+                                <input type="text" class="form-control" id="last_name" name="adviser_id" require>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="col-form-label">Nom du job:</label>
+                                <input type="email" class="form-control" id="email" name="job_id" require>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary text-light">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
     <div class="container d-flex">
@@ -57,5 +90,5 @@
             </div>
         <div class="col-2"></div>
     </div>
-            </div>
+</div>
 @endsection
