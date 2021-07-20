@@ -1,11 +1,10 @@
 @extends('layouts.app')
 @section('content')
-@include('partials.navbar')
 <div class="container pt-1 pb-4">
     <div class="col-12 text-center m-auto row align-items-center border d-flex " style="height: 50px;">
     <div class="col-4"></div>
     <div class="col-4">
-    <button type="button" class="btn btn-primary m-auto text-light">Crée un alternant</button></div>
+    @include('adviser.addStudentModal')
     <div class="col-4"></div>
     </div>
 </div>
