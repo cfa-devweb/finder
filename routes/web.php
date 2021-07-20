@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProspectController;
 use App\Http\Controllers\AddStudentController;
 use App\Http\Controllers\Follow_upController;
-use App\Http\Controllers\ListingJobController;
+use App\Http\Controllers\ListingPostController;
 use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 //login
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
 
 // dashboard
 // Route for the "dashboard" function of the "DashboardController" controller
@@ -32,8 +32,11 @@ Route::get('dashboard',[DashboardController::class,"index"])->name('dashboard-in
 Route::get('/dashboard/{id}',[DashboardController::class,"show"])->name('dashboard-formation');
 //Auth::routes();
 
-// Route for the "ListingJob" function of the "CompanyController" controller
-Route::get('/listingJob', [ListingJobController::class, 'listingjob']);
+// Route for the "ListingPost" function of the "ListingPostController" controller
+Route::get('/listingPost',[ListingPostController::class,'listingPost']);
+
+// Route for the "addoffer" function of the "ListingPostController" controller
+// Route::post('/listingPost', [ListingPostController::class, 'addoffer']);
 
 // Route for the "displaycompany" function of the "CompanyController" controller
 Route::get('/prospect', [ProspectController::class, 'displaycompany']);

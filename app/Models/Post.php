@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Job extends Model
+class Post extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
-        'created_at',
-        'updated_at',
         'name',
+        'name_company',
+        'domaine',
         'date_create',
+        'contact',
         'content',
         'adviser_id',
     ];
