@@ -20,13 +20,13 @@
             <h4 class="text-uppercase text-center">recherche de toutes les formations</h4>
         </div>
         <div class="col-4">
-            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2"
                 data-bs-whatever="@fat">Ajouter une formation</button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-uppercase" id="exampleModalLabel">formulaire ajout d'une formation</h5>
+                        <h5 class="modal-title text-uppercase" id="exampleModal2Label">formulaire ajout d'une formation</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
