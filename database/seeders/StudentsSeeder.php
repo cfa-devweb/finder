@@ -22,12 +22,13 @@ class StudentsSeeder extends Seeder
                 'first_name' => Str::random(10),
                 'last_name' => Str::random(10),
                 'gender' => 'homme',
-                'email' => Str::random(10) . '@gmail.com',
+                'email' => 'kinder@gmail.com',
                 'email_verified_at' => Carbon::now()->subMinutes(rand(0,10080))->format('Y-m-d H:i:s'),
                 'date_of_birth' => Carbon::now(),
                 'city' => 'Nouméa',
                 'phone' => '696969',
-                'password' => Hash::make('password'),
+                'password' => 'kinder',
+                /** 'password' => Hash::make('password'), */ 
                 'section_id' => 1,
             ]);
     }

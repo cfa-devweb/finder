@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@include('partials.navbar')
 <div class="container pt-1 pb-4">
     <div class="col-12 text-center m-auto row align-items-center border d-flex " style="height: 50px;">
     <div class="col-4"></div>
