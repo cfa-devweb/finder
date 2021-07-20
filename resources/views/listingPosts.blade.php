@@ -81,7 +81,6 @@
             </tbody>
         </table>
 
-
         <!-- Modal add offer -->
         <form action="" method="POST">
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
