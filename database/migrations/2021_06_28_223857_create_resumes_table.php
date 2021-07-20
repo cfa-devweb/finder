@@ -40,6 +40,7 @@ class CreateResumesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv');
+
+        Schema::dropIfExists('resumes');
     }
 }
