@@ -48,16 +48,14 @@ Route::post('/prospect', [ProspectController::class, 'addcompany']);
 
 Route::post('/student/create-profil', [ProspectController::class,'CreateProfil']);
 
+Route::get('/prospect/{id}/follow-up', [Follow_upController::class, 'index']);
+Route::post('/prospect/follow-up/create', [Follow_upController::class, 'addfollowup'])->name('followup-create');
+
 // route for add student and redirect to addStudentModal
 Route::get('/addStudentModal', function () {
     return view('/adviser/addStudentModal');
 });
 Route::post('/addStudentModal', [AddStudentController::class, 'addStudent']);
-
-Route::get('/prospect/follow-up', [Follow_upController::class, 'displayfollowup']);
-
-Route::get('/prospect/follow-up/{id}', [Follow_upController::class, 'displayfollowup']);
-//[Follow_upController::class, 'displayfollowup']
 
 Route::get('send-mail', function () {
 
