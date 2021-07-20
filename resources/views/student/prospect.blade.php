@@ -15,7 +15,7 @@
     <div class="mb-3">
         <label for="company-mail" class="form-label">E-mail de l'entreprise</label>
         <input type="email" class="form-control" id="company-mail">
-    </div>
+    </div> 
     <div class="mb-3">
         <label for="company-phone" class="form-label">Numéro de téléphone de l'entreprise</label>
         <input type="tel" class="form-control" id="company-phone">
