@@ -64,22 +64,23 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach ($listingPost as $listingPost)
+            {{-- @foreach ($listingPost as $listingPost) --}}
                 <tr>
                     <th scope="row">1</th>
-                    <td>{{$listingPost->name}}</td>
-                    <td>{{$listingPost->name_company}}</td>
-                    <td>{{$listingPost->domaine}}</td>
-                    <td>{{$listingPost->contact}}</td>
-                    <td>{{$listingPost->content}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td class="d-flex justify-content-evenly">
                         <button type="button" class="btn btn-warning btn-sm">M</button>
                         <button type="button" class="btn btn-danger btn-sm">X</button>
                     </td>
                 </tr>
-            @endforeach
+            {{-- @endforeach --}}
             </tbody>
         </table>
+
         <!-- Modal add offer -->
         <form action="" method="POST">
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"

@@ -39,10 +39,10 @@ Route::get('/dashboard/{id}',[listingStudentController::class, 'showTable'])->na
 
 
 // Route for the "ListingPost" function of the "ListingPostController" controller
-Route::get('/listingPost',[ListingPostController::class,'listingPost']);
+Route::get('/listingPosts',[ListingPostController::class,'listingPost']);
 
 // Route for the "addoffer" function of the "ListingPostController" controller
-// Route::post('/listingPost', [ListingPostController::class, 'addoffer']);
+Route::post('/listingPosts', [ListingPostController::class, 'addoffer']);
 
 // Route for the "displaycompany" function of the "CompanyController" controller
 Route::get('/prospect', [ProspectController::class, 'displaycompany']);
