@@ -1,15 +1,11 @@
 @extends('layouts.app')
 @section('content')
 
-
-@include('partials.navbar')
 <div class="container">
 
     <div class="row">
-        <div class="col">
-            <h2> Offres d'alternance</h2>
-        </div>
-        <div class="col">
+        <div class="col d-flex justify-content-between">
+            <h2 class="fw-bold"> Offres d'alternance</h2>
             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 AJOUTER
             </button>
@@ -50,6 +46,37 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div>
+        <table class="table table-striped my-3">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Intitulé</th>
+                    <th scope="col">Entreprises</th>
+                    <th scope="col">Domaine</th>
+                    <th scope="col">Contacts</th>
+                    <th scope="col">Description de l'offre</th>
+                    <th class="text-center" scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach ($listingPost as $listingPost)
+                <tr>
+                    <th scope="row">1</th>
+                    <td>{{$listingPost->name}}</td>
+                    <td>{{$listingPost->name_company}}</td>
+                    <td>{{$listingPost->domaine}}</td>
+                    <td>{{$listingPost->contact}}</td>
+                    <td>{{$listingPost->content}}</td>
+                    <td class="d-flex justify-content-evenly">
+                        <button type="button" class="btn btn-warning btn-sm">M</button>
+                        <button type="button" class="btn btn-danger btn-sm">X</button>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
 
     @endsection

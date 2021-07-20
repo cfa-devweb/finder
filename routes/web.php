@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProspectController;
 use App\Http\Controllers\Follow_upController;
-use App\Http\Controllers\ListingJobController;
+use App\Http\Controllers\ListingPostController;
 use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +31,8 @@ Route::get('dashboard',[DashboardController::class,"index"])->name('dashboard-in
 Route::get('/dashboard/{id}',[DashboardController::class,"show"])->name('dashboard-formation');
 //Auth::routes();
 
-// Route for the "ListingJob" function of the "CompanyController" controller
-Route::get('/listingJob', [ListingJobController::class, 'listingjob']);
+// Route for the "ListingPost" function of the "CompanyController" controller
+Route::get('/listingPost', [ListingPostController::class, 'listingPost']);
 
 // Route for the "displaycompany" function of the "CompanyController" controller
 Route::get('/prospect', [ProspectController::class, 'displaycompany']);
