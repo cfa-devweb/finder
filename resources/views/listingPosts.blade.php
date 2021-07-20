@@ -76,20 +76,22 @@
                 </tr>
             </thead>
             <tbody>
-            {{-- @foreach ($listingPost as $listingPost) --}}
+
+             @foreach ($Posts as $key)
                 <tr>
-                    <th scope="row">1</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <th scope="row">{{$key->id}}</th>
+                    <td>{{$key->name}}</td>
+                    <td>{{$key->company_name}}</td>
+                    <td>{{$key->domaine}}</td>
+                    <td>{{$key->contact}}</td>
+                    <td>{{$key->content}}</td>
                     <td class="d-flex justify-content-evenly">
                         <button type="button" class="btn btn-warning btn-sm">M</button>
                         <button type="button" class="btn btn-danger btn-sm">X</button>
                     </td>
                 </tr>
-            {{-- @endforeach --}}
+             @endforeach
+             
             </tbody>
         </table>
 
