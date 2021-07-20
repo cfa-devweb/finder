@@ -56,7 +56,8 @@ Route::post('/student/create-profil', [ProspectController::class,'CreateProfil']
 // return modal view of addStudentModal
 
 Route::get('/prospect/{id}/follow-up', [Follow_upController::class, 'index']);
-Route::post('/prospect/follow-up/create', [Follow_upController::class, 'addfollowup'])->name('followup-create');
+Route::post('/prospect/follow-up/create', [Follow_upController::class, 'createFolllowUp'])->name('create-followup');
+Route::post('/prospect/follow-up/edit', [Follow_upController::class, 'editFolllowUp'])->name('edit-followup');
 
 // route for add student and redirect to addStudentModal
 
