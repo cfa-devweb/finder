@@ -21,6 +21,7 @@ class Student extends Authenticatable
         'last_name',
         'email',
         'password',
+        'find_company',
     ];
 
     /**
