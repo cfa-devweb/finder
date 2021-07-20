@@ -7,6 +7,9 @@ use App\Http\Controllers\AddStudentController;
 use App\Http\Controllers\Follow_upController;
 use App\Http\Controllers\ListingJobController;
 use App\Http\Controllers\DashboardController;
+
+use App\Http\Controllers\listingStudentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +32,7 @@ Auth::routes(['verify' => true]);
 // dashboard
 // Route for the "dashboard" function of the "DashboardController" controller
 Route::get('dashboard',[DashboardController::class,"index"])->name('dashboard-index');
-Route::get('/dashboard/{id}',[DashboardController::class,"show"])->name('dashboard-formation');
+Route::get('/dashboard/{id}',[listingStudentController::class, 'showTable'])->name('dashboard-formation');
 //Auth::routes();
 
 // Route for the "ListingJob" function of the "CompanyController" controller

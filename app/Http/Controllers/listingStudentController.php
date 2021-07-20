@@ -11,21 +11,15 @@ use Illuminate\Http\Request;
 class listingStudentController extends Controller
 {
     //
-    public function showTable(){
+    public function showTable($id){
 
-        $section = Section::table('sections')
-            ->join('students','students.section_id','=','sections.id')
-            ->get();
+        $sections = Section::select('class_name')->where("id",'=', $id)->get();
+        $adviser = 1;
+        $students = Student::where('section_id', '=', $adviser)->get();
 
-        $students = Student::all();
-
-        $prospects = Prospect::table('prospects')
-            ->join('follow_ups','follow_ups.id','=','prospects.id')
-            ->join('students','students.id','=','prospects.student_id')
-            ->get();
-
-        return view('adviser.listingStudent',  compact('students'));
-
+        // return 'User '.$id;
+        return view('adviser.listingStudent',  compact('students', 'id', 'sections'));
 
     }
+
 }
