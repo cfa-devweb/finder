@@ -18,7 +18,6 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('name_company', 60);
-            $table->string('domaine', 25);
             $table->date('date_create');
             $table->string('contact', 55);
             $table->string('content', 500);
