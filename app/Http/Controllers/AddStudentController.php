@@ -9,7 +9,9 @@ use App\Models\Students;
 
 class AddStudentController extends Controller
 {
-    //
+    /**
+     * Insert new student in database table students.
+     */
     public function addStudent(Request $request) {
 
         $request->validate([
@@ -38,6 +40,13 @@ class AddStudentController extends Controller
         ]);
 
         return back();
+    }
+
+    // Function to retrieve the entire "Company" table
+    public function get()
+    {
+        $sections = Section::all();
+        return view('adviser.addStudentModal', compact('sections'));
     }
 
 }
