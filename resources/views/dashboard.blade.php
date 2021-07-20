@@ -50,8 +50,8 @@
                             <div class="mb-3">
                                 <label for="job_id" class="col-form-label">Nom du job:</label>
                                 <select class="form-select" aria-label="Default select example" id="job_id" name="job_id" required>
-                                @foreach($jobs as $job)                            
-                                    <option value="{{ $job->id }}" >{{ $job->name }} </option>
+                                @foreach($Post as $Posts)                            
+                                    <option value="{{ $Posts->id }}" >{{ $Posts->name }} </option>
                                 @endforeach
                             </select>
                             </div>
