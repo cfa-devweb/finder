@@ -47,7 +47,7 @@ Route::post('/student/create-profil', [ProspectController::class,'CreateProfil']
 Route::get('/addStudentModal', function () {
     return view('/adviser/addStudentModal');
 });
-Route::post('create', [AddStudentController::class, 'insert']);
+Route::post('/addStudentModal', [AddStudentController::class, 'addStudent']);
 
 Route::get('/prospect/follow-up', [Follow_upController::class, 'displayfollowup']);
 
