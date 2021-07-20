@@ -1,4 +1,6 @@
+
 <button type="button" class="btn btn-primary text-light" data-bs-toggle="modal" data-bs-target="#exampleModal"
+
     data-bs-whatever="@fat">Créer un alternant</button>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
