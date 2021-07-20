@@ -2958,7 +2958,7 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
-  color: rgb(255, 255, 255);
+  color: #000;
   background-color: #3490dc;
   border-color: #3490dc;
 }
