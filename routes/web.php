@@ -33,6 +33,7 @@ Route::post('dashboard',[DashboardController::class,"post"])->name('dashboard-po
 Route::get('/dashboard/{id}',[DashboardController::class,"show"])->name('dashboard-formation');
 //Auth::routes();
 
+
 // Route for the "ListingPost" function of the "ListingPostController" controller
 Route::get('/listingPost',[ListingPostController::class,'listingPost']);
 
