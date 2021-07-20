@@ -13,8 +13,6 @@
             </button>
         </div>
 
-        
-
         <!-- Modal add offer -->
         <form action="" method="POST">
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -30,27 +28,27 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" placeholder="Intitulé" aria-label="Intitulé"
-                                        id="entitled" required>
+                                        id="entitled" name="entitled">
                                 </div>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" placeholder="Contact" aria-label="Contact"
-                                        id="contact" required>
+                                        id="contact" name="contact">
                                 </div>
                             </div>
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" placeholder="Entreprise"
-                                        aria-label="Entreprise" id="company" required>
+                                        aria-label="Entreprise" id="company" name="company">
                                 </div>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" placeholder="Domaine" aria-label="Domaine"
-                                        id="domaine" required>
+                                        id="domaine" name="domaine">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <h5 class="modal-title" id="exampleModalLabel"> Description du poste : </h5>
-                                <textarea class="form-control" rows="5" id="content" required></textarea>
+                                <textarea class="form-control" rows="5" id="content" name="content"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -78,6 +76,7 @@
                 </tr>
             </thead>
             <tbody>
+
              @foreach ($Posts as $key)
                 <tr>
                     <th scope="row">{{$key->id}}</th>
@@ -91,7 +90,8 @@
                         <button type="button" class="btn btn-danger btn-sm">X</button>
                     </td>
                 </tr>
-             @endforeach 
+             @endforeach
+             
             </tbody>
         </table>
 

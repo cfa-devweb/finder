@@ -27,4 +27,10 @@ class Students extends Model
         'phone',
         'password',
     ];
+
+    public function sections()
+    {
+        # code...
+        return $this->hasMany(Section::class);
+    }
 }
