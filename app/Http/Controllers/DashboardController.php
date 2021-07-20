@@ -12,9 +12,9 @@ class DashboardController extends Controller
 {
     //
     public function index() {      
-        $Sections = Section::where("adviser_id",'=',"1")->get();
+        $Sections = Section::where("adviser_id",'=',"1")->paginate(5);;
         $advisers = Adviser::all();
-        $jobs = Post::all();
+        $Post = Post::all();
         $adviser_id = '1';
         $Students = Student::whereHas('section', 
                                 function ($query) use ($adviser_id){
@@ -22,10 +22,32 @@ class DashboardController extends Controller
                                 }
                             )->get()->count(); 
         // dd($Students);
-        return view('dashboard',compact('Sections','Students','advisers','jobs'));
+        return view('dashboard',compact('Sections','Students','advisers','Post'));
     }
     public function show()
     {
         return view('dashboard-formation');
+    }
+    public function post(Request $request)
+    {
+
+        // dd($request);
+       $result = $request->validate([
+            "class_name"=>"required",
+            "adviser_id"=> "required",
+            "description"=>"required",
+            "job_id"=>"required"
+        ]);
+        
+        
+        if(!$result){        
+            return back()->with("danger" , "Formation n'a pas été rajouter !");  
+        }else{               
+            
+        $data = Section::create($request->all());
+        return back()->with("success" , "Formation rajouté avec succè!",500);       
+        }
+        
+        
     }
 }

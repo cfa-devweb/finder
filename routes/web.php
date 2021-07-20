@@ -29,8 +29,10 @@ Route::get('/', function () {
 // dashboard
 // Route for the "dashboard" function of the "DashboardController" controller
 Route::get('dashboard',[DashboardController::class,"index"])->name('dashboard-index');
+Route::post('dashboard',[DashboardController::class,"post"])->name('dashboard-post');
 Route::get('/dashboard/{id}',[DashboardController::class,"show"])->name('dashboard-formation');
 //Auth::routes();
+
 
 // Route for the "ListingPost" function of the "ListingPostController" controller
 Route::get('/listingPosts',[ListingPostController::class,'listingPost']);
@@ -46,16 +48,14 @@ Route::post('/prospect', [ProspectController::class, 'addcompany']);
 
 Route::post('/student/create-profil', [ProspectController::class,'CreateProfil']);
 
+Route::get('/prospect/{id}/follow-up', [Follow_upController::class, 'index']);
+Route::post('/prospect/follow-up/create', [Follow_upController::class, 'addfollowup'])->name('followup-create');
+
 // route for add student and redirect to addStudentModal
 Route::get('/addStudentModal', function () {
     return view('/adviser/addStudentModal');
 });
 Route::post('/addStudentModal', [AddStudentController::class, 'addStudent']);
-
-Route::get('/prospect/follow-up', [Follow_upController::class, 'displayfollowup']);
-
-Route::get('/prospect/follow-up/{id}', [Follow_upController::class, 'displayfollowup']);
-//[Follow_upController::class, 'displayfollowup']
 
 Route::get('send-mail', function () {
 

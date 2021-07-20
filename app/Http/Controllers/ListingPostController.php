@@ -1,15 +1,15 @@
 <?php 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
-
 class ListingPostController extends Controller
 {
     public function listingPost() {
         $Posts = Post::all();
+
         return view('listingPosts', compact('Posts'));
+
     }
 
     // Function to insert a Offer Job in the database
