@@ -1,6 +1,10 @@
 @extends('layouts.app')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style> 
+    textarea { resize: none; }
+    .card { width: 25em; }
+</style>
 @section('content')
-@include('partials.navbar')
 <div class="container pt-1 pb-4">
     <div class="col-12 text-center m-auto row align-items-center border d-flex " style="height: 50px;">
     <div class="col-4"></div>
@@ -26,39 +30,77 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="create" method="post">
-                            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-
+                        <form action="{{ route('dashboard-post')}}" method="post">
+                        @csrf
                             <div class="mb-3">
-                                <label for="first_name" class="col-form-label">Nom de la Formation</label>
-                                <input type="text" class="form-control" id="first_name" name="class_name" require>
+                                <label for="class_name" class="col-form-label">Nom de la Formation</label>
+                                <input type="text" class="form-control" id="class_name" name="class_name" required>
                             </div>
                             <div class="mb-3">
-                                <label for="last_name" class="col-form-label">Nom du conseiller</label>                            
-                                <select class="form-select" aria-label="Default select example">
+                                <label for="adviser_id" class="col-form-label">Nom du conseiller</label>                            
+                                <select class="form-select" aria-label="Default select example" id="adviser_id" name="adviser_id" required>
                                     @foreach($advisers as $adviser)                            
-                                        <option value="{{ $adviser->id }}">{{ $adviser->last_name }} {{ $adviser->first_name }}</option>
+                                        <option value="{{ $adviser->id }}" >{{ $adviser->last_name }} {{ $adviser->first_name }}</option>
                                     @endforeach
                                 </select>
+                                @if($errors->first('adviser_id'))
+                                    <div class="alert-danger">{{$errors->first('adviser_id')}}</div>
+                                @endif
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="col-form-label">Nom du job:</label>
-                                <select class="form-select" aria-label="Default select example">
-                                @foreach($jobs as $job)                            
-                                    <option value="{{ $job->id }}">{{ $job->name }} </option>
+                                <label for="job_id" class="col-form-label">Nom du job:</label>
+                                <select class="form-select" aria-label="Default select example" id="job_id" name="job_id" required>
+                                @foreach($Post as $Posts)                            
+                                    <option value="{{ $Posts->id }}" >{{ $Posts->name }} </option>
                                 @endforeach
                             </select>
                             </div>
+                            <div class="mb-3">
+                                <label for="description" class="col-form-label">Description de la classe:</label>
+                                <textarea class="form-control " id="description" name="description" rows="3" required></textarea>
+                                @if($errors->first('description'))
+                                    <div class="alert-danger">{{$errors->first('description')}}</div>
+                                @endif
+                            </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                <button type="submit" class="btn btn-primary text-light">Envoyer</button>
+                            </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        <button type="submit" class="btn btn-primary text-light">Envoyer</button>
                     </div>
                 </div>
             </div>
         </div>
         </div>
+    </div>
+    <div class="container">
+                    @if(session()->has('success'))
+                        <div class="container d-flex mt-3">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <div class="alert alert-success text-center alertDismissible">
+                                    <strong>
+                                        {{session()->get('success')}}
+                                    </strong>
+                                </div>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        @endif
+                        @if(session()->has('danger'))
+                        <div class="container d-flex mt-3">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <div class="alert alert-danger text-center alertDismissible">
+                                    <strong>
+                                        {{session()->get('danger')}}
+                                    </strong>
+                                </div>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        @endif
     </div>
     <div class="container d-flex">
         <div class="col-2"></div>
@@ -96,8 +138,17 @@
                         @endif
                     </tbody>
                 </table>
+                
+            {{ $Sections->links()}}
             </div>
         <div class="col-2"></div>
     </div>
 </div>
+<script>
+$(document).ready(function () {
+        $(".alertDismissible").fadeTo(2000, 500).slideUp(500, function () {
+            $(".alertDismissible").slideUp(600);
+        });
+    })
+</script>
 @endsection
