@@ -39,8 +39,8 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-success">Valider</button>
+                    <button type="button" class="buttons button_cancel" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="buttons button_save">Valider</button>
                 </div>
             </form>
         </div>
@@ -116,8 +116,8 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <button type="submit" class="btn btn-primary text-white me-4">Valider</button>
-                    <button type="button" class="btn btn-danger text-white ms-4" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="buttons button_cancel" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="buttons button_save">Valider</button>
                 </div>
             </form>
         </div>
