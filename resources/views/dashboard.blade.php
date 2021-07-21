@@ -13,91 +13,86 @@
 @section('content')
 <div class="container pt-1 pb-4">
     <div class="container">
-        <div class="col-12 d-flex">
-            <div class="col-12 ">
-                <div class="col-12 ">                       
-                    <div class="container d-flex m-1"> 
-                        <div class="col-2"></div>    
-                        <div class="col-8 bg-white p-1">
-                            <h2 class="">Toutes les formations</h2>
-                        </div>    
-                        <div class="col-2"></div>    
+        <div class="col-12">
+                <div class="container d-flex m-1">
+                    <div class="col-2"></div>
+                    <div class="col-8 ">
+                        <h2 class="title-h1 p-0">Toutes les formations</h2>
                     </div>
-                    <div class="container m-1">
-                        <div class="col-12 text-end d-flex">
-                            <div class="col-2"></div>
-                            <div class="col-8">                                
-                            <button type="button" class="btn bg-primary text-light" data-bs-toggle="modal"
+                    <div class="col-2"></div>
+                </div>
+                <div class="container m-1">
+                    <div class="col-12 text-end d-flex">
+                        <div class="col-2"></div>
+                        <div class="col-8 p-0" style="text-align:right;padding-right:3px !important;">
+                            <button type="button" class="buttons button_general" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal2" data-bs-whatever="@fat">+ Créer une formation</button>
-                            </div>
-                            <div class="col-2"></div>
                         </div>
-                        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title text-uppercase" id="exampleModal2Label">formulaire ajout
-                                            d'une formation</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="{{ route('dashboard-post')}}" method="post">
-                                            @csrf
-                                            <div class="mb-3">
-                                                <label for="class_name" class="col-form-label">Nom de la
-                                                    Formation</label>
-                                                <input type="text" class="form-control" id="class_name"
-                                                    name="class_name" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="adviser_id" class="col-form-label">Nom du conseiller</label>
-                                                <select class="form-select" aria-label="Default select example"
-                                                    id="adviser_id" name="adviser_id" required>
-                                                    @foreach($advisers as $adviser)
-                                                    <option value="{{ $adviser->id }}">{{ $adviser->last_name }}
-                                                        {{ $adviser->first_name }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @if($errors->first('adviser_id'))
-                                                <div class="alert-danger">{{$errors->first('adviser_id')}}</div>
-                                                @endif
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="job_id" class="col-form-label">Nom du job:</label>
-                                                <select class="form-select" aria-label="Default select example"
-                                                    id="job_id" name="job_id" required>
-                                                    @foreach($Post as $Posts)
-                                                    <option value="{{ $Posts->id }}">{{ $Posts->name }} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="description" class="col-form-label">Description de la
-                                                    classe:</label>
-                                                <textarea class="form-control " id="description" name="description"
-                                                    rows="3" required></textarea>
-                                                @if($errors->first('description'))
-                                                <div class="alert-danger">{{$errors->first('description')}}</div>
-                                                @endif
-                                                </select>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Fermer</button>
-                                                <button type="submit"
-                                                    class="btn btn-primary text-light">Envoyer</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                        <div class="col-2"></div>
+                    </div>
+                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-uppercase" id="exampleModal2Label">formulaire ajout
+                                        d'une formation</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ route('dashboard-post')}}" method="post">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <label for="class_name" class="col-form-label">Nom de la
+                                                Formation</label>
+                                            <input type="text" class="form-control" id="class_name" name="class_name"
+                                                required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="adviser_id" class="col-form-label">Nom du conseiller</label>
+                                            <select class="form-select" aria-label="Default select example"
+                                                id="adviser_id" name="adviser_id" required>
+                                                @foreach($advisers as $adviser)
+                                                <option value="{{ $adviser->id }}">{{ $adviser->last_name }}
+                                                    {{ $adviser->first_name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if($errors->first('adviser_id'))
+                                            <div class="alert-danger">{{$errors->first('adviser_id')}}</div>
+                                            @endif
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="job_id" class="col-form-label">Nom du job:</label>
+                                            <select class="form-select" aria-label="Default select example" id="job_id"
+                                                name="job_id" required>
+                                                @foreach($Post as $Posts)
+                                                <option value="{{ $Posts->id }}">{{ $Posts->name }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="description" class="col-form-label">Description de la
+                                                classe:</label>
+                                            <textarea class="form-control " id="description" name="description" rows="3"
+                                                required></textarea>
+                                            @if($errors->first('description'))
+                                            <div class="alert-danger">{{$errors->first('description')}}</div>
+                                            @endif
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Fermer</button>
+                                            <button type="submit" class="btn btn-primary text-light">Envoyer</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-2"></div>
                 </div>
-            </div>
         </div>
         <div class="container">
             @if(session()->has('success'))
@@ -130,7 +125,7 @@
         <div class="container d-flex">
             <div class="col-2"></div>
             <div class="col-8">
-                <table class="table table-bordered w-100 ">
+                <table class="table table-bordered table-striped w-100 ">
                     <thead class="bg-giep text-white w-100 ">
                         <tr class=" d-lg-table-row text-light bg-dark align-middle">
                             <th>Formation</th>
@@ -150,7 +145,7 @@
                             <td>{{$Section->students->where('followUps->status','oui')->count() }}</td>
                             <td>
                                 <a href="{{ route('dashboard-formation', $Section->id)}}">
-                                    <button type="button" class="btn btn-primary text-light">Voir</button>
+                                    <button type="button" class="buttons button_infos"><i class="fas fa-eye"></i></button>
                                 </a>
                             </td>
                         </tr>
