@@ -17,7 +17,7 @@
 
         </div>
         <div class="col-4">
-            @include('adviser.addStudentModal')
+            @include('adviser.createStudentAccount')
         </div>
         <div class="col-4"></div>
     </div>

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Follow_up extends Model
+class FollowUp extends Model
 {
     protected $fillable = [
         'date',

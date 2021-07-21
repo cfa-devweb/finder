@@ -10,7 +10,7 @@
             </div>
             <h5 class="modal-title bg-dark text-light" id="exampleModalLabel">FORMULAIRE AJOUT D'UN ALTERNANT</h5>
             <div class="modal-body">
-                <form action="/addStudentModal" method="post">
+                <form action="/createStudentAccount" method="post">
                     @csrf
                     <input type="hidden" id="gender" name="gender" value="homme">
                     <input type="hidden" id="date_of_birth" name="date_of_birth" value="1999-07-24">
