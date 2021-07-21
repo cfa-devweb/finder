@@ -19,7 +19,6 @@ class ProspectsSeeder extends Seeder
     {
             DB::table('prospects')->insert([
                 'company_name' => Str::random(10),
-                'date' => Carbon::now(),
                 'email_contact' => Str::random(10) . '@gmail.com',
                 'phone_contact' => '123456',
                 'student_id' => 1,
