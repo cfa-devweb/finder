@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Follow_up;
+use App\Models\FollowUp;
 use Illuminate\Http\Request;
 
-class Follow_upController extends Controller
+class FollowUpController extends Controller
 {
     public function index($prospectId)
     {
-        $followUp = Follow_up::all()->where('prospect_id', $prospectId);
+        $followUp = FollowUp::all()->where('prospect_id', $prospectId);
         return view('student.follow-up', ['followUp' => $followUp, 'prospectId' => $prospectId]);
     }
 
@@ -23,7 +23,7 @@ class Follow_upController extends Controller
             'comment' => 'required|max:255'
         ]);
 
-        $addFollowUp = Follow_up::create($request->all());
+        $addFollowUp = FollowUp::create($request->all());
 
         return back();
     }
@@ -38,7 +38,7 @@ class Follow_upController extends Controller
             'comment' => 'required|max:255'
         ]);
 
-        $addFollowUp = Follow_up::updated($request->all());
+        $addFollowUp = FollowUp::updated($request->all());
 
         return back();
     }

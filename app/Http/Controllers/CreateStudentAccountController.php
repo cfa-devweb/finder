@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Student;
 
-class AddStudentController extends Controller {
+class CreateStudentAccountController extends Controller {
     /**
      * Insert new student in database table students.
      */
@@ -52,6 +52,6 @@ class AddStudentController extends Controller {
     public function get()
     {
         $sections = Section::all();
-        return view('adviser.addStudentModal', compact('sections'));
+        return view('adviser.createStudentAccount', compact('sections'));
     }
 }
