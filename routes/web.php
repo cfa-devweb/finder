@@ -31,26 +31,35 @@ Route::get('/', function () {
 
 // dashboard
 // Route for the "dashboard" function of the "DashboardController" controller
-Route::get('dashboard',[DashboardController::class,"index"])->name('dashboard-index');
-Route::post('dashboard',[DashboardController::class,"post"])->name('dashboard-post');
-Route::get('/dashboard/{id}',[listingStudentController::class, 'showTable'])->name('dashboard-formation');
+Route::get('dashboard', [DashboardController::class, "index"])->name('dashboard-index');
+Route::post('dashboard', [DashboardController::class, "post"])->name('dashboard-post');
+Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
 
 //Auth::routes();
 
 
 // Route for the "ListingPost" function of the "ListingPostController" controller
-Route::get('/listingPosts',[ListingPostController::class,'listingPost']);
+Route::get('/listingPosts', [ListingPostController::class, 'listingPost']);
 
 // Route for the "addoffer" function of the "ListingPostController" controller
 Route::post('/listingPosts', [ListingPostController::class, 'addoffer']);
 
-// Route for the "displaycompany" function of the "CompanyController" controller
-Route::get('/prospect', [ProspectController::class, 'displaycompany']);
 
-// Route for the "addcompany" function of the "CompanyController" controller
-Route::post('/prospect', [ProspectController::class, 'addcompany']);
 
-Route::post('/student/create-profil', [ProspectController::class,'CreateProfil']);
+/* ----- Route for functions of the "CompanyController" ----- */
+// Route for the "displaycompany"
+Route::resource('prospects', ProspectController::class);
+// // Route for the "addcompany"
+// Route::post('prospects', [ProspectController::class, 'addcompany'])->name('add-prospect');
+// // Route for the "editcompany"
+// Route::post('prospect/edit', [ProspectController::class, 'editcompany'])->name('edit-prospect');
+
+/* ---------------------------------------------------------- */
+
+
+
+
+Route::post('/student/create-profil', [ProspectController::class, 'CreateProfil']);
 
 
 // return modal view of addStudentModal
