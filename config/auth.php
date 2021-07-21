@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'students',
+        'passwords' => 'users',
     ],
 
     /*
@@ -38,14 +38,19 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'students',
+            'provider' => 'users',
         ],
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'students',
+            'provider' => 'users',
             'hash' => false,
         ],
+
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ]
     ],
 
     /*
@@ -66,6 +71,12 @@ return [
     */
 
     'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+        
+
         'students' => [
             'driver' => 'eloquent',
             'model' => App\Models\Student::class,
@@ -88,8 +99,8 @@ return [
     */
 
     'passwords' => [
-        'students' => [
-            'provider' => 'students',
+        'users' => [
+            'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

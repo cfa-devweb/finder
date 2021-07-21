@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProspectController;
-use App\Http\Controllers\AddStudentController;
-use App\Http\Controllers\Follow_upController;
+use App\Http\Controllers\CreateStudentAccountController;
+use App\Http\Controllers\FollowUpController;
 use App\Http\Controllers\ListingPostController;
 use App\Http\Controllers\DashboardController;
 
@@ -47,12 +47,8 @@ Route::post('/listingPosts', [ListingPostController::class, 'addoffer']);
 
 
 /* ----- Route for functions of the "CompanyController" ----- */
-// Route for the "displaycompany"
+
 Route::resource('prospects', ProspectController::class);
-// // Route for the "addcompany"
-// Route::post('prospects', [ProspectController::class, 'addcompany'])->name('add-prospect');
-// // Route for the "editcompany"
-// Route::post('prospect/edit', [ProspectController::class, 'editcompany'])->name('edit-prospect');
 
 /* ---------------------------------------------------------- */
 
@@ -62,20 +58,21 @@ Route::resource('prospects', ProspectController::class);
 Route::post('/student/create-profil', [ProspectController::class, 'CreateProfil']);
 
 
-// return modal view of addStudentModal
+// return modal view of createStudentAccount
 
-Route::get('/prospect/{id}/follow-up', [Follow_upController::class, 'index']);
-Route::post('/prospect/follow-up/create', [Follow_upController::class, 'createFolllowUp'])->name('create-followup');
-Route::post('/prospect/follow-up/edit', [Follow_upController::class, 'editFolllowUp'])->name('edit-followup');
+Route::get('/prospect/{id}/follow-up', [FollowUpController::class, 'index']);
+Route::post('/prospect/follow-up/create', [FollowUpController::class, 'createFolllowUp'])->name('create-followup');
+Route::post('/prospect/follow-up/edit', [FollowUpController::class, 'editFolllowUp'])->name('edit-followup');
 
-// route for add student and redirect to addStudentModal
+// route for add student and redirect to createStudentAccount
 
-Route::get('/addStudentModal', function () {
-    return view('/adviser/addStudentModal');
+Route::get('/createStudentAccount', function () {
+    return view('/adviser/createStudentAccount');
 });
 
+
 // create new student in database
-Route::post('/addStudentModal', [AddStudentController::class, 'addStudent']);
+Route::post('/createStudentAccount', [CreateStudentAccountController::class, 'createStudent']);
 
 Route::get('send-mail', function () {
 
