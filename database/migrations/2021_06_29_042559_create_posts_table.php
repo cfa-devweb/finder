@@ -17,7 +17,9 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
+            $table->string('name_company', 60);
             $table->date('date_create');
+            $table->string('contact', 55);
             $table->string('content', 500);
 
             $table->foreignId('adviser_id')

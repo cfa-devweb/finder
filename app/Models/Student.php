@@ -30,6 +30,7 @@ class Student extends Model {
         'city',
         'phone',
         'section_id',
+        'find_company',
     ];
 
     /**

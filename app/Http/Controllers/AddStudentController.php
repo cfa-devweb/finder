@@ -8,7 +8,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Student;
 
 class AddStudentController extends Controller {
-    //
+    /**
+     * Insert new student in database table students.
+     */
+
     protected function createStudent(Request $request) {
 
         $request->validate([
@@ -43,5 +46,12 @@ class AddStudentController extends Controller {
 
         Mail::to($data['email'])->send(new WelcomeMail($student, $random_password));
         return $student;
+    }
+
+    // Function to retrieve the entire "Company" table
+    public function get()
+    {
+        $sections = Section::all();
+        return view('adviser.addStudentModal', compact('sections'));
     }
 }

@@ -8,7 +8,10 @@ class Follow_up extends Model
 {
     protected $fillable = [
         'date',
-        'status'
+        'comment',
+        'mode_contact',
+        'status',
+        'prospect_id',
     ];
     public function prospects()
     {
