@@ -39,7 +39,10 @@ Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->n
 
 
 // Route for the "ListingPost" function of the "ListingPostController" controller
-Route::get('/listingPosts', [ListingPostController::class, 'listingPost']);
+
+Route::get('/listingPosts',[ListingPostController::class,'listingPost']);
+Route::delete('/listingPosts/{id}',[ListingPostController::class,'deletePost'])->name('listingPosts.delete');
+
 
 // Route for the "addoffer" function of the "ListingPostController" controller
 Route::post('/listingPosts', [ListingPostController::class, 'addoffer']);

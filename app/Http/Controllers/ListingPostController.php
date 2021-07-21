@@ -36,4 +36,11 @@ class ListingPostController extends Controller
 
     }
 
+    // Function to delete one post
+    public function deletePost($id) {
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect('/listingPosts')->with('success', 'Offre supprimer avec succéss');
+    }
+
 }
