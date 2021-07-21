@@ -10850,6 +10850,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/* ----- general ----- */
 body {
   background-color: #EFEFEF;
 }
@@ -10862,6 +10863,12 @@ body {
   font-size: 2.2rem;
 }
 
+.table-dark,
+.table-dark > th {
+  background-color: #343A40 !important;
+}
+
+/* ----------------------------------- */
 /* ------ buttons ------ */
 .buttons {
   padding: 0.375rem 0.75rem;
@@ -10890,6 +10897,7 @@ body {
 
 .button_cancel {
   background-color: #E0E0E0;
+  color: #343A40 !important;
 }
 
 .button_save {

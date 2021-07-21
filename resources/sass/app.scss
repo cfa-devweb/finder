@@ -7,6 +7,7 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+/* ----- general ----- */
 body {
     background-color: #EFEFEF;
 }
@@ -18,6 +19,12 @@ body {
     margin: auto;
     font-size: 2.2rem;
 }
+.table-dark,
+.table-dark > th {
+    background-color: #343A40 !important;
+}
+/* ----------------------------------- */
+
 
 /* ------ buttons ------ */
 .buttons {
@@ -47,6 +54,7 @@ body {
 
 .button_cancel {
     background-color: #E0E0E0;
+    color: #343A40 !important;
 }
 
 .button_save {
@@ -56,17 +64,14 @@ body {
 .button_general {
     background-color: #0788D9;
 }
-
 /* ----------------------------------- */
 
 
 /* Style for "prospect.blade.php" page */
-
 .prospect_btn-addcompany {
     margin: auto;
     display: flex;
     justify-content: flex-end;
     margin: 1% 0 1% 0;
 }
-
 /* ----------------------------------- */
