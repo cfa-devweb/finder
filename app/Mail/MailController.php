@@ -6,21 +6,22 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Http\Controllers\AddStudentController;
   
-class MyTestMail extends Mailable
+class MailController extends Mailable
 {
     use Queueable, SerializesModels;
   
-    public $details;
+    public $student;
   
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($student)
     {
-        $this->details = $details;
+        $this->student = $student;
     }
   
     /**
@@ -31,6 +32,6 @@ class MyTestMail extends Mailable
     public function build()
     {
         return $this->subject('Take a look of your new profil on Kinder.')
-                    ->view('emails.myTestMail');
+                    ->view('emails.mail');
     }
 }
