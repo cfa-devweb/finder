@@ -47,12 +47,8 @@ Route::post('/listingPosts', [ListingPostController::class, 'addoffer']);
 
 
 /* ----- Route for functions of the "CompanyController" ----- */
-// Route for the "displaycompany"
+
 Route::resource('prospects', ProspectController::class);
-// // Route for the "addcompany"
-// Route::post('prospects', [ProspectController::class, 'addcompany'])->name('add-prospect');
-// // Route for the "editcompany"
-// Route::post('prospect/edit', [ProspectController::class, 'editcompany'])->name('edit-prospect');
 
 /* ---------------------------------------------------------- */
 
