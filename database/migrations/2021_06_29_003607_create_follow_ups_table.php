@@ -19,7 +19,7 @@ class CreateFollowUpsTable extends Migration
             $table->date('date');            
             $table->string('comment');
             $table->string('mode_contact');
-            $table->string('status');
+            $table->enum('answer', ['en attente', 'accepté', 'refus']);
 
             $table->foreignId('prospect_id')
                 ->constrained('prospects')

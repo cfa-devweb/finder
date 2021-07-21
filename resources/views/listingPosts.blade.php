@@ -77,6 +77,7 @@
             </thead>
             <tbody>
 
+
              @foreach ($Posts as $key)
                 <tr>
                     <th scope="row">{{$key->id}}</th>
@@ -117,7 +118,6 @@
              
             </tbody>
         </table>
+  </div>
 </div>
-        
-    </div>
     @endsection
