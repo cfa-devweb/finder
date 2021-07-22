@@ -29,6 +29,7 @@ class User extends Authenticatable {
         'type',
         'password',
         'remember_token',
+        'student_id',
     ];
 
     /**
