@@ -8,40 +8,45 @@
         <div class="col d-flex justify-content-between">
             <h2 class="fw-bold"> Offres d'alternance</h2>
 
-            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalPost">
                 AJOUTER
             </button>
         </div>
 
+
         <!-- Modal add offer -->
-        <form action="" method="POST">
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
+
+        <div class="modal fade" id="modalPost" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form action="{{ route('post')}}" method="post">
+                    @csrf
                     <div class="modal-content">
-                        @csrf
+                        <input type="hidden" id="date_create" name="date_create" value="2021-08-10">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"> Nouvelle offre d'alternance</h5>
+                            <h5 class="modal-title" id="ModalLabel"> Nouvelle offre d'alternance</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Intitulé" aria-label="Intitulé"
-                                        id="entitled" name="entitled">
+                                    <input type="text" class="form-control" placeholder="Intitulé"
+                                        id="name" name="name">
                                 </div>
+
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Contact" aria-label="Contact"
+                                    <input type="text" class="form-control" placeholder="Contact"
                                         id="contact" name="contact">
                                 </div>
                             </div>
+
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" placeholder="Entreprise"
-                                        aria-label="Entreprise" id="company" name="company">
+                                        id="name_company" name="name_company">
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Domaine" aria-label="Domaine"
+                                    <input type="text" class="form-control" placeholder="Domaine"
                                         id="domaine" name="domaine">
                                 </div>
                             </div>
@@ -57,9 +62,13 @@
                             <button type="submit" class="btn btn-outline-success">VALIDER</button>
                         </div>
                     </div>
-                </div>
+                    <div>
+                        <input type="hidden" value="1" name="adviser_id">
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
+
     </div>
 
     <div>
@@ -76,7 +85,6 @@
                 </tr>
             </thead>
             <tbody>
-
 
              @foreach ($Posts as $key)
                 <tr>
@@ -112,12 +120,11 @@
                             </div>
                         </form>
                     </td>
-                </tr>
-                
+                </tr>              
              @endforeach
              
             </tbody>
         </table>
   </div>
 </div>
-    @endsection
+@endsection

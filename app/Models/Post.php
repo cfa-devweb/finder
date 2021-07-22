@@ -11,11 +11,18 @@ class Post extends Model
     protected $fillable = [
         'id',
         'name',
-        'name_company',
-        'domaine',
         'date_create',
+        'name_company',
         'contact',
         'content',
         'adviser_id',
     ];
+
+    protected $hidden = [
+        'date_create',
+    ];
+
+    public function adviser() {
+        return $this->hasMany(Adviser::class);
+    }
 }

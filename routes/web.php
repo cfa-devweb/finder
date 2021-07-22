@@ -46,7 +46,7 @@ Route::delete('/listingPosts/{id}',[ListingPostController::class,'deletePost'])-
 
 
 // Route for the "addoffer" function of the "ListingPostController" controller
-Route::post('/listingPosts', [ListingPostController::class, 'addoffer']);
+Route::post('listingPosts',[ListingPostController::class,'addoffer'])->name('post');
 
 
 
@@ -66,7 +66,6 @@ Route::post('/enterprise/follow-up/create', [FollowUpController::class, 'createF
 Route::post('/enterprise/follow-up/edit', [FollowUpController::class, 'editFolllowUp'])->name('edit-followup');
 
 // route for profil creation and save
-
 Route::get('/student/create-profil', [ProfilController::class,'CreateProfil']);
 Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
 
