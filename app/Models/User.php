@@ -54,6 +54,7 @@ class User extends Authenticatable {
      * Get the student record associated with the user.
      */
 
+
     public function student()
     {
         return $this->hasOne(Student::class);
@@ -70,4 +71,5 @@ class User extends Authenticatable {
             $user->api_token = Str::random(60);
         });
     }
+
 }

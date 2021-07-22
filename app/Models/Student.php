@@ -74,8 +74,14 @@ class Student extends Model {
         # code...
         return $this->hasMany(FollowUp::class);
     }
-    public function prospects() {
+    
+    public function enterprises() {
         # code...
-        return $this->hasMany(Prospect::class);
+        return $this->hasMany(Enterprise::class);
+    }
+    public function users()
+    {
+        # code...
+        return $this->hasMany(Student::class);
     }
 }
