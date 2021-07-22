@@ -2,17 +2,20 @@
 
 @section('content')
 
-<div class="row mx-0">
+<!-- Form to insert a company in the database -->
+<h1 class="title-h1">Mon suivi d'entreprise</h1>
+
+<div class="row mx-0 my-3">
     <div class="col px-0 d-flex justify-content-end">
         <!-- Button show modal to create follow-up -->
-        <button type="button" class="btn btn-primary text-white mb-3" onclick="openCreateModal()" data-bs-toggle="modal" data-bs-target="#editFollowUpModal">
+        <button type="button" class="btn btn-primary text-white" onclick="openCreateModal()" data-bs-toggle="modal" data-bs-target="#editFollowUpModal">
             Ajouter une prise de contact
         </button>
     </div>
 </div>
 
 <!-- List of companies -->
-<table class="table table-striped">
+<table class="table table-striped text-center">
     <thead>
     <tr class="table-dark">
         <th scope="col">Date</th>
@@ -56,10 +59,10 @@
 <div class="modal fade" id="editFollowUpModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form class="needs-validation" novalidate>
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title mx-auto fs-3 fw-bold" id="exampleModalLabel">Ajout de prise de contact</h5>
+                    <h5 class="modal-title mx-auto fs-3 fw-bold"><span id="modalTitle">Ajout</span> de prise de contact</h5>
                 </div>
                 <div class="modal-body mx-3">
                     <div class="row">
@@ -69,17 +72,17 @@
                         </div>
                         <div class="col-7">
                             <label for="mode_contact" class="form-label">Action menée</label>
-                            <input type="text" class="form-control" name="mode_contact" placeholder="Mail, téléphone, entretien,..." required/>
+                            <input type="text" class="form-control" name="mode_contact" placeholder="Mail, téléphone, entretien,..." maxlength="30" autocomplete="off" required/>
                         </div>
                     </div>
                     <div class="row my-3">
                         <div class="col-7">
                             <label for="nom_contact" class="form-label">Personne contacté</label>
-                            <input type="text" class="form-control" name="nom_contact" placeholder="R.H, Service comptabilité,..." required/>
+                            <input type="text" class="form-control" name="nom_contact" placeholder="R.H, Service comptabilité,..." maxlength="255" autocomplete="off" required/>
                         </div>
                         <div class="col-5">
                             <label for="answer" class="form-label">Réponse</label>
-                            <select class="form-select" id="answer" name="answer" required>
+                            <select class="form-select" id="answer" name="answer" autocomplete="off" required>
                                 <option value="">...</option>
                                 <option value="en attente">En attente</option>
                                 <option value="refus">Refus</option>
@@ -91,16 +94,16 @@
                     <div class="row">
                         <div class="col">
                             <label for="comment" class="form-label">Commentaires</label>
-                            <textarea type="text" class="form-control" name="comment" placeholder="Commentaire" rows="4"></textarea>
+                            <textarea type="text" class="form-control" name="comment" placeholder="Commentaire" rows="4" maxlength="255" autocomplete="off"></textarea>
                         </div>
                     </div>
-                    <input type="hidden" name="enterprise_id" />
+                    <input type="hidden" name="enterprise_id" value="{{ $enterpriseId }}"/>
                     <input type="hidden" name="student_id" />
                     <input type="hidden" name="id" />
                 </div>
                 <div class="modal-footer justify-content-center">
                     <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-success ms-2" id="btnEditFollowUp">Valider</button>
+                    <button type="submit" class="btn btn-success ms-2" id="btnEditFollowUp">Valider</button>
                 </div>
             </form>
         </div>
@@ -108,16 +111,14 @@
 </div>
 
 <script>
-
-    $(document).ready(getAllFollowUp());
+    $(document).ready(getAllFollowUps());
 
     /* Récupération des données de toute les prises de contact avec cette entreprise */
-    function getAllFollowUp() {
+    function getAllFollowUps() {
         $.ajax({
             type: 'GET',
             url: '/api/follow-up',
             success: function (data) {
-                $('input[name=enterprise_id]').val(data[0].enterprise_id);
                 $('input[name=student_id]').val(data[0].student_id);
             }
         })
@@ -159,39 +160,52 @@
             type = 'POST'
         }
 
-        $.ajax({
-            type: type,
-            url: url,
-            data: {
-                date: date,
-                mode_contact: mode_contact,
-                nom_contact: nom_contact,
-                answer: answer,
-                comment: comment,
-                enterprise_id: enterprise_id,
-                student_id: student_id
-            },
-            success: function () {
-                alert('ceb');
-            }
-        })
-    }
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = $('.needs-validation')
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                        form.classList.add('was-validated');
+                        return false;
+                    }
 
-    /* Comportement à chaque fermeture de la modal */
-    $('#editFollowUpModal').on('hidden.bs.modal', function () {
-        $('input, select, textarea, #editFollowUpModal .btn').prop('disabled', false).val("");
-    })
+                    form.classList.add('was-validated');
+
+                    $.ajax({
+                        type: type,
+                        url: url,
+                        data: {
+                            date: date,
+                            mode_contact: mode_contact,
+                            nom_contact: nom_contact,
+                            answer: answer,
+                            comment: comment,
+                            enterprise_id: enterprise_id,
+                            student_id: student_id
+                        },
+                        success: function () {
+                            location.reload();
+                        }
+                    })
+
+                }, false)
+            })
+    }
 
     /* Comportement de la modal pour l'ajout de prise de contact */
     function openCreateModal() {
         $('#id').val("");
+        $('#modalTitle').html('Ajout');
         $('#btnEditFollowUp').attr('onclick', 'editFollowUp()');
     }
 
     /* Comportement de la modal pour la modification de prise de contact */
     function openUpdateModal(id) {
-        id = parseInt(id);
         $('#id').val(id);
+        $('#modalTitle').html('Modification');
         $('#date').attr('disabled', true);
         $('#btnEditFollowUp').attr('onclick', 'editFollowUp(' + id +')');
         getFollowUp(id);
@@ -199,11 +213,16 @@
 
     /* Comportement de la modal lors de la consultation */
     function openConsultModal(id) {
-        id = parseInt(id);
         $('#id').val(id);
+        $('#modalTitle').html('Consultation');
         $('#btnEditFollowUp').attr('disabled', true);
         $('input, textarea, select').attr('disabled', true);
         getFollowUp(id);
     }
+
+    /* Comportement à chaque fermeture de la modal */
+    $('#editFollowUpModal').on('hidden.bs.modal', function () {
+        $('input, select, textarea, #editFollowUpModal .btn').prop('disabled', false).val("");
+    })
 </script>
 @endsection
