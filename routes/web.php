@@ -43,6 +43,7 @@ Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->n
 
 Route::get('/listingPosts',[ListingPostController::class,'listingPost']);
 Route::delete('/listingPosts/{id}',[ListingPostController::class,'deletePost'])->name('listingPosts.delete');
+Route::post('/listingPosts/{id}',[ListingPostController::class,'updatePost'])->name('listingPosts.update');
 
 
 // Route for the "addoffer" function of the "ListingPostController" controller
