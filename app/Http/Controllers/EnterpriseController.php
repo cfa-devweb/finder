@@ -90,6 +90,9 @@ class EnterpriseController extends Controller
             'email_contact' => 'required',
             'student_id' => 'required',
         ]);
+
+        Enterprise::whereId($id)->update($validateData);
+
         return redirect('enterprises')->with('success', 'Entreprise modifier avec succèss');
     }
 
