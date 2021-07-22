@@ -16,13 +16,14 @@ class CreateFollowUpsTable extends Migration
         Schema::create('follow_ups', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->date('date');            
+            $table->date('date');
             $table->string('comment');
-            $table->string('mode_contact');
-            $table->string('status');
+            $table->string('contact_mode');
+            $table->string('person_contacted');
+            $table->enum('answer',['En attente','Refus','Accepté','Signé']);
 
-            $table->foreignId('prospect_id')
-                ->constrained('prospects')
+            $table->foreignId('enterprise_id')
+                ->constrained('enterprises')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

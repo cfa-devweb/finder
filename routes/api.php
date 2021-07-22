@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/students', function (Request $request) {
     return $request->student();
 });
+
+Route::apiResource('follow-up', \App\Http\Controllers\Api\FollowUpController::class);

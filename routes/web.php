@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProspectController;
 use App\Http\Controllers\AddStudentController;
-use App\Http\Controllers\Follow_upController;
+use App\Http\Controllers\FollowUpController;
 use App\Http\Controllers\ListingPostController;
 use App\Http\Controllers\DashboardController;
 
@@ -55,9 +55,7 @@ Route::post('/student/create-profil', [ProspectController::class,'CreateProfil']
 
 // return modal view of addStudentModal
 
-Route::get('/prospect/{id}/follow-up', [Follow_upController::class, 'index']);
-Route::post('/prospect/follow-up/create', [Follow_upController::class, 'createFolllowUp'])->name('create-followup');
-Route::post('/prospect/follow-up/edit', [Follow_upController::class, 'editFolllowUp'])->name('edit-followup');
+Route::get('/enterprise/{id}/follow-up', [FollowUpController::class, 'index']);
 
 // route for add student and redirect to addStudentModal
 
