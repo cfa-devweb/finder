@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable {
 
@@ -29,7 +30,6 @@ class User extends Authenticatable {
         'type',
         'password',
         'remember_token',
-        'student_id',
     ];
 
     /**
@@ -54,8 +54,20 @@ class User extends Authenticatable {
      * Get the student record associated with the user.
      */
 
-    public function student() {
-        
-        return $this->hasOne('App\Models\Student');
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::creating(function ($user) {
+            $user->api_token = Str::random(60);
+        });
     }
 }

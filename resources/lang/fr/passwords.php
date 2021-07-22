@@ -10,9 +10,10 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
-    'reset' => 'Your password has been reset!',
-    'sent' => 'We have emailed your password reset link!',
-    'throttled' => 'Please wait before retrying.',
-    'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that email address.",
+    'create' => 'Votre mot de passe a été initialisé!',
+    'reset' => 'Votre mot de passe a été réinitialisé!',
+    'sent' => 'Nous vous avons envoyé par email le lien de réinitialisation du mot de passe!',
+    'throttled' => 'Veuillez attendre afin de ré-essayer.',
+    'token' => 'Ce jeton de mot de passe n\'est pas valide.',
+    'user' => 'Aucun utilisateur n\'a été trouvé avec cette adresse email.',
 ];

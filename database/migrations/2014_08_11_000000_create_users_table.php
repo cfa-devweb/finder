@@ -18,12 +18,13 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->enum('type', ['student', 'adviser']);
             $table->string('email')->unique();
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->softDeletes();
+            $table->string('password')->default(' ');
+            $table->boolean('consent')->default(1);
+            $table->string('api_token', 80)->unique();
             $table->rememberToken();
-
+            $table->softDeletes();
         });
     }
 
