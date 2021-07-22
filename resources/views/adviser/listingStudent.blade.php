@@ -25,7 +25,7 @@
                 <td>{{ $student->last_name }}</td>
                 <td>{{ $student->first_name }}</td>
                 <td>{{ $student->email }}</td>
-                <td>{{ $student->prospects->count() }}</td>
+                <td>{{ $student->enterprises->count() }}</td>
             </tr>
         @endforeach
         

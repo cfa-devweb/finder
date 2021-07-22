@@ -76,7 +76,7 @@
                         <label for="comment" class="form-label">Commentaire :</label>
                         <textarea type="text" class="form-control" name="comment" placeholder="Commentaire" rows="4"></textarea>
                     </div>
-                    <input type="hidden" name="prospect_id" value="{{ $prospectId }}" />
+                    <input type="hidden" name="enterprise_id" value="{{ $enterpriseId }}" />
                 </div>
                 <div class="modal-footer justify-content-center">
                     <button type="submit" class="btn btn-primary text-white me-4">Valider</button>
@@ -125,7 +125,7 @@
                         <label for="comment" class="form-label">Commentaire :</label>
                         <textarea type="text" class="form-control" id="comment" name="comment" placeholder="Commentaire" rows="4"></textarea>
                     </div>
-                    <input type="hidden" id="prospect_id" name="prospect_id" value="{{ $prospectId }}" />
+                    <input type="hidden" id="enterprise_id" name="enterprise_id" value="{{ $enterpriseId }}" />
                 </div>
                 <div class="modal-footer justify-content-center">
                     <button type="submit" class="btn btn-primary text-white me-4">Valider</button>

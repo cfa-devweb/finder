@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class FollowUpController extends Controller
 {
-    public function index($prospectId)
+    public function index($enterpriseId)
     {
-        $followUp = FollowUp::all()->where('prospect_id', $prospectId);
-        return view('student.follow-up', ['followUp' => $followUp, 'prospectId' => $prospectId]);
+        $followUp = FollowUp::all()->where('enterprise_id', $enterpriseId);
+        return view('student.follow-up', ['followUp' => $followUp, 'enterpriseId' => $enterpriseId]);
     }
 
     // Function to insert a follow-up in the database
