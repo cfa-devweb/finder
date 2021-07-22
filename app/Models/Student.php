@@ -26,9 +26,8 @@ class Student extends Model {
         'first_name',
         'last_name',
         'gender',
-        'date_of_birth',
+        'birthday',
         'city',
-        'phone',
         'section_id',
         'find_company',
     ];
@@ -39,10 +38,10 @@ class Student extends Model {
      * @var array
      */
     protected $hidden = [
+        'type',
         'gender',
         'date_of_birth',
         'city',
-        'phone',
     ];
 
     /**
