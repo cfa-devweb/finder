@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Prospect;
 use App\Models\Adviser;
 use App\Models\Section;
 use App\Models\Student;
