@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Prospect extends Model
+class Enterprise extends Model
 {
     protected $fillable = [
-        'company_name',
+        'name_company',
+        'name_contact',
         'phone_contact',
         'email_contact',
         'student_id',
@@ -20,6 +21,6 @@ class Prospect extends Model
     public function students()
     {
         # code...
-        return $this->hasMany(students::class);
+        return $this->hasMany(Students::class);
     }
 }
