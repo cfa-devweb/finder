@@ -1,14 +1,12 @@
-<button type="button" class="btn btn-primary text-light" data-bs-toggle="modal" data-bs-target="#exampleModal"
-
-
+<button type="button" class="btn btn-primary text-light" data-bs-toggle="modal" data-bs-target="#studentModal"
     data-bs-whatever="@fat">Créer un alternant</button>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="studentModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <h5 class="modal-title bg-dark text-light" id="exampleModalLabel">FORMULAIRE AJOUT D'UN ALTERNANT</h5>
+            <h5 class="modal-title bg-dark text-light" id="modalLabel">FORMULAIRE AJOUT D'UN ALTERNANT</h5>
             <div class="modal-body">
                 <form action="/createStudentAccount" method="post">
                     @csrf
