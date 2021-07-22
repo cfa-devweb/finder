@@ -18,14 +18,17 @@ class CreateFollowUpsTable extends Migration
             $table->timestamps();
             $table->date('date');
             $table->string('comment');
-            $table->string('contact_mode');
-            $table->string('person_contacted');
-            $table->enum('answer',['En attente','Refus','Accepté','Signé']);
+            $table->string('mode_contact');
+            $table->string('nom_contact');
+            $table->enum('answer', ['en attente', 'accepté', 'refus', 'signé']);
 
             $table->foreignId('enterprise_id')
                 ->constrained('enterprises')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
+            $table->foreignId('student_id')
+                ->constrained('students');
         });
     }
 

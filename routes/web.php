@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProspectController;
-use App\Http\Controllers\AddStudentController;
+use App\Http\Controllers\EnterpriseController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\CreateStudentAccountController;
 use App\Http\Controllers\FollowUpController;
 use App\Http\Controllers\ListingPostController;
 use App\Http\Controllers\DashboardController;
@@ -31,40 +32,49 @@ Route::get('/', function () {
 
 // dashboard
 // Route for the "dashboard" function of the "DashboardController" controller
-Route::get('dashboard',[DashboardController::class,"index"])->name('dashboard-index');
-Route::post('dashboard',[DashboardController::class,"post"])->name('dashboard-post');
-Route::get('/dashboard/{id}',[listingStudentController::class, 'showTable'])->name('dashboard-formation');
+Route::get('dashboard', [DashboardController::class, "index"])->name('dashboard-index');
+Route::post('dashboard', [DashboardController::class, "post"])->name('dashboard-post');
+Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
 
 //Auth::routes();
 
 
 // Route for the "ListingPost" function of the "ListingPostController" controller
+
 Route::get('/listingPosts',[ListingPostController::class,'listingPost']);
+Route::delete('/listingPosts/{id}',[ListingPostController::class,'deletePost'])->name('listingPosts.delete');
+Route::post('/listingPosts/{id}',[ListingPostController::class,'updatePost'])->name('listingPosts.update');
+
 
 // Route for the "addoffer" function of the "ListingPostController" controller
-Route::post('/listingPosts', [ListingPostController::class, 'addoffer']);
-
-// Route for the "displaycompany" function of the "CompanyController" controller
-Route::get('/prospect', [ProspectController::class, 'displaycompany']);
-
-// Route for the "addcompany" function of the "CompanyController" controller
-Route::post('/prospect', [ProspectController::class, 'addcompany']);
-
-Route::post('/student/create-profil', [ProspectController::class,'CreateProfil']);
+Route::post('listingPosts',[ListingPostController::class,'addoffer'])->name('post');
 
 
-// return modal view of addStudentModal
 
-Route::get('/enterprise/{id}/follow-up', [FollowUpController::class, 'index']);
+/* ----- Route for functions of the "CompanyController" ----- */
 
-// route for add student and redirect to addStudentModal
+Route::resource('enterprises', EnterpriseController::class);
 
-Route::get('/addStudentModal', function () {
-    return view('/adviser/addStudentModal');
+/* ---------------------------------------------------------- */
+
+Route::post('/student/create-profil', [EnterpriseController::class, 'CreateProfil']);
+
+// return modal view of createStudentAccount
+
+
+Route::get('/enterprises/{id}/follow-up', [FollowUpController::class, 'index']);
+
+// route for profil creation and save
+Route::get('/student/create-profil', [ProfilController::class,'CreateProfil']);
+Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
+
+// route for add student and redirect to createStudentAccount
+Route::get('/createStudentAccount', function () {
+    return view('/adviser/createStudentAccount');
 });
 
 // create new student in database
-Route::post('/addStudentModal', [AddStudentController::class, 'addStudent']);
+Route::post('/createStudentAccount', [CreateStudentAccountController::class, 'createStudent']);
 
 Route::get('send-mail', function () {
 

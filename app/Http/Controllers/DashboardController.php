@@ -12,16 +12,21 @@ class DashboardController extends Controller
 {
     //
     public function index() {      
-        $Sections = Section::where("adviser_id",'=',"1")->paginate(5);;
+        $Sections = Section::where("adviser_id",'=',"1")->paginate(5);
         $advisers = Adviser::all();
         $Post = Post::all();
         $adviser_id = '1';
-        $Students = Student::whereHas('section', 
+        $Students = Student::whereHas('section',
                                 function ($query) use ($adviser_id){
                                     $query->where('adviser_id','=', $adviser_id);
                                 }
-                            )->get()->count(); 
+                            )->get()->count();
         // dd($Students);
+
+        // dd($Sections->first()->students()->whereHas('followUps',function($query){
+        //     $query->where('answer','refus');
+        // })->count());
+
         return view('dashboard',compact('Sections','Students','advisers','Post'));
     }
     public function show()
@@ -48,6 +53,6 @@ class DashboardController extends Controller
         return back()->with("success" , "Formation rajouté avec succè!",500);       
         }
         
-        
+// redirect()->back()        
     }
 }

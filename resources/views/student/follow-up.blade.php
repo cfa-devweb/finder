@@ -28,17 +28,15 @@
         @foreach($followUp as $key)
         <tr>
             <td>{{ $key->date }}</td>
-            <td>{{ $key->contact_mode }}</td>
-            <td>{{ $key->person_contacted }}</td>
+            <td>{{ $key->mode_contact }}</td>
+            <td>{{ $key->nom_contact }}</td>
             <td>{{ $key->comment }}</td>
             <td>{{ $key->answer }}</td>
             <td>
                 <button class="btn btn-info text-white" onclick="openConsultModal('{{ $key->id }}')" data-bs-toggle="modal" data-bs-target="#editFollowUpModal">
-                    Détails
                     <i class="fas fa-eye"></i>
                 </button>
                 <button  class="btn btn-warning text-white" onclick="openUpdateModal('{{ $key->id }}')" data-bs-toggle="modal" data-bs-target="#editFollowUpModal">
-                    Modifier
                     <i class="fas fa-pencil-alt"></i>
                 </button>
             </td>
@@ -70,23 +68,23 @@
                             <input type="date" class="form-control" id="date" name="date" required/>
                         </div>
                         <div class="col-7">
-                            <label for="contact_mode" class="form-label">Action menée</label>
-                            <input type="text" class="form-control" name="contact_mode" placeholder="Mail, téléphone, entretien,..." required/>
+                            <label for="mode_contact" class="form-label">Action menée</label>
+                            <input type="text" class="form-control" name="mode_contact" placeholder="Mail, téléphone, entretien,..." required/>
                         </div>
                     </div>
                     <div class="row my-3">
                         <div class="col-7">
-                            <label for="person_contacted" class="form-label">Personne contacté</label>
-                            <input type="text" class="form-control" name="person_contacted" placeholder="R.H, Service comptabilité,..." required/>
+                            <label for="nom_contact" class="form-label">Personne contacté</label>
+                            <input type="text" class="form-control" name="nom_contact" placeholder="R.H, Service comptabilité,..." required/>
                         </div>
                         <div class="col-5">
                             <label for="answer" class="form-label">Réponse</label>
                             <select class="form-select" id="answer" name="answer" required>
                                 <option value="">...</option>
-                                <option value="En attente">En attente</option>
-                                <option value="Refus">Refus</option>
-                                <option value="Accepté">Accepté</option>
-                                <option value="Signé">Signé</option>
+                                <option value="en attente">En attente</option>
+                                <option value="refus">Refus</option>
+                                <option value="accepté">Accepté</option>
+                                <option value="signé">Signé</option>
                             </select>
                         </div>
                     </div>
@@ -96,7 +94,8 @@
                             <textarea type="text" class="form-control" name="comment" placeholder="Commentaire" rows="4"></textarea>
                         </div>
                     </div>
-                    <input type="hidden" name="enterprise_id" value="{{ $enterpriseId }}" />
+                    <input type="hidden" name="enterprise_id" />
+                    <input type="hidden" name="student_id" />
                     <input type="hidden" name="id" />
                 </div>
                 <div class="modal-footer justify-content-center">
@@ -109,58 +108,53 @@
 </div>
 
 <script>
-    $('#editFollowUpModal').on('hidden.bs.modal', function () {
-        $('input, select, textarea, #editFollowUpModal .btn').prop('disabled', false);
-    })
 
-    function openCreateModal() {
-        $('#id').val("");
-        $('#btnEditFollowUp').attr('onclick', 'editFollowUp()');
-    }
-    function openUpdateModal(id) {
-        id = parseInt(id);
-        $('#id').val(id);
-        $('#date').attr('disabled', true);
-        $('#btnEditFollowUp').attr('onclick', 'editFollowUp(' + id +')');
-        getFollowUp(id);
-    }
-    function openConsultModal(id) {
-        id = parseInt(id);
-        $('#id').val(id);
-        $('#btnEditFollowUp').attr('disabled', true);
-        $('input, textarea, select').attr('disabled', true);
-        getFollowUp(id);
+    $(document).ready(getAllFollowUp());
+
+    /* Récupération des données de toute les prises de contact avec cette entreprise */
+    function getAllFollowUp() {
+        $.ajax({
+            type: 'GET',
+            url: '/api/follow-up',
+            success: function (data) {
+                $('input[name=enterprise_id]').val(data[0].enterprise_id);
+                $('input[name=student_id]').val(data[0].student_id);
+            }
+        })
     }
 
+    /* Récupération des données d'une prise de contact spécifique */
     function getFollowUp(id) {
         $.ajax({
             type: 'GET',
             url: '/api/follow-up/' + id,
             success: function (data) {
                 $('input[name=date]').val(data.date);
-                $('input[name=contact_mode]').val(data.contact_mode);
-                $('input[name=person_contacted]').val(data.person_contacted);
+                $('input[name=mode_contact]').val(data.mode_contact);
+                $('input[name=nom_contact]').val(data.nom_contact);
                 $('select[name=answer]').val(data.answer);
                 $('textarea[name=comment]').val(data.comment);
                 $('input[name=enterprise_id]').val(data.enterprise_id);
+                $('input[name=student_id]').val(data.student_id);
             }
         })
     }
+
+    /* Édition d'un prise de contact (création ou modification) */
     function editFollowUp(idFollowUp) {
         let url, type;
         let date = $('input[name=date]').val();
-        let contact_mode = $('input[name=contact_mode]').val();
-        let person_contacted = $('input[name=person_contacted]').val();
+        let mode_contact = $('input[name=mode_contact]').val();
+        let nom_contact = $('input[name=nom_contact]').val();
         let answer = $('select[name=answer]').val();
         let comment = $('textarea[name=comment]').val();
         let enterprise_id = $('input[name=enterprise_id]').val();
+        let student_id = $('input[name=student_id]').val();
 
         if(idFollowUp){
             url = '/api/follow-up/' + idFollowUp;
             type = 'PUT';
-        }
-
-        else {
+        } else {
             url = '/api/follow-up';
             type = 'POST'
         }
@@ -170,16 +164,46 @@
             url: url,
             data: {
                 date: date,
-                contact_mode: contact_mode,
-                person_contacted: person_contacted,
+                mode_contact: mode_contact,
+                nom_contact: nom_contact,
                 answer: answer,
                 comment: comment,
-                enterprise_id: enterprise_id
+                enterprise_id: enterprise_id,
+                student_id: student_id
             },
             success: function () {
                 alert('ceb');
             }
         })
+    }
+
+    /* Comportement à chaque fermeture de la modal */
+    $('#editFollowUpModal').on('hidden.bs.modal', function () {
+        $('input, select, textarea, #editFollowUpModal .btn').prop('disabled', false).val("");
+    })
+
+    /* Comportement de la modal pour l'ajout de prise de contact */
+    function openCreateModal() {
+        $('#id').val("");
+        $('#btnEditFollowUp').attr('onclick', 'editFollowUp()');
+    }
+
+    /* Comportement de la modal pour la modification de prise de contact */
+    function openUpdateModal(id) {
+        id = parseInt(id);
+        $('#id').val(id);
+        $('#date').attr('disabled', true);
+        $('#btnEditFollowUp').attr('onclick', 'editFollowUp(' + id +')');
+        getFollowUp(id);
+    }
+
+    /* Comportement de la modal lors de la consultation */
+    function openConsultModal(id) {
+        id = parseInt(id);
+        $('#id').val(id);
+        $('#btnEditFollowUp').attr('disabled', true);
+        $('input, textarea, select').attr('disabled', true);
+        getFollowUp(id);
     }
 </script>
 @endsection

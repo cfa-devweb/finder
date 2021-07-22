@@ -21,8 +21,11 @@ class Follow_upsSeeder extends Seeder
                 'date' => Carbon::now(),
                 'comment' => Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ',
                 'mode_contact' => 'visite',
-                'status' => 'non',
-                'prospect_id' => 1,
+                'nom_contact'=> 'Jean-Pierre Marquez',
+                'answer'=> 1,
+                'enterprise_id' => 1,
+                'student_id' => 1,
+
             ]);
     }
 }

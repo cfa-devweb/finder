@@ -30,10 +30,15 @@ class Section extends Model
         # code...
         return $this->hasMany(Student::class);
     }
+    public function users()
+    {
+        # code...
+        return $this->hasMany(Student::class);
+    }
     public function followUps()
     {
         # code...
-        return $this->hasMany(Follow_up::class);
+        return $this->hasMany(FollowUp::class);
     }
     
     

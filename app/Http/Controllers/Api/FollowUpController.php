@@ -27,7 +27,7 @@ class FollowUpController extends Controller
     public function store(Request $request)
     {
         $request -> validate([
-            'contact_mode' => 'required',
+            'mode_contact' => 'required',
             'date' => 'required',
             'answer' => 'required|max:150',
             'comment' => 'required|max:255'
@@ -57,7 +57,7 @@ class FollowUpController extends Controller
     public function update(Request $request, FollowUp $followUp)
     {
         $request -> validate([
-            'contact_mode' => 'required',
+            'mode_contact' => 'required',
             'date' => 'required',
             'answer' => 'required|max:150',
             'comment' => 'required|max:255'

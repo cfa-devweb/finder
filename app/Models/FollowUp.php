@@ -9,14 +9,19 @@ class FollowUp extends Model
     protected $fillable = [
         'date',
         'comment',
-        'contact_mode',
-        'person_contacted',
+        'mode_contact',
+        'nom_contact',
         'answer',
         'enterprise_id',
+        'student_id'
     ];
     public function enterprises()
     {
         # code...
         return $this->belongsTo(Enterprise::class);
+    }
+    public function student()
+    {
+        return $this->hasMany(Student::class);
     }
 }
