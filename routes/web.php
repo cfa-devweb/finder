@@ -70,6 +70,10 @@ Route::post('/enterprise/follow-up/edit', [FollowUpController::class, 'editFolll
 Route::get('/student/create-profil', [ProfilController::class,'CreateProfil']);
 Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
 
+// route for showing profil
+
+Route::get('/student/profil', [ProfilController::class,'ShowProfil']);
+
 // route for add student and redirect to createStudentAccount
 Route::get('/createStudentAccount', function () {
     return view('/adviser/createStudentAccount');
