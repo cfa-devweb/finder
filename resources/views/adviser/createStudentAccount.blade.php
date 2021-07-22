@@ -51,12 +51,11 @@
                     <div class="modal-footer">
                         <div class="row mx-auto">
                             <div class="col-md-6">
-                                <button type="button" class="btn btn-danger text-light" data-bs-dismiss="modal"
-                                    style="background:#bebebe;border:none;">Annuler</button>
+                                <button type="button" class="btn btn-danger text-light"
+                                    data-bs-dismiss="modal" style="background:#bebebe;border:none;">Annuler</button>
                             </div>
                             <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary text-light"
-                                    style="background:#5cb85c;border:none;">Valider</button>
+                                <button type="submit" class="btn btn-primary text-light" style="background:#5cb85c;border:none;">Valider</button>
                             </div>
                         </div>
                     </div>
