@@ -22,8 +22,8 @@ class CreateFollowUpsTable extends Migration
             $table->string('nom_contact');
             $table->enum('answer', ['en attente', 'accepté', 'refus']);
 
-            $table->foreignId('prospect_id')
-                ->constrained('prospects')
+            $table->foreignId('enterprise_id')
+                ->constrained('enterprises')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
