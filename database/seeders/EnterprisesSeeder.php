@@ -16,7 +16,7 @@ class EnterprisesSeeder extends Seeder
      */
     public function run()
     {
-            DB::table('prospects')->insert([
+            DB::table('enterprises')->insert([
                 'name_company' => Str::random(10),
                 'name_contact' => Str::random(10),
                 'email_contact' => Str::random(10) . '@gmail.com',

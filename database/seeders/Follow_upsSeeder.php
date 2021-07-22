@@ -23,7 +23,9 @@ class Follow_upsSeeder extends Seeder
                 'mode_contact' => 'visite',
                 'nom_contact'=> 'Jean-Pierre Marquez',
                 'answer'=> 1,
-                'prospect_id' => 1,
+                'enterprise_id' => 1,
+                'student_id' => 1,
+
             ]);
     }
 }

@@ -27,6 +27,7 @@ class StudentsSeeder extends Seeder
                 'city' => 'Nouméa',
                 /** 'password' => Hash::make('password'), */ 
                 'section_id' => 1,
+                'user_id' => 1,
             ]);
     }
 }
