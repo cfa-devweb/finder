@@ -22,6 +22,11 @@ class DashboardController extends Controller
                                 }
                             )->get()->count();
         // dd($Students);
+
+        // dd($Sections->first()->students()->whereHas('followUps',function($query){
+        //     $query->where('answer','refus');
+        // })->count());
+
         return view('dashboard',compact('Sections','Students','advisers','Post'));
     }
     public function show()
@@ -48,6 +53,6 @@ class DashboardController extends Controller
         return back()->with("success" , "Formation rajouté avec succè!",500);       
         }
         
-        
+// redirect()->back()        
     }
 }
