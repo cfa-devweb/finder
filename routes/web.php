@@ -42,7 +42,7 @@ Route::get('/dashboard/{id}',[listingStudentController::class, 'showTable'])->na
 Route::get('/listingPosts',[ListingPostController::class,'listingPost']);
 
 // Route for the "addoffer" function of the "ListingPostController" controller
-Route::post('/listingPosts', [ListingPostController::class, 'addoffer']);
+Route::post('listingPosts',[ListingPostController::class,'addoffer'])->name('post');
 
 // Route for the "displaycompany" function of the "CompanyController" controller
 Route::get('/prospect', [ProspectController::class, 'displaycompany']);
@@ -60,7 +60,6 @@ Route::post('/prospect/follow-up/create', [Follow_upController::class, 'createFo
 Route::post('/prospect/follow-up/edit', [Follow_upController::class, 'editFolllowUp'])->name('edit-followup');
 
 // route for add student and redirect to addStudentModal
-
 Route::get('/addStudentModal', function () {
     return view('/adviser/addStudentModal');
 });
