@@ -37,8 +37,18 @@ class ListingPostController extends Controller
 
     // Fuction to update one post;
     public function updatePost($id) {
+        $attributes  = request()->validate([
+            'name'=> 'required',
+            'date_create' => 'required',
+            'name_company' => 'required|max:60',
+            'contact' => 'required|max:55',
+            'content' => 'required|max:500'
+        ]);
+        //dd($request);
         $post = Post::findOrFail($id);
-        return view('/listingPosts', compact('Posts'));
+        $post->update($attributes);
+
+        return redirect('/listingPosts')->with('success', 'Post updated successfully');
     }
 
 }
