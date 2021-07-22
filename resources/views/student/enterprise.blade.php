@@ -57,26 +57,24 @@
     <thead>
         <tr class="table-dark">
             <th scope="col">Nom de l'entreprise</th>
-            <th scope="col">E-mail de l'entreprise</th>
-            <th scope="col">Téléphone de l'entreprise</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th scope="col">Nom du contact</th>
+            <th scope="col">E-mail du contact</th>
+            <th scope="col">Téléphone du contact</th>
             <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
         @foreach($enterprises as $enterprise)
         <tr>
-            <td>{{ $enterprise->company_name }}</td>
+            <td>{{ $enterprise->name_company }}</td>
+            <td>{{ $enterprise->name_contact }}</td>
             <td>{{ $enterprise->email_contact }}</td>
             <td>{{ $enterprise->phone_contact }}</td>
-            <td><a class="buttons button_infos" href="/enterprise/{{$enterprise->id}}/follow-up"><i class="fas fa-eye"></i></a></td>
             <td>
+                <a class="buttons button_infos" href="/enterprise/{{$enterprise->id}}/follow-up"><i class="fas fa-eye"></i></a>
                 <button class="buttons button_edit" data-bs-toggle="modal" data-bs-target="#edit-company_modal">
                     <i class="fas fa-pencil-alt"></i>
                 </button>
-            </td>
-            <td>
                 <form action="{{route('enterprises.destroy', $enterprise->id)}}">
                     @csrf
                     <button class="buttons button_trash" type="submit"><i class="fas fa-trash-alt"></i></button>

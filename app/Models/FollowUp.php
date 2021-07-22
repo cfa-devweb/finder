@@ -11,11 +11,11 @@ class FollowUp extends Model
         'comment',
         'mode_contact',
         'status',
-        'prospect_id',
+        'enterprise_id',
     ];
-    public function prospects()
+    public function enterprises()
     {
         # code...
-        return $this->belongsTo(Prospect::class);
+        return $this->belongsTo(Enterprise::class);
     }
 }
