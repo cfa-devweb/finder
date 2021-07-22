@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             SectionsSeeder::class,
             StudentsSeeder::class,
             ResumesSeeder::class,
-            ProspectsSeeder::class,
+            EnterprisesSeeder::class,
             Follow_upsSeeder::class,
             PostsSeeder::class,
         ]);
