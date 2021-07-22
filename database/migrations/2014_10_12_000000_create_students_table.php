@@ -20,8 +20,10 @@ class CreateStudentsTable extends Migration
             $table->string('last_name');
             $table->enum('gender', ['man', 'woman', 'other']);
             $table->date('birthday');
-            $table->boolean('ative');
+            $table->boolean('active');
             $table->string('city');
+
+
             $table->foreignId('section_id')
                 ->constrained('sections')
                 ->onUpdate('cascade')

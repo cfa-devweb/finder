@@ -1,14 +1,15 @@
-<button type="button" class="btn btn-primary text-light" data-bs-toggle="modal" data-bs-target="#exampleModal"
+@extends('layouts.app')
+@section('content')
 
-
-    data-bs-whatever="@fat">Créer un alternant</button>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<button type="button" class="btn btn-primary text-light" data-bs-toggle="modal" data-bs-target="#studentModal"
+    data-bs-whatever="@fat">Ajouter un alternant</button>
+<div class="modal fade" id="studentModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="modalLabel">Formulaire d'ajout d'un alternant</h5>
+
             </div>
-            <h5 class="modal-title bg-dark text-light" id="exampleModalLabel">FORMULAIRE AJOUT D'UN ALTERNANT</h5>
             <div class="modal-body">
                 <form action="/createStudentAccount" method="post">
                     @csrf
@@ -50,11 +51,12 @@
                     <div class="modal-footer">
                         <div class="row mx-auto">
                             <div class="col-md-6">
-                                <button type="button" class="btn btn-danger text-light"
-                                    data-bs-dismiss="modal">Annuler</button>
+                                <button type="button" class="btn btn-danger text-light" data-bs-dismiss="modal"
+                                    style="background:#bebebe;border:none;">Annuler</button>
                             </div>
                             <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary text-light">Valider</button>
+                                <button type="submit" class="btn btn-primary text-light"
+                                    style="background:#5cb85c;border:none;">Valider</button>
                             </div>
                         </div>
                     </div>
@@ -66,3 +68,5 @@
         </div>
     </div>
 </div>
+
+@endsection
