@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProspectController;
+use App\Http\Controllers\EnterpriseController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\CreateStudentAccountController;
 use App\Http\Controllers\FollowUpController;
@@ -52,12 +52,13 @@ Route::post('/listingPosts', [ListingPostController::class, 'addoffer']);
 
 /* ----- Route for functions of the "CompanyController" ----- */
 
-Route::resource('prospects', ProspectController::class);
+Route::resource('enterprises', EnterpriseController::class);
 
 /* ---------------------------------------------------------- */
 
+Route::post('/student/create-profil', [EnterpriseController::class, 'CreateProfil']);
 
-
+// return modal view of createStudentAccount
 
 
 Route::get('/prospect/{id}/follow-up', [FollowUpController::class, 'index']);
