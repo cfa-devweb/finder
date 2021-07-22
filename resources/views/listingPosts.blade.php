@@ -23,33 +23,41 @@
                     <div class="modal-content">
                         <input type="hidden" id="date_create" name="date_create" value="2021-08-10">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="ModalLabel"> Nouvelle offre d'alternance</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h5 class="modal-title mx-auto fs-3 fw-bold " id="ModalLabel"> Nouvelle offre d'alternance
+                            </h5>
                         </div>
                         <div class="modal-body">
 
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Intitulé"
-                                        id="name" name="name">
+
+                                    <label for="name" class="form-label">Intitulé</label>
+                                    <input type="text" class="form-control" id="name" name="name">
                                 </div>
 
                                 <div class="col-md-6">
-
-                                    <input type="email" class="form-control" placeholder="Contact" id="contact"
-                                        name="contact">
-
+                                    <label for="email" class="form-label">Contact</label>
+                                    <input type="email" class="form-control" id="contact" name="contact">
                                 </div>
                             </div>
 
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Entreprise"
-                                        id="name_company" name="name_company">
+                                    <label for="name_company" class="form-label">Entreprise</label>
+                                    <input type="text" class="form-control" id="name_company" name="name_company">
+
                                 </div>
+
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Domaine"
-                                        id="domaine" name="domaine">
+
+                                    <label for="domaine" class="form-label">Formation concernée</label>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Choisir une formation</option>
+                                        <option value="1">...</option>
+                                    </select>
+                                    {{-- <input type="text" class="form-control" id="domaine"
+                                        name="domaine"> --}}
+
                                 </div>
                             </div>
 
@@ -58,10 +66,9 @@
                                 <textarea class="form-control" rows="5" id="content" name="content"></textarea>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-danger"
-                                data-bs-dismiss="modal">ANNULER</button>
-                            <button type="submit" class="btn btn-outline-success">VALIDER</button>
+                        <div class="modal-footer d-flex justify-content-around">
+                            <button type="button" class="buttons button_cancel" data-bs-dismiss="modal">Annuler</button>
+                            <button type="submit" class="buttons button_save">Valider</button>
                         </div>
                     </div>
                     <div>
@@ -87,7 +94,9 @@
                 </tr>
             </thead>
             <tbody>
+
              @foreach ($Posts as $key)
+
                 <tr>
                     <th scope="row">{{$key->id}}</th>
                     <td>{{$key->name}}</td>
@@ -102,7 +111,8 @@
                         <button type="button" class="buttons button_edit btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#modalUpdatePost-{{ $key->id }}">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
-                        <button class="buttons button_trash delete"  type="button" data-bs-toggle="modal" data-bs-target="#deletPostModal-{{ $key->id }}">
+                        <button class="buttons button_trash delete" type="button" data-bs-toggle="modal"
+                            data-bs-target="#deletPostModal-{{ $key->id }}">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>
@@ -159,11 +169,13 @@
                     </div>
                     <!-- Modal delete one post -->
                     <form action="{{ route('listingPosts.delete', $key->id) }}" method="post">
-                            <div class="modal fade" id="deletPostModal-{{ $key->id }}" tabindex="-1" aria-labelledby="deletPostModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
+                        <div class="modal fade" id="deletPostModal-{{ $key->id }}" tabindex="-1"
+                            aria-labelledby="deletPostModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
                                         @csrf
+
                                             <h5 class="modal-title " id="deletPostModalLabel">Confirmation de la suppression</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
@@ -172,14 +184,15 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="buttons button_cancel" data-bs-dismiss="modal">Annuler</button>
+
                                         @method('DELETE')
-                                            <button type="submit" class="buttons button_trash">Suprimer</button>
-                                        </div>
+                                        <button type="submit" class="buttons button_trash">Suprimer</button>
+                                    </div>
                                 </div>
                             </div>
                     </form>
                 </tr>
-             @endforeach
+                @endforeach
             </tbody>
         </table>
   </div>
