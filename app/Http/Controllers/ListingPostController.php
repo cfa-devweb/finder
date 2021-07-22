@@ -43,4 +43,10 @@ class ListingPostController extends Controller
         return redirect('/listingPosts')->with('success', 'Offre supprimer avec succéss');
     }
 
+    // Fuction to update one post;
+    public function updatePost($id) {
+        $post = Post::findOrFail($id);
+        return view('/listingPosts', compact('Posts'));
+    }
+
 }
