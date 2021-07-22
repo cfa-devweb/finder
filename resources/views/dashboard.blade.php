@@ -127,7 +127,7 @@
             <div class="col-8">
                 <table class="table table-bordered table-striped w-100 ">
                     <thead class="bg-giep text-white w-100 ">
-                        <tr class=" d-lg-table-row text-light bg-dark align-middle">
+                        <tr class=" d-lg-table-row table-dark align-middle">
                             <th>Formation</th>
                             <th>Nombre d'apprenant</th>
                             <th>Nombre à avoir trouvé</th>
@@ -141,8 +141,8 @@
                         <tr>
                             <td class="text-capitalize">{{$Section->class_name }} </td>
                             <td class="text-capitalize">{{$Section->students->count() }}</td>
-                            <td>{{$Section->students->where('followUps->status','oui')->count() }}</td>
-                            <td>{{$Section->students->where('followUps->status','oui')->count() }}</td>
+                            <td>{{$Section->students()->whereHas('followUps',function($query){$query->where('answer','accepté');})->count() }}</td>
+                            <td>{{$Section->students()->whereHas('followUps',function($query){$query->where('answer','en attente');})->count() }}</td>
                             <td>
                                 <a href="{{ route('dashboard-formation', $Section->id)}}">
                                     <button type="button" class="buttons button_infos"><i class="fas fa-eye"></i></button>

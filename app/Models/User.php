@@ -29,6 +29,7 @@ class User extends Authenticatable {
         'type',
         'password',
         'remember_token',
+        'student_id',
     ];
 
     /**
@@ -55,6 +56,6 @@ class User extends Authenticatable {
 
     public function student() {
         
-        return $this->hasOne('App\Models\Student');
+        return $this->hasMany('App\Models\Student');
     }
 }

@@ -26,9 +26,8 @@ class Student extends Model {
         'first_name',
         'last_name',
         'gender',
-        'date_of_birth',
+        'birthday',
         'city',
-        'phone',
         'section_id',
         'find_company',
     ];
@@ -39,10 +38,10 @@ class Student extends Model {
      * @var array
      */
     protected $hidden = [
+        'type',
         'gender',
         'date_of_birth',
         'city',
-        'phone',
     ];
 
     /**
@@ -63,8 +62,14 @@ class Student extends Model {
         # code...
         return $this->hasMany(FollowUp::class);
     }
-    public function prospects() {
+    
+    public function enterprises() {
         # code...
-        return $this->hasMany(Prospect::class);
+        return $this->hasMany(Enterprise::class);
+    }
+    public function users()
+    {
+        # code...
+        return $this->hasMany(Student::class);
     }
 }

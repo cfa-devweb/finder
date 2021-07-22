@@ -48,7 +48,9 @@ class CreateStudentAccountController extends Controller {
         return $student;
     }
 
-    // Function to retrieve the entire "Company" table
+    /**
+     * 
+     */
     public function get()
     {
         $sections = Section::all();
