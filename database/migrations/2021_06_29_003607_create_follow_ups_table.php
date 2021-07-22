@@ -26,6 +26,9 @@ class CreateFollowUpsTable extends Migration
                 ->constrained('prospects')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
+            $table->foreignId('student_id')
+                ->constrained('students');
         });
     }
 
