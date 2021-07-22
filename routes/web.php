@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProspectController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\CreateStudentAccountController;
 use App\Http\Controllers\FollowUpController;
 use App\Http\Controllers\ListingPostController;
@@ -58,11 +59,15 @@ Route::resource('prospects', ProspectController::class);
 
 
 
-Route::post('/student/create-profil', [ProspectController::class, 'CreateProfil']);
 
 Route::get('/prospect/{id}/follow-up', [FollowUpController::class, 'index']);
 Route::post('/prospect/follow-up/create', [FollowUpController::class, 'createFolllowUp'])->name('create-followup');
 Route::post('/prospect/follow-up/edit', [FollowUpController::class, 'editFolllowUp'])->name('edit-followup');
+
+// route for profil creation and save
+
+Route::get('/student/create-profil', [ProfilController::class,'CreateProfil']);
+Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
 
 // route for add student and redirect to createStudentAccount
 Route::get('/createStudentAccount', function () {

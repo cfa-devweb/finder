@@ -16,8 +16,8 @@ class CreateResumesTable extends Migration
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->boolean('driverlicense');
-            $table->boolean('vehicle');
+            $table->string('driverlicense');
+            $table->string('vehicle');
             $table->string('study');
             $table->string('skills', 250);
             $table->string('experiences');
