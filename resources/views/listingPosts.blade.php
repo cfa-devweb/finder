@@ -35,8 +35,10 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Contact"
-                                        id="contact" name="contact">
+
+                                    <input type="email" class="form-control" placeholder="Contact" id="contact"
+                                        name="contact">
+
                                 </div>
                             </div>
 

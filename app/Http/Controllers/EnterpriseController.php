@@ -69,9 +69,9 @@ class EnterpriseController extends Controller
      */
     public function edit($id)
     {
-        $enterprise = Enterprise::findOrFail($id);
+        $editenterprises = Enterprise::findOrFail($id);
 
-        return view('enterprise', compact('enterprise'));
+        return view('enterprise', compact('editenterprises'));
     }
 
     /**
@@ -84,12 +84,15 @@ class EnterpriseController extends Controller
     public function update(Request $request, $id)
     {
         $validateData = $request->validate([
-            'company_name' => 'required|max:30',
+            'name_company' => 'required|max:30',
+            'name_contact' => 'required|max:30',
             'phone_contact' => 'required|digits:6',
-            'email_contact' => 'required|email|unique:enterprises,email_contact',
-            'date' => 'required|date',
+            'email_contact' => 'required',
             'student_id' => 'required',
         ]);
+
+        Enterprise::whereId($id)->update($validateData);
+
         return redirect('enterprises')->with('success', 'Entreprise modifier avec succèss');
     }
 
