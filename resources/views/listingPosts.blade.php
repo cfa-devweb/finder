@@ -86,7 +86,7 @@
             </thead>
             <tbody>
 
-                @foreach ($Posts as $key)
+             @foreach ($Posts as $key)
                 <tr>
                     <th scope="row">{{$key->id}}</th>
                     <td>{{$key->name}}</td>
@@ -96,14 +96,35 @@
                     <td>{{$key->content}}</td>
                     <td class="d-flex justify-content-evenly">
                         <button type="button" class="btn btn-warning btn-sm">M</button>
-                        <button type="button" class="btn btn-danger btn-sm">X</button>
+                        <button class="btn btn-danger" type="submit" data-bs-toggle="modal" data-bs-target="#deletPostModal">x</button>
+                        <form action="{{ route('listingPosts.delete', $key->id)}}" method="post">
+                            <!-- Modal delet one post -->
+                            <div class="modal fade" id="deletPostModal" tabindex="-1" aria-labelledby="deletPostModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                    @csrf
+                                    @method('DELETE')
+                                        <h5 class="modal-title" id="deletPostModalLabel">Supprimer l'offre</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Être vous sur de vouloir supprimer l'offre ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Suprimer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </td>
-                </tr>
-                @endforeach
-
+                </tr>              
+             @endforeach
+             
             </tbody>
         </table>
-
-
-    </div>
-    @endsection
+  </div>
+</div>
+@endsection

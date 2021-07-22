@@ -9,15 +9,22 @@ class Adviser extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
-        'class_name',
         'first_name',
         'last_name',
-        'email',
-        'password'
+        'class_name',
     ];
     protected $hidden = [
-        'password',
+        'created_at',
+        'updated_at',
         'remember_token',
     ];
+
+    /**
+     * Get tbe user that owns the adviser.
+     */
+
+    public function user() {
+
+        return $this->belongsTo('App\Models\User');
+    }
 }

@@ -7,11 +7,15 @@ window._ = require('lodash');
  */
 
 try {
-    window.Popper = require('@popperjs/core');
+    window.Popper = require('@popperjs/core').default;
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
 } catch (e) {}
+
+$(document).ready(function() {
+    $(".dropdown-toggle").dropdown();
+});
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

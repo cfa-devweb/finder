@@ -28,6 +28,13 @@ class ListingPostController extends Controller
         ->back();
     }
 
+    // Function to delete one post
+    public function deletePost($id) {
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect('/listingPosts')->with('success', 'Offre supprimer avec succéss');
+    }
+
 }
 
 // error 302 : validation qui ne passe pas

@@ -18,17 +18,19 @@ class CreateStudentsTable extends Migration
             $table->timestamps();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('gender');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->date('date_of_birth');
+            $table->enum('gender', ['man', 'woman', 'other']);
+            $table->date('birthday');
+            $table->boolean('active');
             $table->string('city');
-            $table->string('phone');
-            $table->string('password');
-            $table->rememberToken();
+
 
             $table->foreignId('section_id')
                 ->constrained('sections')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreignId('user_id')
+                ->constrained('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
