@@ -2,8 +2,8 @@
 
 @section('content')
 
-<h1 class="text-center">Liste des alternants</h1>
-<h2 class="text-center">Formation {{ $sections->first()->class_name }}</h2>
+<h1 class="title-h1">Liste des alternants</h1>
+<h2>Formation {{ $sections->first()->class_name }}</h2>
 
 <table class="table">
     <thead>
