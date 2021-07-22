@@ -111,7 +111,15 @@
 </div>
 
 <script>
-    $(document).ready(getAllFollowUps());
+    /* Comportement lors du chargement de la page */
+    $(document).ready(function () {
+        getAllFollowUps()
+
+        /* Comportement à chaque fermeture de la modal */
+        $('#editFollowUpModal').on('hidden.bs.modal', function () {
+            $('input, select, textarea, #editFollowUpModal .btn').prop('disabled', false).val("");
+        })
+    });
 
     /* Récupération des données de toute les prises de contact avec cette entreprise */
     function getAllFollowUps() {
@@ -219,10 +227,5 @@
         $('input, textarea, select').attr('disabled', true);
         getFollowUp(id);
     }
-
-    /* Comportement à chaque fermeture de la modal */
-    $('#editFollowUpModal').on('hidden.bs.modal', function () {
-        $('input, select, textarea, #editFollowUpModal .btn').prop('disabled', false).val("");
-    })
 </script>
 @endsection
