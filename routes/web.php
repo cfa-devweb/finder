@@ -62,9 +62,7 @@ Route::post('/student/create-profil', [EnterpriseController::class, 'CreateProfi
 // return modal view of createStudentAccount
 
 
-Route::get('/enterprise/{id}/follow-up', [FollowUpController::class, 'index']);
-Route::post('/enterprise/follow-up/create', [FollowUpController::class, 'createFolllowUp'])->name('create-followup');
-Route::post('/enterprise/follow-up/edit', [FollowUpController::class, 'editFolllowUp'])->name('edit-followup');
+Route::get('/enterprises/{id}/follow-up', [FollowUpController::class, 'index']);
 
 // route for profil creation and save
 Route::get('/student/create-profil', [ProfilController::class,'CreateProfil']);
