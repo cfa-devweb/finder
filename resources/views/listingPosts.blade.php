@@ -5,12 +5,16 @@
 
     <div class="row">
 
-        <div class="col d-flex justify-content-between">
-            <h2 class="fw-bold"> Offres d'alternance</h2>
+        <div class="col">
+            <h1 class="title-h1"> Offres d'alternance</h1>
+        </div>
 
-            <button type="button" class="buttons button_general" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Ajouter une offre d'alternance
-            </button>
+        <div>
+            <div class="col d-md-flex justify-content-md-end mt-3">
+                <button class="buttons button_general" data-bs-toggle="modal" data-bs-target="#modalPost">
+                    Ajouter une nouvelle offre d'alternance
+                </button>
+            </div>
         </div>
 
 
@@ -30,24 +34,24 @@
 
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Intitulé"
-                                        id="name" name="name">
+                                    <input type="text" class="form-control" placeholder="Intitulé" id="name"
+                                        name="name">
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Contact"
-                                        id="contact" name="contact">
+                                    <input type="text" class="form-control" placeholder="Contact" id="contact"
+                                        name="contact">
                                 </div>
                             </div>
 
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Entreprise"
-                                        id="name_company" name="name_company">
+                                    <input type="text" class="form-control" placeholder="Entreprise" id="name_company"
+                                        name="name_company">
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Domaine"
-                                        id="domaine" name="domaine">
+                                    <input type="text" class="form-control" placeholder="Domaine" id="domaine"
+                                        name="domaine">
                                 </div>
                             </div>
 
@@ -85,7 +89,9 @@
                 </tr>
             </thead>
             <tbody>
+
              @foreach ($Posts as $key)
+
                 <tr>
                     <th scope="row">{{$key->id}}</th>
                     <td>{{$key->name}}</td>
@@ -94,6 +100,7 @@
                     <td>{{$key->contact}}</td>
                     <td>{{$key->content}}</td>
                     <td class="d-flex justify-content-evenly">
+
                         <button type="button" class="buttons button_infos btn-sm">
                             <i class="fas fa-eye"></i>
                         </button>
@@ -119,6 +126,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="buttons button_cancel" data-bs-dismiss="modal">Annuler</button>
+
                                         @method('DELETE')
                                             <button type="submit" class="buttons button_trash">Suprimer</button>
                                         </div>
@@ -129,6 +137,6 @@
              @endforeach
             </tbody>
         </table>
-  </div>
+    </div>
 </div>
 @endsection
