@@ -71,7 +71,7 @@
 
                             <div class="form-group row my-2">
                                 <div class="col-md-4 offset-md-4">
-                                    <button type="submit button" class="btn btn-primary">
+                                    <button type="button" class="btn btn-primary" id="target">
                                         {{ __('Connexion') }}
                                     </button>
                                 </div>
@@ -85,4 +85,10 @@
     </div>
 </div>
 </div>
+<script>
+
+$( "#target" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+</script>
 @endsection
