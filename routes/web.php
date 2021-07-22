@@ -62,13 +62,15 @@ Route::post('/student/create-profil', [EnterpriseController::class, 'CreateProfi
 // return modal view of createStudentAccount
 
 
-Route::get('/enterprise/{id}/follow-up', [FollowUpController::class, 'index']);
-Route::post('/enterprise/follow-up/create', [FollowUpController::class, 'createFolllowUp'])->name('create-followup');
-Route::post('/enterprise/follow-up/edit', [FollowUpController::class, 'editFolllowUp'])->name('edit-followup');
+Route::get('/enterprises/{id}/follow-up', [FollowUpController::class, 'index']);
 
 // route for profil creation and save
 Route::get('/student/create-profil', [ProfilController::class,'CreateProfil']);
 Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
+
+// route for showing profil
+
+Route::get('/student/profil', [ProfilController::class,'ShowProfil']);
 
 // route for add student and redirect to createStudentAccount
 Route::get('/createStudentAccount', function () {
@@ -78,6 +80,7 @@ Route::get('/createStudentAccount', function () {
 // create new student in database
 Route::post('/createStudentAccount', [CreateStudentAccountController::class, 'createStudent']);
 
+// send email
 Route::get('send-mail', function () {
 
     $details = [

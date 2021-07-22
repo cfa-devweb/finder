@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UsersSeeder extends Seeder
 {
@@ -17,11 +18,10 @@ class UsersSeeder extends Seeder
     {
         DB::table('users')->insert([
             'type' => 1,
-            'email' => 'ptitkens@gmail.com',
-            'phone' => '811222',
-            'email_verified_at' => Carbon::now()->subMinutes(rand(0,10080))->format('Y-m-d H:i:s'),
-            'password' => 'kinderrr',
-            /** 'password' => Hash::make('password'), */
-            ]);
+            'email' => 'test@test.nc',
+            'email_verified_at' => now(),
+            'password' => Hash::make('test'),
+            'api_token' => Str::random(60),
+        ]);
     }
 }
