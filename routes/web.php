@@ -57,19 +57,14 @@ Route::resource('prospects', ProspectController::class);
 
 Route::post('/student/create-profil', [ProspectController::class, 'CreateProfil']);
 
-
-// return modal view of createStudentAccount
-
 Route::get('/prospect/{id}/follow-up', [FollowUpController::class, 'index']);
 Route::post('/prospect/follow-up/create', [FollowUpController::class, 'createFolllowUp'])->name('create-followup');
 Route::post('/prospect/follow-up/edit', [FollowUpController::class, 'editFolllowUp'])->name('edit-followup');
 
 // route for add student and redirect to createStudentAccount
-
 Route::get('/createStudentAccount', function () {
     return view('/adviser/createStudentAccount');
 });
-
 
 // create new student in database
 Route::post('/createStudentAccount', [CreateStudentAccountController::class, 'createStudent']);
