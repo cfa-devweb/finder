@@ -1,15 +1,21 @@
 <?php
 
 namespace App\Models;
-
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+    
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+    
+class Student extends Model {
+    
+    use HasFactory;
 
-class Student extends Authenticatable
-{
-    use HasFactory, Notifiable;
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    
+    protected $table = 'students';
 
     /**
      * The attributes that are mass assignable.
@@ -19,8 +25,12 @@ class Student extends Authenticatable
     protected $fillable = [
         'first_name',
         'last_name',
-        'email',
-        'password',
+        'gender',
+        'date_of_birth',
+        'city',
+        'phone',
+        'section_id',
+        'find_company',
     ];
 
     /**
@@ -29,39 +39,31 @@ class Student extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'gender',
+        'date_of_birth',
+        'city',
+        'phone',
     ];
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
+     * Get the user that owns the student
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 
+    public function user(){
 
-    /**
-     * Add a mutator to ensure hashed passwords
-     */
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = bcrypt($password);
+        return $this->belongsTo('App\Models\User');
     }
-    public function section()
-    {
+
+    public function section() {
         # code...
         return $this->belongsTo(Section::class);
     }
-    public function followUps()
-    {
+
+    public function followUps() {
         # code...
-        return $this->hasMany(Follow_up::class);
+        return $this->hasMany(FollowUp::class);
     }
-    public function prospects()
-    {
+    public function prospects() {
         # code...
         return $this->hasMany(Prospect::class);
     }

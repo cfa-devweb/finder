@@ -2,39 +2,107 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Prospect;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Prospect;
 
 class ProspectController extends Controller
 {
-    // Function to retrieve the entire "Company" table
-    public function displaycompany()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $companies = Prospect::all();
-        return view('student.prospect', compact('companies'));
+        $prospects = Prospect::all();
+
+        return view('student.prospect', compact('prospects'));
     }
 
-
-    // Function to insert a company in the database
-    public function addcompany(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
+        return view ('student.prospect');
+    }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $validateData = $request->validate([
+            'company_name' => 'required|max:30',
+            'phone_contact' => 'required|digits:6',
+            'email_contact' => 'required|email|unique:prospects,email_contact',
+            'date' => 'required|date',
+            'student_id' => 'required',
+        ]);
+
+        $prospect = Prospect::create($validateData);
+
+        return back()->with('success', 'Entreprise créer avec succèss');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
         //
-        $validated = $request -> validate([
-            'company-phone' => 'required|digits:6|',
-            'company-mail' => 'required|email|unique:prospects,email_contact',
-            'company-name' => 'required|max:30'
-        ]);
+    }
 
-        $addcompany = Prospect::create([
-            'company_name' => $request->input('company-name'),
-            'phone_contact' => $request->input('company-phone'),
-            'email_contact' => $request->input('company-mail'),
-            'date' => $request->input('contact-date'),
-            'student_id' => $request->input('student-id'),
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $prospect = Prospect::findOrFail($id);
+
+        return view('prospect', compact('prospect'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $validateData = $request->validate([
+            'company_name' => 'required|max:30',
+            'phone_contact' => 'required|digits:6',
+            'email_contact' => 'required|email|unique:prospects,email_contact',
+            'date' => 'required|date',
+            'student_id' => 'required',
         ]);
-        return back();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $prospect = Prospect::findOrFail($id);
+        $prospect->delete();
+
+        return redirect('prospect')->with('success', 'Entreprise supprimer avec succèss');
     }
 }

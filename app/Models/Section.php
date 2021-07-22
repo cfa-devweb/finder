@@ -33,7 +33,7 @@ class Section extends Model
     public function followUps()
     {
         # code...
-        return $this->hasMany(Follow_up::class);
+        return $this->hasMany(FollowUp::class);
     }
     
     

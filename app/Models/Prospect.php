@@ -10,13 +10,12 @@ class Prospect extends Model
         'company_name',
         'phone_contact',
         'email_contact',
-        'date',
         'student_id',
     ];
     public function followUps()
     {
         # code...
-        return $this->hasMany(Follow_up::class);
+        return $this->hasMany(FollowUp::class);
     }
     public function students()
     {
