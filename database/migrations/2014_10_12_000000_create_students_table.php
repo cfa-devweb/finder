@@ -28,6 +28,11 @@ class CreateStudentsTable extends Migration
                 ->constrained('sections')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
