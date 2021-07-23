@@ -12,15 +12,15 @@
                 <div class="row">
                     <div class="col-md-12 ">
                         <form method="POST" action="/saveprofil" id="msform">
-                        @csrf
+                            @csrf
                             <!-- progressbar -->
                             <ul id="progressbar">
                                 <li id="study" class="active"><i class="fas fa-user-graduate"></i><strong> Etude</strong></li>
                                 <li id="experience"><i class="fas fa-user-tie"></i><strong> Experience</strong></li>
-                                <li id="skills" ><i class="fas fa-user-check"></i><strong> Competence</strong></li>
-                                <li id="driver" ><i class="fas fa-car-side"></i><strong> Transport</strong></li>
-                                <li id="interest"><i  class="fas fa-hiking"></i><strong> Interet</strong></li>
-                                <li id="comment" ><i class="far fa-comment"></i><strong> Commentaire</strong></li>
+                                <li id="skills"><i class="fas fa-user-check"></i><strong> Competence</strong></li>
+                                <li id="driver"><i class="fas fa-car-side"></i><strong> Transport</strong></li>
+                                <li id="interest"><i class="fas fa-hiking"></i><strong> Interet</strong></li>
+                                <li id="comment"><i class="far fa-comment"></i><strong> Commentaire</strong></li>
                             </ul>
                             <!--Study Area-->
                             <fieldset>
@@ -31,23 +31,23 @@
                                             <h2 class="fs-title col-md-3">Niveau d'étude</h2>
                                             <div class="col-md-4"></div>
                                         </div>
-                                        <div class="row pt-5">
+                                        <div class="row pt-5 add_padding_left ">
                                             <div class="col-md-4 text-left">
-                                                <input  type="radio" id="checkbox1" name="checkboxStudy" value="Aucun Diplome" checked />
+                                                <input type="radio" id="checkbox1" name="checkboxStudy" value="Aucun Diplome" checked />
                                                 <label class="form-check-label " for="checkbox1">Aucun Diplome</label>
                                             </div>
                                             <div class="col-md-4 text-left">
-                                                <input  type="radio" id="checkbox2" name="checkboxStudy" value="CAP" />
+                                                <input type="radio" id="checkbox2" name="checkboxStudy" value="CAP" />
                                                 <label class="form-check-label" for="checkbox2">CAP</label>
                                             </div>
                                             <div class="col-md-4 text-left">
-                                                <input  type="radio" id="checkbox3" name="checkboxStudy" value="BAC" />
+                                                <input type="radio" id="checkbox3" name="checkboxStudy" value="BAC" />
                                                 <label class="form-check-label" for="checkbox3">BAC</label>
                                             </div>
                                         </div>
                                         </br>
                                         <div class="row ">
-                                            <div class="col-md-4 text-left">
+                                            <div class="col-md-4 text-left add_padding_left">
                                                 <input type="radio" id="checkbox4" name="checkboxStudy" value="BAC +2" />
                                                 <label class="form-check-label" for="checkbox4">BAC +2</label>
                                             </div>
@@ -76,15 +76,15 @@
                                         </div>
                                         <div class="row pt-5">
                                             <div class="col-md-4 text-center">
-                                                <input type="radio" id="checkbox7" name="checkboxExperience" value="Jamais" checked/>
+                                                <input type="radio" id="checkbox7" name="checkboxExperience" value="Jamais" checked />
                                                 <label class="form-check-label" for="checkbox7">Jamais</label>
                                             </div>
                                             <div class="col-md-4 text-center">
-                                                <input type="radio" id="checkbox8" name="checkboxExperience" value="6 mois"/>
+                                                <input type="radio" id="checkbox8" name="checkboxExperience" value="6 mois" />
                                                 <label class="form-check-label" for="checkbox8">6 mois</label>
                                             </div>
                                             <div class="col-md-4 text-center">
-                                                <input type="radio" id="checkbox9" name="checkboxExperience" value="1 an"/>
+                                                <input type="radio" id="checkbox9" name="checkboxExperience" value="1 an" />
                                                 <label class="form-check-label" for="checkbox9">1 an</label>
                                             </div>
                                         </div>
@@ -118,7 +118,7 @@
                                     <div class="container pt-5">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <select class="mdb-select md-form" aria-label="Default select example" name="skills1">
+                                                <select class="mdb-select1 md-form" name="skills1" searchable="Search here..">>
                                                     <option selected value="">Compétence 1</option>
                                                     <option value="mécanique">mécanique</option>
                                                     <option value="relationel">relationel</option>
@@ -131,7 +131,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <select class="mdb-select md-form" aria-label="Default select example" name="skills2">
-                                                    <option selected  value="">Compétence 2</option>
+                                                    <option selected value="">Compétence 2</option>
                                                     <option value="mécanique">mécanique</option>
                                                     <option value="relationel">relationel</option>
                                                     <option value="voiture">voiture</option>
@@ -143,7 +143,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <select class="mdb-select md-form" aria-label="Default select example" name="skills3">
-                                                    <option selected  value="">Compétence 3</option>
+                                                    <option selected value="">Compétence 3</option>
                                                     <option value="mécanique">mécanique</option>
                                                     <option value="relationel">relationel</option>
                                                     <option value="voiture">voiture</option>
@@ -155,7 +155,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <select class="mdb-select md-form" aria-label="Default select example" name="skills4">
-                                                    <option selected  value="">Compétence 4</option>
+                                                    <option selected value="">Compétence 4</option>
                                                     <option value="mécanique">mécanique</option>
                                                     <option value="relationel">relationel</option>
                                                     <option value="voiture">voiture</option>
@@ -199,7 +199,7 @@
                                             <label class="form-check-label" for="checkbox16">Oui</label>
                                         </div>
                                         <div class="col-md-6 text-center">
-                                            <input type="radio" id="checkbox17" name="checkboxDriverVehicle" value="0" checked/>
+                                            <input type="radio" id="checkbox17" name="checkboxDriverVehicle" value="0" checked />
                                             <label class="form-check-label" for="checkbox17">Non</label>
                                         </div>
                                     </div>
@@ -222,18 +222,22 @@
                                         <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox19" name="interest2" value="informatique" />
                                             <label class="form-check-label" for="checkbox19">informatique</label>
+                                            <i class="fas fa-desktop"></i>
                                         </div>
                                         <div class="col-md-2 text-left">
-                                            <input type="checkbox" id="checkbox20"   name="interest3"value="Lecture" />
+                                            <input type="checkbox" id="checkbox20" name="interest3" value="Lecture" />
                                             <label class="form-check-label" for="checkbox20">Lecture</label>
+                                            <i class="fas fa-book-reader"></i>
                                         </div>
                                         <div class="col-md-2 text-left">
-                                            <input type="checkbox" id="checkbox21"  name="interest4"value="Ecriture" />
+                                            <input type="checkbox" id="checkbox21" name="interest4" value="Ecriture" />
                                             <label class="form-check-label" for="checkbox21">Ecriture</label>
+                                            <i class="fas fa-pencil-alt"></i>
                                         </div>
                                         <div class="col-md-2 text-left">
-                                            <input type="checkbox" id="checkbox22"   name="interest5"value="Photographie" />
+                                            <input type="checkbox" id="checkbox22" name="interest5" value="Photographie" />
                                             <label class="form-check-label" for="checkbox22">Photographie</label>
+                                            <i class="fas fa-camera"></i>
                                         </div>
                                         <div class="col-md-1"></div>
 
@@ -244,30 +248,35 @@
                                         <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox22" name="interest6" value="Voyage" />
                                             <label class="form-check-label" for="checkbox22">Voyage</label>
+                                            <i class="fas fa-plane"></i>
                                         </div>
                                         <div class="col-md-2 text-left">
-                                            <input type="checkbox" id="checkbox23"  name="interest7"value="Sports" />
+                                            <input type="checkbox" id="checkbox23" name="interest7" value="Sports" />
                                             <label class="form-check-label" for="checkbox23">Sports</label>
+                                            <i class="far fa-futbol"></i>
                                         </div>
                                         <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox24" name="interest8" value="Jeux videos" />
                                             <label class="form-check-label" for="checkbox24">Jeux videos</label>
+                                            <i class="fas fa-gamepad"></i>
                                         </div>
                                         <div class="col-md-2 text-left">
-                                            <input type="checkbox" id="checkbox25"  name="interest9"value="Chasse" />
+                                            <input type="checkbox" id="checkbox25" name="interest9" value="Chasse" />
                                             <label class="form-check-label" for="checkbox25">Chasse</label>
+                                            <i class="fas fa-bullseye"></i>
                                         </div>
                                         <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox26" name="interest10" value="Peche" />
                                             <label class="form-check-label" for="checkbox26">Peche</label>
+                                            <i class="fas fa-fish"></i>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>
                                 </div>
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> 
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                                 <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
-                            <!--end Interest Area-->  
+                            <!--end Interest Area-->
 
                             <!--Commentary Area-->
                             <fieldset>
@@ -278,7 +287,7 @@
                                     <textarea class="col-md-12" maxlength="200" name="aboutMe" placeholder="Décrivez vous (200 lettres max)" value=" "></textarea>
                                 </div>
                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                                 <input type="submit" name="submit" class="next action-button button_save_profil" value="Sauvegarder votre profil" />
+                                <input type="submit" name="submit" class="next action-button button_save_profil" value="Sauvegarder votre profil" />
                             </fieldset>
                             <!--end Commentary Area-->
                         </form>
@@ -367,5 +376,7 @@
         })
 
     });
+
+    
 </script>
 @endsection

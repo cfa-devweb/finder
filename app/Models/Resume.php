@@ -19,4 +19,9 @@ class Resume extends Model
         'about_me',
         'student_id',
     ];
+
+    public function student() 
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

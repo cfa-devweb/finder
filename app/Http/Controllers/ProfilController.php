@@ -6,6 +6,8 @@ use App\Models\Resume;
 use Illuminate\Http\Request;
 use App\Models\Section;
 use App\Models\Student;
+use App\Models\Adviser;
+use Illuminate\Support\Facades\Auth;
 
 class ProfilController extends Controller
 {
@@ -58,11 +60,11 @@ class ProfilController extends Controller
     }
 
     // Function to return the view profil
-    public function ShowProfil()
+    public function ShowProfil(Request $request)
     {
-        $sections = Section::all();
-        $students = Student::all();
 
-        return view('student.profil',  compact('sections', 'students'));
+        $student = $request->user()->student;
+
+        return view('student.profil',  compact('student'));
     }
 }
