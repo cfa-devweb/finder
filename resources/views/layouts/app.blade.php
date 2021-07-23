@@ -33,12 +33,11 @@
 <body>
     @include('partials.navbar')
     @include('partials.status')
-    <main class="container my-5">
-        @yield('auth')
-    </main>
+
     <div id="app" class="container yield_content">
         <main class="py-4">
             @yield('content')
+            @yield('auth')
         </main>
     </div>
     @include('partials.footer')
