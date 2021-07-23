@@ -35,6 +35,7 @@ Route::get('/', function () {
 Route::get('dashboard', [DashboardController::class, "index"])->name('dashboard-index');
 Route::post('dashboard', [DashboardController::class, "post"])->name('dashboard-post');
 Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
+Route::get('/dashboard/{id}/listingOneStudent', [listingStudentController::class, 'showUserInfo'])->name('dashboard-formation-suivi');
 
 //Auth::routes();
 
