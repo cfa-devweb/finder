@@ -27,8 +27,8 @@
     </tr>
     </thead>
     <tbody id="tableBody">
-    @if(!$followUp->isEmpty())
-        @foreach($followUp as $key)
+    @if(!$followUps->isEmpty())
+        @foreach($followUps as $key)
         <tr>
             <td>{{ $key->date }}</td>
             <td>{{ $key->mode_contact }}</td>
@@ -36,9 +36,9 @@
             <td>{{ $key->comment }}</td>
             <td>{{ $key->answer }}</td>
             <td>
-                <button class="btn btn-info text-white" onclick="openConsultModal('{{ $key->id }}')" data-bs-toggle="modal" data-bs-target="#editFollowUpModal">
+                <a class="btn btn-info text-white" onclick="openConsultModal('{{ $key->id }}')" data-bs-toggle="modal" data-bs-target="#editFollowUpModal">
                     <i class="fas fa-eye"></i>
-                </button>
+                </a>
                 <button  class="btn btn-warning text-white" onclick="openUpdateModal('{{ $key->id }}')" data-bs-toggle="modal" data-bs-target="#editFollowUpModal">
                     <i class="fas fa-pencil-alt"></i>
                 </button>
@@ -111,42 +111,29 @@
 </div>
 
 <script>
-    /* Comportement lors du chargement de la page */
+
     $(document).ready(function () {
-        getAllFollowUps()
 
         /* Comportement à chaque fermeture de la modal */
         $('#editFollowUpModal').on('hidden.bs.modal', function () {
             $('input, select, textarea, #editFollowUpModal .btn').prop('disabled', false).val("");
         })
-    });
 
-    /* Récupération des données de toute les prises de contact avec cette entreprise */
-    function getAllFollowUps() {
-        $.ajax({
-            type: 'GET',
-            url: '/api/follow-up',
-            success: function (data) {
-                $('input[name=student_id]').val(data[0].student_id);
-            }
-        })
-    }
+    });
 
     /* Récupération des données d'une prise de contact spécifique */
     function getFollowUp(id) {
-        $.ajax({
-            type: 'GET',
-            url: '/api/follow-up/' + id,
-            success: function (data) {
-                $('input[name=date]').val(data.date);
-                $('input[name=mode_contact]').val(data.mode_contact);
-                $('input[name=nom_contact]').val(data.nom_contact);
-                $('select[name=answer]').val(data.answer);
-                $('textarea[name=comment]').val(data.comment);
-                $('input[name=enterprise_id]').val(data.enterprise_id);
-                $('input[name=student_id]').val(data.student_id);
+        let data = @json($followUps);
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].id == id) {
+                $('input[name=date]').val(data[i].date);
+                $('input[name=mode_contact]').val(data[i].mode_contact);
+                $('input[name=nom_contact]').val(data[i].nom_contact);
+                $('select[name=answer]').val(data[i].answer);
+                $('textarea[name=comment]').val(data[i].comment);
             }
-        })
+        }
+
     }
 
     /* Édition d'un prise de contact (création ou modification) */
@@ -170,9 +157,12 @@
 
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = $('.needs-validation')
+        var token = document.querySelector('meta[name=api-token]');
+
         Array.prototype.slice.call(forms)
             .forEach(function (form) {
                 form.addEventListener('submit', function (event) {
+                    event.preventDefault();
                     if (!form.checkValidity()) {
                         event.preventDefault()
                         event.stopPropagation()
@@ -184,6 +174,7 @@
 
                     $.ajax({
                         type: type,
+                        headers: {'Authorization': 'Bearer ' + token.content},
                         url: url,
                         data: {
                             date: date,
@@ -195,7 +186,7 @@
                             student_id: student_id
                         },
                         success: function () {
-                            location.reload();
+                            //location.reload();
                         }
                     })
 

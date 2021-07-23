@@ -8,7 +8,7 @@ class FollowUpController extends Controller
 {
     public function index($enterpriseId)
     {
-        $followUp = FollowUp::all()->where('enterprise_id', $enterpriseId);
-        return view('student.follow-up', ['followUp' => $followUp, 'enterpriseId' => $enterpriseId]);
+        $followUps = FollowUp::all()->where('enterprise_id', $enterpriseId);
+        return view('student.follow-up', ['followUps' => $followUps, 'enterpriseId' => $enterpriseId]);
     }
 }
