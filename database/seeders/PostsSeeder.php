@@ -20,6 +20,7 @@ class PostsSeeder extends Seeder
             DB::table('posts')->insert([
                 'name' => Str::random(10),
                 'name_company' => Str::random(10) ,
+                'concerned' => Str::random(10) ,
                 'date_create' => Carbon::now(),
                 'contact' => Str::random(10),
                 'content' => Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ',

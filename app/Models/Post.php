@@ -13,6 +13,7 @@ class Post extends Model
         'name',
         'date_create',
         'name_company',
+        'concerned',
         'contact',
         'content',
         'adviser_id',
