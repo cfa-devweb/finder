@@ -27,7 +27,7 @@ Route::get('/', function () { return view('index'); });
 
 Route::middleware('auth')->group(function() {
     /* ---------------------------------------------------------------------------------- */
-    Route::get('dashboard', [DashboardController::class, "index"])->name('dashboard-index')->middleware('auth');
+    Route::get('dashboard', [DashboardController::class, "index"])->name('dashboard-index');
     Route::post('dashboard', [DashboardController::class, "post"])->name('dashboard-post');
     Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
 
@@ -62,5 +62,4 @@ Route::middleware('auth')->group(function() {
     //     \Mail::to('francinekendrick@gmail.com')->send(new \App\Mail\MyTestMail($details));
     // });
     /* ------------------------------------------------------------------------------------ */
-    Route::get('/', [HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 });
