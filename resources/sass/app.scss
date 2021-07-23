@@ -25,7 +25,7 @@ body {
 }
 
 .yield_content {
-    min-height: 77vh;
+    min-height: 80vh;
 }
 /*#endregion General*/
 
@@ -235,6 +235,10 @@ select.list-dt:focus {
     left: 0;
     top: 25px;
     z-index: -1
+}
+
+.add_padding_left {
+    padding-left:5rem;
 }
 
 .button_save_profil {
