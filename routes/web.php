@@ -80,7 +80,6 @@ Route::get('/createStudentAccount', function () {
 // create new student in database
 Route::post('/createStudentAccount', [CreateStudentAccountController::class, 'createStudent']);
 
-// send email
 Route::get('send-mail', function () {
 
     $details = [

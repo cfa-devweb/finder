@@ -32,6 +32,7 @@
 </head>
 
 <body>
+    @include('partials.status')
     <main class="container my-5">
         @yield('auth')
     </main>
