@@ -22,7 +22,7 @@ use App\Http\Controllers\listingStudentController;
 
 Auth::routes();
 
-Route::get('/', function () { return view('index'); });
+Route::get('/',[HomeController::class, "index"])->name('accueil');
 
 
 Route::middleware('auth')->group(function() {

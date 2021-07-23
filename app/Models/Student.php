@@ -55,6 +55,10 @@ class Student extends Model {
     {
         return $this->first_name . ' ' . $this->last_name;
     }
+    public function getSectionAttribute()
+    {
+        return $this->section_id ;
+    }
 
     /**
      * Get the user that owns the student
