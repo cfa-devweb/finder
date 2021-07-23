@@ -18,7 +18,7 @@ class ResumesSeeder extends Seeder
     {
             DB::table('resumes')->insert([
                 'driverlicense' => 'A',
-                'vehicle' => 'Oui',
+                'vehicle' => '1',
                 'study' => Str::random(5),
                 'skills' => Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ',
                 'experiences' => Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ',
