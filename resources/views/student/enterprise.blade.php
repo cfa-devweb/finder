@@ -11,7 +11,7 @@ auth()->user()->id;
 <!-- Form to insert a company in the database -->
 <h1 class="title-h1">Mon suivi d'entreprise</h1>
 
-<div class="enterprise_btn-addcompany">
+<div class="d-flex justify-content-end my-2">
     <button class="buttons button_general" data-bs-toggle="modal" data-bs-target="#add-company_modal">
         Ajouter une entreprise
     </button>
