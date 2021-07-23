@@ -17,12 +17,12 @@ class CreateResumesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('driverlicense');
-            $table->string('vehicle');
+            $table->boolean('vehicle');
             $table->string('study');
             $table->string('skills', 250);
             $table->string('experiences');
-            $table->string('Center_interest');
-            $table->string('about_me', 100);
+            $table->string('Center_interest')->nullable();;
+            $table->string('about_me', 100)->nullable();
 
 
             
