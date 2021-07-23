@@ -18,10 +18,9 @@ class AdvisersSeeder extends Seeder
     public function run()
     {
             DB::table('advisers')->insert([
-                'first_name' => Str::random(10),
-                'last_name' => Str::random(10),
-                'email' => Str::random(10) . '@gmail.com',
-                'password' => Hash::make('password'),
+                'first_name' => 'Un',
+                'last_name' => 'Conseiller',
+                'user_id' => 1,
             ]);
     }
 }
