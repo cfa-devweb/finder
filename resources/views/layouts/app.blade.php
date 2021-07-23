@@ -32,6 +32,7 @@
 </head>
 
 <body>
+    @include('partials.status')
     <div id="app" class="container">
         <main class="py-4">
             @yield('content')

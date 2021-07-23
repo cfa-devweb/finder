@@ -51,9 +51,9 @@ Route::middleware('auth')->group(function() {
     Route::get('/createStudentAccount', function () { return view('/adviser/createStudentAccount'); });
     Route::post('/createStudentAccount', [CreateStudentAccountController::class, 'createStudent']);
 
+
     // send email
     // Route::get('send-mail', function () {
-
     //     $details = [
     //         'title' => 'Take a look of your new profil on Kinder.nc',
     //         'body' => 'kndrx.github.io'
