@@ -60,16 +60,11 @@ class ProfilController extends Controller
     }
 
     // Function to return the view profil
-    public function ShowProfil()
+    public function ShowProfil(Request $request)
     {
-        $id = Auth::id();
-        dd($id);
-        $students = Student::where('id', '=', $id)->get();
-        $resumes = Resume::where('student_id', '=', $id)->get();
-        $sections = Section::select('class_name')->where('id', '=', $id)->get();
-        $advisers = Adviser::select('first_name', 'last_name')->where('id','=','sections.id')->get();
-    
 
-        return view('student.profil',  compact('id', 'sections', 'students', 'resumes', 'advisers'));
+        $student = $request->user()->student;
+
+        return view('student.profil',  compact('student'));
     }
 }

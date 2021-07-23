@@ -67,18 +67,14 @@ class Student extends Model {
 
     public function resume()
     {
-        return $this->hasOne('App\Models\Resume');
+        return $this->hasOne(Resume::class);
     }
 
     public function section() {
         # code...
         return $this->belongsTo(Section::class);
     }
-    public function sections() {
-        # code...
-        return $this->hasMany(Section::class);
-    }
-
+    
     public function followUps() {
         # code...
         return $this->hasMany(FollowUp::class);
