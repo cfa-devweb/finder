@@ -53,6 +53,11 @@ class Student extends Model {
         return $this->belongsTo('App\Models\User');
     }
 
+    public function resume()
+    {
+        return $this->hasOne('App\Models\Resume');
+    }
+
     public function section() {
         # code...
         return $this->belongsTo(Section::class);
@@ -72,4 +77,5 @@ class Student extends Model {
         # code...
         return $this->hasMany(Student::class);
     }
+
 }

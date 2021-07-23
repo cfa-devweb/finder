@@ -6,6 +6,8 @@ use App\Models\Resume;
 use Illuminate\Http\Request;
 use App\Models\Section;
 use App\Models\Student;
+use App\Models\Adviser;
+use Illuminate\Support\Facades\Auth;
 
 class ProfilController extends Controller
 {
@@ -60,9 +62,14 @@ class ProfilController extends Controller
     // Function to return the view profil
     public function ShowProfil()
     {
-        $sections = Section::all();
-        $students = Student::all();
+        $id = Auth::id();
+        dd($id);
+        $students = Student::where('id', '=', $id)->get();
+        $resumes = Resume::where('student_id', '=', $id)->get();
+        $sections = Section::select('class_name')->where('id', '=', $id)->get();
+        $advisers = Adviser::select('first_name', 'last_name')->where('id','=','sections.id')->get();
+    
 
-        return view('student.profil',  compact('sections', 'students'));
+        return view('student.profil',  compact('id', 'sections', 'students', 'resumes', 'advisers'));
     }
 }
