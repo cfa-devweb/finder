@@ -18,10 +18,18 @@ class UsersSeeder extends Seeder
     {
         DB::table('users')->insert([
             'type' => 1,
-            'email' => 'test@test.nc',
+            'email' => 'student@test.nc',
             'email_verified_at' => now(),
             'password' => Hash::make('test'),
             'api_token' => Str::random(60),
-        ]);
+        ],
+        [
+            'type' => 2,
+            'email' => 'adviser@test.nc',
+            'email_verified_at' => now(),
+            'password' => Hash::make('test'),
+            'api_token' => Str::random(60),
+        ],
+    );
     }
 }

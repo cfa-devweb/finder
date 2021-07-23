@@ -6,8 +6,6 @@ use Illuminate\Database\Seeder;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Hash;
 
 class StudentsSeeder extends Seeder
 {
@@ -19,13 +17,12 @@ class StudentsSeeder extends Seeder
     public function run()
     {
             DB::table('students')->insert([
-                'first_name' => Str::random(10),
-                'last_name' => Str::random(10),
+                'first_name' => 'Kendrick',
+                'last_name' => 'Francine',
                 'gender' => 2,
-                'birthday' => Carbon::now(),
+                'birthday' => now(),
                 'active' => true,
                 'city' => 'Nouméa',
-                /** 'password' => Hash::make('password'), */ 
                 'section_id' => 1,
                 'user_id' => 1,
             ]);
