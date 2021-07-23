@@ -2,11 +2,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Section;
 use Illuminate\Http\Request;
 class ListingPostController extends Controller
 {
+    //list all offer
     public function listingPost() {
         $Posts = Post::all();
+        $sections = Section::all();
+        return view('listingPosts', compact('Posts', 'sections'));
+    }
+
+    //read one offer
+    public function readPost($id) {
+        $Posts = Post::findOrFail($id);
         return view('listingPosts', compact('Posts'));
 
     }
