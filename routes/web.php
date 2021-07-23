@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProspectController;
+use App\Http\Controllers\EnterpriseController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\CreateStudentAccountController;
 use App\Http\Controllers\FollowUpController;
@@ -43,31 +43,34 @@ Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->n
 
 Route::get('/listingPosts',[ListingPostController::class,'listingPost']);
 Route::delete('/listingPosts/{id}',[ListingPostController::class,'deletePost'])->name('listingPosts.delete');
+Route::post('/listingPosts/{id}',[ListingPostController::class,'updatePost'])->name('listingPosts.update');
 
 
 // Route for the "addoffer" function of the "ListingPostController" controller
-Route::post('/listingPosts', [ListingPostController::class, 'addoffer']);
+Route::post('listingPosts',[ListingPostController::class,'addoffer'])->name('post');
 
 
 
 /* ----- Route for functions of the "CompanyController" ----- */
 
-Route::resource('prospects', ProspectController::class);
+Route::resource('enterprises', EnterpriseController::class);
 
 /* ---------------------------------------------------------- */
 
+Route::post('/student/create-profil', [EnterpriseController::class, 'CreateProfil']);
+
+// return modal view of createStudentAccount
 
 
-
-
-Route::get('/prospect/{id}/follow-up', [FollowUpController::class, 'index']);
-Route::post('/prospect/follow-up/create', [FollowUpController::class, 'createFolllowUp'])->name('create-followup');
-Route::post('/prospect/follow-up/edit', [FollowUpController::class, 'editFolllowUp'])->name('edit-followup');
+Route::get('/enterprises/{id}/follow-up', [FollowUpController::class, 'index']);
 
 // route for profil creation and save
-
 Route::get('/student/create-profil', [ProfilController::class,'CreateProfil']);
 Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
+
+// route for showing profil
+
+Route::get('/student/profil', [ProfilController::class,'ShowProfil']);
 
 // route for add student and redirect to createStudentAccount
 Route::get('/createStudentAccount', function () {
@@ -77,6 +80,7 @@ Route::get('/createStudentAccount', function () {
 // create new student in database
 Route::post('/createStudentAccount', [CreateStudentAccountController::class, 'createStudent']);
 
+// send email
 Route::get('send-mail', function () {
 
     $details = [

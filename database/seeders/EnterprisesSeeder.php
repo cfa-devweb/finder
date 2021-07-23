@@ -6,9 +6,8 @@ use Illuminate\Database\Seeder;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Illuminate\Support\Carbon;
 
-class ProspectsSeeder extends Seeder
+class EnterprisesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,8 +16,9 @@ class ProspectsSeeder extends Seeder
      */
     public function run()
     {
-            DB::table('prospects')->insert([
-                'company_name' => Str::random(10),
+            DB::table('enterprises')->insert([
+                'name_company' => Str::random(10),
+                'name_contact' => Str::random(10),
                 'email_contact' => Str::random(10) . '@gmail.com',
                 'phone_contact' => '123456',
                 'student_id' => 1,

@@ -10,12 +10,18 @@ class FollowUp extends Model
         'date',
         'comment',
         'mode_contact',
-        'status',
-        'prospect_id',
+        'nom_contact',
+        'answer',
+        'enterprise_id',
+        'student_id'
     ];
-    public function prospects()
+    public function enterprises()
     {
         # code...
-        return $this->belongsTo(Prospect::class);
+        return $this->belongsTo(Enterprise::class);
+    }
+    public function student()
+    {
+        return $this->hasMany(Student::class);
     }
 }

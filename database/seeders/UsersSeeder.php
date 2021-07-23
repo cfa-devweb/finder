@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UsersSeeder extends Seeder
 {
@@ -14,12 +17,11 @@ class UsersSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'email' => 'ptitkens@gmail.com',
-            'password' => 'kinderrr',
-            'phone' => '811222',
-            'email_verified_at' => Carbon::now()->subMinutes(rand(0,10080))->format('Y-m-d H:i:s'),
-            /** 'password' => Hash::make('password'), */
-            'student_id' => 1,
-            ]);
+            'type' => 1,
+            'email' => 'test@test.nc',
+            'email_verified_at' => now(),
+            'password' => Hash::make('test'),
+            'api_token' => Str::random(60),
+        ]);
     }
 }

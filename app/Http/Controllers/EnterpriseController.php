@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Prospect;
+use App\Models\Enterprise;
 
-class ProspectController extends Controller
+class EnterpriseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class ProspectController extends Controller
      */
     public function index()
     {
-        $prospects = Prospect::all();
+        $enterprises = Enterprise::all();
 
-        return view('student.prospect', compact('prospects'));
+        return view('student.enterprise', compact('enterprises'));
     }
 
     /**
@@ -26,7 +26,7 @@ class ProspectController extends Controller
      */
     public function create()
     {
-        return view ('student.prospect');
+        return view ('student.enterprise');
     }
 
     /**
@@ -37,16 +37,16 @@ class ProspectController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $validateData = $request->validate([
-            'company_name' => 'required|max:30',
+            'name_company' => 'required|max:30',
+            'name_contact' => 'required|max:30',
             'phone_contact' => 'required|digits:6',
-            'email_contact' => 'required|email|unique:prospects,email_contact',
-            'date' => 'required|date',
+            'email_contact' => 'required|email',
             'student_id' => 'required',
         ]);
 
-        $prospect = Prospect::create($validateData);
-
+        $enterprise = Enterprise::create($validateData);
         return back()->with('success', 'Entreprise créer avec succèss');
     }
 
@@ -69,9 +69,9 @@ class ProspectController extends Controller
      */
     public function edit($id)
     {
-        $prospect = Prospect::findOrFail($id);
+        $editenterprises = Enterprise::findOrFail($id);
 
-        return view('prospect', compact('prospect'));
+        return view('enterprise', compact('editenterprises'));
     }
 
     /**
@@ -84,12 +84,16 @@ class ProspectController extends Controller
     public function update(Request $request, $id)
     {
         $validateData = $request->validate([
-            'company_name' => 'required|max:30',
+            'name_company' => 'required|max:30',
+            'name_contact' => 'required|max:30',
             'phone_contact' => 'required|digits:6',
-            'email_contact' => 'required|email|unique:prospects,email_contact',
-            'date' => 'required|date',
+            'email_contact' => 'required',
             'student_id' => 'required',
         ]);
+
+        Enterprise::whereId($id)->update($validateData);
+
+        return redirect('enterprises')->with('success', 'Entreprise modifier avec succèss');
     }
 
     /**
@@ -100,9 +104,9 @@ class ProspectController extends Controller
      */
     public function destroy($id)
     {
-        $prospect = Prospect::findOrFail($id);
-        $prospect->delete();
+        $enterprise = Enterprise::findOrFail($id);
+        $enterprise->delete();
 
-        return redirect('prospect')->with('success', 'Entreprise supprimer avec succèss');
+        return redirect('enterprises')->with('success', 'Entreprise supprimer avec succèss');
     }
 }
