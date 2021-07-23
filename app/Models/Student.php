@@ -69,6 +69,10 @@ class Student extends Model {
         # code...
         return $this->belongsTo(Section::class);
     }
+    public function sections() {
+        # code...
+        return $this->hasMany(Section::class);
+    }
 
     public function followUps() {
         # code...
