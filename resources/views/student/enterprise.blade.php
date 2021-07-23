@@ -2,11 +2,16 @@
 
 @section('content')
 
+<?php
+
+auth()->user()->id;
+
+?>
 
 <!-- Form to insert a company in the database -->
 <h1 class="title-h1">Mon suivi d'entreprise</h1>
 
-<div class="enterprise_btn-addcompany">
+<div class="d-flex justify-content-end my-2">
     <button class="buttons button_general" data-bs-toggle="modal" data-bs-target="#add-company_modal">
         Ajouter une entreprise
     </button>
@@ -37,9 +42,6 @@
                     <div class="mb-3">
                         <label for="phone_contact" class="form-label">Numéro de téléphone du contact</label>
                         <input type="tel" class="form-control" name="phone_contact" maxlength="6">
-                    </div>
-                    <div>
-                        <input type="hidden" value="1" name="student_id">
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">
@@ -95,7 +97,7 @@
                         @csrf
                         @method('DELETE')
                         <div class="modal-header">
-                            <h5 class="text-center modal-title mx-auto fs-3 fw-bold" id="exampleModalLabel">Supprimer les informations de l'entreprise</h5>
+                            <h5 class="text-center modal-title mx-auto fs-3 fw-bold" id="exampleModalLabel">Supprimer l'entreprise</h5>
                         </div>
                         <div class="modal-body m-3 text-center">
                             <p>

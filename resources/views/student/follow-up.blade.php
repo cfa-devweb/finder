@@ -27,7 +27,7 @@
     </tr>
     </thead>
     <tbody id="tableBody">
-    @if($followUp)
+    @if(!$followUp->isEmpty())
         @foreach($followUp as $key)
         <tr>
             <td>{{ $key->date }}</td>

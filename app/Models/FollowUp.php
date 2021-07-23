@@ -15,7 +15,7 @@ class FollowUp extends Model
         'enterprise_id',
         'student_id'
     ];
-    public function enterprises()
+    public function enterprise()
     {
         # code...
         return $this->belongsTo(Enterprise::class);

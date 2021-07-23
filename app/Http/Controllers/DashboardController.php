@@ -29,10 +29,12 @@ class DashboardController extends Controller
 
         return view('dashboard',compact('Sections','Students','advisers','Post'));
     }
+
     public function show()
     {
         return view('dashboard-formation');
     }
+
     public function post(Request $request)
     {
 
@@ -45,14 +47,14 @@ class DashboardController extends Controller
         ]);
         
         
-        if(!$result){        
+        if (!$result){        
             return back()->with("danger" , "Formation n'a pas été rajouter !");  
-        }else{               
+        } else {               
             
         $data = Section::create($request->all());
-        return back()->with("success" , "Formation rajouté avec succè!",500);       
+        return back()->with("success" , "Formation rajoutée avec succès!",500);       
         }
-        
-// redirect()->back()        
+        // redirect()->back();
     }
+    
 }

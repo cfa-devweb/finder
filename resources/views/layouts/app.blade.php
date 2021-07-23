@@ -1,4 +1,3 @@
-@include('partials.navbar')
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -32,14 +31,16 @@
 </head>
 
 <body>
-    <main class="container my-5">
-        @yield('auth')
-    </main>
-    <div id="app" class="container">
+    @include('partials.navbar')
+    @include('partials.status')
+
+    <div id="app" class="container yield_content">
         <main class="py-4">
             @yield('content')
+            @yield('auth')
         </main>
     </div>
+    @include('partials.footer')
 </body>
 
 </html>
