@@ -18,9 +18,13 @@ class CreateAdvisersTable extends Migration
             $table->timestamps();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email')->unique();
-            $table->string('password');
             $table->rememberToken();
+
+
+            $table->foreignId('user_id')
+            ->constrained('users')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 

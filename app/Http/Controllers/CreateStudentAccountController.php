@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Student;
 
 class CreateStudentAccountController extends Controller {
+
     /**
      * Insert new student in database table students.
      */
@@ -48,12 +49,10 @@ class CreateStudentAccountController extends Controller {
         return $student;
     }
 
-    /**
-     * 
-     */
     public function get()
     {
         $sections = Section::all();
         return view('adviser.createStudentAccount', compact('sections'));
     }
+    
 }
