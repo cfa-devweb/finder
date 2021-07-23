@@ -65,15 +65,16 @@ class Student extends Model {
         return $this->belongsTo(User::class);
     }
 
+    public function resume()
+    {
+        return $this->hasOne(Resume::class);
+    }
+
     public function section() {
         # code...
         return $this->belongsTo(Section::class);
     }
-    public function sections() {
-        # code...
-        return $this->hasMany(Section::class);
-    }
-
+    
     public function followUps() {
         # code...
         return $this->hasMany(FollowUp::class);
@@ -88,4 +89,5 @@ class Student extends Model {
         # code...
         return $this->hasMany(Student::class);
     }
+
 }
