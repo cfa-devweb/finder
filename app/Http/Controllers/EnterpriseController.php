@@ -48,7 +48,7 @@ class EnterpriseController extends Controller
 
         Enterprise::create($request->all());
 
-        return back()->with('success', "L'entreprise créer avec succèss");
+        return back()->with('successadd', "Entreprise créer avec succèss");
     }
 
     /**
@@ -94,7 +94,7 @@ class EnterpriseController extends Controller
 
         Enterprise::whereId($id)->update($validateData);
 
-        return redirect('enterprises')->with('success', 'Entreprise modifier avec succèss');
+        return redirect('enterprises')->with('successedit', 'Entreprise modifier avec succèss');
     }
 
     /**
@@ -108,6 +108,6 @@ class EnterpriseController extends Controller
         $enterprise = Enterprise::findOrFail($id);
         $enterprise->delete();
 
-        return redirect('enterprises')->with('success', 'Entreprise supprimer avec succèss');
+        return redirect('enterprises')->with('successdelete', 'Entreprise supprimer avec succèss');
     }
 }
