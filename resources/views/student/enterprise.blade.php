@@ -2,6 +2,11 @@
 
 @section('content')
 
+<?php
+
+auth()->user()->id;
+
+?>
 
 <!-- Form to insert a company in the database -->
 <h1 class="title-h1">Mon suivi d'entreprise</h1>
@@ -38,9 +43,6 @@
                         <label for="phone_contact" class="form-label">Numéro de téléphone du contact</label>
                         <input type="tel" class="form-control" name="phone_contact" maxlength="6">
                     </div>
-                    <div>
-                        <input type="hidden" value="1" name="student_id">
-                    </div>
                 </div>
                 <div class="modal-footer justify-content-center">
                     <button type="button" class="buttons button_cancel" data-bs-dismiss="modal">Annuler</button>
@@ -73,7 +75,7 @@
             <td>{{ $enterprise->email_contact }}</td>
             <td>{{ $enterprise->phone_contact }}</td>
             <td>
-                <a class="buttons button_infos" href="/enterprise/{{$enterprise->id}}/follow-up"><i class="fas fa-eye"></i></a>
+                <a class="buttons button_infos" href="/enterprises/{{$enterprise->id}}/follow-up"><i class="fas fa-eye"></i></a>
             </td>
             <td>
                 <button class="buttons button_edit" data-bs-toggle="modal" data-bs-target="#edit-company_modal-{{$enterprise->id}}">
@@ -81,14 +83,41 @@
                 </button>
             </td>
             <td>
-                <form action="{{route('enterprises.destroy', $enterprise->id)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button class="buttons button_trash" type="submit"><i class="fas fa-trash-alt"></i></button>
-                </form>
+                <button class="buttons button_trash" data-bs-toggle="modal" data-bs-target="#delete-company_modal-{{$enterprise->id}}">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
             </td>
+
         </tr>
-        <!-- Modal -->
+        <!-- Modal delete -->
+        <div class="modal fade" id="delete-company_modal-{{$enterprise->id}}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="{{route('enterprises.destroy', $enterprise->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-header">
+                            <h5 class="text-center modal-title mx-auto fs-3 fw-bold" id="exampleModalLabel">Supprimer l'entreprise</h5>
+                        </div>
+                        <div class="modal-body m-3 text-center">
+                            <p>
+                                Tout les informations de suivi concernant cette entreprise seront supprimer définitivement.
+                            </p>
+                            <p class="text-center text-danger fw-bold">
+                                Êtes-vous sûr de vouloir supprimer ces informations ?
+                            </p>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="buttons button_cancel" data-bs-dismiss="modal">Annuler</button>
+                            <button type="submit" class="buttons button_trash">Supprimer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal edit -->
         <div class="modal fade" id="edit-company_modal-{{$enterprise->id}}" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

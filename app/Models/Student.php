@@ -40,9 +40,21 @@ class Student extends Model {
     protected $hidden = [
         'type',
         'gender',
-        'date_of_birth',
+        'birthday',
         'city',
+        'user_id',
     ];
+
+    /**
+     * Get the student's name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 
     /**
      * Get the user that owns the student
@@ -50,7 +62,7 @@ class Student extends Model {
 
     public function user(){
 
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function resume()
@@ -61,6 +73,10 @@ class Student extends Model {
     public function section() {
         # code...
         return $this->belongsTo(Section::class);
+    }
+    public function sections() {
+        # code...
+        return $this->hasMany(Section::class);
     }
 
     public function followUps() {

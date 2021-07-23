@@ -7,7 +7,7 @@
     <div class="row justify-content-center mt-0">
         <div class="col-10 text-center p-0 mt-3 mb-2">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                <h2><strong>Création du profil</strong></h2>
+                <h2 class="title-h1"><strong>Création du profil</strong></h2>
                 <p>C'est simple !</p>
                 <div class="row">
                     <div class="col-md-12 ">
@@ -15,12 +15,12 @@
                         @csrf
                             <!-- progressbar -->
                             <ul id="progressbar">
-                                <li class="active" id="study"><strong>Etude</strong></li>
-                                <li id="experience"><strong>Experience</strong></li>
-                                <li id="skills"><strong>Competence</strong></li>
-                                <li id="driver"><strong>Transport</strong></li>
-                                <li id="interest"><strong>Interet</strong></li>
-                                <li id="comment"><strong>Commentaire</strong></li>
+                                <li id="study" class="active"><i class="fas fa-user-graduate"></i><strong> Etude</strong></li>
+                                <li id="experience"><i class="fas fa-user-tie"></i><strong> Experience</strong></li>
+                                <li id="skills" ><i class="fas fa-user-check"></i><strong> Competence</strong></li>
+                                <li id="driver" ><i class="fas fa-car-side"></i><strong> Transport</strong></li>
+                                <li id="interest"><i  class="fas fa-hiking"></i><strong> Interet</strong></li>
+                                <li id="comment" ><i class="far fa-comment"></i><strong> Commentaire</strong></li>
                             </ul>
                             <!--Study Area-->
                             <fieldset>
@@ -31,31 +31,31 @@
                                             <h2 class="fs-title col-md-3">Niveau d'étude</h2>
                                             <div class="col-md-4"></div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-4 text-center">
-                                                <input class="form check input" type="radio" id="checkbox1" name="checkboxStudy" value="Aucun Diplome" checked />
-                                                <label class="form-check-label" for="checkbox1">Aucun Diplome</label>
+                                        <div class="row pt-5">
+                                            <div class="col-md-4 text-left">
+                                                <input  type="radio" id="checkbox1" name="checkboxStudy" value="Aucun Diplome" checked />
+                                                <label class="form-check-label " for="checkbox1">Aucun Diplome</label>
                                             </div>
-                                            <div class="col-md-4 text-center">
-                                                <input class="form check input" type="radio" id="checkbox2" name="checkboxStudy" value="CAP" />
+                                            <div class="col-md-4 text-left">
+                                                <input  type="radio" id="checkbox2" name="checkboxStudy" value="CAP" />
                                                 <label class="form-check-label" for="checkbox2">CAP</label>
                                             </div>
-                                            <div class="col-md-4 text-center">
-                                                <input class="form check input" type="radio" id="checkbox3" name="checkboxStudy" value="BAC" />
+                                            <div class="col-md-4 text-left">
+                                                <input  type="radio" id="checkbox3" name="checkboxStudy" value="BAC" />
                                                 <label class="form-check-label" for="checkbox3">BAC</label>
                                             </div>
                                         </div>
                                         </br>
-                                        <div class="row">
-                                            <div class="col-md-4 text-center">
+                                        <div class="row ">
+                                            <div class="col-md-4 text-left">
                                                 <input type="radio" id="checkbox4" name="checkboxStudy" value="BAC +2" />
                                                 <label class="form-check-label" for="checkbox4">BAC +2</label>
                                             </div>
-                                            <div class="col-md-4 text-center">
+                                            <div class="col-md-4 text-left">
                                                 <input type="radio" id="checkbox5" name="checkboxStudy" value="Bac +3" />
                                                 <label class="form-check-label" for="checkbox5">BAC +3</label>
                                             </div>
-                                            <div class="col-md-4 text-center">
+                                            <div class="col-md-4 text-left">
                                                 <input type="radio" id="checkbox6" name="checkboxStudy" value="Bac +5 ou plus" />
                                                 <label class="form-check-label" for="checkbox6">BAC +5</label>
                                             </div>
@@ -72,21 +72,19 @@
 
                                     <div class="form-check row">
                                         <div class="row">
-                                            <div class="col-md-3"></div>
-                                            <h2 class="fs-title col-md-6 text-align">Avez-vous déja travaillé ? Si oui, combien de temps ?</h2>
-                                            <div class="col-md-3"></div>
+                                            <h2 class="fs-title col-md-12 text-center">Avez-vous déja travaillé ? Si oui, combien de temps ?</h2>
                                         </div>
-                                        <div class="row">
+                                        <div class="row pt-5">
                                             <div class="col-md-4 text-center">
-                                                <input type="radio" id="checkbox7" name="checkboxExperience" value="Jamais" />
+                                                <input type="radio" id="checkbox7" name="checkboxExperience" value="Jamais" checked/>
                                                 <label class="form-check-label" for="checkbox7">Jamais</label>
                                             </div>
                                             <div class="col-md-4 text-center">
-                                                <input type="radio" id="checkbox8" name="checkboxExperience" value="6 mois" />
+                                                <input type="radio" id="checkbox8" name="checkboxExperience" value="6 mois"/>
                                                 <label class="form-check-label" for="checkbox8">6 mois</label>
                                             </div>
                                             <div class="col-md-4 text-center">
-                                                <input type="radio" id="checkbox9" name="checkboxExperience" value="1 an" />
+                                                <input type="radio" id="checkbox9" name="checkboxExperience" value="1 an"/>
                                                 <label class="form-check-label" for="checkbox9">1 an</label>
                                             </div>
                                         </div>
@@ -116,8 +114,8 @@
                             <fieldset>
 
                                 <div class="form-card">
-                                    <h2 class="fs-title">Quel sont vos domaines de compétences </h2>
-                                    <div class="container">
+                                    <h2 class="fs-title text-center">Quel sont vos domaines de compétences </h2>
+                                    <div class="container pt-5">
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <select class="mdb-select md-form" aria-label="Default select example" name="skills1">
@@ -175,11 +173,11 @@
 
                             <!--DriverLicense Area-->
                             <fieldset>
-                                <div class="form-card">
+                                <div class="form-card ">
                                     <h2 class="fs-title">Permis </h2>
-                                    <div class="row">
+                                    <div class="row  pt-5">
                                         <div class="col-md-4 text-center">
-                                            <input type="radio" id="checkbox13" name="checkboxDriverLicense" value="Aucun permis" />
+                                            <input type="radio" id="checkbox13" name="checkboxDriverLicense" value="Aucun permis" checked />
                                             <label class="form-check-label" for="checkbox13">Aucun permis</label>
                                         </div>
                                         <div class="col-md-4 text-center">
@@ -192,16 +190,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-card">
+                                <div class="form-card ">
 
                                     <h2 class="fs-title">Véhicule</h2>
-                                    <div class="row">
+                                    <div class="row  pt-5">
                                         <div class="col-md-6 text-center">
-                                            <input type="radio" id="checkbox16" name="checkboxDriverVehicle" value="Oui" />
+                                            <input type="radio" id="checkbox16" name="checkboxDriverVehicle" value="1" />
                                             <label class="form-check-label" for="checkbox16">Oui</label>
                                         </div>
                                         <div class="col-md-6 text-center">
-                                            <input type="radio" id="checkbox17" name="checkboxDriverVehicle" value="Non" />
+                                            <input type="radio" id="checkbox17" name="checkboxDriverVehicle" value="0" checked/>
                                             <label class="form-check-label" for="checkbox17">Non</label>
                                         </div>
                                     </div>
@@ -212,55 +210,62 @@
 
                             <!--Interest Area-->
                             <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title ">Quels sont vos principaux centre d'interet</h2>
-                                    <div class="row">
-                                        <div class="col-md-3 text-center">
+                                <div class="form-card pt-3">
+                                    <h2 class="fs-title text-center">Quels sont vos principaux centre d'interet</h2>
+                                    <div class="row pt-4">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox18" name="interest1" value="Musique" />
                                             <label class="form-check-label" for="checkbox18">Musique</label>
+                                            <i class="fas fa-music"></i>
                                         </div>
-                                        <div class="col-md-2 text-center">
+                                        <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox19" name="interest2" value="informatique" />
                                             <label class="form-check-label" for="checkbox19">informatique</label>
                                         </div>
-                                        <div class="col-md-2 text-center">
+                                        <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox20"   name="interest3"value="Lecture" />
                                             <label class="form-check-label" for="checkbox20">Lecture</label>
                                         </div>
-                                        <div class="col-md-2 text-center">
+                                        <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox21"  name="interest4"value="Ecriture" />
                                             <label class="form-check-label" for="checkbox21">Ecriture</label>
                                         </div>
-                                        <div class="col-md-3 text-center">
+                                        <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox22"   name="interest5"value="Photographie" />
                                             <label class="form-check-label" for="checkbox22">Photographie</label>
                                         </div>
+                                        <div class="col-md-1"></div>
+
                                     </div>
                                     </br>
                                     <div class="row">
-                                        <div class="col-md-3 text-center">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox22" name="interest6" value="Voyage" />
                                             <label class="form-check-label" for="checkbox22">Voyage</label>
                                         </div>
-                                        <div class="col-md-2 text-center">
+                                        <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox23"  name="interest7"value="Sports" />
                                             <label class="form-check-label" for="checkbox23">Sports</label>
                                         </div>
-                                        <div class="col-md-2 text-center">
+                                        <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox24" name="interest8" value="Jeux videos" />
                                             <label class="form-check-label" for="checkbox24">Jeux videos</label>
                                         </div>
-                                        <div class="col-md-2 text-center">
+                                        <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox25"  name="interest9"value="Chasse" />
                                             <label class="form-check-label" for="checkbox25">Chasse</label>
                                         </div>
-                                        <div class="col-md-3 text-center">
+                                        <div class="col-md-2 text-left">
                                             <input type="checkbox" id="checkbox26" name="interest10" value="Peche" />
                                             <label class="form-check-label" for="checkbox26">Peche</label>
                                         </div>
+                                        <div class="col-md-1"></div>
                                     </div>
                                 </div>
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="next" class="next action-button" value="Next Step" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> 
+                                <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
                             <!--end Interest Area-->  
 
@@ -270,10 +275,10 @@
                                 <div class="form-card">
                                     <h2 class="fs-title">Commentaire</h2>
 
-                                    <textarea class="col-md-12" max="100" name="aboutMe" placeholder="Décrivez vous en 100 mots"></textarea>
+                                    <textarea class="col-md-12" maxlength="200" name="aboutMe" placeholder="Décrivez vous (200 lettres max)" value=" "></textarea>
                                 </div>
                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                                 <input type="submit" name="submit" class="next action-button" value="Sauvegarder votre profil" />
+                                 <input type="submit" name="submit" class="next action-button button_save_profil" value="Sauvegarder votre profil" />
                             </fieldset>
                             <!--end Commentary Area-->
                         </form>

@@ -29,7 +29,7 @@ class FollowUpController extends Controller
         $request -> validate([
             'mode_contact' => 'required',
             'date' => 'required',
-            'answer' => 'required|max:150',
+            'answer' => 'required|min:1|max:150',
             'comment' => 'required|max:255'
         ]);
 
@@ -59,7 +59,7 @@ class FollowUpController extends Controller
         $request -> validate([
             'mode_contact' => 'required',
             'date' => 'required',
-            'answer' => 'required|max:150',
+            'answer' => 'required|min:1|max:150',
             'comment' => 'required|max:255'
         ]);
 
