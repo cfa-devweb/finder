@@ -17,31 +17,23 @@ class Student extends Model {
     
     protected $table = 'students';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'first_name',
         'last_name',
         'gender',
         'birthday',
+        'active',
         'city',
         'section_id',
-        'find_company',
+        'user_id'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'type',
         'gender',
         'birthday',
+        'active',
         'city',
+        'section_id',
         'user_id',
     ];
 
@@ -63,9 +55,8 @@ class Student extends Model {
     /**
      * Get the user that owns the student
      */
-
-    public function user(){
-
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
@@ -74,23 +65,23 @@ class Student extends Model {
         return $this->hasOne(Resume::class);
     }
 
-    public function section() {
-        # code...
+    public function section()
+    {
         return $this->belongsTo(Section::class);
     }
     
-    public function followUps() {
-        # code...
+    public function followUps()
+    {
         return $this->hasMany(FollowUp::class);
     }
     
-    public function enterprises() {
-        # code...
+    public function enterprises()
+    {
         return $this->hasMany(Enterprise::class);
     }
+
     public function users()
     {
-        # code...
         return $this->hasMany(Student::class);
     }
 

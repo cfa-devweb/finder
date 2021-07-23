@@ -48,9 +48,13 @@ Route::middleware('auth')->group(function() {
     Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
     Route::get('/student/profil', [ProfilController::class,'ShowProfil']);
 
-    Route::get('/createStudentAccount', function () { return view('/adviser/createStudentAccount'); });
+    // return modal view of createStudentAccount
+    Route::get('/createStudentAccount', function () {
+        $sections = Section::all();
+        return view('/adviser/createStudentAccount', compact('sections'));
+    });
+    // create new student in database
     Route::post('/createStudentAccount', [CreateStudentAccountController::class, 'createStudent']);
-
 
     // send email
     // Route::get('send-mail', function () {
@@ -62,5 +66,5 @@ Route::middleware('auth')->group(function() {
     //     \Mail::to('francinekendrick@gmail.com')->send(new \App\Mail\MyTestMail($details));
     // });
     /* ------------------------------------------------------------------------------------ */
+    Route::get('/', [HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 });
-
