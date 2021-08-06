@@ -32,7 +32,7 @@ body {
 /*#region Buttons*/
 .buttons {
     padding: 0.375rem 0.75rem;
-    color: #FFFFFF;
+    color: $buttons-color;
     font-size: 0.9rem;
     line-height: 1.6;
     border-radius: 0.25rem;
@@ -41,31 +41,63 @@ body {
     display: inline-block;
     font-weight: 400;
     border: none;
+
+    &:disabled {
+        opacity: .5;
+        pointer-events: none;
+    }
 }
 
 .button_edit {
-    background-color: #EFAD4E;
+    background-color: $button-edit-background-color;
+    &:hover{background-color: darken($button-edit-background-color, 5);}
 }
 
 .button_trash {
-    background-color: #D9534F;
+    background-color: $button-trash-background-color;
+    &:hover{background-color: darken($button-trash-background-color, 5);}
 }
 
 .button_infos {
-    background-color: #5BC2D9;
+    background-color: $button-infos-background-color;
+    &:hover{background-color: darken($button-infos-background-color, 5);}
 }
 
 .button_cancel {
-    background-color: #E0E0E0;
-    color: #343A40 !important;
+    background-color: $button-cancel-background-color;
+    color: $button-cancel-color !important;
+    &:hover{background-color: darken($button-cancel-background-color, 5);}
 }
 
 .button_save {
-    background-color: #4CA649;
+    background-color: $button-save-background-color;
+    &:hover{background-color: darken($button-save-background-color, 5);}
 }
 
 .button_general {
-    background-color: #0788D9;
+    background-color: $button-general-background-color;
+    &:hover{background-color: darken($button-general-background-color, 5);}
+}
+/*#endregion Buttons*/
+
+/*#region Tags*/
+.tag {
+    color: $tag-color;
+    display: inline-block;
+    border-radius: 50rem;
+    line-height: 1;
+    padding: .35em .65em;
+    text-align: center;
+    vertical-align: sub;
+    white-space: nowrap;
+    background-color: $tag-background-color;
+
+    &-answer {
+        &-waiting {background-color: $tag-answer-waiting-background-color;}
+        &-refusal {background-color: $tag-answer-refusal-background-color;}
+        &-accepted {background-color: $tag-answer-accepted-background-color;}
+        &-sign {background-color: $tag-answer-sign-background-color;}
+    }
 }
 /*#endregion Buttons*/
 
@@ -247,8 +279,8 @@ select.list-dt:focus {
 }
 
 #progressbar #study:before {
-    
-    font-weight: 900; 
+
+    font-weight: 900;
     content: "";
 }
 #progressbar #experience:before {
@@ -279,6 +311,14 @@ select.list-dt:focus {
     overflow-x: hidden;
 }
 
+/*#endregion Profil*/
+
+/*#region Follow_Ups*/
+.table-follow-up {
+    text-align: center;
+
+    .comment {max-width: 300px;}
+}
 /*#endregion Profil*/
 
 /*#region Footer*/

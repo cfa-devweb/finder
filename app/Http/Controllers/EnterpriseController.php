@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Enterprise;
+use App\Models\FollowUp;
 
 class EnterpriseController extends Controller
 {
@@ -107,6 +108,10 @@ class EnterpriseController extends Controller
     {
         $enterprise = Enterprise::findOrFail($id);
         $enterprise->delete();
+        $followUps = FollowUp::all()->where('enterprise_id', $id);
+        foreach ($followUps as $followUp) {
+            echo $followUp->delete();
+        }
 
         return redirect('enterprises')->with('successdelete', 'Entreprise supprimer avec succèss');
     }
