@@ -30,7 +30,11 @@ Route::middleware('auth')->group(function() {
     Route::get('dashboard', [DashboardController::class, "index"])->name('dashboard-index');
     Route::post('dashboard', [DashboardController::class, "post"])->name('dashboard-post');
     Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
-
+    
+    Route::get('/dashboard/{id}/', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
+    // dashboard-formation-suivi
+    // listingOneStudent
+    Route::get('/dashboard/{id}/listingOneStudent', [listingStudentController::class, 'showUserInfo'])->name('dashboard-formation-suivi');
     /* ------------------------------------------------------------------ */
     Route::get('/listingPosts',[ListingPostController::class,'listingPost']);
     Route::delete('/listingPosts/{id}',[ListingPostController::class,'deletePost'])->name('listingPosts.delete');
