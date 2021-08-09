@@ -3,19 +3,18 @@
 @section('content')
 
 <!-- Form to insert a company in the database -->
-<h1 class="title-h1">Mon suivi d'entreprise</h1>
+<h2 class="title-h1">Mon suivi d'entreprise</h2>
 
 <div class="row mx-0 my-3">
     <div class="col px-0 d-flex justify-content-end">
-        <!-- Button show modal to create follow-up -->
-        <button type="button" class="btn btn-primary text-white" onclick="openCreateModal()" data-bs-toggle="modal" data-bs-target="#editFollowUpModal">
+        <button type="button" class="buttons button_general btn-modal-create" data-bs-toggle="modal" data-bs-target="#followUpModal">
             Ajouter une prise de contact
         </button>
     </div>
 </div>
 
-<!-- List of companies -->
-<table class="table table-striped text-center">
+<!-- List of follow-ups  -->
+<table class="table table-striped table-follow-up">
     <thead>
     <tr class="table-dark">
         <th scope="col">Date</th>
@@ -29,21 +28,22 @@
     <tbody id="tableBody">
     @if(!$followUps->isEmpty())
         @foreach($followUps as $key)
-        <tr>
-            <td>{{ $key->date }}</td>
-            <td>{{ $key->mode_contact }}</td>
-            <td>{{ $key->nom_contact }}</td>
-            <td>{{ $key->comment }}</td>
-            <td>{{ $key->answer }}</td>
-            <td>
-                <a class="btn btn-info text-white" onclick="openConsultModal('{{ $key->id }}')" data-bs-toggle="modal" data-bs-target="#editFollowUpModal">
-                    <i class="fas fa-eye"></i>
-                </a>
-                <button  class="btn btn-warning text-white" onclick="openUpdateModal('{{ $key->id }}')" data-bs-toggle="modal" data-bs-target="#editFollowUpModal">
-                    <i class="fas fa-pencil-alt"></i>
-                </button>
-            </td>
-        </tr>
+            <tr>
+                <td class="id" hidden>{{ $key->id }}</td>
+                <td class="date">{{ $key->date }}</td>
+                <td class="mode-contact">{{ $key->mode_contact }}</td>
+                <td class="nom-contact">{{ $key->nom_contact }}</td>
+                <td class="comment">{{ $key->comment }}</td>
+                <td class="answer"><div class="tag tag-answer">{{ $key->answer }}</div></td>
+                <td>
+                    <button class="buttons button_infos btn-modal-consult" data-id="{{ $key->id }}" data-bs-toggle="modal" data-bs-target="#followUpModal">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="buttons button_edit btn-modal-update" data-id="{{ $key->id }}" data-bs-toggle="modal" data-bs-target="#followUpModal">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </td>
+            </tr>
         @endforeach
     @else
         <tr>
@@ -56,10 +56,10 @@
 </table>
 
 <!-- Modal -->
-<div class="modal fade" id="editFollowUpModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="followUpModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class="needs-validation" novalidate>
+            <form id="formFollowUp" class="needs-validation" novalidate>
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title mx-auto fs-3 fw-bold"><span id="modalTitle">Ajout</span> de prise de contact</h5>
@@ -72,13 +72,15 @@
                         </div>
                         <div class="col-7">
                             <label for="mode_contact" class="form-label">Action menée</label>
-                            <input type="text" class="form-control" name="mode_contact" placeholder="Mail, téléphone, entretien,..." maxlength="30" autocomplete="off" required/>
+                            <input type="text" class="form-control" id="mode_contact" name="mode_contact"
+                                   placeholder="Mail, téléphone, entretien,..." maxlength="30" autocomplete="off"
+                                   required/>
                         </div>
                     </div>
                     <div class="row my-3">
                         <div class="col-7">
                             <label for="nom_contact" class="form-label">Personne contacté</label>
-                            <input type="text" class="form-control" name="nom_contact" placeholder="R.H, Service comptabilité,..." maxlength="255" autocomplete="off" required/>
+                            <input type="text" class="form-control" id="nom_contact" name="nom_contact" placeholder="R.H, Service comptabilité,..." maxlength="255" autocomplete="off" required/>
                         </div>
                         <div class="col-5">
                             <label for="answer" class="form-label">Réponse</label>
@@ -94,16 +96,17 @@
                     <div class="row">
                         <div class="col">
                             <label for="comment" class="form-label">Commentaires</label>
-                            <textarea type="text" class="form-control" name="comment" placeholder="Commentaire" rows="4" maxlength="255" autocomplete="off"></textarea>
+                            <textarea type="text" class="form-control" id="comment" name="comment" placeholder="Commentaire" rows="4" maxlength="255" autocomplete="off"></textarea>
                         </div>
                     </div>
                     <input type="hidden" name="enterprise_id" value="{{ $enterpriseId }}"/>
-                    <input type="hidden" name="student_id" />
-                    <input type="hidden" name="id" />
+                    <input type="hidden" id="id" name="id"/>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-success ms-2" id="btnEditFollowUp">Valider</button>
+                    <button type="button" class="buttons button_cancel me-2" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="buttons button_save ms-2" id="submitForm">
+                        Valider
+                    </button>
                 </div>
             </form>
         </div>
@@ -113,110 +116,132 @@
 <script>
 
     $(document).ready(function () {
-
-        /* Comportement à chaque fermeture de la modal */
-        $('#editFollowUpModal').on('hidden.bs.modal', function () {
-            $('input, select, textarea, #editFollowUpModal .btn').prop('disabled', false).val("");
-        })
-
+        setForm();
+        initTagAnswer();
     });
 
-    /* Récupération des données d'une prise de contact spécifique */
-    function getFollowUp(id) {
-        let data = @json($followUps);
-        for (let i = 0; i < data.length; i++) {
-            if (data[i].id == id) {
-                $('input[name=date]').val(data[i].date);
-                $('input[name=mode_contact]').val(data[i].mode_contact);
-                $('input[name=nom_contact]').val(data[i].nom_contact);
-                $('select[name=answer]').val(data[i].answer);
-                $('textarea[name=comment]').val(data[i].comment);
-            }
-        }
+    /* Initialisation des comportement du formulaire */
+    function setForm() {
 
+        // Comportement du formulaire pour création
+        $('.btn-modal-create').click(function () {
+            $('#modalTitle').text('Création');
+            $('#formFollowUp')[0].reset();
+            $('#formFollowUp').removeClass('was-validated');
+            $('#formFollowUp input, #formFollowUp textarea, #formFollowUp select').attr('disabled', false);
+            $('#submitForm').attr('disabled', false);
+            $('#submitForm').attr('onclick', 'editFollowUp()');
+        })
+
+        // Comportement du formulaire pour consultation
+        $('.btn-modal-consult').click(function () {
+            let trParent = $(this).parents('tr');
+            $('#modalTitle').text('Consultation');
+            $('#formFollowUp input, #formFollowUp textarea, #formFollowUp select').attr('disabled', true);
+            $('#submitForm').attr('disabled', true);
+            $('#formFollowUp').removeClass('was-validated');
+            completeForm(trParent);
+        })
+
+        // Comportement du formulaire pour modification
+        $('.btn-modal-update').click(function () {
+            let trParent = $(this).parents('tr');
+            $('#modalTitle').text('Modification');
+            $('#formFollowUp input, #formFollowUp textarea, #formFollowUp select').attr('disabled', false);
+            $('#date').attr('disabled', true);
+            $('#submitForm').attr('disabled', false);
+            $('#formFollowUp').removeClass('was-validated');
+            completeForm(trParent);
+        })
+    }
+
+    /* Completion du formulaire pour consultation ou modification */
+    function completeForm(parentElement) {
+        $('#id').val(parentElement.find('.id').text());
+        $('#date').val(parentElement.find('.date').text());
+        $('#mode_contact').val(parentElement.find('.mode-contact').text());
+        $('#nom_contact').val(parentElement.find('.nom-contact').text());
+        $('#answer').val(parentElement.find('.answer').text());
+        $('#comment').val(parentElement.find('.comment').text());
+
+        $('#submitForm').attr('onclick', 'editFollowUp(' + $('#id').val() + ')');
     }
 
     /* Édition d'un prise de contact (création ou modification) */
     function editFollowUp(idFollowUp) {
         let url, type;
+        let token = $('meta[name=api-token]').attr('content');
+
         let date = $('input[name=date]').val();
         let mode_contact = $('input[name=mode_contact]').val();
         let nom_contact = $('input[name=nom_contact]').val();
         let answer = $('select[name=answer]').val();
         let comment = $('textarea[name=comment]').val();
         let enterprise_id = $('input[name=enterprise_id]').val();
-        let student_id = $('input[name=student_id]').val();
+        let student_id = 1;
 
-        if(idFollowUp){
+        if (idFollowUp) {
             url = '/api/follow-up/' + idFollowUp;
             type = 'PUT';
         } else {
             url = '/api/follow-up';
-            type = 'POST'
+            type = 'POST';
         }
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = $('.needs-validation')
-        var token = document.querySelector('meta[name=api-token]');
+        if (!checkFormValidity('formFollowUp'))
+            return false;
 
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    event.preventDefault();
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                        form.classList.add('was-validated');
-                        return false;
-                    }
-
-                    form.classList.add('was-validated');
-
-                    $.ajax({
-                        type: type,
-                        headers: {'Authorization': 'Bearer ' + token.content},
-                        url: url,
-                        data: {
-                            date: date,
-                            mode_contact: mode_contact,
-                            nom_contact: nom_contact,
-                            answer: answer,
-                            comment: comment,
-                            enterprise_id: enterprise_id,
-                            student_id: student_id
-                        },
-                        success: function () {
-                            //location.reload();
-                        }
-                    })
-
-                }, false)
-            })
+        $.ajax({
+            url: url,
+            headers: {'Authorization': 'Bearer ' + token},
+            type: type,
+            data: {
+                date: date,
+                mode_contact: mode_contact,
+                nom_contact: nom_contact,
+                answer: answer,
+                comment: comment,
+                enterprise_id: enterprise_id,
+                student_id: student_id
+            },
+            success: function (data) {
+                //alert(JSON.stringify(data.data.id));
+                location.reload();
+            }
+        })
     }
 
-    /* Comportement de la modal pour l'ajout de prise de contact */
-    function openCreateModal() {
-        $('#id').val("");
-        $('#modalTitle').html('Ajout');
-        $('#btnEditFollowUp').attr('onclick', 'editFollowUp()');
+    /* Vérification de la validité du formulaire */
+    function checkFormValidity(formId) {
+        if (!$('#' + formId)[0].checkValidity()) {
+            $('#' + formId).addClass('was-validated');
+            return false;
+        }
+
+        $('#' + formId).addClass('was-validated')
+        return true;
     }
 
-    /* Comportement de la modal pour la modification de prise de contact */
-    function openUpdateModal(id) {
-        $('#id').val(id);
-        $('#modalTitle').html('Modification');
-        $('#date').attr('disabled', true);
-        $('#btnEditFollowUp').attr('onclick', 'editFollowUp(' + id +')');
-        getFollowUp(id);
-    }
-
-    /* Comportement de la modal lors de la consultation */
-    function openConsultModal(id) {
-        $('#id').val(id);
-        $('#modalTitle').html('Consultation');
-        $('#btnEditFollowUp').attr('disabled', true);
-        $('input, textarea, select').attr('disabled', true);
-        getFollowUp(id);
+    /* Initialisation des tags selon les réponses */
+    function initTagAnswer() {
+        $.each($('.tag-answer'), function () {
+            let tagValue = $(this).text();
+            console.log(tagValue);
+            switch (tagValue) {
+                case 'en attente':
+                    $(this).addClass('tag-answer-waiting');
+                    break;
+                case 'refus':
+                    $(this).addClass('tag-answer-refusal');
+                    break;
+                case 'accepté':
+                    $(this).addClass('tag-answer-accepted');
+                    break;
+                case 'signé':
+                    $(this).addClass('tag-answer-sign');
+                    break;
+            }
+        })
     }
 </script>
 @endsection

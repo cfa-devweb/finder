@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\FollowUp;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class FollowUpController extends Controller
 {
@@ -30,7 +31,7 @@ class FollowUpController extends Controller
             'mode_contact' => 'required',
             'date' => 'required',
             'answer' => 'required|min:1|max:150',
-            'comment' => 'required|max:255'
+            'comment' => 'max:255'
         ]);
 
         return FollowUp::create($request->all());
@@ -60,10 +61,11 @@ class FollowUpController extends Controller
             'mode_contact' => 'required',
             'date' => 'required',
             'answer' => 'required|min:1|max:150',
-            'comment' => 'required|max:255'
+            'comment' => 'max:255'
         ]);
 
         return $followUp->update($request->all());
+        //return response(['data'=>$followUp,'message'=>'Modification effectué avec succès.'], 200);
     }
 
     /**
