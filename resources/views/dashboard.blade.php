@@ -141,7 +141,7 @@
                         <tr>
                             <td class="text-capitalize">{{$Section->class_name }} </td>
                             <td class="text-capitalize">{{$Section->students->count() }}</td>
-                            <td>{{$Section->students()->whereHas('followUps',function($query){$query->where('answer','accepté');})->count() }}</td>
+                            <td>{{$Section->students()->whereHas('followUps',function($query){$query->where('answer','signé');})->count() }}</td>
                             <td>{{$Section->students()->whereHas('followUps',function($query){$query->where('answer','en attente');})->count() }}</td>
                             <td>
                                 <a href="{{ route('dashboard-formation', $Section->id)}}">
