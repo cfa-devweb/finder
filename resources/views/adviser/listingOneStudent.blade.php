@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h1 class="title-h1"> {{$student->first()->section->class_name}}</h1>
+<h1 class="title-h1"> {{$sections->first()->class_name}}</h1>
 <div class="container d-flex p-2">
     <div class="col-3">
         <p><strong class="text-capitalize">Nom: {{ $student->first()->last_name }} </strong></p>

@@ -27,11 +27,14 @@ class listingStudentController extends Controller
                
         $FollowUps = FollowUp::where('student_id','=',$id)->get();
         // dd($FollowUps);
-
         $User = User::where('id','=',$id)->get();
-        $student = Student::where('id','=',$id)->get();
-        // dd($User);
-        return view('adviser.listingOneStudent', compact('FollowUps','User','student'));
+        $student = Student::where('id','=',$id)->get();    
+        $studentclass = Student::select('section_id')->where('id','=',$id)->get();     
+
+        $sections = Section::select('class_name')->where("id",'=', $studentclass->first()->section_id)->get();
+        // dd($sections);
+        // dd($student,$User,$FollowUps);
+        return view('adviser.listingOneStudent', compact('FollowUps','User','student','sections'));
 
     }
 
