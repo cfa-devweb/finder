@@ -9,6 +9,8 @@ use App\Http\Controllers\ListingPostController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\listingStudentController;
 
+use App\Models\Section;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

@@ -4,7 +4,7 @@
 
 <h1 class="title-h1">Liste des alternants de la formation {{ $sections->first()->class_name }}</h1>
 <div class="container text-end p-2">
-    <button type="button" class="buttons button_general"><i class="fas fa-user-plus"></i>Alternant</button>
+    @include('adviser.createStudentAccount')
 </div>
 <table class="table">
     <thead>
