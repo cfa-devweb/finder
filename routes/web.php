@@ -9,6 +9,8 @@ use App\Http\Controllers\ListingPostController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\listingStudentController;
 
+use App\Models\Section;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,12 +22,12 @@ use App\Http\Controllers\listingStudentController;
 |
 */
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/',[HomeController::class, "index"])->name('accueil');
+//Route::get('/',[HomeController::class, "index"])->name('accueil');
 
 
-Route::middleware('auth')->group(function() {
+//Route::middleware('auth')->group(function() {
     /* ---------------------------------------------------------------------------------- */
     Route::get('dashboard', [DashboardController::class, "index"])->name('dashboard-index');
     Route::post('dashboard', [DashboardController::class, "post"])->name('dashboard-post');
@@ -66,5 +68,5 @@ Route::middleware('auth')->group(function() {
     //     \Mail::to('francinekendrick@gmail.com')->send(new \App\Mail\MyTestMail($details));
     // });
     /* ------------------------------------------------------------------------------------ */
-    Route::get('/', [HomeController::class, 'index'])->name('home')->middleware(["verified"]);
-});
+    //Route::get('/', [HomeController::class, 'index'])->name('home')->middleware(["verified"]);
+//});

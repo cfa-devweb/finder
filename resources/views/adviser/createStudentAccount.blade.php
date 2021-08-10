@@ -1,5 +1,3 @@
-@extends('layouts.app')
-@section('content')
 
 <button type="button" class="btn btn-primary text-light" data-bs-toggle="modal" data-bs-target="#studentModal"
     data-bs-whatever="@fat">Ajouter un alternant</button>
@@ -36,13 +34,11 @@
                         </div>
                         <div class="col-md-6">
                             <div style="margin-top:35px;">
-                                <select class="form-select" aria-label="Formation" name="section_id" id="section_id">
-                                    <option value="">Formation</option>
+                                <select class="form-select" aria-label="Default select example" name="section_id" id="section_id">
                                     @foreach($sections as $section)
                                     <option value="{{ $section->id }}">{{ $section->class_name }}</option>
                                     @endforeach
                                 </select>
-
                             </div>
                         </div>
                     </div>
@@ -62,5 +58,3 @@
         </div>
     </div>
 </div>
-
-@endsection

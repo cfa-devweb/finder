@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\Section;
 use App\Models\User;
 use App\Models\Student;
 
@@ -27,7 +28,7 @@ class CreateStudentAccountController extends Controller {
             'password' => $request->input('password', ' ')
         ]);
 
-        $student = Student::create([
+        Student::create([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'gender' => $request->input('gender', 'other'),
@@ -39,7 +40,7 @@ class CreateStudentAccountController extends Controller {
         ]);
         
         return redirect()
-            ->route('dashboard-formation', $student->section->id)
+            ->route('dashboard-formation')
             ->with("successadd", "L'alternant a bien été ajouté");
     }
 }
