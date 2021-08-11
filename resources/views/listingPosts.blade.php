@@ -139,15 +139,12 @@
                     <div class="modal fade" id="modalUpdatePost-{{ $key->id }}" tabindex="-1"
                         aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <form action="{{ route('listingPosts.update', $key->id)}}" method="post">
+                            <form action="{{ route('update', $key->id)}}" method="post">
                                 @csrf
                                 <div class="modal-content">
                                     <input type="hidden" id="date_create" name="date_create" value="2021-08-10">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="ModalLabel"> Nouvelle offre d'alternance</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                        <h5 class="modal-title mx-auto fs-3 fw-bold" id="ModalLabel"> Nouvelle offre d'alternance</h5>
+                                        <h5 class="modal-title mx-auto fs-3 fw-bold" id="ModalLabel"> Modifification offre d'alternance</h5>
                                     </div>
                                     <div class="modal-body">
                                         <div class="row g-3">
@@ -167,7 +164,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="section" class="form-label">Formation concernée</label>
-                                                <select class="form-select" aria-label="Default select example">
+                                                <select class="form-select" aria-label="Default select example" name="concerned">
                                                     <option selected value="{{ $section->id }}">{{ $section->class_name }}></option>
                                                     @foreach($sections as $section)
                                                     <option value="{{ $section->id }}">{{ $section->class_name }}</option>
