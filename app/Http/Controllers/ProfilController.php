@@ -44,11 +44,11 @@ class ProfilController extends Controller
 
 
         $profil -> study = request('checkboxStudy');
-        $profil -> experiences = request('checkboxExperience');
+        $profil -> experience = request('checkboxExperience');
         $profil -> skills = $skills1 .',' . $skills2 .',' .$skills3 .',' .$skills4  ;
-        $profil -> driverlicense = request('checkboxDriverLicense');        
+        $profil -> driver_license = request('checkboxDriverLicense');        
         $profil -> vehicle = request('checkboxDriverVehicle');
-        $profil -> center_interest =$interest1 . ',' . $interest2 . ',' . $interest3 . ',' . $interest4 . ',' . $interest5 .','. $interest6 . ',' . $interest7 . ',' .$interest8 . ','.$interest9 . ',' . $interest10 ;
+        $profil -> interests =$interest1 . ',' . $interest2 . ',' . $interest3 . ',' . $interest4 . ',' . $interest5 .','. $interest6 . ',' . $interest7 . ',' .$interest8 . ','.$interest9 . ',' . $interest10 ;
         $profil -> about_me = request('aboutMe');
         $profil -> student_id = 1;
 
