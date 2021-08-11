@@ -16,10 +16,10 @@ class listingStudentController extends Controller
     //
     public function showTable($id){
 
-        $sections = Section::select('class_name')->where("id",'=', $id)->get();
+        $section = Section::find($id);
         $students = Student::where('section_id', '=', $id)->get();
 
-        return view('adviser.listingStudent',  compact('id', 'sections', 'students'));
+        return view('adviser.listingStudent',  compact('id', 'section', 'students'));
 
     }
     public function showUserInfo($id){

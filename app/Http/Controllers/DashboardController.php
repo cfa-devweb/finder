@@ -16,16 +16,7 @@ class DashboardController extends Controller
         $advisers = Adviser::all();
         $Post = Post::all();
         $adviser_id = '1';
-        $Students = Student::whereHas('section',
-                                function ($query) use ($adviser_id){
-                                    $query->where('adviser_id','=', $adviser_id);
-                                }
-                            )->get()->count();
-        // dd($Students);
-
-        // dd($Sections->first()->students()->whereHas('followUps',function($query){
-        //     $query->where('answer','refus');
-        // })->count());
+        $Students = Student::all();
 
         return view('dashboard',compact('Sections','Students','advisers','Post'));
     }
@@ -48,11 +39,11 @@ class DashboardController extends Controller
         
         
         if (!$result){        
-            return back()->with("danger" , "Formation n'a pas été rajouter !");  
+            return back()->with("danger" , "La formation n'a pas été ajoutée !");  
         } else {               
             
         $data = Section::create($request->all());
-        return back()->with("success" , "Formation rajoutée avec succès!",500);       
+        return back()->with("success" , "Formation ajoutée avec succès !",500);       
         }
         // redirect()->back();
     }

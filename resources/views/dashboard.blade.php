@@ -17,16 +17,16 @@
                 <div class="container d-flex m-1">
                     <div class="col-2"></div>
                     <div class="col-8 ">
-                        <h2 class="title-h1 p-0">Toutes les formations</h2>
+                        <h2 class="title-h1">Toutes les formations</h2>
                     </div>
                     <div class="col-2"></div>
                 </div>
                 <div class="container m-1">
                     <div class="col-12 text-end d-flex">
                         <div class="col-2"></div>
-                        <div class="col-8 p-0" style="text-align:right;padding-right:3px !important;">
+                        <div class="container text-end p-2">
                             <button type="button" class="buttons button_general" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal2" data-bs-whatever="@fat">+ Créer une formation</button>
+                                data-bs-target="#exampleModal2" data-bs-whatever="@fat">Créer une formation</button>
                         </div>
                         <div class="col-2"></div>
                     </div>
@@ -128,11 +128,11 @@
                 <table class="table table-bordered table-striped w-100 ">
                     <thead class="bg-giep text-white w-100 ">
                         <tr class=" d-lg-table-row table-dark align-middle">
-                            <th>Formation</th>
-                            <th>Nombre d'apprenant</th>
+                            <th>Formations</th>
+                            <th>Nombre d'apprenants</th>
                             <th>Nombre à avoir trouvé</th>
-                            <th>En l'attente d'une réponse</th>
-                            <th>Action</th>
+                            <th>En attente de réponse</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -152,7 +152,7 @@
                         @endforeach
                         @else
                         <tr>
-                            <td colspan="9" class="table-active text-center">Aucunes Formation disponible </td>
+                            <td colspan="9" class="table-active text-center">Aucune Formation disponible </td>
                         </tr>
                         @endif
                     </tbody>
