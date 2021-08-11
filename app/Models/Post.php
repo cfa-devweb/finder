@@ -24,6 +24,10 @@ class Post extends Model
     ];
 
     public function adviser() {
-        return $this->hasMany(Adviser::class);
+        return $this->belongsTo(Adviser::class);
+    }
+
+    public function section() {
+        return $this->belongsTo(Section::class, 'concerned');
     }
 }

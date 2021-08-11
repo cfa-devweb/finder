@@ -75,54 +75,54 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($Posts as $key)
+                @foreach ($Posts as $post)
                 <tr>
-                    <td>{{$key->name}}</td>
-                    <td>{{$key->name_company}}</td>
-                    <td value='{{$key->concerned}}'>{{$section->class_name}}</td>
-                    <td>{{$key->contact}}</td>
-                    <td class="text-truncate" style="max-width: 150px;">{{$key->content}}</td>
+                    <td>{{$post->name}}</td>
+                    <td>{{$post->name_company}}</td>
+                    <td value='{{$post->concerned}}'>{{$post->section->class_name}}</td>
+                    <td>{{$post->contact}}</td>
+                    <td class="text-truncate" style="max-width: 150px;">{{$post->content}}</td>
                     <td class="d-flex justify-content-evenly">
                         <button type="button" class="buttons button_infos btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#modalReadPost-{{ $key->id }}">
+                            data-bs-target="#modalReadPost-{{ $post->id }}">
                             <i class="fas fa-eye"></i>
                         </button>
                         <button type="button" class="buttons button_edit btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#modalUpdatePost-{{ $key->id }}">
+                            data-bs-target="#modalUpdatePost-{{ $post->id }}">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
-                        <button class="buttons button_trash delete" type="button" data-bs-toggle="modal" data-bs-target="#deletPostModal-{{ $key->id }}">
+                        <button class="buttons button_trash delete" type="button" data-bs-toggle="modal" data-bs-target="#deletPostModal-{{ $post->id }}">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>
 
                     <!-- Modal read one post -->
-                    <div class="modal fade" id="modalReadPost-{{ $key->id }}" tabindex="-1" aria-labelledby="ModalLabel"
+                    <div class="modal fade" id="modalReadPost-{{ $post->id }}" tabindex="-1" aria-labelledby="ModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             @csrf
                             <div class="modal-content">
                                 <input type="hidden" id="date_create" name="date_create" value="2021-08-10">
                                 <div class="modal-header">
-                                    <h5 class="modal-title fs-3 fw-bold" id="ModalLabel"> {{$key->name}}</h5>
+                                    <h5 class="modal-title fs-3 fw-bold" id="ModalLabel"> {{$post->name}}</h5>
                                 </div>
                                 <div class="modal-body">
                                     <div class="row g-3">
                                         <div class="col-md-6">
-                                            <h6 class="modal-body fs-3" id="ModalLabel"> {{$key->name_company}}</h6>
+                                            <h6 class="modal-body fs-3" id="ModalLabel"> {{$post->name_company}}</h6>
                                         </div>
                                     </div>
                                     <div class="row g-3">
                                         <div class="col-md-6 ">
-                                            <p class="fs-3 " id="ModalLabel"> {{$key->contact}}</p>
+                                            <p class="fs-3 " id="ModalLabel"> {{$post->contact}}</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <p class="fs-3 " id="ModalLabel" value="{{ $section->id }}"> {{$section->class_name}}</p>
+                                            <p class="fs-3 " id="ModalLabel" value="{{ $section->id }}"> {{$post->section->class_name}}</p>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <p id="ModalLabel"> {{$key->content}}</p>
+                                        <p id="ModalLabel"> {{$post->content}}</p>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -136,10 +136,10 @@
                     </div>
 
                     <!-- Modal update one post -->
-                    <div class="modal fade" id="modalUpdatePost-{{ $key->id }}" tabindex="-1"
+                    <div class="modal fade" id="modalUpdatePost-{{ $post->id }}" tabindex="-1"
                         aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <form action="{{ route('listingPosts.update', $key->id)}}" method="post">
+                            <form action="{{ route('listingPosts.update', $post->id)}}" method="post">
                                 @csrf
                                 <div class="modal-content">
                                     <input type="hidden" id="date_create" name="date_create" value="2021-08-10">
@@ -153,17 +153,17 @@
                                         <div class="row g-3">
                                             <div class="col-md-6">
                                                 <label for="name" class="form-label">Intitulé</label>
-                                                <input type="text" class="form-control" id="name" name="name" value="{{$key->name}}">
+                                                <input type="text" class="form-control" id="name" name="name" value="{{$post->name}}">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="email" class="form-label">Contact</label>
-                                                <input type="text" class="form-control" id="contact" name="contact" value="{{$key->contact}}">
+                                                <input type="text" class="form-control" id="contact" name="contact" value="{{$post->contact}}">
                                             </div>
                                         </div>
                                         <div class="row g-3">
                                             <div class="col-md-6">
                                                 <label for="name_company" class="form-label">Entreprise</label>
-                                                <input type="text" class="form-control" value="{{$key->name_company}}" id="name_company" name="name_company">
+                                                <input type="text" class="form-control" value="{{$post->name_company}}" id="name_company" name="name_company">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="section" class="form-label">Formation concernée</label>
@@ -176,7 +176,7 @@
                                         </div>
                                         <div class="form-group">
                                             <h5 class="modal-title" id="exampleModalLabel"> Description du poste : </h5>
-                                            <textarea class="form-control" rows="5" id="content" name="content">{{$key->content}}</textarea>
+                                            <textarea class="form-control" rows="5" id="content" name="content">{{$post->content}}</textarea>
                                         </div>
                                     </div>
                                     <div class="modal-footer d-flex justify-content-around">
@@ -192,8 +192,8 @@
                     </div>
 
                     <!-- Modal delete one post -->
-                    <form action="{{ route('listingPosts.delete', $key->id) }}" method="post">
-                        <div class="modal fade" id="deletPostModal-{{ $key->id }}" tabindex="-1"
+                    <form action="{{ route('listingPosts.delete', $post->id) }}" method="delete">
+                        <div class="modal fade" id="deletPostModal-{{ $post->id }}" tabindex="-1"
                             aria-labelledby="deletPostModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
