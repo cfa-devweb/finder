@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function() {
     Route::get('dashboard', [DashboardController::class, "index"])->name('dashboard-index');
     Route::post('dashboard', [DashboardController::class, "post"])->name('dashboard-post');
     Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
-    
+
     Route::get('/dashboard/{id}/', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
     // dashboard-formation-suivi
     // listingOneStudent
@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/student/create-profil', [ProfilController::class,'CreateProfil']);
     Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
     Route::get('/student/profil', [ProfilController::class,'ShowProfil']);
-    Route::post('/student/profil/{id}', [ProfilController::class,'UpdateProfil'])->name('student.profil.update');
+    //Route::post('/student/profil/{id}', [ProfilController::class,'UpdateProfil'])->name('student.profil.update');
 
     // return modal view of createStudentAccount
     Route::get('/createStudentAccount', function () {
