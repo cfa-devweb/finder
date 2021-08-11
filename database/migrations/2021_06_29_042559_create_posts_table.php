@@ -20,8 +20,8 @@ class CreatePostsTable extends Migration
             $table->string('name_company', 60);
             $table->string('concerned', 60);
             $table->date('date_create');
-            $table->string('contact', 55)->unique();
-            $table->string('content', 500);
+            $table->string('contact', 55);
+            $table->string('content', 800);
 
             $table->foreignId('adviser_id')
                 ->constrained('advisers');
