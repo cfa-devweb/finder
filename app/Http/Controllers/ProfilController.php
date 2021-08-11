@@ -47,7 +47,7 @@ class ProfilController extends Controller
         $profil -> study = request('checkboxStudy');
         $profil -> experience = request('checkboxExperience');
         $profil -> skills = $skills1 .',' . $skills2 .',' .$skills3 .',' .$skills4  ;
-        $profil -> driver_license = request('checkboxDriverLicense');        
+        $profil -> driver_license = request('checkboxDriverLicense');
         $profil -> vehicle = request('checkboxDriverVehicle');
         $profil -> interests =$interest1 . ',' . $interest2 . ',' . $interest3 . ',' . $interest4 . ',' . $interest5 .','. $interest6 . ',' . $interest7 . ',' .$interest8 . ','.$interest9 . ',' . $interest10 ;
         $profil -> about_me = request('aboutMe');
@@ -69,7 +69,7 @@ class ProfilController extends Controller
     }
 
     // Function to update the profil
-    public function UpdateProfil(Request $request, $id)
+    /*public function UpdateProfil(Request $request, $id)
     {
         $request->validate([
             'last_name' => 'required',
@@ -85,7 +85,7 @@ class ProfilController extends Controller
         $student->user->update($request->only(['email', 'phone']));
 
         return redirect()->back()->with('successadd', 'Merci!');
-    }
+    }*/
 
     // Function to update the resume
     public function edit(Request $request, $id)
@@ -99,9 +99,9 @@ class ProfilController extends Controller
             'interest' => 'required',
             'about_me' => 'required|max:100',
         ]);
-    
+
         Resume::where('student_id', '=', $id)->update($data);
-    
+
         return redirect('student.profil');
     }
 }

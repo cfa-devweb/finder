@@ -4,14 +4,14 @@
 
 <!-- Bloc avec infos alternant + "boutons" de nav -->
 <section class="container-fluid">
-    
+
     <div class="row">
 
         <!-- Nom + Prénom de l'alternant -->
         <div class="col-5">
- 
+
             <h2>{{ $student->name }}</h2>
- 
+
         </div>
 
         <!-- Bouton "Mon profil" -->
@@ -47,8 +47,8 @@
             </h1>
         </div>
     </div>
-
-    <form action="{{route('student.profil.update', $student->id)}}" method="POST">
+    <!-- route('student.profil.update', $student->id) -->
+    <form action="" method="POST">
         @csrf
 
         <!-- Nom + Prénom -->
@@ -126,7 +126,7 @@
         <!-- Description perso. + Niveaux d'études-->
         <div class="row my-4">
             <div class="col-6">
-                <textarea class="form-control" name="about_me" placeholder="Décriez-vous en quelques mots" maxlength="200">{{ $student->resume->about_me }}</textarea>    
+                <textarea class="form-control" name="about_me" placeholder="Décriez-vous en quelques mots" maxlength="200">{{ $student->resume->about_me }}</textarea>
             </div>
 
             <div class="col-6 form-floating">
@@ -223,7 +223,7 @@
                 <label for="floatingSelect">Véhicule</label>
             </div>
         </div>
-        
+
         <!-- Bouton modifier + Bouton valider -->
         <div class="row my-4">
             <div class="col d-md-flex justify-content-md-end">
