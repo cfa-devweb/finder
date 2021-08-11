@@ -17,7 +17,15 @@ class HomeController extends Controller
     public function index()
     {
         $id = Auth::id();
-        $sectionUser = Auth::user()->student->section;
+        if (Auth::user()->student)
+        {
+            $sectionUser = Auth::user()->student->section;
+        }
+        else if (Auth::user()->adviser)
+        {
+            $adviser = Auth::user()->adviser;
+        }
+
         // dd($sectionUser);
         // $post = Post::where('section_id','=',$sectionUser)->get();
         
