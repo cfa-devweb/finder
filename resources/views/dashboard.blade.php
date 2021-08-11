@@ -32,6 +32,7 @@
                             <label for="class_name" class="col-form-label">Nom de la
                                 Formation</label>
                             <input type="text" class="form-control" id="class_name" name="class_name" required>
+
                         </div>
                         <div class="mb-3">
                             <label for="adviser_id" class="col-form-label">Nom du conseiller</label>
@@ -71,6 +72,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
