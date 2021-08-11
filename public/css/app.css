@@ -10869,6 +10869,10 @@ body {
   font-size: 2.2rem;
 }
 
+.table {
+  max-width: 100% !important;
+}
+
 .table-dark,
 .table-dark > th {
   background-color: #343A40 !important;
@@ -11125,7 +11129,7 @@ select.list-dt:focus {
 }
 
 .add_padding_left {
-  padding-left: 5rem;
+  padding-left: 8rem;
 }
 
 .button_save_profil {
