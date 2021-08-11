@@ -16,10 +16,11 @@ class CreateStudentAccountController extends Controller {
      */
     protected function createStudent(Request $request)
     {
-        $request->validate([
+        $result = $request->validate([
             'first_name'=> 'required',
             'last_name'=> 'required',
             'email' => 'required|unique:users',
+            'gender' => 'required',
         ]);
 
         $user = User::create([
@@ -28,19 +29,24 @@ class CreateStudentAccountController extends Controller {
             'password' => $request->input('password', ' ')
         ]);
 
-        Student::create([
+       Student::create([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
-            'gender' => $request->input('gender', 'other'),
+            'gender' => $request->input('gender'),
             'birthday' => $request->input('birthday', '1999-07-24'),
             'active' => $request->input('active', '1'),
             'city' => $request->input('city', 'noumea'),
             'section_id' => $request->input('section_id'),
             'user_id' => $user->id
         ]);
-        
-        return redirect()
-            ->route('dashboard-formation')
+
+        if(!$result) {
+            return back()
+            ->with("danger", "L'alternant n'a pas été ajouté !");  
+        } else {
+            return back()
             ->with("successadd", "L'alternant a bien été ajouté");
+        }
+        
     }
 }

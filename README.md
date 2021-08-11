@@ -36,4 +36,6 @@ To compile scss to css, run this command ***npm run watch***
 
 Run the artisan command ***php artisan serve***
 
-The user test is : mail : test@test.nc      pwd : test
+The user test is : mail : student@test.nc      pwd : test
+
+The adviser test is : mail : adviser@test.nc   pwd : test

@@ -17,19 +17,23 @@ class UsersSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'type' => 1,
-            'email' => 'student@test.nc',
-            'email_verified_at' => now(),
-            'password' => Hash::make('test'),
-            'api_token' => Str::random(60),
-        ],
-        [
-            'type' => 2,
-            'email' => 'adviser@test.nc',
-            'email_verified_at' => now(),
-            'password' => Hash::make('test'),
-            'api_token' => Str::random(60),
-        ],
-    );
+
+            [
+                'id' => 1,
+                'type' => 1,
+                'email' => 'student@test.nc',
+                'email_verified_at' => now(),
+                'password' => Hash::make('test'),
+                'api_token' => Str::random(60),
+            ],
+            [
+                'id' => 2,
+                'type' => 2,
+                'email' => 'adviser@test.nc',
+                'email_verified_at' => now(),
+                'password' => Hash::make('test'),
+                'api_token' => Str::random(60),
+            ],
+        ]);
     }
 }
