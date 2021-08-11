@@ -21,17 +21,17 @@ class HomeController extends Controller
         $id = Auth::id();
         if (Auth::user()->student)
         {
-            $sectionUser = Auth::user()->student->section;
+            //$sectionUser = Auth::user()->student->section;
         }
         else if (Auth::user()->adviser)
         {
             $adviser = Auth::user()->adviser;
         }
 
-        // dd($sectionUser);
-        $sectionidJob = Section::select('job_id')->where('id','=',$sectionUser)->get();
+        //dd($sectionUser);
+        //$sectionidJob = Section::select('job_id')->where('id','=',$sectionUser)->get();
         // dd($sectionidJob->first()->job_id);
-        $tablepostJob = PostsHasJobs::select('*')->where('job_id','=',$sectionidJob->first()->job_id)->get();
+        //$tablepostJob = PostsHasJobs::select('*')->where('job_id','=',$sectionidJob->first()->job_id)->get();
         // dd($sectionidJob);
         $posts = Post::all();
         // dd($posts);

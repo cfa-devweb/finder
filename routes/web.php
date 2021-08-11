@@ -62,15 +62,6 @@ Route::middleware('auth')->group(function() {
     // create new student in database
     Route::post('/createStudentAccount', [CreateStudentAccountController::class, 'createStudent']);
 
-    // send email
-    // Route::get('send-mail', function () {
-    //     $details = [
-    //         'title' => 'Take a look of your new profil on Kinder.nc',
-    //         'body' => 'kndrx.github.io'
-    //     ];
-
-    //     \Mail::to('francinekendrick@gmail.com')->send(new \App\Mail\MyTestMail($details));
-    // });
     /* ------------------------------------------------------------------------------------ */
     Route::get('/', [HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 });
