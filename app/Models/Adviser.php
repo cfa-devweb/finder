@@ -20,11 +20,16 @@ class Adviser extends Model
     ];
 
     /**
-     * Get tbe user that owns the adviser.
+     * Get the user that owns the adviser.
      */
 
     public function user() {
 
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 }
