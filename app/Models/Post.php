@@ -34,10 +34,13 @@ class Post extends Model
         'date_create',
     ];
 
-    /**
-     * Get the advisers for the post.
-     */
-    public function advisers() {
-        return $this->hasMany(Adviser::class);
+
+    public function adviser() {
+        return $this->belongsTo(Adviser::class);
+    }
+
+    public function section() {
+        return $this->belongsTo(Section::class, 'concerned');
+
     }
 }
