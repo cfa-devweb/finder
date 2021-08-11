@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function() {
     /* ------------------------------------------------------------------ */
     Route::get('/listingPosts',[ListingPostController::class,'listingPost']);
     Route::delete('/listingPosts/{id}',[ListingPostController::class,'deletePost'])->name('listingPosts.delete');
-    Route::post('/listingPosts/{id}',[ListingPostController::class,'updatePost'])->name('listingPosts.update');
+    Route::post('/listingPosts/{id}',[ListingPostController::class,'updatePost'])->name('update');
     Route::post('listingPosts',[ListingPostController::class,'addoffer'])->name('post');
 
 
