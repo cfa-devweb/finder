@@ -67,6 +67,14 @@ class User extends Authenticatable {
     }
 
     /**
+     * Get the adviser record associated with the user.
+     */
+    public function adviser()
+    {
+        return $this->hasOne(Adviser::class);
+    }
+
+    /**
      * The "booted" method of the model.
      *
      * @return void

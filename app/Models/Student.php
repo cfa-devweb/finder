@@ -87,14 +87,6 @@ class Student extends Model {
     }
 
     /**
-     * Get the users for the student.
-     */
-    public function users()
-    {
-        return $this->hasMany(Student::class);
-    }
-
-    /**
      * Get the student's name.
      *
      * @param  string  $value
