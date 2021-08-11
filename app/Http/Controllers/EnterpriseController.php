@@ -113,6 +113,6 @@ class EnterpriseController extends Controller
             echo $followUp->delete();
         }
 
-        return redirect('enterprises')->with('successdelete', 'Entreprise supprimer avec succèss');
+        return redirect('enterprises')->with('successdelete', 'Entreprise supprimer avec succès');
     }
 }
