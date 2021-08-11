@@ -29,12 +29,12 @@ class HomeController extends Controller
         }
 
         // dd($sectionUser);
-        $sectionidJob = Section::select('job_id')->where('id','=',$sectionUser)->get();
-        // dd($sectionidJob->first()->job_id);
-        $tablepostJob = PostsHasJobs::select('*')->where('job_id','=',$sectionidJob->first()->job_id)->get();
+//         $sectionidJob = Section::select('job_id')->where('id','=',$sectionUser)->get();
+//         // dd($sectionidJob->first()->job_id);
+//         $tablepostJob = PostsHasJobs::select('*')->where('job_id','=',$sectionidJob->first()->job_id)->get();
         // dd($sectionidJob);
+
         $posts = Post::all();
-        // dd($posts);
         return view('index',compact('posts'));
     }
 }
