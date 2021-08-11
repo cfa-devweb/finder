@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             EnterprisesSeeder::class,
             Follow_upsSeeder::class,
             PostsSeeder::class,
+            PostsHasJobsSeeder::class,
         ]);
     }
 }

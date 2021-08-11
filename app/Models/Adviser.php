@@ -8,11 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Adviser extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'first_name',
         'last_name',
         'class_name',
     ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     protected $hidden = [
         'created_at',
         'updated_at',
@@ -20,11 +32,15 @@ class Adviser extends Model
     ];
 
     /**
-     * Get tbe user that owns the adviser.
+     * Get the user that owns the adviser.
      */
-
-    public function user() {
-
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 }

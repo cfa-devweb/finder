@@ -20,6 +20,7 @@ class CreateStudentAccountController extends Controller {
             'first_name'=> 'required',
             'last_name'=> 'required',
             'email' => 'required|unique:users',
+            'gender' => 'required',
         ]);
 
         $user = User::create([
@@ -28,19 +29,26 @@ class CreateStudentAccountController extends Controller {
             'password' => $request->input('password', ' ')
         ]);
 
-        Student::create([
+       Student::create([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
-            'gender' => $request->input('gender', 'other'),
+            'gender' => $request->input('gender'),
             'birthday' => $request->input('birthday', '1999-07-24'),
             'active' => $request->input('active', '1'),
             'city' => $request->input('city', 'noumea'),
             'section_id' => $request->input('section_id'),
             'user_id' => $user->id
         ]);
-        
-        return redirect()
-            ->route('dashboard-formation')
+
+        // MAIL AFTER REGISTRATION
+        // $details = [
+        //     'title' => 'Take a look of your new profil on Kinder.nc',
+        //     'body' => 'kndrx.github.io',
+        // ];
+
+        // \Mail::to('ptitkens@gmail.com')->send(new \App\Mail\MailController($details));
+
+        return back()
             ->with("successadd", "L'alternant a bien été ajouté");
-    }
+        }
 }

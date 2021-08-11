@@ -17,15 +17,24 @@ class User extends Authenticatable {
      *
      * @var string
      */
-    
     protected $table = 'users';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'email',
         'password',
         'phone',
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     protected $hidden = [
         'type',
         'password',
@@ -42,6 +51,14 @@ class User extends Authenticatable {
     ];
 
     /**
+     * Get the student record associated with the user.
+     */
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    /**
      * Add a mutator to ensure hashed passwords
      */
     public function setPasswordAttribute($password)
@@ -50,11 +67,11 @@ class User extends Authenticatable {
     }
 
     /**
-     * Get the student record associated with the user.
+     * Get the adviser record associated with the user.
      */
-    public function student()
+    public function adviser()
     {
-        return $this->hasOne(Student::class);
+        return $this->hasOne(Adviser::class);
     }
 
     /**

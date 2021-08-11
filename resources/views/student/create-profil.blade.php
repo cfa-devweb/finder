@@ -46,8 +46,8 @@
                                             </div>
                                         </div>
                                         </br>
-                                        <div class="row ">
-                                            <div class="col-md-4 text-left add_padding_left">
+                                        <div class="row add_padding_left">
+                                            <div class="col-md-4 text-left ">
                                                 <input type="radio" id="checkbox4" name="checkboxStudy" value="BAC +2" />
                                                 <label class="form-check-label" for="checkbox4">BAC +2</label>
                                             </div>

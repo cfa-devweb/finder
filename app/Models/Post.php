@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'id',
         'name',
@@ -19,9 +25,15 @@ class Post extends Model
         'adviser_id',
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     protected $hidden = [
         'date_create',
     ];
+
 
     public function adviser() {
         return $this->belongsTo(Adviser::class);
@@ -29,5 +41,6 @@ class Post extends Model
 
     public function section() {
         return $this->belongsTo(Section::class, 'concerned');
+
     }
 }

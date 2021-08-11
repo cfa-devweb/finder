@@ -29,7 +29,7 @@ class ListingPostController extends Controller
             'name_company' => 'required|max:60',
             'concerned' => 'required|max:60',
             'contact' => 'required|max:55',
-            'content' => 'required|max:500'
+            'content' => 'required|max:800'
         ]);
         
         Post::create($request->all());
@@ -38,6 +38,7 @@ class ListingPostController extends Controller
         ->back()
         ->with('success', 'Post successfully');
     }
+
 
     // Function to delete one post
     public function deletePost($id) {
@@ -54,9 +55,9 @@ class ListingPostController extends Controller
             'name_company' => 'required|max:60',
             'concerned' => 'required|max:60',
             'contact' => 'required|max:55',
-            'content' => 'required|max:500'
+            'content' => 'required|max:800'
         ]);
-        //dd($request);
+        // dd($request);
         $post = Post::findOrFail($id);
         $post->update($attributes);
 

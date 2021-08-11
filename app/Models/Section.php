@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Section extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'id',
         'class_name',
@@ -15,31 +21,46 @@ class Section extends Model
         'adviser_id',
         'job_id'
     ];
+
+    /**
+     * Get the adviser that owns the section.
+     */
     public function adviser()
     {
-        # code...
         return $this->belongsTo(Adviser::class);
     }
-    public function jobs()
+
+    /**
+     * Get the job that owns the section.
+     */
+    public function job()
     {
-        # code...
         return $this->belongsTo(Job::class);
     }
+
+    /**
+     * Get the students for the section.
+     */
     public function students()
     {
-        # code...
         return $this->hasMany(Student::class);
     }
+
+    /**
+     * Get the users for the section.
+     */
     public function users()
     {
-        # code...
         return $this->hasMany(Student::class);
     }
+
+    /**
+     * Get the follow-ups for the section.
+     */
     public function followUps()
     {
-        # code...
         return $this->hasMany(FollowUp::class);
     }
-    
-    
+
+
 }

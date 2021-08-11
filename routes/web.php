@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function() {
     Route::get('dashboard', [DashboardController::class, "index"])->name('dashboard-index');
     Route::post('dashboard', [DashboardController::class, "post"])->name('dashboard-post');
     Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
-    
+
     Route::get('/dashboard/{id}/', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
     // dashboard-formation-suivi
     // listingOneStudent
@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function() {
     /* ------------------------------------------------------------------ */
     Route::get('/listingPosts',[ListingPostController::class,'listingPost']);
     Route::delete('/listingPosts/{id}',[ListingPostController::class,'deletePost'])->name('listingPosts.delete');
-    Route::post('/listingPosts/{id}',[ListingPostController::class,'updatePost'])->name('listingPosts.update');
+    Route::post('/listingPosts/{id}',[ListingPostController::class,'updatePost'])->name('update');
     Route::post('listingPosts',[ListingPostController::class,'addoffer'])->name('post');
 
 
@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/student/create-profil', [ProfilController::class,'CreateProfil']);
     Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
     Route::get('/student/profil', [ProfilController::class,'ShowProfil']);
+    //Route::post('/student/profil/{id}', [ProfilController::class,'UpdateProfil'])->name('student.profil.update');
 
     // return modal view of createStudentAccount
     Route::get('/createStudentAccount', function () {
@@ -62,15 +63,6 @@ Route::middleware('auth')->group(function() {
     // create new student in database
     Route::post('/createStudentAccount', [CreateStudentAccountController::class, 'createStudent']);
 
-    // send email
-    // Route::get('send-mail', function () {
-    //     $details = [
-    //         'title' => 'Take a look of your new profil on Kinder.nc',
-    //         'body' => 'kndrx.github.io'
-    //     ];
-
-    //     \Mail::to('francinekendrick@gmail.com')->send(new \App\Mail\MyTestMail($details));
-    // });
     /* ------------------------------------------------------------------------------------ */
     Route::get('/', [HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 });
