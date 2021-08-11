@@ -16,7 +16,7 @@ class CreateStudentAccountController extends Controller {
      */
     protected function createStudent(Request $request)
     {
-        $result = $request->validate([
+        $request->validate([
             'first_name'=> 'required',
             'last_name'=> 'required',
             'email' => 'required|unique:users',
@@ -40,13 +40,15 @@ class CreateStudentAccountController extends Controller {
             'user_id' => $user->id
         ]);
 
-        if(!$result) {
-            return back()
-            ->with("danger", "L'alternant n'a pas été ajouté !");  
-        } else {
-            return back()
+        // MAIL AFTER REGISTRATION
+        // $details = [
+        //     'title' => 'Take a look of your new profil on Kinder.nc',
+        //     'body' => 'kndrx.github.io',
+        // ];
+
+        // \Mail::to('ptitkens@gmail.com')->send(new \App\Mail\MailController($details));
+
+        return back()
             ->with("successadd", "L'alternant a bien été ajouté");
         }
-        
-    }
 }

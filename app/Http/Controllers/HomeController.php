@@ -21,12 +21,13 @@ class HomeController extends Controller
         $id = Auth::id();
         if (Auth::user()->student)
         {
-            $sectionUser = Auth::user()->student->section;
+            //$sectionUser = Auth::user()->student->section;
         }
         else if (Auth::user()->adviser)
         {
             $adviser = Auth::user()->adviser;
         }
+
 
         // dd($sectionUser);
 //         $sectionidJob = Section::select('job_id')->where('id','=',$sectionUser)->get();
