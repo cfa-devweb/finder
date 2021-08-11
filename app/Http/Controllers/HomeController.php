@@ -16,13 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $id = Auth::id();
-        $sectionUser = Auth::user()->student->section;
-        // dd($sectionUser);
-        // $post = Post::where('section_id','=',$sectionUser)->get();
-        
         $posts = Post::all();
-        // dd($posts);
         return view('index',compact('posts'));
     }
 }

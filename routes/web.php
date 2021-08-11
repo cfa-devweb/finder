@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/student/create-profil', [ProfilController::class,'CreateProfil']);
     Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
     Route::get('/student/profil', [ProfilController::class,'ShowProfil']);
+    Route::post('/student/profil/{id}', [ProfilController::class,'UpdateProfil'])->name('student.profil.update');
 
     // return modal view of createStudentAccount
     Route::get('/createStudentAccount', function () {
