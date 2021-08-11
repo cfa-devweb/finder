@@ -48,65 +48,70 @@
         </div>
     </div>
 
-     <!-- Nom + Prénom -->
-     <div class="row my-4">
-        <div class="col-6 form-floating">
-            <input type="text" id="floatingInput1" class="form-control" placeholder="Nom" aria-label="Last name" value="{{ $student->last_name }}">
-            <label for="floatingInputValue1">Nom</label>
-        </div>
-        <div class="col-6 form-floating">
-            <input type="text" id="floatingInput2" class="form-control" placeholder="Prénom" aria-label="First name" value="{{ $student->first_name }}">
-            <label for="floatingInputValue2">Prénom</label>
-        </div>
-    </div>
+    <form action="{{route('student.profil.update', $student->id)}}" method="POST">
+        @csrf
 
-    <!-- Date de naissance + Ville -->
-    <div class="row my-4">
-        <div class="col-6 form-floating">
-            <input type="date" id="floatingInput3" class="form-control" placeholder="Date de naissance" aria-label="Birthday" value="{{ $student->birthday }}">
-            <label for="floatingInput3">Date de naissance</label>
-        </div>
-        <div class="col-6 form-floating">
-            <input type="text" id="floatingInput4" class="form-control" placeholder="Ville" aria-label="City" value="{{ $student->city }}">
-            <label for="floatingInputValue4">Ville</label>
-        </div>
-    </div>
-
-    <!-- Numéro de téléphone + Email -->
-    <div class="row my-4">
-        <div class="col-6 form-floating">
-            <input type="tel" id="floatingInput5" class="form-control" placeholder="Numéro de téléphone" aria-label="Phone" value="{{ $student->user->phone }}">
-            <label for="floatingInputValue5">Numéro de téléphone</label>
-        </div>
-        <div class="col-6 form-floating">
-            <input type="email" id="floatingInput6" class="form-control" placeholder="Email" aria-label="Email" value="{{ $student->user->email }}">
-            <label for="floatingInputValue6">Email</label>
-        </div>
-    </div>
-
-    <!-- Conseiller + Formation -->
-    <div class="row my-4">
-        <div class="col-6 form-floating">
-            <input type="text" id="floatingInput7" class="form-control" placeholder="Mon Conseiller" value="{{ $student->section->adviser->first_name }}" disabled readonly>
-            <label for="floatingInputValue7">Mon conseiller</label>
+        <!-- Nom + Prénom -->
+        <div class="row my-4">
+            <div class="col-6 form-floating">
+                <input type="text" name="last_name" id="floatingInput1" class="form-control" placeholder="Nom" aria-label="Last name" value="{{ $student->last_name }}">
+                <label for="floatingInputValue1">Nom</label>
+            </div>
+            <div class="col-6 form-floating">
+                <input type="text" name="first_name" id="floatingInput2" class="form-control" placeholder="Prénom" aria-label="First name" value="{{ $student->first_name }}">
+                <label for="floatingInputValue2">Prénom</label>
+            </div>
         </div>
 
-        <div class="col-6 form-floating">
-            <input type="text" id="floatingInput8" class="form-control" placeholder="Ma Formation" value="{{ $student->section->class_name }}" disabled readonly>
-            <label for="floatingInputValue8">Ma formation</label>
+        <!-- Date de naissance + Ville -->
+        <div class="row my-4">
+            <div class="col-6 form-floating">
+                <input type="date" name="birthday" id="floatingInput3" class="form-control" placeholder="Date de naissance" aria-label="Birthday" value="{{ $student->birthday }}">
+                <label for="floatingInput3">Date de naissance</label>
+            </div>
+            <div class="col-6 form-floating">
+                <input type="text" name="city" id="floatingInput4" class="form-control" placeholder="Ville" aria-label="City" value="{{ $student->city }}">
+                <label for="floatingInputValue4">Ville</label>
+            </div>
         </div>
-    </div>
 
-    <!-- Bouton modifier + Bouton valider -->
-    <div class="row my-4">
-        <div class="col d-md-flex justify-content-md-end">
-            <button type="button" class="btn me-md-2 buttons button_edit">Modifier</button>
-            <button type="button" class="btn buttons button_save">Valider</button>
+        <!-- Numéro de téléphone + Email -->
+        <div class="row my-4">
+            <div class="col-6 form-floating">
+                <input type="tel" name="phone" id="floatingInput5" class="form-control" placeholder="Numéro de téléphone" aria-label="Phone" value="{{ $student->user->phone }}">
+                <label for="floatingInputValue5">Numéro de téléphone</label>
+            </div>
+            <div class="col-6 form-floating">
+                <input type="email" name="email" id="floatingInput6" class="form-control" placeholder="Email" aria-label="Email" value="{{ $student->user->email }}">
+                <label for="floatingInputValue6">Email</label>
+            </div>
         </div>
-    </div>
+
+        <!-- Conseiller + Formation -->
+        <div class="row my-4">
+            <div class="col-6 form-floating">
+                <input type="text" id="floatingInput7" class="form-control" placeholder="Mon Conseiller" value="" disabled readonly>
+                <label for="floatingInputValue7">Mon conseiller</label>
+            </div>
+
+            <div class="col-6 form-floating">
+                <input type="text" id="floatingInput8" class="form-control" placeholder="Ma Formation" value="" disabled readonly>
+                <label for="floatingInputValue8">Ma formation</label>
+            </div>
+        </div>
+
+        <!-- Bouton modifier + Bouton valider -->
+        <div class="row my-4">
+            <div class="col d-md-flex justify-content-md-end">
+                {{-- <button type="button" class="btn me-md-2 buttons button_edit">Modifier</button> --}}
+                <button type="submit" class="btn buttons button_save">Valider</button>
+            </div>
+        </div>
+    </form>
+
 </section>
 
-<!-- Bloc "Mon CV" -->
+{{-- <!-- Bloc "Mon CV" -->
 <section id="monCv" none>
 
     <!-- Titre du bloc "Mon CV" -->
@@ -118,15 +123,15 @@
         </div>
     </div>
 
-    <!-- Description perso. + Niveaux d'études + Expérience pro. -->
-    <div class="row my-4">
-            <div class="col-6 form-floating">
-                <textarea class="form-control" placeholder="Décriez-vous en quelques mots" id="floatingTextarea" style="height: 142px;"  maxlength="200">{{ $student->resume->about_me }}</textarea>
-                <label for="floatingTextarea">Décriez-vous en quelques mots</label>
+        <!-- Description perso. + Niveaux d'études-->
+        <div class="row my-4">
+            <div class="col-6">
+                <textarea class="form-control" name="about_me" placeholder="Décriez-vous en quelques mots" maxlength="200">{{ $student->resume->about_me }}</textarea>    
             </div>
+
             <div class="col-6 form-floating">
                 <div class="form-floating">
-                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                    <select class="form-select" name="study" id="floatingSelect" aria-label="Floating label select example">
                         <option selected>{{ $student->resume->study }}</option>
                         <option value="Aucun diplôme">Aucun diplôme</option>
                         <option value="CAP">CAP</option>
@@ -137,29 +142,39 @@
                     </select>
                     <label for="floatingSelect">Niveaux d'études</label>
                 </div>
-            
-                <div class="row mt-4">
-                    <div class="form-floating">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                            <option selected>{{ $student->resume->experiences }}</option>
-                            <option value="Jamais">Jamais</option>
-                            <option value="6 mois">6 mois</option>
-                            <option value="1 an">1 an</option>
-                            <option value="2 ans">2 ans</option>
-                            <option value="3 ans">3 ans</option>
-                            <option value="4 ans ou plus">4 ans ou plus</option>
-                        </select>
-                        <label for="floatingSelect">Expérience professionnelle</label>
-                    </div>
+            </div>
+        </div>
+
+        <!-- Upload CV + Expérience professionnelle -->
+        <div class="row my-4">
+
+            <div class="col-6 form-floating">
+                <input type="file" id="floatingFile" class="form-select" placeholder="Mon CV (.pdf)" value="">
+                <label for="floatingFile">Mon CV (.pdf)</label>
+            </div>
+
+            <div class="col-6 form-floating">
+                <div class="form-floating">
+                    <select class="form-select" name="experiences" id="floatingSelect" aria-label="Floating label select example">
+                        <option selected>{{ $student->resume->experiences }}</option>
+                        <option value="Jamais">Jamais</option>
+                        <option value="6 mois">6 mois</option>
+                        <option value="1 an">1 an</option>
+                        <option value="2 ans">2 ans</option>
+                        <option value="3 ans">3 ans</option>
+                        <option value="4 ans ou plus">4 ans ou plus</option>
+                    </select>
+                    <label for="floatingSelect">Expérience professionnelle</label>
                 </div>
             </div>
-    </div>
 
-    <!-- Centre d’intérêts + Compétences -->
-    <div class="row my-4">
+        </div>
+
+        <!-- Centre d’intérêts + Compétences -->
+        <div class="row my-4">
             <div class="col-6 form-floating">
-                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                    <option selected>{{ $student->resume->Center_interest }}</option>
+                <select class="form-select" name="interests" id="floatingSelect" aria-label="Floating label select example">
+                    <option selected>{{ $student->resume->interests }}</option>
                     <option value="1">Musique</option>
                     <option value="2">Informatique</option>
                     <option value="3">Lecture</option>
@@ -174,7 +189,7 @@
                 <label for="floatingSelect">Centre d’intérêts</label>
             </div>
             <div class="col-6 form-floating">
-                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                <select class="form-select" name="skills" id="floatingSelect" aria-label="Floating label select example">
                     <option selected>{{ $student->resume->skills }}</option>
                     <option value="1">Relationel</option>
                     <option value="2">Communication</option>
@@ -186,13 +201,13 @@
                 </select>
                 <label for="floatingSelect">Compétences</label>
             </div>
-    </div>
+        </div>
 
-    <!-- Permis + Véhicule -->
-    <div class="row my-4">
+        <!-- Permis + Véhicule -->
+        <div class="row my-4">
             <div class="col-6 form-floating">
-                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                    <option selected>{{ $student->resume->driverlicence }}</option>
+                <select class="form-select" name="driver_licence" id="floatingSelect" aria-label="Floating label select example">
+                    <option selected>{{ $student->resume->driver_licence }}</option>
                     <option value="Aucun permis">Aucun</option>
                     <option value="A">A</option>
                     <option value="B">B</option>
@@ -200,22 +215,23 @@
                 <label for="floatingSelect">Permis</label>
             </div>
             <div class="col-6 form-floating">
-                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                <select class="form-select" name="vehicule" id="floatingSelect" aria-label="Floating label select example">
                     <option selected>{{ $student->resume->vehicle }}</option>
                     <option value="Non">Non</option>
                     <option value="Oui">Oui</option>
                 </select>
                 <label for="floatingSelect">Véhicule</label>
             </div>
-    </div>
-    
-    <!-- Bouton modifier + Bouton valider -->
-    <div class="row my-4">
-        <div class="col d-md-flex justify-content-md-end">
-            <button type="button" class="btn me-md-2 buttons button_edit">Modifier</button>
-            <button type="button" class="btn buttons button_save">Valider</button>
         </div>
-    </div>
+        
+        <!-- Bouton modifier + Bouton valider -->
+        <div class="row my-4">
+            <div class="col d-md-flex justify-content-md-end">
+                <button type="button" class="btn me-md-2 buttons button_edit">Modifier</button>
+                <button type="button" class="btn buttons button_save">Valider</button>
+            </div>
+        </div>
+    </form>
 
 </section>
 
@@ -230,74 +246,76 @@
         </div>
     </div>
 
-    <!-- Input mot de passe actuel -->
-    <div class="row my-4 ">
-        <div class="col-6 form-floating">
-            <input type="password" id="floatingInput" class="form-control" placeholder="Entrer votre mot de passe actuel" value="">
-            <label for="floatingInput">Entrer votre mot de passe actuel</label>
+        <!-- Input mot de passe actuel -->
+        <div class="row my-4">
+            <div class="col-6 form-floating">
+                <input type="password" id="floatingInput" class="form-control" placeholder="Entrer votre mot de passe actuel" value="">
+                <label for="floatingInput">Entrer votre mot de passe actuel</label>
+            </div>
         </div>
-    </div>
 
-    <!-- Input nouveau mot de passe -->
-    <div class="row my-4">
-        <div class="col-6 form-floating">
-            <input type="password" id="floatingInput" class="form-control" placeholder="Nouveau mot de passe" value="">
-            <label for="floatingInput">Nouveau mot de passe</label>
+        <!-- Input nouveau mot de passe -->
+        <div class="row my-4">
+            <div class="col-6 form-floating">
+                <input type="password" id="floatingInput" class="form-control" placeholder="Nouveau mot de passe" value="">
+                <label for="floatingInput">Nouveau mot de passe</label>
+            </div>
         </div>
-    </div>
 
-    <!-- Input confirmer nouveau mot de passe -->
-    <div class="row my-4">
-        <div class="col-6 form-floating">
-            <input type="password" id="floatingInput" class="form-control" placeholder="Confirmer votre nouveau mot de passe" value="">
-            <label for="floatingInput">Confirmer votre nouveau mot de passe</label>
+        <!-- Input confirmer nouveau mot de passe -->
+        <div class="row my-4">
+            <div class="col-6 form-floating">
+                <input type="password" id="floatingInput" class="form-control" placeholder="Confirmer votre nouveau mot de passe" value="">
+                <label for="floatingInput">Confirmer votre nouveau mot de passe</label>
+            </div>
         </div>
-    </div>
 
-    <!-- Bouton "Valider" -->
-    <div class="row my-4">
-        <div class="col d-md-flex justify-content-md-end">
-            <button type="button" class="btn buttons button_save">Valider</button>
+        <!-- Bouton "Valider" -->
+        <div class="row my-4">
+            <div class="col d-md-flex justify-content-md-end">
+                <button type="button" class="btn buttons button_save">Valider</button>
+            </div>
         </div>
-    </div>
-</section>
+
+</section> --}}
 
 <script type="text/javascript">
 
-$('#btnInfoPerso').click(function(){
+    // Affiche le bloc "Mes informations personnelles" et cache les autres blocs
+    $('#btnInfoPerso').click(function(){
 
-    $('#infoPerso').show();
-    $('#monCv , #monMdp').hide();
+        $('#infoPerso').show();
+        $('#monCv , #monMdp').hide();
 
-    $('#labelInfoPerso').addClass('btn-light');
+        $('#labelInfoPerso').addClass('btn-light');
 
-    $('#labelCv, #labelMdp').removeClass('btn-light');
+        $('#labelCv, #labelMdp').removeClass('btn-light');
 
-});
+    });
 
-$('#btnCv').click(function(){
+    // Affiche le bloc "Mon CV" et cache les autres blocs
+    $('#btnCv').click(function(){
 
-    $('#monCv').show();
-    $('#infoPerso , #monMdp').hide();
+        $('#monCv').show();
+        $('#infoPerso , #monMdp').hide();
 
-    $('#labelCv').addClass('btn-light');
+        $('#labelCv').addClass('btn-light');
 
-    $('#labelInfoPerso , #labelMdp').removeClass('btn-light');
+        $('#labelInfoPerso , #labelMdp').removeClass('btn-light');
 
-});
+    });
 
-$('#btnMdp').click(function(){
+    // Affiche le bloc "Modifier mon mot de passe" et cache les autres blocs
+    $('#btnMdp').click(function(){
 
-    $('#monMdp').show();
-    $('#infoPerso , #monCv').hide();
+        $('#monMdp').show();
+        $('#infoPerso , #monCv').hide();
 
-    $('#labelMdp').addClass('btn-light');
+        $('#labelMdp').addClass('btn-light');
 
-    $('#labelInfoPerso , #labelCv').removeClass('btn-light');
+        $('#labelInfoPerso , #labelCv').removeClass('btn-light');
 
-});
-
-
+    });
 
 </script>
 

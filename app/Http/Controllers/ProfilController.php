@@ -6,6 +6,7 @@ use App\Models\Resume;
 use Illuminate\Http\Request;
 use App\Models\Section;
 use App\Models\Student;
+use App\Models\User;
 use App\Models\Adviser;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,9 +63,45 @@ class ProfilController extends Controller
     // Function to return the view profil
     public function ShowProfil(Request $request)
     {
-
         $student = $request->user()->student;
 
         return view('student.profil',  compact('student'));
+    }
+
+    // Function to update the profil
+    public function UpdateProfil(Request $request, $id)
+    {
+        $request->validate([
+            'last_name' => 'required',
+            'first_name' => 'required',
+            'birthday' => 'required',
+            'city' => 'required',
+            'phone' => 'digits:6',
+            'email' => 'required',
+        ]);
+
+        $student = Student::find($id);
+        $student->update($request->except(['email', 'phone']));
+        $student->user->update($request->only(['email', 'phone']));
+
+        return redirect()->back()->with('successadd', 'Merci!');
+    }
+
+    // Function to update the resume
+    public function edit(Request $request, $id)
+    {
+        $data = $request->validate([
+            'driver_licence' => 'required',
+            'vehicule' => 'required',
+            'study' => 'required',
+            'skills' => 'required',
+            'experiences' => 'required',
+            'interest' => 'required',
+            'about_me' => 'required|max:100',
+        ]);
+    
+        Resume::where('student_id', '=', $id)->update($data);
+    
+        return redirect('student.profil');
     }
 }

@@ -16,16 +16,16 @@ class CreateResumesTable extends Migration
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('driverlicense');
+            $table->string('driver_license');
             $table->boolean('vehicle');
             $table->string('study');
             $table->string('skills', 250);
-            $table->string('experiences');
-            $table->string('Center_interest')->nullable();;
+            $table->string('experience');
+            $table->string('interests')->nullable();;
             $table->string('about_me', 100)->nullable();
 
 
-            
+
             $table->foreignId('student_id')
                 ->constrained('students')
                 ->onUpdate('cascade')

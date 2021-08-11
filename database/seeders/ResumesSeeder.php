@@ -16,17 +16,17 @@ class ResumesSeeder extends Seeder
      */
     public function run()
     {
-            DB::table('resumes')->insert([
-                'driverlicense' => 'A',
-                'vehicle' => '1',
-                'study' => Str::random(5),
-                'skills' => Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ',
-                'experiences' => Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ',
-                'about_me' => Str::random(100),
-                'Center_interest' => Str::random(10). ' ' . Str::random(10) .  ' ' . Str::random(10) . ' ' . Str::random(10)  . ' ' . Str::random(10), 
-                'student_id' => 1,
-                'id' => 1,
+        DB::table('resumes')->insert([
+            'driver_license' => 'A',
+            'vehicle' => '1',
+            'study' => Str::random(5),
+            'skills' => Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ',
+            'experience' => Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ' . Str::random(10) . ' ',
+            'about_me' => Str::random(100),
+            'interests' => Str::random(10). ' ' . Str::random(10) .  ' ' . Str::random(10) . ' ' . Str::random(10)  . ' ' . Str::random(10),
+            'student_id' => 1,
+            'id' => 1,
 
-            ]);
+        ]);
     }
 }

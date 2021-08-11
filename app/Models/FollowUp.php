@@ -6,21 +6,33 @@ use Illuminate\Database\Eloquent\Model;
 
 class FollowUp extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'date',
         'comment',
         'mode_contact',
-        'nom_contact',
+        'name_contact',
         'answer',
         'enterprise_id',
         'student_id'
     ];
+
+    /**
+     * Get the enterprise that owns the follow-up.
+     */
     public function enterprise()
     {
-        # code...
         return $this->belongsTo(Enterprise::class);
     }
-    public function student()
+
+    /**
+     * Get the students for the follow-up.
+     */
+    public function students()
     {
         return $this->hasMany(Student::class);
     }
