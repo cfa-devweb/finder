@@ -14,6 +14,16 @@
 
             </ul>
 
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Les Offres</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/enterprises">Mes recherches</a>
+                </li>
+            </ul>
+
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
@@ -23,6 +33,8 @@
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
                 </li>
                 @endif
+
+
 
                 <!-- Supprimer par la suite cette ligne de register -->
 
@@ -40,6 +52,11 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                        <a class="dropdown-item" href="/student/profil">
+                            Mon profil
+                        </a>
+
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
