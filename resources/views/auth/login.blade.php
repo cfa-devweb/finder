@@ -6,7 +6,7 @@
         <!-- col for image left-->
         <div class="col-md-6">
             <div class="card-body">
-                <img src="https://dummyimage.com/640x360/fff/aaa">
+                <img style="max-width : 100%; object-fit: cover;" src="img/login.png">
             </div>
         </div>
 
