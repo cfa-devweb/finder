@@ -8,7 +8,7 @@ class ListingPostController extends Controller
 {
     //list all offer
     public function listingPost() {
-        $Posts = Post::all();
+        $Posts = Post::paginate(5);
         $sections = Section::all();
         return view('listingPosts', compact('Posts', 'sections'));
     }
