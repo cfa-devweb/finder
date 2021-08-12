@@ -5,10 +5,10 @@
 </div>
 <div class="container d-flex mt-4">
     <div class="col-2"></div>
-    <div class="col-8">        
+    <div class="col-8 row">     
         @if($posts->count()>0)
                         @foreach($posts as $post)
-        <div class="card" style="width: 18rem;">
+        <div class="card p-1 m-1 col-6" style="width: 45%;">
             <div class="card-body">
                 <p class="card-text p-0 m-1">
                     <small class="text-muted">{{  $post->date_create }}</small>
@@ -40,7 +40,7 @@
                                             <p class="fs-3 " id="ModalLabel"> {{$post->contact}}</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <p class="fs-3 " id="ModalLabel" > {{$post->section->class_name}}</p>
+                                            <p class="fs-3 " id="ModalLabel" > {{$post->section}}</p>
                                         </div>
                                         <div class="col-md-6">
                                         </div>

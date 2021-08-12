@@ -35,8 +35,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="section" class="form-label">Formation concernée</label>
-                            <select class="form-select" aria-label="Default select example" name="concerned">
-                                <option selected>Choisir une formation</option>
+                            <select class="form-select" aria-label="Default select example" name="concerned" required>
+                                <option  disabled selected hidden>Choisir une formation</option>
                                 @foreach($sections as $section)
                                 <option value="{{ $section->id }}">{{ $section->class_name }}</option>
                                 @endforeach
@@ -177,8 +177,8 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="section" class="form-label">Formation concernée</label>
-                                            <select class="form-select" aria-label="Default select example" name="concerned">
-                                                <option selected value="{{ $section->id }}"> {{ $section->class_name }}</option>
+                                            <select class="form-select" aria-label="Default select example" name="concerned" required>
+                                                <option disabled selected hidden value="{{ $section->id }}"> {{ $section->class_name }}</option>
                                                 @foreach($sections as $section)
                                                 <option value="{{ $section->id }}">{{ $section->class_name }} </option>
                                                 @endforeach
