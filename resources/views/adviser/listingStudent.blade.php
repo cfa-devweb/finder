@@ -16,8 +16,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Recherche effectuée</th>
                     <th scope="col">Entreprise trouvée</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th class="text-center" scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,25 +30,21 @@
                 student utilise la methode followUps() et utilise la 
                 donné recue soue forme d'un tableau le premier nom_contact  
                 -->
-                <td>
-                    <!-- waiting -->
-                    @if($student->followUps->where('answer','sign')->count())
-                        {{ $student->followUps->where('answer','sign')->first()->name_contact }}
-                    @endif
-                    Aucune entreprise trouvée
-                </td>
                     <td>
+                        <!-- waiting -->
+                        @if($student->followUps->where('answer','sign')->count())
+                        {{ $student->followUps->where('answer','sign')->first()->name_contact }}
+                        @endif
+                        Aucune entreprise trouvée
+                    </td>
+                    <td class="d-flex justify-content-evenly">
                         <a class="buttons button_infos" href="{{ route('dashboard-formation-suivi', $student->id)}}">
                             <i class="fas fa-eye"></i>
                         </a>
-                    </td>
-                    <td>
                         <button type="button" class="buttons button_trash">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>
-
-
                 </tr>
                 @endforeach
             </tbody>
