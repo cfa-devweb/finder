@@ -5,8 +5,8 @@
     <h1 class="title-h1"> {{$sections->first()->class_name}}</h1>
     <div class="container d-flex p-2">
         <div class="col-3">
-            <p><strong class="text-capitalize">Nom: {{ $student->first()->last_name }} </strong></p>
-            <p><strong class="text-capitalize">Prénom: {{ $student->first()->first_name }}</strong></p>
+            <p><strong class="text-capitalize">Nom: {{ $studentid->first()->last_name }} </strong></p>
+            <p><strong class="text-capitalize">Prénom: {{ $studentid->first()->first_name }}</strong></p>
             <p><strong>Email: </strong>{{ $User->first()->email }} </p>
             <p><strong>Téléphone: </strong>{{ $User->first()->phone }}</p>
         </div>
