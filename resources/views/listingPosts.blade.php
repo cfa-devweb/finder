@@ -17,7 +17,7 @@
                     <div class="modal-content">
                         <input type="hidden" id="date_create" name="date_create" value="2021-08-10">
                         <div class="modal-header">
-                            <h5 class="modal-title mx-auto fs-3 fw-bold " id="ModalLabel"> Nouvelle offre d'alternance</h5>
+                            <h5 class="modal-title mx-auto fs-3 fw-bold " id="ModalLabel"> Nouvelle offre d'alternance </h5>
                         </div>
                         <div class="modal-body">
                             <div class="row g-3">
@@ -83,12 +83,10 @@
                     <td>{{$post->contact}}</td>
                     <td class="text-truncate" style="max-width: 150px;">{{$post->content}}</td>
                     <td class="d-flex justify-content-evenly">
-                        <button type="button" class="buttons button_infos btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#modalReadPost-{{ $post->id }}">
+                        <button type="button" class="buttons button_infos btn-sm" data-bs-toggle="modal" data-bs-target="#modalReadPost-{{ $post->id }}">
                             <i class="fas fa-eye"></i>
                         </button>
-                        <button type="button" class="buttons button_edit btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#modalUpdatePost-{{ $post->id }}">
+                        <button type="button" class="buttons button_edit btn-sm" data-bs-toggle="modal" data-bs-target="#modalUpdatePost-{{ $post->id }}">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
                         <button class="buttons button_trash delete" type="button" data-bs-toggle="modal" data-bs-target="#deletPostModal-{{ $post->id }}">
@@ -96,9 +94,31 @@
                         </button>
                     </td>
 
+                    <!-- Modal delete one post -->
+                    <div class="modal fade" id="deletPostModal-{{ $post->id }}" tabindex="-1" aria-labelledby="deletPostModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form action="{{ route('listingPosts.delete', $post->id) }}" method="POST">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        @csrf
+                                        <h5 class="modal-title " id="deletPostModalLabel">Confirmation de la suppression </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Êtes-vous sûr de vouloir supprimer cette offre ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="buttons button_cancel" data-bs-dismiss="modal">Annuler</button>
+                                        @method('DELETE')
+                                        <button type="submit" class="buttons button_trash">Suprimer</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                     <!-- Modal read one post -->
-                    <div class="modal fade" id="modalReadPost-{{ $post->id }}" tabindex="-1" aria-labelledby="ModalLabel"
-                        aria-hidden="true">
+                    <div class="modal fade" id="modalReadPost-{{ $post->id }}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             @csrf
                             <div class="modal-content">
@@ -120,7 +140,6 @@
                                             <p class="fs-3 " id="ModalLabel" value="{{ $section->id }}"> {{$post->section->class_name}}</p>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
                                         <p id="ModalLabel"> {{$post->content}}</p>
                                     </div>
@@ -136,12 +155,9 @@
                     </div>
 
                     <!-- Modal update one post -->
-                    <div class="modal fade" id="modalUpdatePost-{{ $post->id }}" tabindex="-1"
-                        aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modalUpdatePost-{{ $post->id }}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-
-                            <form action="{{ route('update', $key->id)}}" method="post">
-
+                            <form action="{{ route('update', $post->id)}}" method="post">
                                 @csrf
                                 <div class="modal-content">
                                     <input type="hidden" id="date_create" name="date_create" value="2021-08-10">
@@ -167,54 +183,28 @@
                                             <div class="col-md-6">
                                                 <label for="section" class="form-label">Formation concernée</label>
                                                 <select class="form-select" aria-label="Default select example" name="concerned">
-                                                    <option selected value="{{ $section->id }}">{{ $section->class_name }}></option>
+                                                    <option selected value="{{ $section->id }}"> {{ $section->class_name }}</option>
                                                     @foreach($sections as $section)
-                                                    <option value="{{ $section->id }}">{{ $section->class_name }}</option>
+                                                    <option value="{{ $section->id }}">{{ $section->class_name }} </option>
                                                     @endforeach
                                                 </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <h5 class="modal-title" id="exampleModalLabel"> Description du poste : </h5>
+                                                <textarea class="form-control" rows="5" id="content" name="content">{{$post->content}}</textarea>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <h5 class="modal-title" id="exampleModalLabel"> Description du poste : </h5>
-                                            <textarea class="form-control" rows="5" id="content" name="content">{{$post->content}}</textarea>
+                                        <div class="modal-footer d-flex justify-content-around">
+                                            <button type="button" class="buttons button_cancel" data-bs-dismiss="modal">ANNULER</button>
+                                            <button type="submit" class="buttons button_save">VALIDER</button>
                                         </div>
                                     </div>
-                                    <div class="modal-footer d-flex justify-content-around">
-                                        <button type="button" class="buttons button_cancel" data-bs-dismiss="modal">ANNULER</button>
-                                        <button type="submit" class="buttons button_save">VALIDER</button>
+                                    <div>
+                                        <input type="hidden" value="1" name="adviser_id">
                                     </div>
-                                </div>
-                                <div>
-                                    <input type="hidden" value="1" name="adviser_id">
-                                </div>
                             </form>
                         </div>
                     </div>
-
-                    <!-- Modal delete one post -->
-                    <form action="{{ route('listingPosts.delete', $post->id) }}" method="delete">
-                        <div class="modal fade" id="deletPostModal-{{ $post->id }}" tabindex="-1"
-                            aria-labelledby="deletPostModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        @csrf
-                                        <h5 class="modal-title " id="deletPostModalLabel">Confirmation de la suppression
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Êtes-vous sûr de vouloir supprimer cette offre ?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="buttons button_cancel"
-                                            data-bs-dismiss="modal">Annuler</button>
-                                        @method('DELETE')
-                                        <button type="submit" class="buttons button_trash">Suprimer</button>
-                                    </div>
-                                </div>
-                            </div>
-                    </form>
                 </tr>
                 @endforeach
             </tbody>
