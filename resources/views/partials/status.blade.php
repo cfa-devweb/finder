@@ -20,8 +20,11 @@
   function delete_alert() {
     if ($(".alert").is(":visible")) {
       setTimeout(function() {
+        $(".alert").addClass("status_animation");
+      }, 3000);
+      setTimeout(function() {
         $(".alert").remove();
-      }, 5000);
+      }, 4000);
     }
   }
 

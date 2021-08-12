@@ -12,6 +12,11 @@ body {
     background-color: #EFEFEF;
 }
 
+.status_animation {
+    transition: 1s;
+    opacity: 0;
+}
+
 .yield_content {
     min-height: 80vh;
     max-width: 99vw !important;
