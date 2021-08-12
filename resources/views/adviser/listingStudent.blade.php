@@ -31,18 +31,13 @@
                 student utilise la methode followUps() et utilise la 
                 donné recue soue forme d'un tableau le premier nom_contact  
                 -->
-                    <!--
                 <td>
-                   // A rajouter quand la donnée sera nullable
-                        $student->followUps
-                        ->whereNotNull
-                        ('nom_contact')
-                        ->first()
-                        ->nom_contact
-                    
+                    <!-- waiting -->
+                    @if($student->followUps->where('answer','sign')->count())
+                        {{ $student->followUps->where('answer','sign')->first()->name_contact }}
+                    @endif
+                    Aucune entreprise trouvée
                 </td>
-            -->
-                    <td></td>
                     <td>
                         <a class="buttons button_infos" href="{{ route('dashboard-formation-suivi', $student->id)}}">
                             <i class="fas fa-eye"></i>
