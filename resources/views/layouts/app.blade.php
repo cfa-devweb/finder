@@ -40,7 +40,7 @@
     @include('partials.status')
 
     <div id="app" class="container yield_content">
-        <main class="py-4">
+        <main class="py-5">
             @yield('content')
             @yield('auth')
         </main>
