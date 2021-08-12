@@ -17,6 +17,10 @@ body {
     opacity: 0;
 }
 
+.form_error {
+    color: $trash;
+}
+
 .yield_content {
     min-height: 80vh;
     max-width: 99vw !important;
@@ -63,34 +67,34 @@ body {
 }
 
 .button_edit {
-    background-color: $button-edit-background-color;
-    &:hover{background-color: darken($button-edit-background-color, 5);}
+    background-color: $edit;
+    &:hover{background-color: darken($edit, 5);}
 }
 
 .button_trash {
-    background-color: $button-trash-background-color;
-    &:hover{background-color: darken($button-trash-background-color, 5);}
+    background-color: $trash;
+    &:hover{background-color: darken($trash, 5);}
 }
 
 .button_infos {
-    background-color: $button-infos-background-color;
-    &:hover{background-color: darken($button-infos-background-color, 5);}
+    background-color: $info;
+    &:hover{background-color: darken($info, 5);}
 }
 
 .button_cancel {
-    background-color: $button-cancel-background-color;
+    background-color: $cancel;
     color: $button-cancel-color !important;
-    &:hover{background-color: darken($button-cancel-background-color, 5);}
+    &:hover{background-color: darken($cancel, 5);}
 }
 
 .button_save {
-    background-color: $button-save-background-color;
-    &:hover{background-color: darken($button-save-background-color, 5);}
+    background-color: $save;
+    &:hover{background-color: darken($save, 5);}
 }
 
 .button_general {
-    background-color: $button-general-background-color;
-    &:hover{background-color: darken($button-general-background-color, 5);}
+    background-color: $general;
+    &:hover{background-color: darken($general, 5);}
 }
 /*#endregion Buttons*/
 
@@ -104,13 +108,13 @@ body {
     text-align: center;
     vertical-align: sub;
     white-space: nowrap;
-    background-color: $tag-background-color;
+    background-color: $general;
 
     &-answer {
-        &-waiting {background-color: $tag-answer-waiting-background-color;}
-        &-refusal {background-color: $tag-answer-refusal-background-color;}
-        &-accepted {background-color: $tag-answer-accepted-background-color;}
-        &-sign {background-color: $tag-answer-sign-background-color;}
+        &-waiting {background-color: $edit;}
+        &-refusal {background-color: $trash;}
+        &-accepted {background-color: $info;}
+        &-sign {background-color: $save;}
     }
 }
 /*#endregion Buttons*/
@@ -175,7 +179,7 @@ body {
 #msform .action-button {
 
     width: 100px;
-    background:#0788D9;
+    background:$general;
     font-family: "nunito", sans-serif;
     color: white;
     padding: 0.375rem 0.75rem;
@@ -290,7 +294,7 @@ select.list-dt:focus {
 }
 
 .button_save_profil {
-    background-color:  #4CA649 !important;
+    background-color:  $save !important;
 
 }
 
