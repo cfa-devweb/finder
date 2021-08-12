@@ -88,10 +88,10 @@
                                 <label for="answer" class="form-label">Réponse</label>
                                 <select class="form-select" id="answer" name="answer" autocomplete="off" required>
                                     <option value="">...</option>
-                                    <option value="en attente">En attente</option>
-                                    <option value="refus">Refus</option>
-                                    <option value="accepté">Accepté</option>
-                                    <option value="signé">Signé</option>
+                                    <option value="waiting">En attente</option>
+                                    <option value="refusal">Refus</option>
+                                    <option value="accepted">Accepté</option>
+                                    <option value="sign">Signé</option>
                                 </select>
                             </div>
                         </div>
