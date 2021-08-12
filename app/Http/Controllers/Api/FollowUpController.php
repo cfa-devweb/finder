@@ -33,6 +33,7 @@ class FollowUpController extends Controller
             'answer' => 'required|min:1',
             'comment' => 'max:255'
         ]);
+        $request->merge(['student_id' => $request->user()->student->id]);
 
         return FollowUp::create($request->all());
     }
@@ -63,6 +64,7 @@ class FollowUpController extends Controller
             'answer' => 'required|min:1',
             'comment' => 'max:255'
         ]);
+        $request->merge(['student_id' => $request->user()->student->id]);
 
         return $followUp->update($request->all());
     }
