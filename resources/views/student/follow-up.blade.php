@@ -229,15 +229,19 @@
             switch (tagValue) {
                 case 'waiting':
                     $(this).addClass('tag-answer-waiting');
+                    $(this).text('En attente');
                     break;
                 case 'refusal':
                     $(this).addClass('tag-answer-refusal');
+                    $(this).text('Refus');
                     break;
                 case 'accepted':
                     $(this).addClass('tag-answer-accepted');
+                    $(this).text('Accepté');
                     break;
                 case 'sign':
                     $(this).addClass('tag-answer-sign');
+                    $(this).text('Signé');
                     break;
             }
         })
