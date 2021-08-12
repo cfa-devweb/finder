@@ -210,6 +210,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $Posts->links()}}
     </div>
 </div>
 @endsection
