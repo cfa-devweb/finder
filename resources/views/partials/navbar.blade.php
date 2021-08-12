@@ -14,24 +14,27 @@
 
             </ul>
 
+            <!-- Center Of Navbar -->
+            @if (!Auth::guest())
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="/">Les Offres</a>
                 </li>
 
-                @if (!Auth::guest() && Auth::user()->adviser)
+                @if (Auth::user()->adviser)
                 <li class="nav-item">
                     <a class="nav-link" href="/dashboard">Les Formations</a>
                 </li>
                 @endif
 
 
-                @if (!Auth::guest() && Auth::user()->student)
+                @if (Auth::user()->student)
                 <li class="nav-item">
                     <a class="nav-link" href="/enterprises">Mes recherches</a>
                 </li>
                 @endif
             </ul>
+            @endif
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
@@ -39,7 +42,7 @@
                 @guest
                 @if (Route::has('login'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
+                    <a class="nav-link" href="{{ route('login') }}"></a>
                 </li>
                 @endif
                 
