@@ -55,6 +55,8 @@
             @endif
             </tbody>
         </table>
+        <div class="d-flex justify-content-center">{{ $followUps->links()}}</div>
+
     </div>
 
     <!-- Modal -->

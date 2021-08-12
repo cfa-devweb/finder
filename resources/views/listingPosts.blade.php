@@ -201,7 +201,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $Posts->links()}}
+        <div class="d-flex justify-content-center">{{ $Posts->links()}}</div>
     </div>
 </div>
 @endsection
