@@ -40,7 +40,7 @@
                                             <p class="fs-3 " id="ModalLabel"> {{$post->contact}}</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <p class="fs-3 " id="ModalLabel" > {{$post->section}}</p>
+                                            <p class="fs-3 " id="ModalLabel" > {{$post->section->class_name}}</p>
                                         </div>
                                         <div class="col-md-6">
                                         </div>
