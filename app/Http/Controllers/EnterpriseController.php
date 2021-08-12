@@ -38,12 +38,14 @@ class EnterpriseController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $request->validateWithBag('post', [
             'name_company' => 'required|max:30',
             'name_contact' => 'required|max:30',
             'phone_contact' => 'required|digits:6',
             'email_contact' => 'required|email',
         ]);
+
+        $old_name_company = $request->old('name_company');
 
         $request->merge(['student_id' => $request->user()->student->id]);
 
@@ -85,7 +87,7 @@ class EnterpriseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validateData = $request->validate([
+        $validateData = $request->validateWithBag('put', [
             'name_company' => 'required|max:30',
             'name_contact' => 'required|max:30',
             'phone_contact' => 'required|digits:6',

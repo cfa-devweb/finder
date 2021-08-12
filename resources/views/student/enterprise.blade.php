@@ -29,18 +29,38 @@
                         <div class="mb-3">
                             <label for="name_company" class="form-label">Nom de l'entreprise</label>
                             <input type="text" class="form-control" name="name_company" maxlength="30">
+                            @error('name_company', 'post')
+                            <p class="form_error">
+                                {{ $message }}
+                            </p>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="name_contact" class="form-label">Nom du contact</label>
                             <input type="text" class="form-control" name="name_contact" maxlength="30">
+                            @error('name_contact', 'post')
+                            <p class="form_error">
+                                {{ $message }}
+                            </p>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="email_contact" class="form-label">E-mail du contact</label>
                             <input type="email" class="form-control" name="email_contact">
+                            @error('email_contact', 'post')
+                            <p class="form_error">
+                                {{ $message }}
+                            </p>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="phone_contact" class="form-label">Numéro de téléphone du contact</label>
                             <input type="tel" class="form-control" name="phone_contact" maxlength="6">
+                            @error('phone_contact', 'post')
+                            <p class="form_error">
+                                {{ $message }}
+                            </p>
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-footer justify-content-center">
@@ -51,6 +71,15 @@
             </div>
         </div>
     </div>
+    @if($errors->post->isNotEmpty())
+    <script>
+        $(document).ready(function() {
+            $('#add-company_modal').modal('show');
+        });
+    </script>
+    @endif
+
+
 
     <!-- List of companies -->
     <div class="table-responsive">
@@ -125,18 +154,38 @@
                                     <div class="mb-3">
                                         <label for="name_company" class="form-label">Nom de l'entreprise</label>
                                         <input type="text" class="form-control" name="name_company" maxlength="30" value="{{ $enterprise->name_company }}">
+                                        @error('name_company', 'put')
+                                        <p class="form_error">
+                                            {{ $message }}
+                                        </p>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="name_contact" class="form-label">Nom du contact</label>
                                         <input type="text" class="form-control" name="name_contact" maxlength="30" value="{{ $enterprise->name_contact }}">
+                                        @error('name_contact', 'put')
+                                        <p class="form_error">
+                                            {{ $message }}
+                                        </p>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="email_contact" class="form-label">E-mail du contact</label>
                                         <input type="email" class="form-control" name="email_contact" value="{{ $enterprise->email_contact }}">
+                                        @error('email_contact', 'put')
+                                        <p class="form_error">
+                                            {{ $message }}
+                                        </p>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="phone_contact" class="form-label">Numéro de téléphone du contact</label>
                                         <input type="tel" class="form-control" name="phone_contact" maxlength="6" value="{{ $enterprise->phone_contact }}">
+                                        @error('phone_contact', 'put')
+                                        <p class="form_error">
+                                            {{ $message }}
+                                        </p>
+                                        @enderror
                                     </div>
                                     <div>
                                         <input type="hidden" value="1" name="student_id">
@@ -150,6 +199,13 @@
                         </div>
                     </div>
                 </div>
+                @if($errors->put->isNotEmpty())
+                <script>
+                    $(document).ready(function() {
+                        $('#edit-company_modal-{{$enterprise->id}}').modal('show');
+                    });
+                </script>
+                @endif
                 @endforeach
             </tbody>
         </table>
@@ -158,9 +214,4 @@
     </div>
 
 </div>
-
-
-
-
-
 @endsection
