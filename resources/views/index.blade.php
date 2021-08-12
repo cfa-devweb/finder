@@ -14,11 +14,14 @@
                 </p>
                 <h5 class="card-title">{{  $post->name }}</h5>
                 <p>{{  $post->content }}</p>
-                <div class="container text-end">
-                    <button class="buttons button_general" data-bs-toggle="modal" data-bs-target="#modalReadPost-{{ $post->id }}" ><i class="fas fa-eye"></i></button>
-                    <button class="buttons button_save d-none"><i class="far fa-thumbs-up"></i></button>
-                </div>
+                
             </div>
+            <div class="card-footer text-muted">                    
+                    <div class="container text-end">
+                        <button class="buttons button_general" data-bs-toggle="modal" data-bs-target="#modalReadPost-{{ $post->id }}" ><i class="fas fa-eye"></i></button>
+                        <button class="buttons button_save d-none"><i class="far fa-thumbs-up"></i></button>
+                    </div>
+                </div>
         </div> 
         <div class="modal fade" id="modalReadPost-{{ $post->id }}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
