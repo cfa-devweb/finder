@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function() {
     Route::get('dashboard', [DashboardController::class, "index"])->name('dashboard-index');
     Route::post('dashboard', [DashboardController::class, "post"])->name('dashboard-post');
     Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
+    Route::delete('/dashboard/{id}',[listingStudentController::class,'deleteOneAlternant'])->name('listingAlternant.delete');
 
     Route::get('/dashboard/{id}/', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
     // dashboard-formation-suivi

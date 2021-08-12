@@ -49,10 +49,33 @@
                         </a>
                     </td>
                     <td>
-                        <button type="button" class="buttons button_trash">
+                        <button class="buttons button_trash delete" type="button" data-bs-toggle="modal" data-bs-target="#deletPostModal-{{ $student->id }}">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>
+
+                     <!-- Modal delete one alternant -->
+                     <div class="modal fade" id="deletPostModal-{{ $student->id }}" tabindex="-1" aria-labelledby="deletPostModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form action="{{ route('listingAlternant.delete', $student->id) }}" method="POST">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        @csrf
+                                        <h5 class="modal-title " id="deletPostModalLabel">Confirmation de la suppression </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Êtes-vous sûr de vouloir supprimer cette alternant ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="buttons button_cancel" data-bs-dismiss="modal">Annuler</button>
+                                        @method('DELETE')
+                                        <button type="submit" class="buttons button_trash">Suprimer</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
 
 
                 </tr>
