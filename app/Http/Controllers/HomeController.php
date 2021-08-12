@@ -35,7 +35,7 @@ class HomeController extends Controller
 //         $tablepostJob = PostsHasJobs::select('*')->where('job_id','=',$sectionidJob->first()->job_id)->get();
         // dd($sectionidJob);
 
-        $posts = Post::all();
+        $posts = Post::select('*')->paginate(6);
         return view('index',compact('posts'));
     }
 }
