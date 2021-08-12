@@ -34,10 +34,11 @@
                 -->
                     <td>
                         <!-- waiting -->
-                        @if($student->followUps->where('answer','sign')->count())
+                        @if($student->followUps->where('answer','sign')->count()>0)
                         {{ $student->followUps->where('answer','sign')->first()->name_contact }}
-                        @endif
+                        @else
                         Aucune entreprise trouvée
+                        @endif
                     </td>
                     <td class="d-flex justify-content-evenly">
                         <a class="buttons button_infos" href="{{ route('dashboard-formation-suivi', $student->user_id)}}">
