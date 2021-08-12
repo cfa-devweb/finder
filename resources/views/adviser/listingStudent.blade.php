@@ -39,7 +39,7 @@
                     Aucune entreprise trouvée
                 </td>
                     <td>
-                        <a class="buttons button_infos" href="{{ route('dashboard-formation-suivi', $student->id)}}">
+                        <a class="buttons button_infos" href="{{ route('dashboard-formation-suivi', $student->user_id)}}">
                             <i class="fas fa-eye"></i>
                         </a>
                     </td>
