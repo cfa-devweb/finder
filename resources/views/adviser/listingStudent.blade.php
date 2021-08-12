@@ -20,6 +20,8 @@
                 </tr>
             </thead>
             <tbody>
+                
+                @if($students->count()>0)
                 @foreach ($students as $student)
                 <tr>
                     <td>{{ $student->first_name }}</td>
@@ -72,6 +74,11 @@
                     </div>
                 </tr>
                 @endforeach
+                @else
+                <tr>
+                    <td colspan="9" class="table-active text-center">Aucun alternant disponible</td>
+                </tr>
+                @endif
             </tbody>
         </table>
     </div>
