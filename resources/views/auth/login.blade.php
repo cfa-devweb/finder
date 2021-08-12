@@ -6,7 +6,7 @@
         <!-- col for image left-->
         <div class="col-md-6">
             <div class="card-body">
-                <img style="max-width : 100%; object-fit: cover;" src="img/login.png">
+                <img style="max-width : 100%; object-fit: cover;" src="{{ asset('img/login.png') }}">
             </div>
         </div>
 
