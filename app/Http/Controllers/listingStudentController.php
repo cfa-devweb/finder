@@ -17,7 +17,7 @@ class listingStudentController extends Controller
     public function showTable($id){
 
         $section = Section::find($id);
-        $students = Student::where('section_id', '=', $id)->get();
+        $students = Student::where('section_id', '=', $id)->paginate(5);
 
         return view('adviser.listingStudent',  compact('id', 'section', 'students'));
 
