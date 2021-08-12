@@ -57,7 +57,7 @@ class ProfilController extends Controller
 
         $profil -> save();
 
-        return redirect ('/student/create-profil');
+        return redirect()->route('home');
     }
 
     // Function to return the view profil

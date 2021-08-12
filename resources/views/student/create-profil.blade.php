@@ -10,6 +10,9 @@
                 <h2 class="title-h1"><strong>Création du profil</strong></h2>
                 <p>C'est simple !</p>
                 <div class="row">
+
+
+
                     <div class="col-md-12 ">
                         <form method="POST" action="/saveprofil" id="msform">
                             @csrf
@@ -62,7 +65,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="button" name="next" class="next action-button" value="Next Step" />
+                                <input type="button" name="next" class="next action-button" value="Suivant" />
                             </fieldset>
                             <!--end Study Area-->
 
@@ -105,8 +108,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                                <input type="button" name="next" class="next action-button" value="Next Step" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="Précedent" />
+                                <input type="button" name="next" class="next action-button" value="Suivant" />
                             </fieldset>
                             <!--end Experience Area-->
 
@@ -122,11 +125,16 @@
                                                     <option selected value="">Compétence 1</option>
                                                     <option value="mécanique">mécanique</option>
                                                     <option value="relationel">relationel</option>
-                                                    <option value="voiture">voiture</option>
+                                                    <option value="informatique">informatique</option>
                                                     <option value="client">client</option>
                                                     <option value="commercial">commercial</option>
                                                     <option value="cuisine">cuisine</option>
                                                     <option value="tourisme">tourisme</option>
+                                                    <option value="sport">sport</option>
+                                                    <option value="BTP">BTP</option>
+                                                    <option value="Numerique">Numerique</option>
+                                                    <option value="Environnement">Environnement</option>
+                                                    <option value="Comptabilité">Comptabilité</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-3">
@@ -134,11 +142,16 @@
                                                     <option selected value="">Compétence 2</option>
                                                     <option value="mécanique">mécanique</option>
                                                     <option value="relationel">relationel</option>
-                                                    <option value="voiture">voiture</option>
+                                                    <option value="informatique">informatique</option>
                                                     <option value="client">client</option>
                                                     <option value="commercial">commercial</option>
                                                     <option value="cuisine">cuisine</option>
                                                     <option value="tourisme">tourisme</option>
+                                                    <option value="sport">sport</option>
+                                                    <option value="BTP">BTP</option>
+                                                    <option value="Numerique">Numerique</option>
+                                                    <option value="Environnement">Environnement</option>
+                                                    <option value="Comptabilité">Comptabilité</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-3">
@@ -146,11 +159,16 @@
                                                     <option selected value="">Compétence 3</option>
                                                     <option value="mécanique">mécanique</option>
                                                     <option value="relationel">relationel</option>
-                                                    <option value="voiture">voiture</option>
+                                                    <option value="informatique">informatique</option>
                                                     <option value="client">client</option>
                                                     <option value="commercial">commercial</option>
                                                     <option value="cuisine">cuisine</option>
                                                     <option value="tourisme">tourisme</option>
+                                                    <option value="sport">sport</option>
+                                                    <option value="BTP">BTP</option>
+                                                    <option value="Numerique">Numerique</option>
+                                                    <option value="Environnement">Environnement</option>
+                                                    <option value="Comptabilité">Comptabilité</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-3">
@@ -158,16 +176,22 @@
                                                     <option selected value="">Compétence 4</option>
                                                     <option value="mécanique">mécanique</option>
                                                     <option value="relationel">relationel</option>
-                                                    <option value="voiture">voiture</option>
+                                                    <option value="informatique">informatique</option>
                                                     <option value="client">client</option>
                                                     <option value="commercial">commercial</option>
                                                     <option value="cuisine">cuisine</option>
                                                     <option value="tourisme">tourisme</option>
+                                                    <option value="sport">sport</option>
+                                                    <option value="BTP">BTP</option>
+                                                    <option value="Numerique">Numerique</option>
+                                                    <option value="Environnement">Environnement</option>
+                                                    <option value="Comptabilité">Comptabilité</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-                                </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="next" class="next action-button" value="Next Step" />
+                                </div> <input type="button" name="previous" class="previous action-button-previous" value="Précedent" />
+                                 <input type="button" name="next" class="next action-button" value="Suivant" />
                             </fieldset>
                             <!--end Skills Area-->
 
@@ -204,14 +228,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="next" class="next action-button" value="Next Step" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="Précedent" />
+                                 <input type="button" name="next" class="next action-button" value="Suivant" />
                             </fieldset>
                             <!--end DriverLicense Area-->
 
                             <!--Interest Area-->
                             <fieldset>
                                 <div class="form-card pt-3">
-                                    <h2 class="fs-title text-center">Quels sont vos principaux centre d'interet</h2>
+                                    <h2 class="fs-title text-center">Quels sont vos principaux centre d'interets</h2>
                                     <div class="row pt-4">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-2 text-left">
@@ -273,8 +298,8 @@
                                         <div class="col-md-1"></div>
                                     </div>
                                 </div>
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                                <input type="button" name="next" class="next action-button" value="Next Step" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="Précedent" />
+                                <input type="button" name="next" class="next action-button" value="Suivant" />
                             </fieldset>
                             <!--end Interest Area-->
 
@@ -286,8 +311,8 @@
 
                                     <textarea class="col-md-12" maxlength="200" name="aboutMe" placeholder="Décrivez vous (200 lettres max)" value=" "></textarea>
                                 </div>
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                                <input type="submit" name="submit" class="next action-button button_save_profil" value="Sauvegarder votre profil" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="Précedent" />
+                                <input type="submit" name="submit" class="next action-button button_save_profil" value="Valider" />
                             </fieldset>
                             <!--end Commentary Area-->
                         </form>
