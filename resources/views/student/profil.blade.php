@@ -27,10 +27,11 @@
         </div>
 
         <!-- Bouton "Modifier mon mot de passe" -->
-        <div class="col-3 d-grid">
+        {{-- <div class="col-3 d-grid">
+
             <input type="radio" class="btn-check" name="btnradio" id="btnMdp" autocomplete="off">
             <label class="btn" for="btnMdp" id="labelMdp">Modifier mon mot de passe</label>
-        </div>
+        </div> --}}
 
     </div>
 
@@ -220,10 +221,9 @@
             </div>
 
             <div class="col-6 form-floating">
-                <select class="form-select" name="vehicule" id="floatingSelect">
-                    <option selected>{{ $student->resume->vehicle }}</option>
-                    <option value="0">Non</option>
-                    <option value="1">Oui</option>
+                <select class="form-select" name="vehicle" id="floatingSelect">
+                    <option value="0" @if($student->resume->vehicle == '0') selected @endif>Non</option>
+                    <option value="1" @if($student->resume->vehicle == '1') selected @endif>Oui</option>
                 </select>
                 <label for="floatingSelect">Véhicule</label>
             </div>
@@ -240,7 +240,7 @@
 </section>
 
 <!-- Bloc "Modifier mon mot de passe" -->
-<section id="monMdp" style="display:none;">
+{{-- <section id="monMdp" style="display:none;">
     <!-- Titre du bloc "Modifier mon mot de passe" -->
     <div class="row">
         <div class="col-12">
@@ -281,15 +281,15 @@
             </div>
         </div>
 
-</section>
+</section> --}}
 
 <script type="text/javascript">
 
-    // Affiche le bloc "Mes informations personnelles" et cache les autres blocs
+    // Affiche le bloc "Mes informations personnelles" et cache l'autre bloc
     $('#btnInfoPerso').click(function(){
 
         $('#infoPerso').show();
-        $('#monCv , #monMdp').hide();
+        $('#monCv').hide();
 
         $('#labelInfoPerso').addClass('btn-light');
 
@@ -297,11 +297,11 @@
 
     });
 
-    // Affiche le bloc "Mon CV" et cache les autres blocs
+    // Affiche le bloc "Mon CV" et cache l'autre bloc
     $('#btnCv').click(function(){
 
         $('#monCv').show();
-        $('#infoPerso , #monMdp').hide();
+        $('#infoPerso').hide();
 
         $('#labelCv').addClass('btn-light');
 
