@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\EnterpriseController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\CreateStudentAccountController;
@@ -51,8 +52,9 @@ Route::middleware('auth')->group(function() {
     /* ------------------------------------------------------------------------- */
     Route::get('/student/create-profil', [ProfilController::class,'CreateProfil']);
     Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
-    Route::get('/student/profil', [ProfilController::class,'ShowProfil']);
-    //Route::post('/student/profil/{id}', [ProfilController::class,'UpdateProfil'])->name('student.profil.update');
+    Route::get('/student/profil', [ProfilController::class, 'ShowProfil']);
+    Route::post('/student/{student}', [ProfilController::class, 'UpdateProfil'])->name('profil.update');
+    Route::put('/resumes/{resume}', [ResumeController::class, 'update'])->name('resumes.update');
 
     // return modal view of createStudentAccount
     Route::get('/createStudentAccount', function () {
