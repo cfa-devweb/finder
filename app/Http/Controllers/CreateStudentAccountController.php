@@ -50,6 +50,6 @@ class CreateStudentAccountController extends Controller {
                     ->send(new RegisterMail($user, $student));
 
         return back()
-            ->with("successadd", "L'alternant a bien été ajouté");
+            ->with("successadd", "L'alternant a bien été ajouté.");
         }
 }
