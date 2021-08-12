@@ -47,18 +47,18 @@
             </h1>
         </div>
     </div>
-    <!-- route('student.profil.update', $student->id) -->
-    <form action="" method="POST">
+
+    <form action="{{route('profil.update', $student->id)}}" method="POST">
         @csrf
 
         <!-- Nom + Prénom -->
         <div class="row my-4">
             <div class="col-6 form-floating">
-                <input type="text" name="last_name" id="floatingInput1" class="form-control" placeholder="Nom" aria-label="Last name" value="{{ $student->last_name }}">
+                <input type="text" name="last_name" id="floatingInput1" class="form-control" placeholder="Nom" value="{{ $student->last_name }}" required>
                 <label for="floatingInputValue1">Nom</label>
             </div>
             <div class="col-6 form-floating">
-                <input type="text" name="first_name" id="floatingInput2" class="form-control" placeholder="Prénom" aria-label="First name" value="{{ $student->first_name }}">
+                <input type="text" name="first_name" id="floatingInput2" class="form-control" placeholder="Prénom" value="{{ $student->first_name }}" required>
                 <label for="floatingInputValue2">Prénom</label>
             </div>
         </div>
@@ -66,11 +66,11 @@
         <!-- Date de naissance + Ville -->
         <div class="row my-4">
             <div class="col-6 form-floating">
-                <input type="date" name="birthday" id="floatingInput3" class="form-control" placeholder="Date de naissance" aria-label="Birthday" value="{{ $student->birthday }}">
+                <input type="date" name="birthday" id="floatingInput3" class="form-control" placeholder="Date de naissance" value="{{ $student->birthday }}" required>
                 <label for="floatingInput3">Date de naissance</label>
             </div>
             <div class="col-6 form-floating">
-                <input type="text" name="city" id="floatingInput4" class="form-control" placeholder="Ville" aria-label="City" value="{{ $student->city }}">
+                <input type="text" name="city" id="floatingInput4" class="form-control" placeholder="Ville" value="{{ $student->city }}" required>
                 <label for="floatingInputValue4">Ville</label>
             </div>
         </div>
@@ -78,11 +78,11 @@
         <!-- Numéro de téléphone + Email -->
         <div class="row my-4">
             <div class="col-6 form-floating">
-                <input type="tel" name="phone" id="floatingInput5" class="form-control" placeholder="Numéro de téléphone" aria-label="Phone" value="{{ $student->user->phone }}">
+                <input type="tel" name="phone" id="floatingInput5" class="form-control" placeholder="Numéro de téléphone" value="{{ $student->user->phone }}" required>
                 <label for="floatingInputValue5">Numéro de téléphone</label>
             </div>
             <div class="col-6 form-floating">
-                <input type="email" name="email" id="floatingInput6" class="form-control" placeholder="Email" aria-label="Email" value="{{ $student->user->email }}">
+                <input type="email" name="email" id="floatingInput6" class="form-control" placeholder="Email" value="{{ $student->user->email }}" required>
                 <label for="floatingInputValue6">Email</label>
             </div>
         </div>
@@ -90,29 +90,29 @@
         <!-- Conseiller + Formation -->
         <div class="row my-4">
             <div class="col-6 form-floating">
-                <input type="text" id="floatingInput7" class="form-control" placeholder="Mon Conseiller" value="" disabled readonly>
+                <input type="text" id="floatingInput7" class="form-control" placeholder="Mon Conseiller" value="{{ $student->section->adviser->name }}" disabled readonly>
                 <label for="floatingInputValue7">Mon conseiller</label>
             </div>
 
             <div class="col-6 form-floating">
-                <input type="text" id="floatingInput8" class="form-control" placeholder="Ma Formation" value="" disabled readonly>
+                <input type="text" id="floatingInput8" class="form-control" placeholder="Ma Formation" value="{{ $student->section->class_name }}" disabled readonly>
                 <label for="floatingInputValue8">Ma formation</label>
             </div>
         </div>
 
-        <!-- Bouton modifier + Bouton valider -->
+        <!-- Bouton "Valider" -->
         <div class="row my-4">
             <div class="col d-md-flex justify-content-md-end">
-                {{-- <button type="button" class="btn me-md-2 buttons button_edit">Modifier</button> --}}
                 <button type="submit" class="btn buttons button_save">Valider</button>
             </div>
         </div>
+        
     </form>
 
 </section>
 
-{{-- <!-- Bloc "Mon CV" -->
-<section id="monCv" none>
+<!-- Bloc "Mon CV" -->
+<section id="monCv" style="display:none;">
 
     <!-- Titre du bloc "Mon CV" -->
     <div class="row">
@@ -123,6 +123,10 @@
         </div>
     </div>
 
+    <form action="{{route('resumes.update', $student->resume->id)}}" method="POST">
+        @csrf
+        @method('PUT')
+
         <!-- Description perso. + Niveaux d'études-->
         <div class="row my-4">
             <div class="col-6">
@@ -131,7 +135,7 @@
 
             <div class="col-6 form-floating">
                 <div class="form-floating">
-                    <select class="form-select" name="study" id="floatingSelect" aria-label="Floating label select example">
+                    <select class="form-select" name="study" id="floatingSelect">
                         <option selected>{{ $student->resume->study }}</option>
                         <option value="Aucun diplôme">Aucun diplôme</option>
                         <option value="CAP">CAP</option>
@@ -155,8 +159,8 @@
 
             <div class="col-6 form-floating">
                 <div class="form-floating">
-                    <select class="form-select" name="experiences" id="floatingSelect" aria-label="Floating label select example">
-                        <option selected>{{ $student->resume->experiences }}</option>
+                    <select class="form-select" name="experience" id="floatingSelect">
+                        <option selected>{{ $student->resume->experience }}</option>
                         <option value="Jamais">Jamais</option>
                         <option value="6 mois">6 mois</option>
                         <option value="1 an">1 an</option>
@@ -173,31 +177,31 @@
         <!-- Centre d’intérêts + Compétences -->
         <div class="row my-4">
             <div class="col-6 form-floating">
-                <select class="form-select" name="interests" id="floatingSelect" aria-label="Floating label select example">
+                <select class="form-select" name="interests" id="floatingSelect">
                     <option selected>{{ $student->resume->interests }}</option>
-                    <option value="1">Musique</option>
-                    <option value="2">Informatique</option>
-                    <option value="3">Lecture</option>
-                    <option value="4">Ecriture</option>
-                    <option value="5">Photographie</option>
-                    <option value="6">Voyage</option>
-                    <option value="7">Sports</option>
-                    <option value="8">Jeux-vidéos</option>
-                    <option value="9">Chasse</option>
-                    <option value="10">Pêche</option>
+                    <option value="Musique">Musique</option>
+                    <option value="Informatique">Informatique</option>
+                    <option value="Lecture">Lecture</option>
+                    <option value="Ecriture">Ecriture</option>
+                    <option value="Photographie">Photographie</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Jeux-vidéos">Jeux-vidéos</option>
+                    <option value="Chasse">Chasse</option>
+                    <option value="Pêche">Pêche</option>
                 </select>
                 <label for="floatingSelect">Centre d’intérêts</label>
             </div>
+
             <div class="col-6 form-floating">
-                <select class="form-select" name="skills" id="floatingSelect" aria-label="Floating label select example">
+                <select class="form-select" name="skills" id="floatingSelect">
                     <option selected>{{ $student->resume->skills }}</option>
-                    <option value="1">Relationel</option>
-                    <option value="2">Communication</option>
-                    <option value="3">Tourisme</option>
-                    <option value="4">Informatique</option>
-                    <option value="5">Gestion</option>
-                    <option value="6">Mécanique</option>
-                    <option value="7">Cuisine</option>
+                    <option value="Relationel">Relationel</option>
+                    <option value="Communication">Communication</option>
+                    <option value="Tourisme">Tourisme</option>
+                    <option value="Informatique">Informatique</option>
+                    <option value="Gestion">Gestion</option>
+                    <option value="Mécanique">Mécanique</option>
+                    <option value="Cuisine">Cuisine</option>
                 </select>
                 <label for="floatingSelect">Compétences</label>
             </div>
@@ -206,29 +210,29 @@
         <!-- Permis + Véhicule -->
         <div class="row my-4">
             <div class="col-6 form-floating">
-                <select class="form-select" name="driver_licence" id="floatingSelect" aria-label="Floating label select example">
-                    <option selected>{{ $student->resume->driver_licence }}</option>
+                <select class="form-select" name="driver_license" id="floatingSelect">
+                    <option selected>{{ $student->resume->driver_license }}</option>
                     <option value="Aucun permis">Aucun</option>
                     <option value="A">A</option>
                     <option value="B">B</option>
                 </select>
                 <label for="floatingSelect">Permis</label>
             </div>
+
             <div class="col-6 form-floating">
-                <select class="form-select" name="vehicule" id="floatingSelect" aria-label="Floating label select example">
+                <select class="form-select" name="vehicule" id="floatingSelect">
                     <option selected>{{ $student->resume->vehicle }}</option>
-                    <option value="Non">Non</option>
-                    <option value="Oui">Oui</option>
+                    <option value="0">Non</option>
+                    <option value="1">Oui</option>
                 </select>
                 <label for="floatingSelect">Véhicule</label>
             </div>
         </div>
 
-        <!-- Bouton modifier + Bouton valider -->
+        <!-- Bouton "Valider" -->
         <div class="row my-4">
             <div class="col d-md-flex justify-content-md-end">
-                <button type="button" class="btn me-md-2 buttons button_edit">Modifier</button>
-                <button type="button" class="btn buttons button_save">Valider</button>
+                <button type="submit" class="btn buttons button_save">Valider</button>
             </div>
         </div>
     </form>
@@ -236,7 +240,7 @@
 </section>
 
 <!-- Bloc "Modifier mon mot de passe" -->
-<section id="monMdp" none>
+<section id="monMdp" style="display:none;">
     <!-- Titre du bloc "Modifier mon mot de passe" -->
     <div class="row">
         <div class="col-12">
@@ -249,7 +253,7 @@
         <!-- Input mot de passe actuel -->
         <div class="row my-4">
             <div class="col-6 form-floating">
-                <input type="password" id="floatingInput" class="form-control" placeholder="Entrer votre mot de passe actuel" value="">
+                <input type="password" name="password" id="floatingInput" class="form-control" placeholder="Entrer votre mot de passe actuel" value="{{ $student->user->password }}">
                 <label for="floatingInput">Entrer votre mot de passe actuel</label>
             </div>
         </div>
@@ -273,11 +277,11 @@
         <!-- Bouton "Valider" -->
         <div class="row my-4">
             <div class="col d-md-flex justify-content-md-end">
-                <button type="button" class="btn buttons button_save">Valider</button>
+                <button type="submit" class="btn buttons button_save">Valider</button>
             </div>
         </div>
 
-</section> --}}
+</section>
 
 <script type="text/javascript">
 
@@ -302,18 +306,6 @@
         $('#labelCv').addClass('btn-light');
 
         $('#labelInfoPerso , #labelMdp').removeClass('btn-light');
-
-    });
-
-    // Affiche le bloc "Modifier mon mot de passe" et cache les autres blocs
-    $('#btnMdp').click(function(){
-
-        $('#monMdp').show();
-        $('#infoPerso , #monCv').hide();
-
-        $('#labelMdp').addClass('btn-light');
-
-        $('#labelInfoPerso , #labelCv').removeClass('btn-light');
 
     });
 

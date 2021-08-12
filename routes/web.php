@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\EnterpriseController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\CreateStudentAccountController;
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function() {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard-index');
     Route::post('dashboard', [DashboardController::class, 'post'])->name('dashboard-post');
     Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
+    Route::delete('/dashboard/{id}',[listingStudentController::class,'deleteOneAlternant'])->name('listingAlternant.delete');
     Route::get('/dashboard/{id}/', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
     Route::get('/dashboard/{id}/listingOneStudent', [listingStudentController::class, 'showUserInfo'])->name('dashboard-formation-suivi');
     /* ------------------------------------------------------------------ */
@@ -49,9 +51,11 @@ Route::middleware('auth')->group(function() {
     Route::get('/enterprises/{id}/follow-up', [FollowUpController::class, 'index']);
 
     /* ------------------------------------------------------------------------- */
-    Route::get('/student/profil', [ProfilController::class,'ShowProfil']);
-    //Route::post('/student/profil/{id}', [ProfilController::class,'UpdateProfil'])->name('student.profil.update');
-
+    Route::get('/student/create-profil', [ProfilController::class,'CreateProfil']);
+    Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
+    Route::get('/student/profil', [ProfilController::class, 'ShowProfil']);
+    Route::post('/student/{student}', [ProfilController::class, 'UpdateProfil'])->name('profil.update');
+    Route::put('/resumes/{resume}', [ResumeController::class, 'update'])->name('resumes.update');
     Route::get('/createStudentAccount', function () {
         $sections = Section::all();
         return view('/adviser/createStudentAccount', compact('sections'));

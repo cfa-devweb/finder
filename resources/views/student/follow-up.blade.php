@@ -23,7 +23,7 @@
                 <th scope="col">Personne contacté</th>
                 <th scope="col">Commentaire</th>
                 <th scope="col">Réponse</th>
-                <th scope="col">Actions</th>
+                <th class="text-center" scope="col">Actions</th>
             </tr>
             </thead>
             <tbody id="tableBody">
@@ -36,7 +36,7 @@
                         <td class="name-contact">{{ $key->name_contact }}</td>
                         <td class="comment">{{ $key->comment }}</td>
                         <td class="answer"><div class="tag tag-answer">{{ $key->answer }}</div></td>
-                        <td>
+                        <td class="d-flex justify-content-evenly">
                             <button class="buttons button_infos btn-modal-consult" data-id="{{ $key->id }}" data-bs-toggle="modal" data-bs-target="#followUpModal">
                                 <i class="fas fa-eye"></i>
                             </button>
@@ -88,10 +88,10 @@
                                 <label for="answer" class="form-label">Réponse</label>
                                 <select class="form-select" id="answer" name="answer" autocomplete="off" required>
                                     <option value="">...</option>
-                                    <option value="en attente">En attente</option>
-                                    <option value="refus">Refus</option>
-                                    <option value="accepté">Accepté</option>
-                                    <option value="signé">Signé</option>
+                                    <option value="waiting">En attente</option>
+                                    <option value="refusal">Refus</option>
+                                    <option value="accepted">Accepté</option>
+                                    <option value="sign">Signé</option>
                                 </select>
                             </div>
                         </div>
@@ -180,7 +180,6 @@
         let answer = $('select[name=answer]').val();
         let comment = $('textarea[name=comment]').val();
         let enterprise_id = $('input[name=enterprise_id]').val();
-        let student_id = 1;
 
         if (idFollowUp) {
             url = '/api/follow-up/' + idFollowUp;
@@ -204,7 +203,6 @@
                 answer: answer,
                 comment: comment,
                 enterprise_id: enterprise_id,
-                student_id: student_id
             },
             success: function () {
                 location.reload();

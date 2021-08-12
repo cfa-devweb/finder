@@ -96,16 +96,4 @@ class Student extends Model {
     {
         return $this->first_name . ' ' . $this->last_name;
     }
-
-    /**
-     * Get the id's section.
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function getSectionAttribute()
-    {
-        return $this->section_id;
-    }
-
 }

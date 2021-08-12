@@ -57,7 +57,7 @@ class ProfilController extends Controller
 
         $profil -> save();
 
-        return redirect ('/student/create-profil');
+        return redirect()->route('home');
     }
 
     // Function to return the view profil
@@ -69,14 +69,14 @@ class ProfilController extends Controller
     }
 
     // Function to update the profil
-    /*public function UpdateProfil(Request $request, $id)
+    public function UpdateProfil(Request $request, $id)
     {
         $request->validate([
             'last_name' => 'required',
             'first_name' => 'required',
             'birthday' => 'required',
             'city' => 'required',
-            'phone' => 'digits:6',
+            'phone' => 'required|digits:6',
             'email' => 'required',
         ]);
 
@@ -84,24 +84,6 @@ class ProfilController extends Controller
         $student->update($request->except(['email', 'phone']));
         $student->user->update($request->only(['email', 'phone']));
 
-        return redirect()->back()->with('successadd', 'Merci!');
-    }*/
-
-    // Function to update the resume
-    public function edit(Request $request, $id)
-    {
-        $data = $request->validate([
-            'driver_licence' => 'required',
-            'vehicule' => 'required',
-            'study' => 'required',
-            'skills' => 'required',
-            'experiences' => 'required',
-            'interest' => 'required',
-            'about_me' => 'required|max:100',
-        ]);
-
-        Resume::where('student_id', '=', $id)->update($data);
-
-        return redirect('student.profil');
+        return redirect()->back()->with('successadd', 'Vos informations personnelles ont été mises à jour.');
     }
 }

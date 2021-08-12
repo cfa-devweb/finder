@@ -10855,6 +10855,11 @@ body {
   background-color: #EFEFEF;
 }
 
+.status_animation {
+  transition: 1s;
+  opacity: 0;
+}
+
 .yield_content {
   min-height: 80vh;
   max-width: 99vw !important;
@@ -11022,6 +11027,7 @@ body {
 #msform .action-button {
   width: 100px;
   background: #0788D9;
+  font-family: "nunito", sans-serif;
   color: white;
   padding: 0.375rem 0.75rem;
   font-size: 0.9rem;
@@ -11044,6 +11050,7 @@ body {
   background: #616161;
   color: white;
   padding: 0.375rem 0.75rem;
+  font-family: "nunito", sans-serif;
   font-size: 0.9rem;
   line-height: 1.6;
   border-radius: 0.25rem;
