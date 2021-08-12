@@ -17,7 +17,7 @@
                 <p>{{  $post->content }}</p>
                 <div class="container text-end">
                     <button class="buttons button_general" data-bs-toggle="modal" data-bs-target="#modalReadPost-{{ $post->id }}" ><i class="fas fa-eye"></i></button>
-                    <button class="buttons button_save"><i class="far fa-thumbs-up"></i></button>
+                    <button class="buttons button_save d-none"><i class="far fa-thumbs-up"></i></button>
                 </div>
             </div>
         </div> 
@@ -59,6 +59,8 @@
                         </div>
                     </div>
         @endforeach
+        
+        {{ $posts->links()}}
                         @else
                             <p>Aucunes Formation disponible </p>
                         @endif
