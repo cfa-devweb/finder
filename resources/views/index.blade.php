@@ -4,11 +4,10 @@
     <h1 class="title-h1">Dernières offres d'alternance</h1>
 </div>
 <div class="container d-flex mt-4">
-    <div class="col-2"></div>
-    <div class="col-8 row">     
+    <div class="col-12 row m-2">     
         @if($posts->count()>0)
                         @foreach($posts as $post)
-        <div class="card p-1 m-1 col-6" style="width: 45%;">
+        <div class="card p-1 m-1 col-4 " style="width: 24%; justify-content: center;">
             <div class="card-body">
                 <p class="card-text p-0 m-1">
                     <small class="text-muted">{{  $post->date_create }}</small>
@@ -65,6 +64,5 @@
                             <p>Aucunes Formation disponible </p>
                         @endif
     </div>
-    <div class="col-2"></div>
 </div>
 @endsection
