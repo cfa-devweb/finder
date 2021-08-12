@@ -23,7 +23,7 @@
                 <th scope="col">Personne contacté</th>
                 <th scope="col">Commentaire</th>
                 <th scope="col">Réponse</th>
-                <th scope="col">Actions</th>
+                <th class="text-center" scope="col">Actions</th>
             </tr>
             </thead>
             <tbody id="tableBody">
@@ -36,7 +36,7 @@
                         <td class="name-contact">{{ $key->name_contact }}</td>
                         <td class="comment">{{ $key->comment }}</td>
                         <td class="answer"><div class="tag tag-answer">{{ $key->answer }}</div></td>
-                        <td>
+                        <td class="d-flex justify-content-evenly">
                             <button class="buttons button_infos btn-modal-consult" data-id="{{ $key->id }}" data-bs-toggle="modal" data-bs-target="#followUpModal">
                                 <i class="fas fa-eye"></i>
                             </button>
