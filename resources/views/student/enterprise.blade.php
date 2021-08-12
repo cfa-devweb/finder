@@ -4,8 +4,6 @@
 
 <?php
 
-auth()->user()->id;
-
 ?>
 
 <div class="container">
@@ -64,9 +62,7 @@ auth()->user()->id;
                     <th scope="col">Nom du contact</th>
                     <th scope="col">E-mail du contact</th>
                     <th scope="col">Téléphone du contact</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th class="text-center" scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,15 +72,11 @@ auth()->user()->id;
                     <td>{{ $enterprise->name_contact }}</td>
                     <td>{{ $enterprise->email_contact }}</td>
                     <td>{{ $enterprise->phone_contact }}</td>
-                    <td>
+                    <td class="d-flex justify-content-evenly">
                         <a class="buttons button_infos" href="/enterprises/{{$enterprise->id}}/follow-up"><i class="fas fa-eye"></i></a>
-                    </td>
-                    <td>
                         <button class="buttons button_edit" data-bs-toggle="modal" data-bs-target="#edit-company_modal-{{$enterprise->id}}">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
-                    </td>
-                    <td>
                         <button class="buttons button_trash" data-bs-toggle="modal" data-bs-target="#delete-company_modal-{{$enterprise->id}}">
                             <i class="fas fa-trash-alt"></i>
                         </button>
