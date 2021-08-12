@@ -13,7 +13,7 @@
     <h1 class="title-h1">Dernières offres d'alternance</h1>
 </div>
 <div class="container">
-<div class="album pt-5 pb-1 bg-light">
+<div class="album pt-5 pb-1 ">
     <div class="container">
         <div class="row">
             @if($posts->count()>0)
