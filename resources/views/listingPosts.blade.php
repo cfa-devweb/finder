@@ -140,7 +140,7 @@
                         aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
 
-                            <form action="{{ route('update', $key->id)}}" method="post">
+                            <form action="{{ route('update', $post->id)}}" method="post">
 
                                 @csrf
                                 <div class="modal-content">
