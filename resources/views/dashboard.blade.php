@@ -90,8 +90,8 @@
                 <tr>
                     <td class="text-capitalize">{{$Section->class_name }} </td>
                     <td class="text-capitalize">{{$Section->students->count() }}</td>
-                    <td>{{$Section->students()->whereHas('followUps',function($query){$query->where('answer','signé');})->count() }}</td>
-                    <td>{{$Section->students()->whereHas('followUps',function($query){$query->where('answer','en attente');})->count() }}</td>
+                    <td>{{$Section->students()->whereHas('followUps',function($query){$query->where('answer','sign');})->count() }}</td>
+                    <td>{{$Section->students()->whereHas('followUps',function($query){$query->where('answer','waiting');})->count() }}</td>
                     <td>
                         <a class="buttons button_infos" href="{{ route('dashboard-formation', $Section->id)}}">
                             <i class="fas fa-eye"></i>
