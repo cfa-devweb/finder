@@ -38,7 +38,7 @@
                         Aucune entreprise trouvée
                     </td>
                     <td class="d-flex justify-content-evenly">
-                        <a class="buttons button_infos" href="{{ route('dashboard-formation-suivi', $student->id)}}">
+                        <a class="buttons button_infos" href="{{ route('dashboard-formation-suivi', $student->user_id)}}">
                             <i class="fas fa-eye"></i>
                         </a>
                         <button class="buttons button_trash delete" type="button" data-bs-toggle="modal" data-bs-target="#deletPostModal-{{ $student->id }}">
