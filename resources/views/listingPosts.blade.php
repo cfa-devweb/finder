@@ -157,6 +157,7 @@
                     <!-- Modal update one post -->
                     <div class="modal fade" id="modalUpdatePost-{{ $post->id }}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
+
                             <form action="{{ route('update', $post->id)}}" method="post">
                                 @csrf
                                 <div class="modal-content">
