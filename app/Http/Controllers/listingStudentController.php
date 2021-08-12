@@ -38,4 +38,11 @@ class listingStudentController extends Controller
 
     }
 
+     // Function to delete one alternant
+     public function deleteOneAlternant($id) {
+        $post = Student::findOrFail($id);
+        $post->delete();
+        return redirect('/dashboard/{id}')->with('success', 'Alternant supprimer avec succéss');
+    }
+
 }
