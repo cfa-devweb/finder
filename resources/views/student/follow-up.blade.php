@@ -180,7 +180,6 @@
         let answer = $('select[name=answer]').val();
         let comment = $('textarea[name=comment]').val();
         let enterprise_id = $('input[name=enterprise_id]').val();
-        let student_id = 1;
 
         if (idFollowUp) {
             url = '/api/follow-up/' + idFollowUp;
@@ -204,7 +203,6 @@
                 answer: answer,
                 comment: comment,
                 enterprise_id: enterprise_id,
-                student_id: student_id
             },
             success: function () {
                 location.reload();
