@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\FollowUpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,5 @@ Route::middleware('auth:api')->get('/students', function (Request $request) {
 });
 
 Route::group(['middleware'=>"auth:api"], function() {
-    Route::apiResource('follow-up', \App\Http\Controllers\Api\FollowUpController::class);
+    Route::apiResource('follow-up', FollowUpController::class);
 });

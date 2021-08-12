@@ -24,6 +24,8 @@ class CreatePostsTable extends Migration
             $table->string('content', 800);
 
             $table->foreignId('adviser_id')
+                ->onDelete('cascade')
+                ->onUpdate('cascade')
                 ->constrained('advisers');
         });
     }

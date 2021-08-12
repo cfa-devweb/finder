@@ -24,8 +24,6 @@ use App\Models\Section;
 
 Auth::routes();
 
-Route::get('/',[HomeController::class, "index"])->name('accueil');
-
 
 Route::middleware('auth')->group(function() {
     /* ---------------------------------------------------------------------------------- */

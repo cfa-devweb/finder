@@ -14,25 +14,22 @@
     <h1 class="title-h1">Toutes les formations</h1>
 
     <div class="d-flex justify-content-end my-2">
-        <button type="button" class="buttons button_general" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@fat">+ Créer une formation</button>
+        <button type="button" class="buttons button_general" data-bs-toggle="modal" data-bs-target="#add-formation_modal">Créer une formation</button>
     </div>
 
-    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
+    <!-- Modal -->
+    <div class="modal fade" id="add-formation_modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-uppercase" id="exampleModal2Label">formulaire ajout
-                        d'une formation</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('dashboard-post')}}" method="post">
-                        @csrf
+                <form action="{{ route('dashboard-post')}}" method="POST">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title mx-auto fs-3 fw-bold">Formulaire ajout d'une formation</h5>
+                    </div>
+                    <div class="modal-body m-3">
                         <div class="mb-3">
-                            <label for="class_name" class="col-form-label">Nom de la
-                                Formation</label>
+                            <label for="class_name" class="col-form-label">Nom de la Formation</label>
                             <input type="text" class="form-control" id="class_name" name="class_name" required>
-
                         </div>
                         <div class="mb-3">
                             <label for="adviser_id" class="col-form-label">Nom du conseiller</label>
@@ -48,7 +45,7 @@
                             @endif
                         </div>
                         <div class="mb-3">
-                            <label for="job_id" class="col-form-label">Nom du job:</label>
+                            <label for="job_id" class="col-form-label">Nom du domaine d'activité:</label>
                             <select class="form-select" aria-label="Default select example" id="job_id" name="job_id" required>
                                 @foreach($Post as $Posts)
                                 <option value="{{ $Posts->id }}">{{ $Posts->name }} </option>
@@ -64,15 +61,14 @@
                             @endif
                             </select>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                            <button type="submit" class="btn btn-primary text-light">Envoyer</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="buttons button_cancel" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="buttons button_save">Valider</button>
+                    </div>
+                </form>
             </div>
         </div>
-
     </div>
 </div>
 
