@@ -37,7 +37,7 @@
                         @if($student->followUps->where('answer','sign')->count()>0)
                         {{ $student->followUps->where('answer','sign')->first()->name_contact }}
                         @else
-                        Aucune entreprise trouvée
+                        Aucune entreprise trouvée.
                         @endif
                     </td>
                     <td class="d-flex justify-content-evenly">
