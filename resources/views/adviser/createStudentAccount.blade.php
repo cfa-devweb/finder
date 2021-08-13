@@ -17,14 +17,29 @@
                     <div class="mb-3">
                         <label for="first_name" class="col-form-label">Prénom</label>
                         <input type="text" class="form-control" id="first_name" name="first_name">
+                        @error('first_name', 'post')
+                        <p class="form_error">
+                            {{ $message }}
+                        </p>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="last_name" class="col-form-label">Nom</label>
                         <input type="text" class="form-control" id="last_name" name="last_name">
+                        @error('last_name', 'post')
+                        <p class="form_error">
+                            {{ $message }}
+                        </p>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="email" class="col-form-label">Email</label>
                         <input type="email" class="form-control" id="email" name="email">
+                        @error('email', 'post')
+                        <p class="form_error">
+                            {{ $message }}
+                        </p>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="gender" class="col-form-label">Genre</label>
@@ -43,3 +58,11 @@
         </div>
     </div>
 </div>
+
+@if($errors->post->isNotEmpty())
+    <script>
+        $(document).ready(function() {
+            $('#studentModal').modal('show');
+        });
+    </script>
+    @endif
