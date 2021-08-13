@@ -11,7 +11,8 @@ use App\Models\Student;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
 
-class CreateStudentAccountController extends Controller {
+class CreateStudentAccountController extends Controller
+{
 
     /**
      * Insert new student in database table students.
@@ -19,8 +20,8 @@ class CreateStudentAccountController extends Controller {
     protected function createStudent(Request $request)
     {
         $request->validateWithBag('post', [
-            'first_name'=> 'required',
-            'last_name'=> 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'email' => 'required|unique:users',
             'gender' => 'required',
         ]);
@@ -33,7 +34,7 @@ class CreateStudentAccountController extends Controller {
 
 
 
-       $student = Student::create([
+        $student = Student::create([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'gender' => $request->input('gender'),
@@ -47,9 +48,9 @@ class CreateStudentAccountController extends Controller {
         $email = $request->get('email');
 
         Mail::to($email)
-                    ->send(new RegisterMail($user, $student));
+            ->send(new RegisterMail($user, $student));
 
         return back()
             ->with("successadd", "L'alternant a bien été ajouté.");
-        }
+    }
 }
