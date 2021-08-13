@@ -34,7 +34,7 @@
                         <td class="date">{{ $key->date }}</td>
                         <td class="mode-contact">{{ $key->mode_contact }}</td>
                         <td class="name-contact">{{ $key->name_contact }}</td>
-                        <td class="comment">{{ $key->comment }}</td>
+                        <td class="comment text-truncate">{{ $key->comment }}</td>
                         <td class="answer"><div class="tag tag-answer">{{ $key->answer }}</div></td>
                         <td class="d-flex justify-content-evenly">
                             <button class="buttons button_infos btn-modal-consult" data-id="{{ $key->id }}" data-bs-toggle="modal" data-bs-target="#followUpModal">
@@ -165,7 +165,21 @@
         $('#date').val(parentElement.find('.date').text());
         $('#mode_contact').val(parentElement.find('.mode-contact').text());
         $('#name_contact').val(parentElement.find('.name-contact').text());
-        $('#answer').val(parentElement.find('.answer').text());
+        let answer = parentElement.find('.answer').text();
+        switch (answer) {
+                case 'En attente':
+                    $('#answer').val('waiting');
+                    break;
+                case 'Refus':
+                    $('#answer').val('refusal');
+                    break;
+                case 'Accepté':
+                    $('#answer').val('accepted');
+                    break;
+                case 'Signé':
+                    $('#answer').val('sign');
+                    break;
+            }
         $('#comment').val(parentElement.find('.comment').text());
 
         $('#submitForm').attr('onclick', 'editFollowUp(' + $('#id').val() + ')');

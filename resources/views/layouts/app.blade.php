@@ -41,7 +41,9 @@
 
     <div id="app" class="container yield_content">
         <main class="py-5">
-            @include('layouts.breadcrumb')
+            @if (Auth::check())
+                @include('layouts.breadcrumb')
+            @endif
             @yield('content')
             @yield('auth')
         </main>
