@@ -36,7 +36,7 @@ class ListingPostController extends Controller
     
         return redirect()
         ->back()
-        ->with('successadd', "Offre d'alternance créer avec succèss");
+        ->with('successadd', "Offre d'alternance crée avec succès");
     }
 
 
@@ -44,7 +44,7 @@ class ListingPostController extends Controller
     public function deletePost($id) {
         $post = Post::findOrFail($id);
         $post->delete();
-        return redirect('/listingPosts')->with('successdelete', "Offre d'alternance supprimer avec succèss");
+        return redirect('/listingPosts')->with('successdelete', "Offre d'alternance supprimée avec succès.");
     }
 
     // Fuction to update one post;
@@ -61,7 +61,7 @@ class ListingPostController extends Controller
         $post = Post::findOrFail($id);
         $post->update($attributes);
 
-        return redirect('/listingPosts')->with('successedit', "Offre d'alternance modifier avec succèss");
+        return redirect('/listingPosts')->with('successedit', "Offre d'alternance modifiée avec succès.");
     }
 
 }

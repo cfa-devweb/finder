@@ -42,7 +42,7 @@ class listingStudentController extends Controller
      public function deleteOneAlternant($id) {
         $post = Student::findOrFail($id);
         $post->delete();
-        return redirect()->back()->with('success', 'Alternant supprimer avec succéss');
+        return redirect()->back()->with('success', 'Alternant supprimé avec succès.');
     }
 
 }

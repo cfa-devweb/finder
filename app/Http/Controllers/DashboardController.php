@@ -39,10 +39,10 @@ class DashboardController extends Controller
         
         
         if (!$result){        
-            return back()->with('successdelete', 'Erreur lors de la création de la formation');  
+            return back()->with('successdelete', 'Erreur lors de la création de la formation.');  
         } else {
           $data = Section::create($request->all());
-          return back()->with('successadd', "Formation créer avec succèss");       
+          return back()->with('successadd', "Formation crée avec succès.");       
         }
         // redirect()->back();
     }
