@@ -128,10 +128,10 @@
         @csrf
         @method('PUT')
 
-        <!-- Description perso. + Niveaux d'études-->
+        <!-- Description perso. + Niveaux d'études + Expérience professionnelle-->
         <div class="row my-4">
             <div class="col-6">
-                <textarea class="form-control" name="about_me" placeholder="Décriez-vous en quelques mots" maxlength="200">{{ $student->resume->about_me }}</textarea>
+                <textarea style="height: 22vh;" class="form-control" name="about_me" placeholder="Décriez-vous en quelques mots" maxlength="200">{{ $student->resume->about_me }}</textarea>
             </div>
 
             <div class="col-6 form-floating">
@@ -147,19 +147,8 @@
                     </select>
                     <label for="floatingSelect">Niveaux d'études</label>
                 </div>
-            </div>
-        </div>
 
-        <!-- Upload CV + Expérience professionnelle -->
-        <div class="row my-4">
-
-            <div class="col-6 form-floating">
-                <input type="file" id="floatingFile" class="form-select" placeholder="Mon CV (.pdf)" value="">
-                <label for="floatingFile">Mon CV (.pdf)</label>
-            </div>
-
-            <div class="col-6 form-floating">
-                <div class="form-floating">
+                <div class="form-floating mt-4">
                     <select class="form-select" name="experience" id="floatingSelect">
                         <option selected>{{ $student->resume->experience }}</option>
                         <option value="Jamais">Jamais</option>
@@ -171,8 +160,8 @@
                     </select>
                     <label for="floatingSelect">Expérience professionnelle</label>
                 </div>
-            </div>
 
+            </div>
         </div>
 
         <!-- Centre d’intérêts + Compétences -->
