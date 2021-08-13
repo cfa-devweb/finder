@@ -49,8 +49,8 @@
                         <div class="mb-3">
                             <label for="job_id" class="col-form-label">Nom du domaine d'activité:</label>
                             <select class="form-select" aria-label="Default select example" id="job_id" name="job_id">
-                                @foreach($Post as $Posts)
-                                <option value="{{ $Posts->id }}">{{ $Posts->name }} </option>
+                                @foreach($jobs as $job)
+                                    <option value="{{ $job->id }}">{{ $job->name }} </>
                                 @endforeach
                             </select>
                         </div>

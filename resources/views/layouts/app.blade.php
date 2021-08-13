@@ -14,7 +14,7 @@
     <meta name="api-token" content="{{ auth()->user()->api_token }}">
     @endauth
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
