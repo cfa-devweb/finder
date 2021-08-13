@@ -39,8 +39,6 @@ class ProfilController extends Controller
         $interest9 = request('interest9');
         $interest10 = request('interest10');
 
-
-
         $profil = new Resume();
 
 

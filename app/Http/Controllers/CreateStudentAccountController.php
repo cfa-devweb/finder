@@ -27,8 +27,8 @@ class CreateStudentAccountController extends Controller {
 
         $user = User::create([
             'email' => $request->input('email'),
-            'phone' => $request->input('phone', ' '),
-            'password' => $request->input('password', ' ')
+            'phone' => $request->input('phone'),
+            'password' => $request->input('password')
         ]);
 
 

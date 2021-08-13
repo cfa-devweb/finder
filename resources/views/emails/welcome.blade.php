@@ -1,6 +1,6 @@
 @component('mail::message')
 
-# Bonjour {{ $first_name }}
+# Bonjour {{ $first_name }},
 
 Vous avez été invité à créer votre compte {{ config('app.name') }}.
 

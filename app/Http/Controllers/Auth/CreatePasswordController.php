@@ -23,6 +23,17 @@ class CreatePasswordController extends Controller
 
     use ResetsPasswords;
 
+    // /**
+    //  * Create a new message instance.
+    //  * @return void
+    //  */
+
+    // public function __construct($user, $student)
+    // {
+    //     $this->user = $user;
+    //     $this->student = $student;
+    // }
+
     /**
      * Where to redirect users after a created password.
      *
@@ -30,7 +41,9 @@ class CreatePasswordController extends Controller
      */
     protected function redirectTo()
     {
-        return route('profil.create');
+        $url = route('profil.create');
+        
+        return $url;
     }
 
     /**
@@ -42,8 +55,12 @@ class CreatePasswordController extends Controller
      */
     public function showCreateForm(Request $request, $token)
     {
+
+        $email = $request->email;
+
         return view('auth.passwords.create')->with(
-            ['token' => $token]
+            ['token' => $token,
+            'email' => $email]
         );
     }
 
@@ -55,19 +72,17 @@ class CreatePasswordController extends Controller
      */
     public function store(Request $request)
     {
-        //$request->validate($this->rules(), $this->validationErrorMessages());
-
-        $response = $this->broker()->reset(
-            $this->credentials($request), function ($user, $password) {
-                $this->resetPassword($user, $password);
+        $request->validate($this->rules(), $this->validationErrorMessages());
+        $response = $this->broker()->reset($this->credentials($request), 
+        function ($user, $password) {
+            $this->resetPassword($user, $password);
                 if ($user->markEmailAsVerified()) {
                     event(new Verified($user));
                 }
             }
         );
-
-        // $response == Password::PASSWORD_RESET ? $this->sendResetResponse($request, 'profil.create') : $this->sendResetFailedResponse($request, $response);
-
-        return redirect ('/student/create-profil');
+        return $response == Password::PASSWORD_RESET
+                    ? $this->sendResetResponse($request, 'passwords.create')
+                    : $this->sendResetFailedResponse($request, $response);
     }
 }
