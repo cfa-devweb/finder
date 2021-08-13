@@ -20,6 +20,8 @@
                 </tr>
             </thead>
             <tbody>
+                
+                @if($students->count()>0)
                 @foreach ($students as $student)
                 <tr>
                     <td>{{ $student->first_name }}</td>
@@ -32,10 +34,11 @@
                 -->
                     <td>
                         <!-- waiting -->
-                        @if($student->followUps->where('answer','sign')->count())
+                        @if($student->followUps->where('answer','sign')->count()>0)
                         {{ $student->followUps->where('answer','sign')->first()->name_contact }}
+                        @else
+                        Aucune entreprise trouvée.
                         @endif
-                        Aucune entreprise trouvée
                     </td>
                     <td class="d-flex justify-content-evenly">
                         <a class="buttons button_infos" href="{{ route('dashboard-formation-suivi', $student->user_id)}}">
@@ -72,8 +75,14 @@
                     </div>
                 </tr>
                 @endforeach
+                @else
+                <tr>
+                    <td colspan="9" class="table-active text-center">Aucun alternant disponible</td>
+                </tr>
+                @endif
             </tbody>
         </table>
+        <div class="d-flex justify-content-center ">{{ $students->links()}}</div>
     </div>
 
 </div>

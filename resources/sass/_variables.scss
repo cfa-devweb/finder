@@ -22,20 +22,14 @@ $cyan: #6cb2eb;
 $buttons-color: #FFFFFF;
 $button-cancel-color: #343A40;
 
-// Buttons background-color
-$button-general-background-color: #0788D9;
-$button-edit-background-color: #EFAD4E;
-$button-trash-background-color: #D9534F;
-$button-infos-background-color: #5BC2D9;
-$button-cancel-background-color: #E0E0E0;
-$button-save-background-color: #4CA649;
+// custom color
+$general: #0788D9;
+$edit: #EFAD4E;
+$trash: #D9534F;
+$info: #5BC2D9;
+$cancel: #E0E0E0;
+$save: #4CA649;
 
 // Tags color
 $tag-color: white;
 
-// Tags background-color
-$tag-background-color: #0788D9;
-$tag-answer-waiting-background-color: #EFAD4E;
-$tag-answer-refusal-background-color: #D9534F;
-$tag-answer-accepted-background-color: #5BC2D9;
-$tag-answer-sign-background-color: #4CA649;

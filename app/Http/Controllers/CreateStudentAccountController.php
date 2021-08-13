@@ -18,7 +18,7 @@ class CreateStudentAccountController extends Controller {
      */
     protected function createStudent(Request $request)
     {
-        $request->validate([
+        $request->validateWithBag('post', [
             'first_name'=> 'required',
             'last_name'=> 'required',
             'email' => 'required|unique:users',
@@ -50,6 +50,6 @@ class CreateStudentAccountController extends Controller {
                     ->send(new RegisterMail($user, $student));
 
         return back()
-            ->with("successadd", "L'alternant a bien été ajouté");
+            ->with("successadd", "L'alternant a bien été ajouté.");
         }
 }

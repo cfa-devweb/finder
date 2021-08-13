@@ -12,7 +12,7 @@ class DashboardController extends Controller
 {
     //
     public function index() {      
-        $Sections = Section::where("adviser_id",'=',"1")->paginate(5);
+        $Sections = Section::where("adviser_id",'=',"1")->paginate(7);
         $advisers = Adviser::all();
         $Post = Post::all();
         $adviser_id = '1';
@@ -39,10 +39,10 @@ class DashboardController extends Controller
         
         
         if (!$result){        
-            return back()->with('successdelete', 'Erreur lors de la création de la formation');  
+            return back()->with('successdelete', 'Erreur lors de la création de la formation.');  
         } else {
           $data = Section::create($request->all());
-          return back()->with('successadd', "Formation créer avec succèss");       
+          return back()->with('successadd', "Formation crée avec succès.");       
         }
         // redirect()->back();
     }

@@ -17,24 +17,28 @@ class listingStudentController extends Controller
     public function showTable($id){
 
         $section = Section::find($id);
-        $students = Student::where('section_id', '=', $id)->get();
+        $students = Student::where('section_id', '=', $id)->paginate(7);
 
         return view('adviser.listingStudent',  compact('id', 'section', 'students'));
 
     }
     public function showUserInfo($id){
+        // dd($id);
 
-               
-        $FollowUps = FollowUp::where('student_id','=',$id)->get();
+        $studentid = Student::where('user_id','=',$id)->get();  
+        
+        $sections = Section::where('id','=',$studentid->first()->section_id)->get();
+        
+        // dd($sections);  
+        $FollowUps = FollowUp::where('student_id','=',$studentid->first()->id)->get();
         // dd($FollowUps);
         $User = User::where('id','=',$id)->get();
-        $student = Student::where('id','=',$id)->get();    
-        $studentclass = Student::select('section_id')->where('id','=',$id)->get();     
+        // $studentclass = Student::select('section_id')->where('id','=',$id)->get();    
 
-        $sections = Section::select('class_name')->where("id",'=', $studentclass->first()->section_id)->get();
+        // $sections = Section::select('class_name')->where("id",'=', $studentclass->first()->section_id)->get();
         // dd($sections);
         // dd($student,$User,$FollowUps);
-        return view('adviser.listingOneStudent', compact('FollowUps','User','student','sections'));
+        return view('adviser.listingOneStudent', compact('FollowUps','User','studentid','sections'));
 
     }
 
@@ -42,7 +46,7 @@ class listingStudentController extends Controller
      public function deleteOneAlternant($id) {
         $post = Student::findOrFail($id);
         $post->delete();
-        return redirect()->back()->with('success', 'Alternant supprimer avec succéss');
+        return redirect()->back()->with('success', 'Alternant supprimé avec succès.');
     }
 
 }

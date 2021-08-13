@@ -24,19 +24,34 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">Intitulé</label>
                             <input type="text" class="form-control" id="name" name="name">
+                            @error('name', 'post')
+                            <p class="form_error">
+                                {{ $message }}
+                            </p>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Contact</label>
                             <input type="email" class="form-control" id="contact" name="contact">
+                            @error('contact', 'post')
+                            <p class="form_error">
+                                {{ $message }}
+                            </p>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="name_company" class="form-label">Entreprise</label>
                             <input type="text" class="form-control" id="name_company" name="name_company">
+                            @error('name_company', 'post')
+                            <p class="form_error">
+                                {{ $message }}
+                            </p>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="section" class="form-label">Formation concernée</label>
                             <select class="form-select" aria-label="Default select example" name="concerned" required>
-                                <option  disabled selected hidden>Choisir une formation</option>
+                                <option disabled selected hidden>Choisir une formation</option>
                                 @foreach($sections as $section)
                                 <option value="{{ $section->id }}">{{ $section->class_name }}</option>
                                 @endforeach
@@ -45,6 +60,11 @@
                         <div class="mb-3">
                             <label for="content"> Description du poste : </label>
                             <textarea class="form-control" rows="5" id="content" name="content"></textarea>
+                            @error('content', 'post')
+                            <p class="form_error">
+                                {{ $message }}
+                            </p>
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-footer justify-content-center">
@@ -55,6 +75,13 @@
             </div>
         </div>
     </div>
+    @if($errors->post->isNotEmpty())
+    <script>
+        $(document).ready(function() {
+            $('#modalPost').modal('show');
+        });
+    </script>
+    @endif
 
     <div class="table-responsive">
         <table class="table table-striped">
@@ -166,14 +193,29 @@
                                         <div class="mb-3">
                                             <label for="name" class="form-label">Intitulé</label>
                                             <input type="text" class="form-control" id="name" name="name" value="{{$post->name}}">
+                                            @error('name', 'put')
+                                            <p class="form_error">
+                                                {{ $message }}
+                                            </p>
+                                            @enderror
                                         </div>
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Contact</label>
                                             <input type="text" class="form-control" id="contact" name="contact" value="{{$post->contact}}">
+                                            @error('contact', 'put')
+                                            <p class="form_error">
+                                                {{ $message }}
+                                            </p>
+                                            @enderror
                                         </div>
                                         <div class="mb-3">
                                             <label for="name_company" class="form-label">Entreprise</label>
                                             <input type="text" class="form-control" value="{{$post->name_company}}" id="name_company" name="name_company">
+                                            @error('name_company', 'put')
+                                            <p class="form_error">
+                                                {{ $message }}
+                                            </p>
+                                            @enderror
                                         </div>
                                         <div class="mb-3">
                                             <label for="section" class="form-label">Formation concernée</label>
@@ -187,6 +229,11 @@
                                         <div class="mb-3">
                                             <label class="modal-title" for="content"> Description du poste : </label>
                                             <textarea class="form-control" rows="5" id="content" name="content">{{$post->content}}</textarea>
+                                            @error('content', 'put')
+                                            <p class="form_error">
+                                                {{ $message }}
+                                            </p>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="modal-footer justify-content-center">
@@ -197,11 +244,19 @@
                             </div>
                         </div>
                     </div>
+
+                    @if($errors->put->isNotEmpty())
+                    <script>
+                        $(document).ready(function() {
+                            $('#modalUpdatePost-{{ $post->id }}').modal('show');
+                        });
+                    </script>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        {{ $Posts->links()}}
+        <div class="d-flex justify-content-center">{{ $Posts->links()}}</div>
     </div>
 </div>
 @endsection

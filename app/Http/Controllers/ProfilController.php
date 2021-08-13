@@ -39,6 +39,8 @@ class ProfilController extends Controller
         $interest9 = request('interest9');
         $interest10 = request('interest10');
 
+
+        $id = Auth::id();
         $profil = new Resume();
 
 
@@ -49,7 +51,7 @@ class ProfilController extends Controller
         $profil -> vehicle = request('checkboxDriverVehicle');
         $profil -> interests =$interest1 . ',' . $interest2 . ',' . $interest3 . ',' . $interest4 . ',' . $interest5 .','. $interest6 . ',' . $interest7 . ',' .$interest8 . ','.$interest9 . ',' . $interest10 ;
         $profil -> about_me = request('aboutMe');
-        $profil -> student_id = 1;
+        $profil -> student_id = $id;
 
 
 

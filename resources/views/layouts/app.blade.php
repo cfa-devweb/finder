@@ -41,6 +41,7 @@
 
     <div id="app" class="container yield_content">
         <main class="py-5">
+            @include('layouts.breadcrumb')
             @yield('content')
             @yield('auth')
         </main>

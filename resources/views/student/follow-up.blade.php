@@ -18,11 +18,11 @@
         <table class="table table-striped table-follow-up">
             <thead>
             <tr class="table-dark">
-                <th scope="col">Date</th>
-                <th scope="col">Action menée</th>
-                <th scope="col">Personne contacté</th>
-                <th scope="col">Commentaire</th>
-                <th scope="col">Réponse</th>
+                <th scope="col">Dates</th>
+                <th scope="col">Actions menées</th>
+                <th scope="col">Personnes contactées</th>
+                <th scope="col">Commentaires</th>
+                <th scope="col">Réponses</th>
                 <th class="text-center" scope="col">Actions</th>
             </tr>
             </thead>
@@ -55,6 +55,8 @@
             @endif
             </tbody>
         </table>
+        <div class="d-flex justify-content-center">{{ $followUps->links()}}</div>
+
     </div>
 
     <!-- Modal -->
@@ -64,7 +66,7 @@
                 <form id="formFollowUp" class="needs-validation" novalidate>
                     @csrf
                     <div class="modal-header">
-                        <h5 class="modal-title mx-auto fs-3 fw-bold"><span id="modalTitle">Ajout</span> de prise de contact</h5>
+                        <h5 class="modal-title mx-auto fs-3 fw-bold"><span id="modalTitle">Ajout</span> d'une prise de contact</h5>
                     </div>
                     <div class="modal-body mx-3">
                         <div class="row">
@@ -97,7 +99,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <label for="comment" class="form-label">Commentaires</label>
+                                <label for="comment" class="form-label">Commentaire</label>
                                 <textarea type="text" class="form-control" id="comment" name="comment" placeholder="Commentaire" rows="4" maxlength="255" autocomplete="off"></textarea>
                             </div>
                         </div>
@@ -229,15 +231,19 @@
             switch (tagValue) {
                 case 'waiting':
                     $(this).addClass('tag-answer-waiting');
+                    $(this).text('En attente');
                     break;
                 case 'refusal':
                     $(this).addClass('tag-answer-refusal');
+                    $(this).text('Refus');
                     break;
                 case 'accepted':
                     $(this).addClass('tag-answer-accepted');
+                    $(this).text('Accepté');
                     break;
                 case 'sign':
                     $(this).addClass('tag-answer-sign');
+                    $(this).text('Signé');
                     break;
             }
         })

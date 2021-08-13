@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+            {{ config('app.name', 'Finder') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -68,6 +68,13 @@
                         <a class="dropdown-item" href="/student/profil">
                             <i class="fas fa-user"></i>
                             Mon profil
+                        </a>
+                        @endif
+
+                        @if (!Auth::guest() && Auth::user()->adviser)
+                        <a class="dropdown-item" href="/listingPosts">
+                            <i class="fas fa-plus"></i>
+                            Ajout d'une Offre
                         </a>
                         @endif
 

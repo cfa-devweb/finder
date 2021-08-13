@@ -15,7 +15,7 @@ class EnterpriseController extends Controller
      */
     public function index()
     {
-        $enterprises = Enterprise::all();
+        $enterprises = Enterprise::paginate(15); 
 
         return view('student.enterprise', compact('enterprises'));
     }
@@ -38,18 +38,20 @@ class EnterpriseController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $request->validateWithBag('post', [
             'name_company' => 'required|max:30',
             'name_contact' => 'required|max:30',
             'phone_contact' => 'required|digits:6',
             'email_contact' => 'required|email',
         ]);
 
+        $old_name_company = $request->old('name_company');
+
         $request->merge(['student_id' => $request->user()->student->id]);
 
         Enterprise::create($request->all());
 
-        return back()->with('successadd', "Entreprise créer avec succèss");
+        return back()->with('successadd', "Entreprise crée avec succès.");
     }
 
     /**
@@ -85,7 +87,7 @@ class EnterpriseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validateData = $request->validate([
+        $validateData = $request->validateWithBag('put', [
             'name_company' => 'required|max:30',
             'name_contact' => 'required|max:30',
             'phone_contact' => 'required|digits:6',
@@ -95,7 +97,7 @@ class EnterpriseController extends Controller
 
         Enterprise::whereId($id)->update($validateData);
 
-        return redirect('enterprises')->with('successedit', 'Entreprise modifier avec succèss');
+        return redirect('enterprises')->with('successedit', 'Entreprise modifiée avec succès.');
     }
 
     /**
@@ -113,6 +115,6 @@ class EnterpriseController extends Controller
             echo $followUp->delete();
         }
 
-        return redirect('enterprises')->with('successdelete', 'Entreprise supprimer avec succès');
+        return redirect('enterprises')->with('successdelete', 'Entreprise supprimée avec succès.');
     }
 }

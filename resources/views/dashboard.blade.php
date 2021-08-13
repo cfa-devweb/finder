@@ -106,8 +106,7 @@
                 @endif
             </tbody>
         </table>
-
-        {{ $Sections->links()}}
+        <div class="d-flex justify-content-center">{{ $Sections->links()}}</div>
     </div>
 </div>
 
