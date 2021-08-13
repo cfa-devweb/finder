@@ -130,38 +130,40 @@
 
         <!-- Description perso. + Niveaux d'études + Expérience professionnelle-->
         <div class="row my-4">
-            <div class="col-6">
-                <textarea style="height: 22vh;" class="form-control" name="about_me" placeholder="Décriez-vous en quelques mots" maxlength="200">{{ $student->resume->about_me }}</textarea>
+            <div class="col-md-6">
+                <textarea class="form-control" name="about_me" placeholder="Décriez-vous en quelques mots" maxlength="200">{{ $student->resume->about_me }}</textarea>
+            </div>
+        </div>
+
+        <!-- Niveaux d'études + Expérience professionnelle-->
+        <div class="row my-4">
+
+            <div class="col-6 form-floating">
+                <select class="form-select" name="study" id="floatingSelect">
+                    <option selected>{{ $student->resume->study }}</option>
+                    <option value="Aucun diplôme">Aucun diplôme</option>
+                    <option value="CAP">CAP</option>
+                    <option value="BAC">BAC</option>
+                    <option value="BAC +2">BAC +2</option>
+                    <option value="BAC +3">BAC +3</option>
+                    <option value="BAC +5">BAC +5</option>
+                </select>
+                <label for="floatingSelect">Niveaux d'études</label>
             </div>
 
             <div class="col-6 form-floating">
-                <div class="form-floating">
-                    <select class="form-select" name="study" id="floatingSelect">
-                        <option selected>{{ $student->resume->study }}</option>
-                        <option value="Aucun diplôme">Aucun diplôme</option>
-                        <option value="CAP">CAP</option>
-                        <option value="BAC">BAC</option>
-                        <option value="BAC +2">BAC +2</option>
-                        <option value="BAC +3">BAC +3</option>
-                        <option value="BAC +5">BAC +5</option>
-                    </select>
-                    <label for="floatingSelect">Niveaux d'études</label>
-                </div>
-
-                <div class="form-floating mt-4">
-                    <select class="form-select" name="experience" id="floatingSelect">
-                        <option selected>{{ $student->resume->experience }}</option>
-                        <option value="Jamais">Jamais</option>
-                        <option value="6 mois">6 mois</option>
-                        <option value="1 an">1 an</option>
-                        <option value="2 ans">2 ans</option>
-                        <option value="3 ans">3 ans</option>
-                        <option value="4 ans ou plus">4 ans ou plus</option>
-                    </select>
-                    <label for="floatingSelect">Expérience professionnelle</label>
-                </div>
-
+                <select class="form-select" name="experience" id="floatingSelect">
+                    <option selected>{{ $student->resume->experience }}</option>
+                    <option value="Jamais">Jamais</option>
+                    <option value="6 mois">6 mois</option>
+                    <option value="1 an">1 an</option>
+                    <option value="2 ans">2 ans</option>
+                    <option value="3 ans">3 ans</option>
+                    <option value="4 ans ou plus">4 ans ou plus</option>
+                </select>
+                <label for="floatingSelect">Expérience professionnelle</label>
             </div>
+
         </div>
 
         <!-- Centre d’intérêts + Compétences -->
