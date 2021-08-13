@@ -29,24 +29,26 @@
                     <div class="modal-body m-3">
                         <div class="mb-3">
                             <label for="class_name" class="col-form-label">Nom de la Formation</label>
-                            <input type="text" class="form-control" id="class_name" name="class_name" required>
+                            <input type="text" class="form-control" id="class_name" name="class_name">
+                            @error('class_name', 'post')
+                            <p class="form_error">
+                                {{ $message }}
+                            </p>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="adviser_id" class="col-form-label">Nom du conseiller</label>
-                            <select class="form-select" aria-label="Default select example" id="adviser_id" name="adviser_id" required>
+                            <select class="form-select" aria-label="Default select example" id="adviser_id" name="adviser_id">
                                 @foreach($advisers as $adviser)
                                 <option value="{{ $adviser->id }}">{{ $adviser->last_name }}
                                     {{ $adviser->first_name }}
                                 </option>
                                 @endforeach
                             </select>
-                            @if($errors->first('adviser_id'))
-                            <div class="alert-danger">{{$errors->first('adviser_id')}}</div>
-                            @endif
                         </div>
                         <div class="mb-3">
                             <label for="job_id" class="col-form-label">Nom du domaine d'activité:</label>
-                            <select class="form-select" aria-label="Default select example" id="job_id" name="job_id" required>
+                            <select class="form-select" aria-label="Default select example" id="job_id" name="job_id">
                                 @foreach($Post as $Posts)
                                 <option value="{{ $Posts->id }}">{{ $Posts->name }} </option>
                                 @endforeach
@@ -55,11 +57,12 @@
                         <div class="mb-3">
                             <label for="description" class="col-form-label">Description de la
                                 classe:</label>
-                            <textarea class="form-control " id="description" name="description" rows="3" required></textarea>
-                            @if($errors->first('description'))
-                            <div class="alert-danger">{{$errors->first('description')}}</div>
-                            @endif
-                            </select>
+                            <textarea class="form-control " id="description" name="description" rows="3"></textarea>
+                            @error('description', 'post')
+                            <p class="form_error">
+                                {{ $message }}
+                            </p>
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-footer justify-content-center">
@@ -70,12 +73,17 @@
             </div>
         </div>
     </div>
-</div>
+    @if($errors->post->isNotEmpty())
+    <script>
+        $(document).ready(function() {
+            $('#add-formation_modal').modal('show');
+        });
+    </script>
+    @endif
 
-<div class="container">
     <div class="table-responsive">
         <table class="table table-striped">
-            <thead class="">
+            <thead>
                 <tr class="table-dark">
                     <th>Formation</th>
                     <th>Nombre d'apprenant</th>
@@ -110,5 +118,6 @@
         {{ $Sections->links()}}
     </div>
 </div>
+
 
 @endsection
