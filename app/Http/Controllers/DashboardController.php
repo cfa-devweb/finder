@@ -12,7 +12,7 @@ class DashboardController extends Controller
 {
     //
     public function index() {      
-        $Sections = Section::where("adviser_id",'=',"1")->paginate(5);
+        $Sections = Section::where("adviser_id",'=',"1")->paginate(7);
         $advisers = Adviser::all();
         $Post = Post::all();
         $adviser_id = '1';
