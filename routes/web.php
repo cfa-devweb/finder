@@ -51,8 +51,6 @@ Route::middleware('auth')->group(function() {
     Route::get('/enterprises/{id}/follow-up', [FollowUpController::class, 'index']);
 
     /* ------------------------------------------------------------------------- */
-    Route::get('/student/create-profil', [ProfilController::class,'CreateProfil']);
-    Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
     Route::get('/student/profil', [ProfilController::class, 'ShowProfil']);
     Route::post('/student/{student}', [ProfilController::class, 'UpdateProfil'])->name('profil.update');
     Route::put('/resumes/{resume}', [ResumeController::class, 'update'])->name('resumes.update');

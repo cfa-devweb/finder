@@ -30,7 +30,7 @@ class RegisterMail extends Mailable
 
     public function build()
     {
-        $subject = 'Welcome';
+        $subject = 'Bienvenue sur Finder.';
 
         return $this
             ->subject($subject)
