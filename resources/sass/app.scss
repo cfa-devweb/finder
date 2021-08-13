@@ -22,7 +22,7 @@ body {
 }
 
 .yield_content {
-    min-height: 80vh;
+    min-height: 82vh;
     max-width: 99vw !important;
     margin: auto;
 }
@@ -30,22 +30,30 @@ body {
 .title-h1 {
     text-align: left;
     padding: 1%;
-    background-color: #FFFFFF;
+    background-color: $dark-general;
+    color: #ffffff;
     margin: auto;
     font-size: 2.2rem;
 }
+
+
+
+
+/*#endregion General*/
+
+/*#region Table*/
 
 .table {
     max-width: 100% !important;
 }
 
 .table-dark,
-.table-dark > th {
-    background-color: #343A40 !important;
+.table-dark>th {
+    background-color: $dark-general !important;
+    color: #ffffff !important;
 }
 
-
-/*#endregion General*/
+/*#endregion Table*/
 
 /*#region Buttons*/
 .buttons {
@@ -68,34 +76,53 @@ body {
 
 .button_edit {
     background-color: $edit;
-    &:hover{background-color: darken($edit, 5);}
+
+    &:hover {
+        background-color: darken($edit, 5);
+    }
 }
 
 .button_trash {
     background-color: $trash;
-    &:hover{background-color: darken($trash, 5);}
+
+    &:hover {
+        background-color: darken($trash, 5);
+    }
 }
 
 .button_infos {
     background-color: $info;
-    &:hover{background-color: darken($info, 5);}
+
+    &:hover {
+        background-color: darken($info, 5);
+    }
 }
 
 .button_cancel {
     background-color: $cancel;
     color: $button-cancel-color !important;
-    &:hover{background-color: darken($cancel, 5);}
+
+    &:hover {
+        background-color: darken($cancel, 5);
+    }
 }
 
 .button_save {
     background-color: $save;
-    &:hover{background-color: darken($save, 5);}
+
+    &:hover {
+        background-color: darken($save, 5);
+    }
 }
 
 .button_general {
     background-color: $general;
-    &:hover{background-color: darken($general, 5);}
+
+    &:hover {
+        background-color: darken($general, 5);
+    }
 }
+
 /*#endregion Buttons*/
 
 /*#region Tags*/
@@ -111,12 +138,24 @@ body {
     background-color: $general;
 
     &-answer {
-        &-waiting {background-color: $edit;}
-        &-refusal {background-color: $trash;}
-        &-accepted {background-color: $info;}
-        &-sign {background-color: $save;}
+        &-waiting {
+            background-color: $edit;
+        }
+
+        &-refusal {
+            background-color: $trash;
+        }
+
+        &-accepted {
+            background-color: $info;
+        }
+
+        &-sign {
+            background-color: $save;
+        }
     }
 }
+
 /*#endregion Buttons*/
 
 /*#region Profil*/
@@ -179,7 +218,7 @@ body {
 #msform .action-button {
 
     width: 100px;
-    background:$general;
+    background: $general;
     font-family: "nunito", sans-serif;
     color: white;
     padding: 0.375rem 0.75rem;
@@ -290,11 +329,11 @@ select.list-dt:focus {
 }
 
 .add_padding_left {
-    padding-left:8rem;
+    padding-left: 8rem;
 }
 
 .button_save_profil {
-    background-color:  $save !important;
+    background-color: $save !important;
 
 }
 
@@ -303,18 +342,23 @@ select.list-dt:focus {
     font-weight: 900;
     content: "";
 }
+
 #progressbar #experience:before {
     content: "";
 }
+
 #progressbar #skills:before {
     content: "";
 }
+
 #progressbar #driver:before {
     content: "";
 }
+
 #progressbar #interest:before {
     content: "";
 }
+
 #progressbar #comment:before {
     content: "";
 }
@@ -337,18 +381,21 @@ select.list-dt:focus {
 .table-follow-up {
     text-align: center;
 
-    .comment {max-width: 300px;}
+    .comment {
+        max-width: 300px;
+    }
 }
+
 /*#endregion Profil*/
 
 /*#region Footer*/
 
 footer {
     width: 100%;
-    box-shadow: 0px -5px 5px #9E9E9E;
+    background-color: $dark-general;
 }
 
-footer >div {
+footer>div {
     margin: auto;
     display: flex;
     flex-flow: row;
@@ -362,13 +409,13 @@ footer >div {
     align-items: flex-start;
 }
 
-.footer_link > a {
-    color: #000000;
+.footer_link>a {
+    color: #FFFFFF;
     font-size: 1.1rem;
     text-decoration: none;
 }
 
-.footer_link > a:hover {
+.footer_link>a:hover {
     color: #D60072;
 }
 
@@ -381,7 +428,7 @@ footer >div {
     align-items: flex-end;
 }
 
-.footer_logo > img {
+.footer_logo>img {
     width: 25%;
 }
 
