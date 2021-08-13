@@ -30,7 +30,7 @@ class DashboardController extends Controller
     {
 
         // dd($request);
-       $result = $request->validate([
+       $result = $request->validateWithBag('post', [
             "class_name"=>"required",
             "adviser_id"=> "required",
             "description"=>"required",
