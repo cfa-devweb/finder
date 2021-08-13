@@ -23,7 +23,7 @@ class ListingPostController extends Controller
     // Function to insert a Offer Job in the database
     public function addoffer(Request $request)
     { 
-        $request->validate([
+        $request->validateWithBag('post', [
             'name'=> 'required',
             'date_create' => 'required',
             'name_company' => 'required|max:60',
@@ -49,7 +49,7 @@ class ListingPostController extends Controller
 
     // Fuction to update one post;
     public function updatePost($id) {
-        $attributes  = request()->validate([
+        $attributes  = request()->validateWithBag('put', [
             'name'=> 'required',
             'date_create' => 'required',
             'name_company' => 'required|max:60',
