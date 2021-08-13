@@ -1,17 +1,17 @@
 {{ $segments = '' }}
 
-<nav class="Breadcrumb">
+<nav class="Breadcrumb mb-0">
 <div class="container">
-    <ol class=" bg-transparent m-0 px-0 d-flex" style="list-style:none;">
-    <li class="text-uppercase">
-        <a href="/">{{ __('pages.home') }}</a>
+    <ol class=" bg-transparent m-0 px-0 d-flex mb-3" style="list-style:none; font-size:20px;">
+    <li class="active text-uppercase">
+        <a href="/" class="text-decoration-none text-secondary">{{ __('pages.home') }}</a>
     </li>
     @foreach(request()->segments() as $segment)
         <li class="text-uppercase"> &nbsp;/
         @if($segment !== last(request()->segments()))
-            <a href="{{ url($segments .= '/' . $segment) }}" >{{ ucfirst(strtr($segment, '-', ' ')) }}</a>
+            <a href="{{ url($segments .= '/' . $segment) }}" class="text-decoration-none text-secondary">{{ ucfirst(strtr($segment, '-', ' ')) }}</a>
         @else
-            {{ ucfirst(strtr($segment, '-', ' ')) }}
+            <span class="text-dark">{{ ucfirst(strtr($segment, '-', ' ')) }} </span>
         @endif
         </li>
     @endforeach
