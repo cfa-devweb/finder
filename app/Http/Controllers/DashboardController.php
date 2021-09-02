@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Adviser;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Section;
 use App\Models\Student;
@@ -24,9 +25,7 @@ class DashboardController extends Controller
             $adviser_id = '1';
             $Students = Student::all();
             $jobs = Job::all();
-    
             return view('dashboard',compact('Sections','Students','advisers','Post','jobs'));
-
         } else {
             echo $response->message();
         }
