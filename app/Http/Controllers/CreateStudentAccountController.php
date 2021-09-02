@@ -13,7 +13,8 @@ use App\Mail\RegisterMail;
 use Illuminate\Support\Facades\Gate;
 
 
-class CreateStudentAccountController extends Controller {
+class CreateStudentAccountController extends Controller
+{
 
     /**
      * Insert new student in database table students.
@@ -36,8 +37,6 @@ class CreateStudentAccountController extends Controller {
                 'password' => $request->input('password')
             ]);
 
-
-
         $student = Student::create([
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
@@ -52,7 +51,7 @@ class CreateStudentAccountController extends Controller {
             $email = $request->get('email');
 
             Mail::to($email)
-                        ->send(new RegisterMail($user, $student));
+                ->send(new RegisterMail($user, $student));
 
             return back()
                 ->with("successadd", "L'alternant a bien été ajouté.");

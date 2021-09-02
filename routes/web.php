@@ -23,14 +23,28 @@ use App\Models\Section;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware(['basicAuth'])->group(function () {
+    Auth::routes();
 
-Auth::routes();
+    Route::get('password/create/{token}', [CreatePasswordController::class, 'showCreateForm'])->name('password.create');
+    Route::post('password/create', [CreatePasswordController::class, 'store'])->name('password.store');
 
-Route::get('password/create/{token}', [CreatePasswordController::class, 'showCreateForm'])->name('password.create');
-Route::post('password/create', [CreatePasswordController::class, 'store'])->name('password.store');
+    Route::get('/student/create-profil', [ProfilController::class,'CreateProfil'])->name('profil.create');
+    Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
 
-Route::get('/student/create-profil', [ProfilController::class,'CreateProfil'])->name('profil.create');
-Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
+    Route::middleware('auth')->group(function() {
+        /* ---------------------------------------------------------------------------------- */
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard-index');
+        Route::post('dashboard', [DashboardController::class, 'post'])->name('dashboard-post');
+        Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
+        Route::delete('/dashboard/{id}',[listingStudentController::class,'deleteOneAlternant'])->name('listingAlternant.delete');
+        Route::get('/dashboard/{id}/', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
+        Route::get('/dashboard/{id}/listingOneStudent', [listingStudentController::class, 'showUserInfo'])->name('dashboard-formation-suivi');
+        /* ------------------------------------------------------------------ */
+        Route::get('/listingPosts',[ListingPostController::class,'listingPost']);
+        Route::delete('/listingPosts/{id}',[ListingPostController::class,'deletePost'])->name('listingPosts.delete');
+        Route::post('/listingPosts/{id}',[ListingPostController::class,'updatePost'])->name('update');
+        Route::post('listingPosts',[ListingPostController::class,'addoffer'])->name('post');
 
 Route::middleware('auth')->group(function() {
     /* ---------------------------------------------------------------------------------- */

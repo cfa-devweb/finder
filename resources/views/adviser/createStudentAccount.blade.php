@@ -60,9 +60,9 @@
 </div>
 
 @if($errors->post->isNotEmpty())
-    <script>
-        $(document).ready(function() {
-            $('#studentModal').modal('show');
-        });
-    </script>
-    @endif
+<script>
+    $(document).ready(function() {
+        $('#studentModal').modal('show');
+    });
+</script>
+@endif
