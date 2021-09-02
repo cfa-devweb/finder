@@ -39,7 +39,6 @@ Route::middleware(['basicAuth'])->group(function () {
         Route::post('dashboard', [DashboardController::class, 'post'])->name('dashboard-post');
         Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
         Route::delete('/dashboard/{id}', [listingStudentController::class, 'deleteOneAlternant'])->name('listingAlternant.delete');
-        -
         Route::get('/dashboard/{id}/listingOneStudent', [listingStudentController::class, 'showUserInfo'])->name('dashboard-formation-suivi');
         /* ------------------------------------------------------------------ */
         Route::get('/listingPosts', [ListingPostController::class, 'listingPost']);
