@@ -19,19 +19,21 @@
             @if($posts->count()>0)
             @foreach($posts as $post)
             <div class="col-md-4 p-2" style="min-height: 50px;">
-                <div class="card mb-4 box-shadow h-100">
-                    <div class="card-body border border-2 border-bottom-0">
-                        <p class="card-text">
-                            <small class="text-muted">{{  $post->date_create }}</small>
-                        </p>
-                        <h5 class="card-title">{{  $post->name }}</h5>
-                        <p>{{  $post->content }}</p>     
-                    </div>                                       
-                    <footer class="card-footer text-muted border border-2 border-top-0">
-                            <div class="possi" >
+                <div class="card mb-4 box-shadow h-100 rounded">
+                    <div class="card-body border border-2 rounded border-bottom-0">
+                        <h4 class="card-title">{{  $post->name }}</h4>
+                        <p>{{  $post->content }}</p>
+                    </div>
+                    <footer class="card-footer text-muted border border-2">
+                        <div class="row align-content-center">
+                            <div class="card-text my-auto col-10">
+                                <small class="text-muted">{{  $post->date_create }}</small>
+                            </div>
+                            <div class="col-1">
                                 <button class="buttons button_general" data-bs-toggle="modal"data-bs-target="#modalReadPost-{{ $post->id }}"><i class="fas fa-eye"></i></button>
                                 <button class="buttons button_save d-none"><i class="far fa-thumbs-up"></i></button>
                             </div>
+                        </div>
                         </footer>
                 </div>
             </div>

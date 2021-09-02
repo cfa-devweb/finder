@@ -10864,10 +10864,18 @@ body {
   color: #D50172;
 }
 
+.navigation {
+  box-shadow: -30px -30px 60px 0 #aaaaaa;
+}
+
+.footer {
+  box-shadow: 0 7px 20px 7px #aaaaaa;
+}
+
 .yield_content {
   min-height: 82vh;
-  max-width: 99vw !important;
-  margin: auto;
+  box-shadow: 0 7px 20px 7px #aaaaaa;
+  background-color: white;
 }
 
 .title-h1 {
