@@ -28,13 +28,26 @@ Run the migration with this command ***php artisan migrate:fresh***
 
 Run the database's seed with this command ***php artisan db:seed***
 
+## If you want to run both :
+
+Run this command ***php artisan migrate:fresh --seed***
+
 ## CSS/SCSS
 
 To compile scss to css, run this command ***npm run watch***
 
 ## To launch the application
 
-Run the artisan command ***php artisan serve***
+Copy the file **.env.example** and create a new file named ***.env*** and paste all the code in.
+Change your access to your database.
+
+
+Run the artisan command **php artisan serve**
+
+To connect to the site : 
+
+username : DevWeb2022
+Password : FinderPassword2022
 
 The user test is : mail : student@test.nc      pwd : test
 
