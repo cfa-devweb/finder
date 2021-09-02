@@ -16,10 +16,10 @@
 
                     {{ __('You are logged in!') }}
                 </div>
-                
+
             </div>
-            <div class="container">                
-            <h1 class="title-h1"> Dérnières offres d'alternance</h1>
+            <div class="container">
+            <h1 class="title-h1"> Dernières offres d'alternance</h1>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<footer>
+<footer class="footer">
     <div class="container">
         <div class="footer_link">
             <a href="#">Politique de Confidentialité</a>
