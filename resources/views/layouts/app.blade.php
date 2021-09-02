@@ -14,7 +14,7 @@
     <meta name="api-token" content="{{ auth()->user()->api_token }}">
     @endauth
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -41,7 +41,9 @@
 
     <div id="app" class="container yield_content">
         <main class="py-5">
-            @include('layouts.breadcrumb')
+            @if (Auth::check())
+                @include('layouts.breadcrumb')
+            @endif
             @yield('content')
             @yield('auth')
         </main>

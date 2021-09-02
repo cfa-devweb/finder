@@ -9,13 +9,13 @@ use App\Models\Student;
 use App\Models\User;
 use App\Models\Adviser;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ProfilController extends Controller
 {
     // Function to return the view create-profil
     public function CreateProfil()
     {
-        // $Profil = Resume::all();
         return view('student.create-profil');
     }
 
@@ -39,25 +39,22 @@ class ProfilController extends Controller
         $interest9 = request('interest9');
         $interest10 = request('interest10');
 
-
-        $id = Auth::id();
+        $id = Auth::user()->student->id;
         $profil = new Resume();
 
 
         $profil -> study = request('checkboxStudy');
         $profil -> experience = request('checkboxExperience');
-        $profil -> skills = $skills1 .',' . $skills2 .',' .$skills3 .',' .$skills4  ;
+        $profil -> skills = $skills1 .',' . $skills2 .',' .$skills3 .',' .$skills4;
         $profil -> driver_license = request('checkboxDriverLicense');
         $profil -> vehicle = request('checkboxDriverVehicle');
         $profil -> interests =$interest1 . ',' . $interest2 . ',' . $interest3 . ',' . $interest4 . ',' . $interest5 .','. $interest6 . ',' . $interest7 . ',' .$interest8 . ','.$interest9 . ',' . $interest10 ;
         $profil -> about_me = request('aboutMe');
         $profil -> student_id = $id;
 
-
-
         $profil -> save();
 
-        return redirect()->route('home');
+        return redirect()->route('profil');
     }
 
     // Function to return the view profil

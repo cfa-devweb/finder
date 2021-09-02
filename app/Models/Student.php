@@ -38,6 +38,7 @@ class Student extends Model {
      * @var array
      */
     protected $hidden = [
+        'id',
         'gender',
         'birthday',
         'active',

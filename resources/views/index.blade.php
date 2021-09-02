@@ -43,22 +43,20 @@
                     <div class="modal-content">
                         <input type="hidden" id="date_create" name="date_create" value="2021-08-10">
                         <div class="modal-header">
-                            <h5 class="modal-title fs-3 fw-bold" id="ModalLabel"> {{$post->name}}</h5>
+                            <h5 class="modal-title fs-3 fw-bold" id="ModalLabel">{{$post->name}}</h5>
                         </div>
                         <div class="modal-body">
                             <div class="row g-3">
-                                <div class="col-md-6">
-                                    <h6 class="modal-body fs-3" id="ModalLabel"> {{$post->name_company}}</h6>
+                                <div class="col-md-12">
+                                    <h6 class="fs-3" id="ModalLabel">{{$post->name_company}}</h6>
                                 </div>
                             </div>
                             <div class="row g-3">
                                 <div class="col-md-6 ">
-                                    <p class="fs-3 " id="ModalLabel"> {{$post->contact}}</p>
+                                    <p class="fs-5" id="ModalLabel">{{$post->contact}}</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p class="fs-3 " id="ModalLabel"> {{$post->section->class_name}}</p>
-                                </div>
-                                <div class="col-md-6">
+                                    <p class="fs-5" id="ModalLabel">{{$post->section->class_name}}</p>
                                 </div>
                             </div>
                             <div class="form-group">

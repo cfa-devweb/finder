@@ -5,7 +5,7 @@
             <a href="#">Mentions légales</a>
         </div>
         <div class="footer_logo">
-            <img class="w-30" src="{{ asset('img/logo-cci.svg') }}" alt="">
+            <img class="w-30" src="{{ asset('img/logo-cci-blanc.svg') }}" alt="">
         </div>
     </div>
 </footer>
