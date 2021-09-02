@@ -45,7 +45,7 @@
                     <a class="nav-link" href="{{ route('login') }}"></a>
                 </li>
                 @endif
-                
+
                 @else
                 <li class="nav-item dropdown">
                     @if (!Auth::guest() && Auth::user()->student)

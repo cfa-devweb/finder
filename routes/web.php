@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResumeController;
@@ -29,50 +30,39 @@ Route::middleware(['basicAuth'])->group(function () {
     Route::get('password/create/{token}', [CreatePasswordController::class, 'showCreateForm'])->name('password.create');
     Route::post('password/create', [CreatePasswordController::class, 'store'])->name('password.store');
 
-    Route::get('/student/create-profil', [ProfilController::class,'CreateProfil'])->name('profil.create');
+    Route::get('/student/create-profil', [ProfilController::class, 'CreateProfil'])->name('profil.create');
     Route::post('/saveprofil', [ProfilController::class, 'SaveProfil']);
 
-    Route::middleware('auth')->group(function() {
+    Route::middleware('auth')->group(function () {
         /* ---------------------------------------------------------------------------------- */
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard-index');
         Route::post('dashboard', [DashboardController::class, 'post'])->name('dashboard-post');
         Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
-        Route::delete('/dashboard/{id}',[listingStudentController::class,'deleteOneAlternant'])->name('listingAlternant.delete');
-        Route::get('/dashboard/{id}/', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
+        Route::delete('/dashboard/{id}', [listingStudentController::class, 'deleteOneAlternant'])->name('listingAlternant.delete');
+        -
         Route::get('/dashboard/{id}/listingOneStudent', [listingStudentController::class, 'showUserInfo'])->name('dashboard-formation-suivi');
         /* ------------------------------------------------------------------ */
-        Route::get('/listingPosts',[ListingPostController::class,'listingPost']);
-        Route::delete('/listingPosts/{id}',[ListingPostController::class,'deletePost'])->name('listingPosts.delete');
-        Route::post('/listingPosts/{id}',[ListingPostController::class,'updatePost'])->name('update');
-        Route::post('listingPosts',[ListingPostController::class,'addoffer'])->name('post');
+        Route::get('/listingPosts', [ListingPostController::class, 'listingPost']);
+        Route::delete('/listingPosts/{id}', [ListingPostController::class, 'deletePost'])->name('listingPosts.delete');
+        Route::post('/listingPosts/{id}', [ListingPostController::class, 'updatePost'])->name('update');
+        Route::post('listingPosts', [ListingPostController::class, 'addoffer'])->name('post');
 
-Route::middleware('auth')->group(function() {
-    /* ---------------------------------------------------------------------------------- */
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard-index');
-    Route::post('dashboard', [DashboardController::class, 'post'])->name('dashboard-post');
-    Route::get('/dashboard/{id}', [listingStudentController::class, 'showTable'])->name('dashboard-formation');
-    Route::delete('/dashboard/{id}',[listingStudentController::class,'deleteOneAlternant'])->name('listingAlternant.delete');
-    Route::get('/dashboard/{id}/listingOneStudent', [listingStudentController::class, 'showUserInfo'])->name('dashboard-formation-suivi');
-    /* ------------------------------------------------------------------ */
-    Route::get('/listingPosts',[ListingPostController::class,'listingPost'])->name('listingsPosts');
-    Route::delete('/listingPosts/{id}',[ListingPostController::class,'deletePost'])->name('listingPosts.delete');
-    Route::post('/listingPosts/{id}',[ListingPostController::class,'updatePost'])->name('update');
-    Route::post('listingPosts',[ListingPostController::class,'addoffer'])->name('post');
+        /* ------------------------------------------------------ */
+        Route::resource('enterprises', EnterpriseController::class);
+        Route::get('/enterprises/{id}/follow-up', [FollowUpController::class, 'index'])->name('followup');
 
-    /* ------------------------------------------------------ */
-    Route::resource('enterprises', EnterpriseController::class);
-    Route::get('/enterprises/{id}/follow-up', [FollowUpController::class, 'index'])->name('followup');
+        /* ------------------------------------------------------------------------- */
+        Route::get('/student/profil', [ProfilController::class, 'ShowProfil'])->name('profil');
+        Route::post('/student/{student}', [ProfilController::class, 'UpdateProfil'])->name('profil.update');
+        Route::put('/resumes/{resume}', [ResumeController::class, 'update'])->name('resumes.update');
+        Route::get('/createStudentAccount', function () {
+            $sections = Section::all();
+            return view('/adviser/createStudentAccount', compact('sections'));
+        });
+        Route::post('/createStudentAccount', [CreateStudentAccountController::class, 'createStudent'])->name('create.student');
 
-    /* ------------------------------------------------------------------------- */
-    Route::get('/student/profil', [ProfilController::class, 'ShowProfil'])->name('profil');
-    Route::post('/student/{student}', [ProfilController::class, 'UpdateProfil'])->name('profil.update');
-    Route::put('/resumes/{resume}', [ResumeController::class, 'update'])->name('resumes.update');
-    Route::get('/createStudentAccount', function () {
-        $sections = Section::all();
-        return view('/adviser/createStudentAccount', compact('sections'));
+        /* ------------------------------------------------------------------------------------ */
+        Route::get('/', [HomeController::class, 'index'])->name('home')->middleware(["verified"]);
+
     });
-    Route::post('/createStudentAccount', [CreateStudentAccountController::class, 'createStudent'])->name('create.student');
-
-    /* ------------------------------------------------------------------------------------ */
-    Route::get('/', [HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 });
