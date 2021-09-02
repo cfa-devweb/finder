@@ -6,12 +6,12 @@ use App\Models\Adviser;
 use App\Models\Post;
 use App\Models\Section;
 use App\Models\Student;
+use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
-{
-    
+{    
     public function index() {
 
         $response = Gate::inspect('dashboard-index');
@@ -25,7 +25,7 @@ class DashboardController extends Controller
             $Students = Student::all();
             $jobs = Job::all();
     
-            return view('dashboard',compact('Sections','Students','advisers','Post'));
+            return view('dashboard',compact('Sections','Students','advisers','Post','jobs'));
 
         } else {
             echo $response->message();
