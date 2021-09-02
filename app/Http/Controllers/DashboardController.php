@@ -6,6 +6,7 @@ use App\Models\Adviser;
 use App\Models\Post;
 use App\Models\Section;
 use App\Models\Student;
+use App\Models\Job;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -17,8 +18,9 @@ class DashboardController extends Controller
         $Post = Post::all();
         $adviser_id = '1';
         $Students = Student::all();
+        $jobs = Job::all();
 
-        return view('dashboard',compact('Sections','Students','advisers','Post'));
+        return view('dashboard',compact('Sections','Students','advisers','Post','jobs'));
     }
 
     public function show()
