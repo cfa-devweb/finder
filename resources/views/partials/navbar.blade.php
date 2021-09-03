@@ -62,7 +62,7 @@
                     </a>
                     @endif
 
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-menu-end header-items-right-dropdown" aria-labelledby="navbarDropdown">
 
                         @if (!Auth::guest() && Auth::user()->student)
                         <a class="dropdown-item" href="/student/profil">
