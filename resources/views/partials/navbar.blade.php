@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white navigation">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand header-logo" href="{{ url('/') }}">
             {{ config('app.name', 'Finder') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -17,19 +17,19 @@
             <!-- Center Of Navbar -->
             @if (!Auth::guest())
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
+                <li class="nav-item header-items-center">
                     <a class="nav-link" href="/">Les Offres</a>
                 </li>
 
                 @if (Auth::user()->adviser)
-                <li class="nav-item">
+                <li class="nav-item header-items-center">
                     <a class="nav-link" href="/dashboard">Les Formations</a>
                 </li>
                 @endif
 
 
                 @if (Auth::user()->student)
-                <li class="nav-item">
+                <li class="nav-item header-items-center">
                     <a class="nav-link" href="/enterprises">Mes recherches</a>
                 </li>
                 @endif
@@ -47,7 +47,7 @@
                 @endif
 
                 @else
-                <li class="nav-item dropdown">
+                <li class="nav-item header-items-right dropdown">
                     @if (!Auth::guest() && Auth::user()->student)
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

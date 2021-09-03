@@ -10864,14 +10864,6 @@ body {
   color: #D50172;
 }
 
-.navigation {
-  box-shadow: -30px -30px 60px 0 #aaaaaa;
-}
-
-.footer {
-  box-shadow: 0 7px 20px 7px #aaaaaa;
-}
-
 .yield_content {
   min-height: 82vh;
   box-shadow: 0 7px 20px 7px #aaaaaa;
@@ -11210,6 +11202,7 @@ select.list-dt:focus {
 footer {
   width: 100%;
   background-color: #0E0F26;
+  box-shadow: 0 7px 20px 7px #aaaaaa;
 }
 
 footer > div {
@@ -11250,3 +11243,36 @@ footer > div {
 }
 
 /*#endregion Footer*/
+/*#region Header*/
+.navbar {
+  box-shadow: -30px -30px 60px 0 #aaaaaa !important;
+  background-color: #0E0F26 !important;
+  width: 100%;
+}
+
+.header-logo {
+  color: #FFFFFF !important;
+  font-size: 1.6rem !important;
+  font-weight: bold !important;
+}
+
+.header-items-center,
+.header-items-center > a,
+.header-items-right,
+.header-items-right > a {
+  color: #FFFFFF !important;
+}
+
+.header-items-center:hover,
+.header-items-center > a:hover {
+  color: #D50172 !important;
+}
+
+.header-items-right > a:focus {
+  color: #38B3DD !important;
+  outline: none;
+  border: solid 2px #38B3DD;
+  border-radius: 10px;
+}
+
+/*#endregion Header*/
