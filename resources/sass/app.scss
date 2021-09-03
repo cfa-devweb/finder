@@ -464,11 +464,30 @@ footer>div {
     color: $trash !important;
 }
 
+.header-items-right>a {
+    border: solid 2px transparent;
+    border-radius: 10px;
+    transition: 0s !important;
+}
 
 .header-items-right>a:focus {
-    color: $info !important;
+    color: $dark-general !important;
+    background-color: #FFFFFF;
     outline: none;
-    border: solid 2px $info;
-    border-radius: 10px;
+    border: solid 2px $trash;
+    border-radius: 5px;
+}
+
+.header-items-right-dropdown{
+    border: solid 2px $trash !important;
+}
+
+.header-items-right-dropdown>a{
+    color: $dark-general !important;
+}
+
+.header-items-right-dropdown>a:hover{
+    background-color: $trash;
+    color: #ffffff !important;
 }
 /*#endregion Header*/
